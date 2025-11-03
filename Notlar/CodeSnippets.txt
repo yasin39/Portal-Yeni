@@ -1,0 +1,19 @@
+﻿BELGETAKIPMODUL.css İçinde çok hoş bir Temizle buton stili var- BelgeTakip TümFirmalar.aspx'de örneği var
+
+.btn-outline-secondary {
+    border: 2px solid #6b7280;
+    color: #6b7280;
+    background: transparent;
+}
+
+    .btn-outline-secondary:hover {
+        background: #6b7280;
+        color: white;
+        border-color: #6b7280;
+        transform: translateY(-1px);
+    }
+
+<asp:Button ID="btnTemizle" runat="server" CssClass="btn btn-outline-secondary"
+ OnClick="btnTemizle_Click" CausesValidation="false" Text="🗑️ Temizle" />
+
+ ___________________________________________________________________________________

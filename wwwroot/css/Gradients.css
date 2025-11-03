@@ -1,0 +1,347 @@
+/*
+ * Gradients.css
+ * Proje genelinde kullanılan tüm gradient pattern'leri
+ * Renk tutarlılığı ve merkezi tema yönetimi için
+ */
+
+/* ========================================
+   PRIMARY GRADIENTS - Ana Renk Gradientleri
+   ======================================== */
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+}
+
+.bg-gradient-primary-light {
+    background: linear-gradient(135deg, #6B94F0 0%, #4B7BEC 100%);
+}
+
+/* ========================================
+   STATUS GRADIENTS - Durum Renkleri
+   ======================================== */
+
+.bg-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.bg-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.bg-gradient-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.bg-gradient-info {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+/* ========================================
+   SECONDARY GRADIENTS - İkincil Renkler
+   ======================================== */
+
+.bg-gradient-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+}
+
+.bg-gradient-pink {
+    background: linear-gradient(135deg, #EC4B99 0%, #9A2E6B 100%);
+}
+
+.bg-gradient-orange {
+    background: linear-gradient(135deg, #fb923c 0%, #f97316 100%);
+}
+
+.bg-gradient-teal {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+}
+
+.bg-gradient-indigo {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+}
+
+/* ========================================
+   NEUTRAL GRADIENTS - Nötr Renkler
+   ======================================== */
+
+.bg-gradient-gray {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+}
+
+.bg-gradient-gray-light {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 100%);
+}
+
+.bg-gradient-dark {
+    background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+}
+
+/* ========================================
+   LIGHT GRADIENTS - Açık Ton Gradientler
+   ======================================== */
+
+.bg-gradient-light {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.bg-gradient-light-gray {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.bg-gradient-light-blue {
+    background: linear-gradient(135deg, #f0f6ff 0%, #e0edff 100%);
+}
+
+.bg-gradient-light-green {
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+}
+
+.bg-gradient-light-yellow {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+}
+
+.bg-gradient-light-red {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+}
+
+/* ========================================
+   WIDGET SPECIFIC GRADIENTS
+   DenetimModul ve BelgeTakipModul'de kullanılan özel renkler
+   ======================================== */
+
+.bg-gradient-widget-blue {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+}
+
+.bg-gradient-widget-pink {
+    background: linear-gradient(135deg, #EC4B99 0%, #9A2E6B 100%);
+}
+
+.bg-gradient-widget-red {
+    background: linear-gradient(135deg, #EC4B4B 0%, #9A2E2E 100%);
+}
+
+.bg-gradient-widget-yellow {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+/* ========================================
+   TEXT GRADIENTS - Metin Gradientleri
+   ======================================== */
+
+.text-gradient-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.text-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ========================================
+   HOVER GRADIENTS - Hover Efektleri
+   ======================================== */
+
+.hover-gradient-primary {
+    transition: background 0.3s ease;
+}
+
+.hover-gradient-primary:hover {
+    background: linear-gradient(135deg, #5a8af1 0%, #3d6ba8 100%);
+}
+
+.hover-gradient-success:hover {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.hover-gradient-warning:hover {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+}
+
+.hover-gradient-danger:hover {
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+}
+
+/* ========================================
+   BORDER GRADIENTS - Border Renkleri
+   ======================================== */
+
+.border-gradient-primary {
+    border: 2px solid transparent;
+    background-image: linear-gradient(white, white), linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+}
+
+/* ========================================
+   OVERLAY GRADIENTS - Katman Gradientleri
+   ======================================== */
+
+.overlay-gradient-dark {
+    position: relative;
+}
+
+.overlay-gradient-dark::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.overlay-gradient-light {
+    position: relative;
+}
+
+.overlay-gradient-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.9) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* ========================================
+   ANIMATED GRADIENTS - Animasyonlu Gradientler
+   ======================================== */
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.bg-gradient-animated {
+    background: linear-gradient(270deg, #4B7BEC, #2E5B9A, #8b5cf6, #4B7BEC);
+    background-size: 600% 600%;
+    animation: gradientShift 10s ease infinite;
+}
+
+/* ========================================
+   GRADIENT UTILITIES - Yardımcı Sınıflar
+   ======================================== */
+
+.gradient-overlay {
+    position: relative;
+    z-index: 1;
+}
+
+.gradient-text-shadow {
+    text-shadow: 0 2px 10px rgba(75, 123, 236, 0.3);
+}
+
+/* ========================================
+   CARD GRADIENTS - Kart Arkaplanları
+   ======================================== */
+
+.card-gradient-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    color: white;
+}
+
+.card-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.card-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.card-gradient-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.card-gradient-purple {
+    background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    color: white;
+}
+
+.card-gradient-pink {
+    background: linear-gradient(135deg, #EC4B99 0%, #9A2E6B 100%);
+    color: white;
+}
+
+/* ========================================
+   BUTTON GRADIENTS - Buton Arkaplanları
+   ======================================== */
+
+.btn-gradient-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-primary:hover {
+    background: linear-gradient(135deg, #5a8af1 0%, #3d6ba8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(75, 123, 236, 0.3);
+}
+
+.btn-gradient-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-success:hover {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-gradient-warning {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-warning:hover {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.btn-gradient-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-gradient-danger:hover {
+    background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}

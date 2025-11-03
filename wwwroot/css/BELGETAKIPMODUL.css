@@ -1,0 +1,336 @@
+﻿/* ==========================================================
+   BELGE TAKİP MODÜLÜ ORTAK STİLLER
+   ModulBelgeTakip klasöründeki tüm sayfalarda kullanılır
+   Renk Paleti: Medium Blues (#4B7BEC to #2E5B9A) + Neutrals
+   Son Güncelleme: 2025
+   ========================================================== */
+
+/* ==========================================================
+   FİLTRE BÖLÜMÜ
+   ========================================================== */
+.filter-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #4B7BEC;
+    box-shadow: 0 2px 8px rgba(75, 123, 236, 0.08);
+}
+
+/* ==========================================================
+   BELGE DURUM BADGE'LERİ
+   ========================================================== */
+.highlight-green {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-block;
+    border-left: 3px solid #10b981;
+}
+
+.highlight-red {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-block;
+    border-left: 3px solid #dc2626;
+}
+
+/* ==========================================================
+   EXPORT PANEL
+   ========================================================== */
+.export-panel {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    border-top: 2px solid #e5e7eb;
+}
+
+/* ==========================================================
+   CARD ENHANCEMENTS
+   ========================================================== */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: 1.5rem;
+    background: #ffffff;
+}
+
+.card-header {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+    padding: 1rem 1.25rem;
+    border: none;
+}
+
+.card-title {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.3px;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* ==========================================================
+   BUTTON ENHANCEMENTS
+   ========================================================== */
+.btn-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    border: none;
+    color: white;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #3b6dd6 0%, #245083 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(75, 123, 236, 0.3);
+        color: white;
+    }
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    color: white;
+}
+
+    .btn-success:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        color: white;
+    }
+
+.btn-outline-secondary {
+    border: 2px solid #6b7280;
+    color: #6b7280;
+    background: transparent;
+}
+
+    .btn-outline-secondary:hover {
+        background: #6b7280;
+        color: white;
+        border-color: #6b7280;
+        transform: translateY(-1px);
+    }
+
+/* ==========================================================
+   TABLE & GRIDVIEW ENHANCEMENTS
+   ========================================================== */
+.table thead th {
+    background: linear-gradient(135deg, #2E5B9A 0%, #1a4178 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 14px 12px !important;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(75, 123, 236, 0.03);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(75, 123, 236, 0.08);
+    transform: scale(1.001);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease;
+}
+
+.table-warning {
+    background-color: rgba(251, 191, 36, 0.15) !important;
+}
+
+/* ==========================================================
+   PAGINATION STYLING
+   ========================================================== */
+.pagination-ys {
+    padding: 1rem 0;
+}
+
+    .pagination-ys table {
+        border-collapse: separate;
+        border-spacing: 4px;
+    }
+
+    .pagination-ys td {
+        padding: 0;
+    }
+
+    .pagination-ys a,
+    .pagination-ys span {
+        display: inline-block;
+        padding: 8px 14px;
+        margin: 0 2px;
+        border-radius: 6px;
+        background: #f3f4f6;
+        color: #4B7BEC;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+
+        .pagination-ys a:hover {
+            background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+            color: white;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 6px rgba(75, 123, 236, 0.3);
+        }
+
+    .pagination-ys span {
+        background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+        color: white;
+        font-weight: 600;
+    }
+
+/* ==========================================================
+   FORM ENHANCEMENTS
+   ========================================================== */
+.form-control,
+.form-select {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #4B7BEC;
+        box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.1);
+    }
+
+.form-label {
+    font-weight: 600;
+    color: #2C3E50;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================
+   BADGE STYLING
+   ========================================================== */
+.badge {
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.bg-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%) !important;
+}
+
+/* ==========================================================
+   ALERT MESSAGES
+   ========================================================== */
+.alert {
+    border-radius: 8px;
+    border: none;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.alert-danger {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    border-left: 4px solid #dc2626;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+    color: #1e40af;
+    border-left: 4px solid #3b82f6;
+}
+
+.alert-success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+/* ==========================================================
+   WIDE CONTAINER
+   ========================================================== */
+.wide-container {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media (min-width: 1400px) {
+    .wide-container {
+        max-width: 1920px;
+        margin: 0 auto;
+    }
+}
+
+/* ==========================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================== */
+@media (max-width: 991.98px) {
+    .filter-section {
+        padding: 1rem;
+    }
+
+    .export-panel {
+        text-align: center !important;
+    }
+
+    .btn {
+        width: 100%;
+        margin-bottom: 0.5rem;
+    }
+
+        .btn:last-child {
+            margin-bottom: 0;
+        }
+}
+
+/* ==========================================================
+   UTILITY CLASSES
+   ========================================================== */
+.text-primary-custom {
+    color: #4B7BEC !important;
+}
+
+.bg-neutral {
+    background-color: #F5F5F0 !important;
+}
+
+.border-primary-custom {
+    border-color: #4B7BEC !important;
+}
+
+/* ==========================================================
+   ANIMATION
+   ========================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-out;
+}

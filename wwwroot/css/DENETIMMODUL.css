@@ -1,0 +1,202 @@
+﻿/* ==========================================================
+   DENETİM MODÜLÜ - ÖZEL STİLLER
+   Modern ve Profesyonel Denetim Sayfaları
+   ========================================================== */
+
+:root {
+    --denetim-primary: #4B7BEC;
+    --denetim-dark: #2E5B9A;
+    --denetim-success: #10b981;
+    --denetim-warning: #f59e0b;
+    --denetim-danger: #ef4444;
+}
+
+/* ==========================================================
+   FİLTER PANEL
+   ========================================================== */
+.denetim-filter-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border-left: 4px solid var(--denetim-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.5rem;
+}
+
+    .denetim-filter-card .card-header {
+        background: linear-gradient(135deg, var(--denetim-primary) 0%, var(--denetim-dark) 100%);
+        color: white;
+        font-weight: 600;
+        padding: 1rem 1.5rem;
+    }
+
+    .denetim-filter-card .card-body {
+        padding: 1.5rem;
+    }
+
+/* ==========================================================
+   SONUÇ PANEL
+   ========================================================== */
+.denetim-result-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.denetim-result-header {
+    background: linear-gradient(135deg, var(--denetim-dark) 0%, var(--denetim-primary) 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.denetim-result-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.denetim-count-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================
+   GRID STYLING
+   ========================================================== */
+.denetim-grid {
+    width: 100%;
+}
+
+    .denetim-grid thead th {
+        background: linear-gradient(135deg, var(--denetim-dark) 0%, var(--denetim-primary) 100%);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        padding: 12px;
+        border: none;
+    }
+
+    .denetim-grid tbody tr {
+        transition: all 0.2s ease;
+    }
+
+        .denetim-grid tbody tr:hover {
+            background-color: rgba(75, 123, 236, 0.08);
+            transform: scale(1.005);
+        }
+
+    .denetim-grid tbody td {
+        padding: 12px;
+        vertical-align: middle;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+/* ==========================================================
+   DURUM BADGE
+   ========================================================== */
+.durum-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.durum-acik {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.durum-kapali {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+/* ==========================================================
+   ACTION BUTTONS
+   ========================================================== */
+.denetim-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.btn-denetim-filter {
+    background: linear-gradient(135deg, var(--denetim-primary) 0%, var(--denetim-dark) 100%);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .btn-denetim-filter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(75, 123, 236, 0.3);
+    }
+
+.btn-denetim-excel {
+    background: var(--denetim-success);
+    color: white;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+    .btn-denetim-excel:hover {
+        background: #059669;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+/* ==========================================================
+   İSTATİSTİK KARTLAR
+   ========================================================== */
+.denetim-stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid var(--denetim-primary);
+    transition: all 0.3s ease;
+}
+
+    .denetim-stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+.denetim-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--denetim-primary);
+}
+
+.denetim-stat-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+@media (max-width: 768px) {
+    .denetim-actions {
+        flex-direction: column;
+    }
+
+    .denetim-result-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,261 @@
+﻿/* ==========================================================
+   PORTAL GLOBAL STİLLER
+   Tüm portal sayfalarında kullanılan temel stiller
+   Son Güncelleme: 2025
+   ========================================================== */
+
+:root {
+    --gov-black: #000000;
+    --gov-dark-blue: #1a2a44;
+    --gov-darker-blue: #0d1929;
+    --gov-accent-blue: #2563eb;
+    --gov-light-blue: #3b82f6;
+}
+
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+    margin-top: 80px;
+}
+
+/*  Sidebar Menu Styling */
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    padding: 12px 18px;
+    margin-bottom: 2px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+    .sidebar .nav-link:hover {
+        background-color: rgba(37, 99, 235, 0.2);
+        color: #ffffff;
+        transform: translateX(4px);
+    }
+
+    .sidebar .nav-link.active {
+        background-color: var(--gov-accent-blue);
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+    }
+
+    .sidebar .nav-link i {
+        width: 20px;
+        text-align: center;
+    }
+
+.sidebar .submenu {
+    font-size: 0.85rem;
+    padding: 10px 18px 10px 45px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+    .sidebar .submenu:hover {
+        color: #ffffff;
+        background-color: rgba(59, 130, 246, 0.15);
+    }
+
+.sidebar .badge {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+}
+
+.sidebar .collapse {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+/*  Card Styling for Government Look */
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 1.5rem;
+}
+
+.card-header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    font-weight: 600;
+    padding: 1rem 1.25rem;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+    .card-header.bg-primary {
+        background-color: var(--gov-dark-blue) !important;
+    }
+
+    .card-header.bg-info {
+        background-color: #0891b2 !important;
+    }
+
+    .card-header.bg-success {
+        background-color: #059669 !important;
+    }
+
+    .card-header.bg-warning {
+        background-color: #d97706 !important;
+    }
+
+/*  Global Table Styling */
+.table {
+    font-size: 0.9rem;
+}
+
+    .table thead th {
+        background-color: var(--gov-dark-blue);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        letter-spacing: 0.5px;
+        border: none;
+        padding: 14px 12px;
+    }
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(26, 42, 68, 0.03);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(37, 99, 235, 0.08);
+}
+
+/*  Global Button Styling */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+
+.btn-primary {
+    background-color: var(--gov-accent-blue);
+    border-color: var(--gov-accent-blue);
+}
+
+    .btn-primary:hover {
+        background-color: var(--gov-light-blue);
+        border-color: var(--gov-light-blue);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+/*  Global Form Controls */
+.form-control, .form-select {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--gov-accent-blue);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+.form-label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/*  Breadcrumb */
+.breadcrumb {
+    background-color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: #6b7280;
+}
+
+/*  Footer */
+footer {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/*  Badge Styling */
+.badge {
+    font-weight: 600;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+}
+
+/*  Main Content Area */
+.main-content {
+    background-color: #f0f2f5;
+    min-height: calc(100vh - 80px);
+    padding-top: 1.5rem;
+}
+
+/*  Dropdown Menu */
+.dropdown-menu {
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+    transition: all 0.2s ease;
+}
+
+    .dropdown-item:hover {
+        background-color: rgba(37, 99, 235, 0.1);
+        color: var(--gov-accent-blue);
+    }
+
+/*  Statistics Cards */
+.stat-card {
+    border-left: 4px solid var(--gov-accent-blue);
+}
+
+    .stat-card.border-primary {
+        border-left-color: var(--gov-dark-blue) !important;
+    }
+
+    .stat-card.border-success {
+        border-left-color: #059669 !important;
+    }
+
+    .stat-card.border-warning {
+        border-left-color: #d97706 !important;
+    }
+
+    .stat-card.border-info {
+        border-left-color: #0891b2 !important;
+    }
+
+/*  Alert Styling */
+.alert {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/*  Responsive */
+@media (max-width: 767.98px) {
+    .main-container {
+        margin-top: 70px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+}

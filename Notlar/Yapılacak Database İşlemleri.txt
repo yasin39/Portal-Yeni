@@ -1,0 +1,139 @@
+﻿-- Hava Durumu Cache Tablosu
+CREATE TABLE WeatherCache (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    CityName NVARCHAR(50) NOT NULL,
+    CityId INT NOT NULL,
+    WeatherData NVARCHAR(MAX) NOT NULL,
+    LastUpdated DATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT UQ_CityName UNIQUE(CityName)
+)
+
+-- Index oluştur (performans için)
+CREATE INDEX IX_WeatherCache_CityName ON WeatherCache(CityName)
+CREATE INDEX IX_WeatherCache_LastUpdated ON WeatherCache(LastUpdated)
+
+=======================================================================
+
+Veritabanında invalid değerleri (kodla uyumsuz olanları) SQL scriptleriyle temizle.(Personel) Sendika=Yok gibi.
+Önce localde yap,sonra gerçek veritabanında.
+
+=======================================================================
+
+FIRMALAR, DENETIMLER Tablolarında ID otomatik artmadığı için kodda sorun yaşanıyor, 
+yeni veritabanına geçerken o alanların otomatik arttığından emin ol.
+
+=======================================================================
+ BelgeTakip projesinden gelen Personel Tablosunu DenetimPersonel olarak değiştirerek ankarabolge veritaanına ekledim.
+ Canlıya alırkende aynı yöntem izlenecek.
+ =======================================================================
+
+-- ==========================================
+-- KULLANICI PAROLA HASHLEME - SQL SCRIPT
+-- Tüm kullanıcıların parolası: Ankara2025!
+-- ==========================================
+
+-- 1. YEDEK KONTROL (Zaten aldınız ama kontrol edelim)
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE name = 'kullanici_yedek')
+BEGIN
+    SELECT * INTO kullanici_yedek FROM kullanici;
+    PRINT 'Yedek alındı: kullanici_yedek tablosu oluşturuldu';
+END
+ELSE
+BEGIN
+    PRINT 'Yedek tablosu zaten mevcut';
+END
+GO
+
+-- 2. Parola kolonunu genişlet
+ALTER TABLE kullanici 
+ALTER COLUMN Parola VARCHAR(200) NULL;
+PRINT 'Parola kolonu VARCHAR(200) olarak güncellendi';
+GO
+
+-- 3. Yeni kolonları ekle (eğer yoksa)
+IF NOT EXISTS (SELECT * FROM sys.columns 
+               WHERE object_id = OBJECT_ID('kullanici') 
+               AND name = 'SifreDegistirmeZorla')
+BEGIN
+    ALTER TABLE kullanici 
+    ADD SifreDegistirmeZorla BIT DEFAULT 0;
+    PRINT 'SifreDegistirmeZorla kolonu eklendi';
+END
+GO
+
+IF NOT EXISTS (SELECT * FROM sys.columns 
+               WHERE object_id = OBJECT_ID('kullanici') 
+               AND name = 'SonSifreDegistirmeTarihi')
+BEGIN
+    ALTER TABLE kullanici 
+    ADD SonSifreDegistirmeTarihi DATETIME NULL;
+    PRINT 'SonSifreDegistirmeTarihi kolonu eklendi';
+END
+GO
+
+-- 4. TÜM KULLANICILARIN PAROLASINI HASHLE
+-- SHA256("Ankara2025!") = 188f222d9a55e0a7afe9010244809cf0776b16c8477a6b82bd570a12dfaeb567
+UPDATE kullanici 
+SET Parola = '188f222d9a55e0a7afe9010244809cf0776b16c8477a6b82bd570a12dfaeb567',
+    SifreDegistirmeZorla = 1,
+    SonSifreDegistirmeTarihi = GETDATE();
+
+PRINT 'Tüm kullanıcıların parolası hashlendi';
+GO
+
+-- 5. KONTROL: Güncellenen kayıt sayısı
+SELECT 
+    COUNT(*) AS ToplamKullanici,
+    SUM(CASE WHEN LEN(Parola) = 64 THEN 1 ELSE 0 END) AS HashliKullanici,
+    SUM(CASE WHEN SifreDegistirmeZorla = 1 THEN 1 ELSE 0 END) AS SifreDegistirmesiGerekenler
+FROM kullanici;
+GO
+
+-- 6. Örnek kullanıcı kontrol
+SELECT TOP 5 
+    Sicil_No, 
+    Adi_Soyadi, 
+    LEFT(Parola, 20) + '...' AS ParolaHash,
+    LEN(Parola) AS ParolaUzunluk,
+    SifreDegistirmeZorla,
+    Durum
+FROM kullanici
+ORDER BY Adi_Soyadi;
+
+============================================
+
+ALTER TABLE duyuru ADD Guncelleme_Tarihi datetime NULL;
+ALTER TABLE duyuru ADD Guncelleyen_Kullanici nvarchar(90) NULL;
+
+===========================================
+
+-- Bilgisayar Adları Tablosu
+CREATE TABLE bilgisayar_adlari (
+    id INT IDENTITY(1,1) PRIMARY KEY,
+    domain_no NVARCHAR(50) NOT NULL,
+    kisi_adi NVARCHAR(150) NULL,
+    bilgisayar_tipi NVARCHAR(150) NULL,
+    dahili_no NVARCHAR(20) NULL,
+    
+    -- Audit alanları
+    kayit_tarihi DATETIME DEFAULT GETDATE(),
+    kayit_kullanici NVARCHAR(100) NULL,
+    guncelleme_tarihi DATETIME NULL,
+    guncelleyen_kullanici NVARCHAR(100) NULL,
+    
+    CONSTRAINT UK_bilgisayar_domain UNIQUE(domain_no)
+);
+
+-- İndeks ekle (arama performansı için)
+CREATE INDEX IX_bilgisayar_kisi ON bilgisayar_adlari(kisi_adi);
+CREATE INDEX IX_bilgisayar_domain ON bilgisayar_adlari(domain_no);
+
+GO
+
+==========================================
+
+
+
+
+
+

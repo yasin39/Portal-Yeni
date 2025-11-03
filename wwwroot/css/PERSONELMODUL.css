@@ -1,0 +1,139 @@
+﻿/* ==========================================================
+   PERSONEL MODÜLÜ ORTAK STİLLER
+   ModulPersonel klasöründeki tüm sayfalarda kullanılır
+   Son Güncelleme: 2025
+   ========================================================== */
+
+/*  Form Section Styling */
+.form-section {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid #4B7BEC;
+    box-shadow: 0 2px 8px rgba(75, 123, 236, 0.08);
+}
+
+/*  Section Title Styling */
+.section-title {
+    color: #2E5B9A;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #E8E8E8;
+    display: flex;
+    align-items: center;
+}
+
+    .section-title i {
+        margin-right: 10px;
+        color: #4B7BEC;
+        font-size: 1.2rem;
+    }
+
+/*  Enhanced Form Controls */
+.form-control, .form-select {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+    .form-control:focus, .form-select:focus {
+        border-color: #4B7BEC;
+        box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.1);
+    }
+
+/*  Input Group Styling */
+.input-group-text {
+    background-color: #f3f4f6;
+    border: 1px solid #d1d5db;
+    color: #4B7BEC;
+}
+
+/*  Search Form Specific */
+.search-form .row > div {
+    margin-bottom: 1rem;
+}
+
+.search-form .form-label {
+    font-weight: 600;
+    color: #374151;
+}
+
+.search-form .form-control, .search-form .form-select {
+    border-radius: 6px;
+}
+
+/*  Stat Label */
+.stat-label {
+    background-color: #e5e7eb;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+/*  Button Enhancements */
+.btn-search {
+    background-color: var(--gov-accent-blue);
+    border-color: var(--gov-accent-blue);
+    font-weight: 500;
+}
+
+    .btn-search:hover {
+        background-color: var(--gov-light-blue);
+        border-color: var(--gov-light-blue);
+    }
+
+/*  Enhanced Button Styling with Gradients */
+.btn-primary {
+    background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+    border: none;
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #3b6dd6 0%, #245083 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(75, 123, 236, 0.3);
+    }
+
+.btn-success {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+}
+
+    .btn-success:hover {
+        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+
+.btn-secondary {
+    background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+    border: none;
+}
+
+    .btn-secondary:hover {
+        background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(107, 114, 128, 0.3);
+    }
+
+/*  Privacy Notice */
+.privacy-notice {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    border-left: 3px solid #f59e0b;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #92400e;
+    margin-top: 1rem;
+}
+
+    .privacy-notice i {
+        color: #f59e0b;
+        margin-right: 8px;
+    }

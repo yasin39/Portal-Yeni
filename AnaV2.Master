@@ -1,0 +1,489 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AnaV2.master.cs" Inherits="Portal.AnaV2" %>
+
+<!DOCTYPE html>
+
+<html lang="tr">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal - UAB Ankara Bölge Müdürlüğü</title>
+    <link rel="shortcut icon" href="/wwwroot/Images/favicon.ico" />
+
+    <!-- Bootstrap CSS (local) -->
+    <link href="~/wwwroot/css/bootstrap.min.css" rel="stylesheet" />
+    <%--Tarih cssleri--%>
+    <link href="~/wwwroot/css/flatpickr.min.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/material_blue.css" rel="stylesheet" />
+
+    <!-- Font Awesome (local) -->
+    <link href="~/wwwroot/lib/fontawesome-free-6.4.0-web/css/all.min.css" rel="stylesheet" />
+
+    <!--  Horizontal Menu Styles -->
+    <link href="~/wwwroot/css/AnaV2.css" rel="stylesheet" />
+
+    <!--  Common Shared Styles (Yeni Merkezi CSS Dosyaları) -->
+    <link href="~/wwwroot/css/Utilities.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/Gradients.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/Common-Components.css" rel="stylesheet" />
+
+    <!--  Module-Specific Styles -->
+    <link href="~/wwwroot/css/CimerModul.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/PersonelModul.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/AnaSayfa.css" rel="stylesheet" />
+    <link href="~/wwwroot/css/official-links.css" rel="stylesheet" />
+
+    <!--  Page-Specific Styles -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+        <!--  Top Header Bar -->
+        <div class="top-header">
+            <div class="container-fluid">
+                <div class="row align-items-center py-3">
+                    <div class="col-md-8 d-flex align-items-center">
+                        <img src="/wwwroot/Images/UAB.png" alt="UAB Logo" height="55" class="me-3" />
+                        <div>
+                            <h5 class="header-title mb-0">T.C. ULAŞTIRMA VE ALTYAPI BAKANLIĞI</h5>
+                            <p class="header-subtitle mb-0">Ankara Bölge Müdürlüğü - Portal Sistemi</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <div class="user-info">
+                            <i class="fas fa-user-circle me-2"></i>
+                            <span class="user-name">
+                                <asp:Label ID="lblKullaniciAdi" runat="server" Text="Kullanıcı"></asp:Label>
+                            </span>
+                            <asp:LinkButton ID="lnkCikis" runat="server" CssClass="btn btn-sm btn-outline-danger ms-3" PostBackUrl="~/Login.aspx">
+                                <i class="fas fa-sign-out-alt me-1"></i>Çıkış
+                            </asp:LinkButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  Horizontal Navigation Menu -->
+        <nav class="horizontal-menu">
+            <div class="container-fluid">
+                <ul class="menu-list">
+                    <!-- Ana Sayfa -->
+                    <li class="menu-item">
+                        <a href="/Anasayfa.aspx" class="menu-link" id="menuAnaSayfa" runat="server">
+                            <i class="fas fa-home"></i>
+                            <span>Ana Sayfa</span>
+                        </a>
+                    </li>
+
+                    <!-- Personel İşlemleri -->
+                    <li class="menu-item has-submenu" id="menuPersonel" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-users"></i>
+                            <span>Personel İşlemleri</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulPersonel/Kayit.aspx" class="submenu-item">
+                                <i class="fas fa-user-plus"></i>Personel Ekle/Düzenle
+                            </a>
+
+                            <a href="/ModulPersonel/Ara.aspx" class="submenu-item">
+                                <i class="fas fa-search"></i>Personel Arama
+                            </a>
+
+                            <a href="/ModulPersonel/OgrenimEkle.aspx" class="submenu-item">
+                                <i class="fas fa-graduation-cap"></i>Öğrenim Bilgisi Ekle
+                            </a>
+
+                            <a href="/ModulPersonel/Raporlama.aspx" class="submenu-item">
+                                <i class="fas fa-file-alt"></i>Personel Raporlama
+                            </a>
+
+                            <a href="/ModulPersonel/Liste.aspx" class="submenu-item">
+                                <i class="fas fa-list"></i>Personel Listesi
+                            </a>
+
+                            <a href="/ModulPersonel/IzinEkle.aspx" class="submenu-item">
+                                <i class="fas fa-calendar-plus"></i>İzin Girişi
+                            </a>
+
+                            <a href="/ModulPersonel/IzinAra.aspx" class="submenu-item">
+                                <i class="fas fa-search"></i>İzin Arama
+                            </a>
+
+                            <a href="/ModulPersonel/GenelIzin.aspx" class="submenu-item">
+                                <i class="fas fa-chart-bar"></i>Genel İzin Raporlama
+                            </a>
+                            <a href="/ModulPersonel/Tanimlamalar.aspx" class="submenu-item">
+                                <i class="fas fa-cog"></i>Tanımlamalar
+                            </a>
+                        </div>
+                    </li>
+
+                    <!-- Denetim Takip Sistemi -->
+                    <li class="menu-item has-submenu" id="menuDenetim" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-check-square"></i>
+                            <span>Denetim Takip</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulDenetim/TasitGiris.aspx" class="submenu-item">
+                                <i class="fas fa-truck"></i>Taşıt Denetim Girişi
+                            </a>
+
+                            <a href="/ModulDenetim/TasitRapor.aspx" class="submenu-item">
+                                <i class="fas fa-file-alt"></i>Taşıt Denetim Raporlama
+                            </a>
+
+                            <a href="/ModulDenetim/IsletmeGiris.aspx" class="submenu-item">
+                                <i class="fas fa-building"></i>İşletme Denetim Girişi
+                            </a>
+
+                            <a href="/ModulDenetim/IsletmeRapor.aspx" class="submenu-item">
+                                <i class="fas fa-file-alt"></i>İşletme Denetim Raporlama
+                            </a>
+
+                            <a href="/ModulDenetim/UzakEkle.aspx" class="submenu-item">
+                                <i class="fas fa-desktop"></i>Uzak Denetim Ekle
+                            </a>
+
+                            <a href="/ModulDenetim/UzakGorev.aspx" class="submenu-item">
+                                <i class="fas fa-tasks"></i>Uzak Denetim Görevlerim
+                            </a>
+
+                            <a href="/ModulDenetim/UzakRapor.aspx" class="submenu-item">
+                                <i class="fas fa-chart-line"></i>Uzak Denetim Raporlama
+                            </a>
+
+                            <a href="/ModulDenetim/Istatistik.aspx" class="submenu-item">
+                                <i class="fas fa-chart-pie"></i>Denetim İstatistikleri
+                            </a>
+                        </div>
+                    </li>
+
+                    <!-- Görev Takip Sistemi -->
+                    <li class="menu-item has-submenu" id="menuGorev" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-tasks"></i>
+                            <span>Görev Takip</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulGorev/TalepEkle.aspx" class="submenu-item">
+                                <i class="fas fa-plus-circle"></i>Görev Talep Ekle
+                            </a>
+
+                            <a href="/ModulGorev/TalepRapor.aspx" class="submenu-item">
+                                <i class="fas fa-file-alt"></i>Talep Raporla
+                            </a>
+
+                            <a href="/ModulGorev/Gorevlendirme.aspx" class="submenu-item">
+                                <i class="fas fa-user-check"></i>Personel Görevlendirme
+                            </a>
+
+                            <a href="/ModulGorev/PersonelRapor.aspx" class="submenu-item">
+                                <i class="fas fa-chart-line"></i>Personel Görev Raporla
+                            </a>
+
+                            <a href="/ModulGorev/GorevRapor.aspx" class="submenu-item">
+                                <i class="fas fa-chart-bar"></i>Görevlendirme Raporla
+                            </a>
+
+
+                        </div>
+                    </li>
+
+                    <!-- Cimer Takip Sistemi -->
+                    <li class="menu-item has-submenu" id="menuCimer" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <span>Cimer Takip</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu submenu-large">
+
+                            <a href="/ModulCimer/Kayit.aspx" class="submenu-item">
+                                <i class="fas fa-plus"></i>Cimer Başvuru Ekle
+                            </a>
+
+                            <a href="/ModulCimer/Havale.aspx" class="submenu-item">
+                                <i class="fas fa-inbox"></i>Havale Gelen Başvurular
+                                <asp:Label ID="lblHavaleSayisi" runat="server" CssClass="badge bg-danger ms-1" Visible="false"></asp:Label>
+                            </a>
+
+                            <a href="/ModulCimer/Onay.aspx" class="submenu-item">
+                                <i class="fas fa-clock"></i>Onay Bekleyen Başvurular
+                                <asp:Label ID="lblOnaySayisi" runat="server" CssClass="badge bg-danger ms-1" Visible="false"></asp:Label>
+                            </a>
+
+                            <a href="/ModulCimer/Takip.aspx" class="submenu-item">
+                                <i class="fas fa-search"></i>Cimer Raporlama
+                            </a>
+
+                            <a href="/ModulCimer/DevamEden.aspx" class="submenu-item">
+                                <i class="fas fa-spinner"></i>Süreci Devam Eden
+                                <asp:Label ID="lblDevamSayisi" runat="server" CssClass="badge bg-danger ms-1" Visible="false"></asp:Label>
+                            </a>
+
+                            <a href="/ModulCimer/Beklemede.aspx" class="submenu-item">
+                                <i class="fas fa-exclamation-triangle"></i>Soruşturma Sürecindeki
+                                <asp:Label ID="lblBeklemeSayisi" runat="server" CssClass="badge bg-danger ms-1" Visible="false"></asp:Label>
+                            </a>
+
+                            <a href="/ModulCimer/Biten.aspx" class="submenu-item">
+                                <i class="fas fa-check-circle"></i>Süreci Biten Başvurular
+                                <asp:Label ID="lblBitenSayisi" runat="server" CssClass="badge bg-danger ms-1" Visible="false"></asp:Label>
+                            </a>
+
+                            <a href="/ModulCimer/Incelenen.aspx" class="submenu-item">
+                                <i class="fas fa-bookmark"></i>Takibimdeki Başvurular
+                                <asp:Label ID="lblTakipSayisi" runat="server" CssClass="badge bg-danger ms-1" Visible="false"></asp:Label>
+                            </a>
+
+                            <a href="/ModulCimer/Cevapladiklarim.aspx" class="submenu-item">
+                                <i class="fas fa-reply"></i>Cevapladıklarım
+                            </a>
+
+                            <a href="/ModulCimer/Istatistik.aspx" class="submenu-item">
+                                <i class="fas fa-chart-bar"></i>Cimer İstatistik
+                            </a>
+
+                            <a href="/ModulCimer/BasvuruYaz.aspx" class="submenu-item">
+                                <i class="fas fa-print"></i>Başvuru Yazdır
+                            </a>
+                        </div>
+                    </li>
+
+                    <!-- Tehlikeli Madde -->
+                    <li class="menu-item has-submenu" id="menuTM" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-fire"></i>
+                            <span>Tehlikeli Madde</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulTehlikeliMadde/FirmaKayit.aspx" class="submenu-item">
+                                <i class="fas fa-building"></i>Firma Kayıt/Düzenleme
+                            </a>
+
+                            <a href="/ModulTehlikeliMadde/FirmaRapor.aspx" class="submenu-item">
+                                <i class="fas fa-file-alt"></i>Firma Raporlama
+                            </a>
+
+                            <a href="/ModulTehlikeliMadde/Istatistik.aspx" class="submenu-item">
+                                <i class="fas fa-chart-pie"></i>İstatistik
+                            </a>
+                        </div>
+                    </li>
+
+                    <!-- Firma-Belge Takip Sistemi (YENİ) -->
+                    <li class="menu-item has-submenu" id="menuFirmaBelge" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-folder-open"></i>
+                            <span>Firma-Belge Takip</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulBelgeTakip/TumFirmalar.aspx" class="submenu-item">
+                                <i class="fas fa-list"></i>Tüm Firma ve Belgeler
+                            </a>
+
+                            <a href="/ModulBelgeTakip/TakiptekiFirmalar.aspx" class="submenu-item">
+                                <i class="fas fa-eye"></i>Takipteki Firmalar
+                            </a>
+
+                            <a href="/ModulBelgeTakip/YeniKayit.aspx" class="submenu-item">
+                                <i class="fas fa-plus-circle"></i>İşlem- Yeni Kayıt
+                            </a>
+
+                            <a href="/ModulBelgeTakip/SonrakiCeza.aspx" class="submenu-item">
+                                <i class="fas fa-gavel"></i>İşlem- Sonraki Ceza
+                            </a>
+
+                            <a href="/ModulBelgeTakip/BelgeKayit.aspx" class="submenu-item">
+                                <i class="fas fa-file-import"></i>İşlem- Belge Kayıt Giriş
+                            </a>
+
+                            <a href="/ModulBelgeTakip/Teblig.aspx" class="submenu-item">
+                                <i class="fas fa-calendar-check"></i>İşlem- Tebliğ Tarihi Giriş
+                            </a>
+
+                            <a href="/ModulBelgeTakip/Istatistik.aspx" class="submenu-item">
+                                <i class="fas fa-chart-bar"></i>İstatistik
+                            </a>
+
+                            <a href="/ModulBelgeTakip/Analiz.aspx" class="submenu-item">
+                                <i class="fas fa-chart-line"></i>Analiz
+                            </a>
+                        </div>
+                    </li>
+
+                    <!-- Yönetici Paneli -->
+                    <li class="menu-item has-submenu" id="menuYonetici" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-cogs"></i>
+                            <span>Yönetici</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulYonetici/KullaniciIslem.aspx" class="submenu-item">
+                                <i class="fas fa-users-cog"></i>Kullanıcı Yönetimi
+                            </a>
+
+                            <a href="/ModulYonetici/YetkiIslem.aspx" class="submenu-item">
+                                <i class="fas fa-key"></i>Yetki İşlemleri
+                            </a>
+
+                            <a href="/ModulYonetici/Duyurular.aspx" class="submenu-item">
+                                <i class="fas fa-bullhorn"></i>Duyuru Yönetimi
+                            </a>
+
+                            <a href="/ModulYonetici/BilgisayarAdlari.aspx" class="submenu-item">
+                                <i class="fas fa-desktop"></i>Bilgisayar Adları
+                            </a>
+                           
+                        </div>
+                    </li>
+
+                    <!-- Çeşitli Araçlar -->
+                    <li class="menu-item has-submenu" id="menuAraclar" runat="server">
+                        <a href="#" class="menu-link">
+                            <i class="fas fa-toolbox"></i>
+                            <span>Çeşitli Araçlar</span>
+                            <i class="fas fa-chevron-down ms-1"></i>
+                        </a>
+                        <div class="submenu">
+
+                            <a href="/ModulAraclar/PersonelIzinFormu.aspx" class="submenu-item">
+                                <i class="fas fa-file-pdf"></i>Personel İzin Formu
+                            </a>
+
+                            <a href="/ModulAraclar/PdfBirlestir.aspx" class="submenu-item">
+                                <i class="fas fa-file-pdf"></i>Pdf Birleştirici
+                            </a>
+
+                            <a href="/ModulAraclar/ResimKucult.aspx" class="submenu-item">
+                                <i class="fas fa-compress"></i>Resim Boyutu Küçültme
+                            </a>
+
+                            <a href="/ModulAraclar/TelefonRehberi.aspx" class="submenu-item">
+                                <i class="fas fa-phone"></i>Telefon Rehberi
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!--  Main Content Area -->
+        <main class="main-content">
+            <div class="container-fluid py-4">
+                <!--  Breadcrumb Navigation (Yeni Eklenen Kısım) -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb">
+                        <asp:ContentPlaceHolder ID="BreadcrumbPlaceHolder" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </ol>
+                </nav>
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </main>
+
+        <!--  Footer -->
+        <footer class="footer-section">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p class="mb-0 text-muted">© 2025 T.C. Ulaştırma ve Altyapı Bakanlığı - Ankara Bölge Müdürlüğü</p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p class="text-muted mb-0">Bilgi İşlem Müdürlüğü</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap Bundle JS (local) -->
+        <script src="wwwroot/js/bootstrap.bundle.min.js"></script>
+        <script src="../wwwroot/js/flatpickr.js"></script>
+        <script src="../wwwroot/js/tr.js"></script>
+
+        <!--  Custom Scripts for Horizontal Menu -->
+        <script>
+            // Hover menu açma/kapama
+            document.addEventListener('DOMContentLoaded', function () {
+                const menuItems = document.querySelectorAll('.menu-item.has-submenu');
+
+                menuItems.forEach(item => {
+                    const submenu = item.querySelector('.submenu');
+                    const menuLink = item.querySelector('.menu-link');
+                    let timeoutId;
+
+                    //  Submenu pozisyonunu hesapla
+                    function positionSubmenu() {
+                        const rect = menuLink.getBoundingClientRect();
+                        submenu.style.top = (rect.bottom) + 'px';
+                        submenu.style.left = rect.left + 'px';
+                    }
+
+                    // Mouse enter - menüyü aç
+                    item.addEventListener('mouseenter', function () {
+                        clearTimeout(timeoutId);
+
+                        //  Pozisyonu hesapla
+                        positionSubmenu();
+
+                        // Diğer açık menüleri kapat
+                        document.querySelectorAll('.submenu.show').forEach(openMenu => {
+                            if (openMenu !== submenu) {
+                                openMenu.classList.remove('show');
+                            }
+                        });
+                        submenu.classList.add('show');
+                    });
+
+                    // Mouse leave - kısa bir gecikmeyle menüyü kapat
+                    item.addEventListener('mouseleave', function () {
+                        timeoutId = setTimeout(() => {
+                            submenu.classList.remove('show');
+                        }, 200);
+                    });
+
+                    //  Scroll edildiğinde pozisyonu güncelle
+                    window.addEventListener('scroll', function () {
+                        if (submenu.classList.contains('show')) {
+                            positionSubmenu();
+                        }
+                    });
+                });
+
+                // Active menu highlighting
+                const currentPage = window.location.pathname.split('/').pop();
+                const submenuLinks = document.querySelectorAll('.submenu-item');
+
+                submenuLinks.forEach(link => {
+                    if (link.getAttribute('href') && link.getAttribute('href').includes(currentPage)) {
+                        link.classList.add('active');
+                        // Parent menüyü işaretle
+                        const parentMenu = link.closest('.menu-item');
+                        if (parentMenu) {
+                            parentMenu.querySelector('.menu-link').classList.add('active');
+                        }
+                    }
+                });
+            });
+        </script>
+    </form>
+</body>
+</html>

@@ -1,0 +1,498 @@
+﻿/* ==========================================================
+   AnaV2.Master - YATAY MENÜ STİLLERİ
+   Modern ve Profesyonel Horizontal Navigation
+   Son Güncelleme: 2025
+   ========================================================== */
+
+:root {
+    --primary-blue: #4B7BEC;
+    --dark-blue: #2E5B9A;
+    --hover-blue: #3B6BD3;
+    --light-blue: #6B9BFC;
+    --neutral-bg: #F5F5F0;
+    --text-dark: #2C3E50;
+    --text-light: #6B7280;
+    --white: #FFFFFF;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+    --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================
+   TOP HEADER SECTION
+   ========================================================== */
+.top-header {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+    border-bottom: 3px solid var(--primary-blue);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-title {
+    color: var(--dark-blue);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.header-subtitle {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+    .user-info i {
+        color: var(--primary-blue);
+        font-size: 1.4rem;
+    }
+
+.user-name {
+    font-size: 0.95rem;
+}
+
+/* ==========================================================
+   HORIZONTAL NAVIGATION MENU
+   ========================================================== */
+.horizontal-menu {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 88px;
+    z-index: 999;
+    /*  EKLEME: Overflow visible yap */
+    overflow: visible;
+}
+
+    /*  Container'ı da visible yap */
+    .horizontal-menu .container-fluid {
+        overflow: visible;
+    }
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    /*  EKLEME: Y ekseninde overflow visible */
+    overflow-y: visible;
+}
+
+    /*  Scrollbar Styling for Menu */
+    .menu-list::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .menu-list::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 4px;
+    }
+
+        .menu-list::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+/*  Menu Item */
+.menu-item {
+    position: relative;
+    flex-shrink: 0;
+    /*  EKLEME: Static'den relative'e geçiş için */
+    z-index: 100;
+}
+
+    /*  Hover durumunda z-index artır */
+    .menu-item.has-submenu:hover {
+        z-index: 1001;
+    }
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: rgba(255, 255, 255, 0.95);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+}
+
+    .menu-link i {
+        margin-right: 8px;
+        font-size: 1.1rem;
+    }
+
+    .menu-link span {
+        display: inline-block;
+    }
+
+    /*  Menu Link Hover & Active States */
+    .menu-link:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: var(--white);
+        border-bottom-color: var(--white);
+    }
+
+    .menu-link.active {
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        border-bottom-color: var(--white);
+        font-weight: 600;
+    }
+
+/* ==========================================================
+   SUBMENU (DROPDOWN)
+   ========================================================== */
+.submenu {
+    /*  DEĞİŞTİRME: absolute yerine fixed */
+    position: fixed;
+    /*  top değeri JavaScript ile hesaplanacak, şimdilik 0 */
+    top: auto;
+    left: 0;
+    min-width: 280px;
+    background: var(--white);
+    box-shadow: var(--shadow-lg);
+    border-radius: 0 0 8px 8px;
+    padding: 8px 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 2000;
+    border-top: 3px solid var(--primary-blue);
+    pointer-events: none;
+}
+
+    /*  Submenu Gösterme (Hover ile) */
+    .menu-item.has-submenu:hover .submenu,
+    .submenu.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+
+/*  Geniş Submenu (Cimer gibi çok menülü olanlar için) */
+.submenu-large {
+    min-width: 320px;
+    max-height: 500px;
+    overflow-y: auto;
+    /*  EKLEME: Scroll için overflow-x */
+    overflow-x: hidden;
+}
+
+    .submenu-large::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .submenu-large::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    .submenu-large::-webkit-scrollbar-thumb {
+        background: var(--primary-blue);
+        border-radius: 4px;
+    }
+
+        .submenu-large::-webkit-scrollbar-thumb:hover {
+            background: var(--dark-blue);
+        }
+/*  Submenu Item */
+.submenu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+    .submenu-item i {
+        width: 20px;
+        margin-right: 12px;
+        color: var(--primary-blue);
+        font-size: 0.95rem;
+    }
+
+    .submenu-item:hover {
+        background: linear-gradient(90deg, rgba(75, 123, 236, 0.08) 0%, transparent 100%);
+        color: var(--primary-blue);
+        border-left-color: var(--primary-blue);
+        padding-left: 24px;
+    }
+
+    .submenu-item.active {
+        background: linear-gradient(90deg, rgba(75, 123, 236, 0.12) 0%, transparent 100%);
+        color: var(--dark-blue);
+        border-left-color: var(--dark-blue);
+        font-weight: 600;
+    }
+
+    /*  Badge in Submenu */
+    .submenu-item .badge {
+        margin-left: auto;
+        font-size: 0.7rem;
+        padding: 3px 7px;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+
+/* ==========================================================
+   MAIN CONTENT AREA
+   ========================================================== */
+.main-content {
+    background-color: var(--neutral-bg);
+    min-height: calc(100vh - 250px);
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+    /*  Content Container */
+    .main-content .container-fluid {
+        max-width: 1920px;
+        padding-left: 18px; /* Varsayılan ~12px'den artırdım */
+        padding-right: 18px;
+    }
+
+/* ==========================================================
+   FOOTER SECTION
+   ========================================================== */
+.footer-section {
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8F9FA 100%);
+    border-top: 2px solid #E5E7EB;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+    .footer-section p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+
+/* ==========================================================
+   RESPONSIVE ADJUSTMENTS (Tablet için)
+   ========================================================== */
+@media (max-width: 1199.98px) {
+    .menu-link {
+        padding: 12px 16px;
+        font-size: 0.85rem;
+    }
+
+        .menu-link span {
+            display: none;
+        }
+
+        .menu-link i {
+            margin-right: 0;
+            font-size: 1.2rem;
+        }
+
+    .submenu {
+        min-width: 240px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .header-title {
+        font-size: 1rem;
+    }
+
+    .header-subtitle {
+        font-size: 0.8rem;
+    }
+
+    .top-header .col-md-8,
+    .top-header .col-md-4 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .user-info {
+        justify-content: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* ==========================================================
+   ENHANCED CARD STYLING (Mevcut sayfalara uyum)
+   ========================================================== */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+    background: var(--white);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+    border-radius: 10px 10px 0 0 !important;
+    padding: 1rem 1.25rem;
+    border: none;
+}
+
+    .card-header h5 {
+        margin: 0;
+        font-weight: 600;
+        font-size: 1.1rem;
+        letter-spacing: 0.3px;
+    }
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* ==========================================================
+   BUTTON ENHANCEMENTS
+   ========================================================== */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+    color: var(--white);
+}
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, var(--hover-blue) 0%, var(--primary-blue) 100%);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(75, 123, 236, 0.3);
+    }
+
+.btn-outline-danger {
+    border: 1px solid #dc3545;
+    color: #dc3545;
+    background: transparent;
+}
+
+    .btn-outline-danger:hover {
+        background: #dc3545;
+        color: var(--white);
+        border-color: #dc3545;
+    }
+
+/* ==========================================================
+   TABLE ENHANCEMENTS
+   ========================================================== */
+.table thead th {
+    background: linear-gradient(135deg, var(--dark-blue) 0%, var(--primary-blue) 100%);
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border: none;
+    padding: 14px 12px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(75, 123, 236, 0.04);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(75, 123, 236, 0.08);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* ==========================================================
+   FORM ENHANCEMENTS
+   ========================================================== */
+.form-control,
+.form-select {
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--primary-blue);
+        box-shadow: 0 0 0 3px rgba(75, 123, 236, 0.1);
+    }
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================
+   BREADCRUMB
+   ========================================================== */
+.breadcrumb {
+    background-color: var(--white);
+    padding: 12px 18px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.5rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-light);
+}
+
+.breadcrumb-item.active {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* ==========================================================
+   UTILITY CLASSES
+   ========================================================== */
+.text-primary-custom {
+    color: var(--primary-blue) !important;
+}
+
+.bg-primary-custom {
+    background-color: var(--primary-blue) !important;
+}
+
+.border-primary-custom {
+    border-color: var(--primary-blue) !important;
+}
+
+/*  Shadow Utilities */
+.shadow-custom-sm {
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-custom-md {
+    box-shadow: var(--shadow-md) !important;
+}
+
+.shadow-custom-lg {
+    box-shadow: var(--shadow-lg) !important;
+}
