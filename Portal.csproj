@@ -106,6 +106,7 @@
     <Content Include="ModulCimer\Onay.aspx" />
     <Content Include="ModulCimer\Takip.aspx" />
     <Content Include="ModulDenetim\IsletmeGiris.aspx" />
+    <Content Include="ModulDenetim\IsletmeRapor.aspx" />
     <Content Include="ModulDenetim\Istatistik.aspx" />
     <Content Include="ModulDenetim\TasitGiris.aspx" />
     <Content Include="ModulDenetim\TasitRapor.aspx" />
@@ -127,12 +128,15 @@
     <Content Include="ModulPersonel\Raporlama.aspx" />
     <Content Include="ModulPersonel\Tanimlamalar.aspx" />
     <Content Include="ModulTehlikeliMadde\FirmaKayit.aspx" />
+    <Content Include="ModulTehlikeliMadde\Istatistik.aspx" />
+    <Content Include="ModulTehlikeliMadde\Tanimlamalar.aspx" />
     <Content Include="ModulYonetici\BilgisayarAdlari.aspx" />
     <Content Include="ModulYonetici\Duyurular.aspx" />
     <Content Include="ModulYonetici\KullaniciIslem.aspx" />
     <Content Include="ModulYonetici\YetkiIslem.aspx" />
     <Content Include="Notlar\CodeSnippets.txt" />
     <Content Include="Notlar\Portal Yazılım Notları.md" />
+    <Content Include="Notlar\PersonelTest.md" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Notlar\Yapılacak Database İşlemleri.txt" />
     <Content Include="Scripts\jquery-3.7.1.js" />
@@ -2458,6 +2462,13 @@
     <Compile Include="ModulDenetim\IsletmeGiris.aspx.designer.cs">
       <DependentUpon>IsletmeGiris.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModulDenetim\IsletmeRapor.aspx.cs">
+      <DependentUpon>IsletmeRapor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulDenetim\IsletmeRapor.aspx.designer.cs">
+      <DependentUpon>IsletmeRapor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModulDenetim\Istatistik.aspx.cs">
       <DependentUpon>Istatistik.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2604,6 +2615,20 @@
     </Compile>
     <Compile Include="ModulTehlikeliMadde\FirmaKayit.aspx.designer.cs">
       <DependentUpon>FirmaKayit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModulTehlikeliMadde\Istatistik.aspx.cs">
+      <DependentUpon>Istatistik.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulTehlikeliMadde\Istatistik.aspx.designer.cs">
+      <DependentUpon>Istatistik.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModulTehlikeliMadde\Tanimlamalar.aspx.cs">
+      <DependentUpon>Tanimlamalar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulTehlikeliMadde\Tanimlamalar.aspx.designer.cs">
+      <DependentUpon>Tanimlamalar.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModulYonetici\BilgisayarAdlari.aspx.cs">
       <DependentUpon>BilgisayarAdlari.aspx</DependentUpon>

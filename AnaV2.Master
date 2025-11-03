@@ -281,6 +281,10 @@
                             <a href="/ModulTehlikeliMadde/Istatistik.aspx" class="submenu-item">
                                 <i class="fas fa-chart-pie"></i>İstatistik
                             </a>
+
+                            <a href="/ModulTehlikeliMadde/Tanimlamalar.aspx" class="submenu-item">
+                                <i class="fas fa-cog"></i>Tanımlamalar
+                            </a>
                         </div>
                     </li>
 

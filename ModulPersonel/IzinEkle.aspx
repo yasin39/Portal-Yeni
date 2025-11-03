@@ -1,220 +1,325 @@
-﻿<%@ Page Title="Personel İzin Girişi" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="personelizinekle.aspx.cs" Inherits="Portal.ModulPersonel.IzinEkle" %>
-<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
+﻿<%@ Page Title="İzin Ekle" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true"
+    CodeBehind="IzinEkle.aspx.cs" Inherits="Portal.ModulPersonel.IzinEkle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
-        .form-section { margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
-        .form-row { display: flex; flex-wrap: wrap; gap: 20px; }
-        .form-col { flex: 1; min-width: 200px; }
-        .btn-group { margin-top: 20px; }
-        .personel-image { max-width: 100px; max-height: 130px; margin: 10px 0; }
-        .grid-container { margin-top: 20px; }
-        .alert { padding: 10px; margin-bottom: 15px; border-radius: 4px; }
-        .alert-danger { color: #721c24; background-color: #f8d7da; border-color: #f5c6cb; }
-        .alert-info { color: #0c5460; background-color: #d1ecf1; border-color: #bee5eb; }
+        .izin-form-container {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .personel-info-card {
+            background: white;
+            border-left: 4px solid #4B7BEC;
+            padding: 20px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .izin-hesap-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background: linear-gradient(135deg, #4B7BEC 0%, #2E5B9A 100%);
+            color: white;
+            border-radius: 20px;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .personel-resim {
+            border: 3px solid #4B7BEC;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
     </style>
 </asp:Content>
 
-<asp:Content ID="BreadcrumbContent" ContentPlaceHolderID="BreadcrumbPlaceHolder" runat="server">
-    <!-- Breadcrumb içeriği buraya gelecek -->
-</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="container-fluid mt-4">
+        <!-- Sayfa Başlığı -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="page-header-modern">
+                    <h4 class="page-title">
+                        <i class="fas fa-calendar-plus text-primary me-2"></i>
+                        Personel İzin Ekleme / Düzenleme
+                    </h4>
+                    <p class="page-subtitle">Personel izin kayıtlarını bu ekrandan ekleyebilir ve düzenleyebilirsiniz</p>
+                </div>
+            </div>
+        </div>
 
-<asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    
-    <asp:Panel ID="MesajPaneli" runat="server" CssClass="alert" Visible="false">
-        <asp:Label ID="MesajLabel" runat="server"></asp:Label>
-    </asp:Panel>
-    
-    <div class="form-section">
-        <div class="card">
-            <div class="card-header">
-                <h5>Personel Bilgileri</h5>
-            </div>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Sicil No</label>
-                            <asp:TextBox ID="SicilNoMetinKutusu" runat="server" CssClass="form-control" AutoPostBack="true" OnTextChanged="SicilNoMetinKutusu_TextChanged"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="SicilNoGerekliValidator" runat="server" ControlToValidate="SicilNoMetinKutusu" ErrorMessage="Sicil No boş olamaz." CssClass="text-danger" ValidationGroup="Kayit" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>TC Kimlik No</label>
-                            <asp:TextBox ID="TcKimlikNoMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
+        <div class="izin-form-container">
+            <!-- Sicil No Arama -->
+            <div class="row filter-row-bg mb-4">
+                <div class="col-md-6">
+                    <label class="form-label-enhanced">
+                        <i class="fas fa-id-card icon-primary"></i>Sicil No
+                    </label>
+                    <div class="filter-input-group">
+                        <asp:TextBox ID="txtSicilNo" runat="server" CssClass="form-control"
+                            placeholder="Sicil No Giriniz" AutoPostBack="true"
+                            OnTextChanged="txtSicilNo_TextChanged"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvSicilNo" runat="server"
+                            ControlToValidate="txtSicilNo" ErrorMessage="Sicil No zorunludur"
+                            ForeColor="Red" Display="Dynamic" ValidationGroup="kayit">
+                        </asp:RequiredFieldValidator>
                     </div>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Adı Soyadı</label>
-                            <asp:TextBox ID="AdiSoyadiMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Unvan</label>
-                            <asp:TextBox ID="UnvanMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Çalıştığı Birim</label>
-                            <asp:TextBox ID="BirimMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Statü</label>
-                            <asp:TextBox ID="StatuMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <asp:Button ID="btnPersonelBul" runat="server"
+                        CssClass="btn btn-search-modern"
+                        Text="🔍 Personel Bul"
+                        OnClick="btnPersonelBul_Click"
+                        CausesValidation="false" />
                 </div>
             </div>
+
+            <!-- Personel Bilgileri Card -->
+            <asp:Panel ID="pnlPersonelBilgi" runat="server" Visible="false">
+                <div class="personel-info-card">
+                    <div class="row">
+                        <div class="col-md-2 text-center">
+                            <asp:Image ID="imgPersonel" runat="server"
+                                CssClass="personel-resim"
+                                Height="130px" Width="100px"
+                                ImageUrl="~/wwwroot/Images/default-avatar.png" />
+                            <br />
+                            <asp:Label ID="lblPersonelAd" runat="server"
+                                CssClass="fw-bold text-primary mt-2 d-block"
+                                Text="-"></asp:Label>
+                        </div>
+
+                        <div class="col-md-10">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label-enhanced">
+                                        <i class="fas fa-fingerprint icon-primary"></i>TC Kimlik No
+                                    </label>
+                                    <asp:TextBox ID="txtTcKimlikNo" runat="server"
+                                        CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label-enhanced">
+                                        <i class="fas fa-user-tie icon-primary"></i>Ünvan
+                                    </label>
+                                    <asp:TextBox ID="txtUnvan" runat="server"
+                                        CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label-enhanced">
+                                        <i class="fas fa-building icon-primary"></i>Çalıştığı Birim
+                                    </label>
+                                    <asp:TextBox ID="txtBirim" runat="server"
+                                        CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label-enhanced">
+                                        <i class="fas fa-user-check icon-primary"></i>Statü
+                                    </label>
+                                    <asp:TextBox ID="txtStatu" runat="server"
+                                        CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <!-- İzin Bilgileri -->
+                            <div class="row mt-3">
+                                <div class="col-12">
+                                    <span class="izin-hesap-badge">📊 Devreden İzin: 
+                                        <asp:Label ID="lblDevredenIzin" runat="server" Text="0"></asp:Label>
+                                        Gün
+                                    </span>
+                                    <span class="izin-hesap-badge">📅 Cari Yıl İzin: 
+                                        <asp:Label ID="lblCariIzin" runat="server" Text="0"></asp:Label>
+                                        Gün
+                                    </span>
+                                    <span class="izin-hesap-badge">✅ Toplam İzin: 
+                                        <asp:Label ID="lblToplamIzin" runat="server" Text="0"></asp:Label>
+                                        Gün
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </asp:Panel>
+
+            <!-- İzin Detayları -->
+            <asp:Panel ID="pnlIzinDetay" runat="server" Visible="false">
+                <div class="row g-3 mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label-enhanced">
+                            <i class="fas fa-clipboard-list icon-primary"></i>İzin Türü
+                        </label>
+                        <asp:DropDownList ID="ddlIzinTuru" runat="server" CssClass="form-select">
+                            <asp:ListItem Value="">-- İzin Türü Seçiniz --</asp:ListItem>
+                            <asp:ListItem>Yıllık İzin</asp:ListItem>
+                            <asp:ListItem>İdari İzin</asp:ListItem>
+                            <asp:ListItem>Rapor</asp:ListItem>
+                            <asp:ListItem>Mazeret İzni</asp:ListItem>
+                            <asp:ListItem>Fazla Mesai İzni</asp:ListItem>
+                            <asp:ListItem>Hafta Tatili İzni</asp:ListItem>
+                            <asp:ListItem>Saatlik İzin</asp:ListItem>
+                            <asp:ListItem>Hastane İzni</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="rfvIzinTuru" runat="server"
+                            ControlToValidate="ddlIzinTuru" ErrorMessage="İzin türü seçiniz"
+                            ForeColor="Red" Display="Dynamic" ValidationGroup="kayit">
+                        </asp:RequiredFieldValidator>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label-enhanced">
+                            <i class="fas fa-calendar-day icon-primary"></i>İzne Başlama Tarihi
+                        </label>
+                        <asp:TextBox ID="txtIzneBaslamaTarihi" runat="server"
+                            CssClass="form-control" placeholder="GG/AA/YYYY"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvBaslamaTarihi" runat="server"
+                            ControlToValidate="txtIzneBaslamaTarihi"
+                            ErrorMessage="Başlama tarihi seçiniz"
+                            ForeColor="Red" Display="Dynamic" ValidationGroup="kayit">
+                        </asp:RequiredFieldValidator>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label-enhanced">
+                            <i class="fas fa-clock icon-primary"></i>İzin Süresi (Gün)
+                        </label>
+                        <asp:TextBox ID="txtIzinSuresi" runat="server"
+                            CssClass="form-control" placeholder="Örn: 5"
+                            AutoPostBack="true" OnTextChanged="txtIzinSuresi_TextChanged"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvIzinSuresi" runat="server"
+                            ControlToValidate="txtIzinSuresi"
+                            ErrorMessage="İzin süresi giriniz"
+                            ForeColor="Red" Display="Dynamic" ValidationGroup="kayit">
+                        </asp:RequiredFieldValidator>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label-enhanced">
+                            <i class="fas fa-calendar-check icon-primary"></i>İzin Bitiş Tarihi
+                        </label>
+                        <asp:TextBox ID="txtIzinBitisTarihi" runat="server"
+                            CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label-enhanced">
+                            <i class="fas fa-calendar-alt icon-primary"></i>Göreve Başlama Tarihi
+                        </label>
+                        <asp:TextBox ID="txtGoreveBaslamaTarihi" runat="server"
+                            CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label-enhanced">
+                            <i class="fas fa-comment-alt icon-primary"></i>Açıklama
+                        </label>
+                        <asp:TextBox ID="txtAciklama" runat="server"
+                            CssClass="form-control" placeholder="İzin açıklaması (opsiyonel)"></asp:TextBox>
+                    </div>
+                </div>
+
+                <!-- Mesaj Alanı -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <asp:Label ID="lblMesaj" runat="server"
+                            CssClass="alert alert-danger d-block"
+                            Visible="false"></asp:Label>
+                    </div>
+                </div>
+
+                <!-- Butonlar -->
+                <div class="action-bar-wrapper">
+                    <asp:Button ID="btnKaydet" runat="server"
+                        CssClass="btn btn-success btn-lg me-2"
+                        Text="✅ Kaydet"
+                        OnClick="btnKaydet_Click"
+                        ValidationGroup="kayit" />
+
+                    <asp:Button ID="btnGuncelle" runat="server"
+                        CssClass="btn btn-primary btn-lg me-2"
+                        Text="🔄 Güncelle"
+                        OnClick="btnGuncelle_Click"
+                        ValidationGroup="kayit"
+                        Visible="false" />
+
+                    <asp:Button ID="btnSil" runat="server"
+                        CssClass="btn btn-danger btn-lg me-2"
+                        Text="🗑️ Sil"
+                        OnClick="btnSil_Click"
+                        CausesValidation="false"
+                        Visible="false"
+                        OnClientClick="return confirm('İzin kaydını silmek istediğinize emin misiniz?');" />
+
+                    <asp:Button ID="btnVazgec" runat="server"
+                        CssClass="btn btn-secondary btn-lg me-2"
+                        Text="❌ Vazgeç"
+                        OnClick="btnVazgec_Click"
+                        CausesValidation="false"
+                        Visible="false" />
+
+                    <asp:Button ID="btnYeniKayit" runat="server"
+                        CssClass="btn btn-info btn-lg"
+                        Text="➕ Yeni Kayıt"
+                        OnClick="btnYeniKayit_Click"
+                        CausesValidation="false"
+                        Visible="false" />
+                </div>
+            </asp:Panel>
         </div>
-    </div>
-    
-    <div class="form-section">
-        <div class="card">
-            <div class="card-header">
-                <h5>İzin Bilgileri</h5>
-            </div>
-            <div class="card-body">
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Devreden İzin Gün</label>
-                            <asp:TextBox ID="DevredenIzinMetinKutusu" runat="server" CssClass="form-control" TextMode="Number" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Cari Yıl Kalan İzni</label>
-                            <asp:TextBox ID="CariIzinMetinKutusu" runat="server" CssClass="form-control" TextMode="Number" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
+
+        <!-- İzin Geçmişi GridView -->
+        <asp:Panel ID="pnlIzinGecmis" runat="server" Visible="false" CssClass="mt-4">
+            <div class="card shadow-sm">
+                <div class="card-header bg-gradient-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="fas fa-history me-2"></i>İzin Geçmişi
+                    </h5>
                 </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Toplam İzin Süresi</label>
-                            <asp:TextBox ID="ToplamYillikIzinMetinKutusu" runat="server" CssClass="form-control" TextMode="Number" ReadOnly="true"></asp:TextBox>
-                        </div>
+                <div class="card-body">
+                    <!-- Excel Export -->
+                    <div class="mb-3">
+                        <asp:Button ID="btnExcelExport" runat="server"
+                            CssClass="btn btn-excel-modern"
+                            Text="📊 Excel'e Aktar"
+                            OnClick="btnExcelExport_Click"
+                            CausesValidation="false" />
                     </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>İzin Türü</label>
-                            <asp:DropDownList ID="IzinTuruAciklamaListesi" runat="server" CssClass="form-select">
-                                <asp:ListItem Value="">Seçiniz...</asp:ListItem>
-                                <asp:ListItem Value="Yıllık İzin">Yıllık İzin</asp:ListItem>
-                                <asp:ListItem Value="İdari İzin">İdari İzin</asp:ListItem>
-                                <asp:ListItem Value="Rapor">Rapor</asp:ListItem>
-                                <asp:ListItem Value="Mazeret İzni">Mazeret İzni</asp:ListItem>
-                                <asp:ListItem Value="Fazla Mesai İzni">Fazla Mesai İzni</asp:ListItem>
-                                <asp:ListItem Value="Hafta Tatili İzni">Hafta Tatili İzni</asp:ListItem>
-                                <asp:ListItem Value="Saatlik izin">Saatlik İzin</asp:ListItem>
-                                <asp:ListItem Value="Hastane İzni">Hastane İzni</asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="IzinTuruGerekliValidator" runat="server" ControlToValidate="IzinTuruAciklamaListesi" ErrorMessage="İzin Türü seçiniz." CssClass="text-danger" InitialValue="" ValidationGroup="Kayit" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>İzne Başlama Tarihi</label>
-                            <asp:TextBox ID="IzneBaslamaTarihiMetinKutusu" runat="server" CssClass="form-control" TextMode="Date"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="IzneBaslamaTarihiGerekliValidator" runat="server" ControlToValidate="IzneBaslamaTarihiMetinKutusu" ErrorMessage="İzne Başlama Tarihi seçiniz." CssClass="text-danger" ValidationGroup="Kayit" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Kullanılacak İzin Süresi</label>
-                            <asp:TextBox ID="IzinSuresiMetinKutusu" runat="server" CssClass="form-control" TextMode="Number" AutoPostBack="true" OnTextChanged="IzinSuresiMetinKutusu_TextChanged"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="IzinSuresiGerekliValidator" runat="server" ControlToValidate="IzinSuresiMetinKutusu" ErrorMessage="İzin Süresi boş olamaz." CssClass="text-danger" ValidationGroup="Kayit" Display="Dynamic"></asp:RequiredFieldValidator>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>İzin Bitiş Tarihi</label>
-                            <asp:TextBox ID="IzinBitisTarihiMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Göreve Başlama Tarihi</label>
-                            <asp:TextBox ID="GoreveBaslamaTarihiMetinKutusu" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="form-col">
-                        <div class="form-group">
-                            <label>Açıklama</label>
-                            <asp:TextBox ID="AciklamaMetinKutusu" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="3"></asp:TextBox>
-                        </div>
-                    </div>
+
+                    <asp:GridView ID="gvIzinler" runat="server"
+                        CssClass="table table-hover table-bordered table-striped"
+                        AutoGenerateColumns="False"
+                        OnSelectedIndexChanged="gvIzinler_SelectedIndexChanged"
+                        HeaderStyle-CssClass="grid-header-modern"
+                        EmptyDataText="Henüz izin kaydı bulunmamaktadır" DataKeyNames="id">
+                        <Columns>
+                            <asp:BoundField DataField="id" HeaderText="ID" Visible="false" />
+                            <asp:BoundField DataField="Sicil_No" HeaderText="Sicil No" ItemStyle-CssClass="text-primary-bold" />
+                            <asp:BoundField DataField="Adi_Soyadi" HeaderText="Adı Soyadı" />
+                            <asp:BoundField DataField="Statu" HeaderText="Statü" />
+                            <asp:BoundField DataField="Devreden_izin" HeaderText="Devreden" DataFormatString="{0:N1}" />
+                            <asp:BoundField DataField="Cari_izin" HeaderText="Cari Yıl" DataFormatString="{0:N1}" />
+                            <asp:BoundField DataField="izin_turu" HeaderText="İzin Türü" />
+                            <asp:BoundField DataField="izin_Suresi" HeaderText="Süre (Gün)" DataFormatString="{0:N1}" />
+                            <asp:BoundField DataField="izne_Baslama_Tarihi" HeaderText="Başlama" DataFormatString="{0:dd.MM.yyyy}" />
+                            <asp:BoundField DataField="izin_Bitis_Tarihi" HeaderText="Bitiş" DataFormatString="{0:dd.MM.yyyy}" />
+                            <asp:BoundField DataField="Goreve_Baslama_Tarihi" HeaderText="Göreve Dönüş" DataFormatString="{0:dd.MM.yyyy}" />
+                            <asp:BoundField DataField="Aciklama" HeaderText="Açıklama" />
+                            <asp:BoundField DataField="Kayit_Tarihi" HeaderText="Kayıt Tarihi" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
+                            <asp:BoundField DataField="Kayit_Kullanici" HeaderText="Kayıt Kullanıcı" />
+                            <asp:ButtonField ButtonType="Button" Text="✏️ Seç" CommandName="Select"
+                                HeaderText="İşlem" ControlStyle-CssClass="btn btn-sm btn-primary" />
+                        </Columns>
+                    </asp:GridView>
                 </div>
             </div>
-        </div>
+        </asp:Panel>
     </div>
-    
-    <div class="btn-group">
-        <asp:Button ID="EkleButonu" runat="server" Text="Ekle" CssClass="btn btn-primary" OnClick="EkleButonu_Click" ValidationGroup="Kayit" />
-        <asp:Button ID="GuncelleButonu" runat="server" Text="Güncelle" CssClass="btn btn-warning" OnClick="GuncelleButonu_Click" Visible="false" ValidationGroup="Kayit" />
-        <asp:Button ID="VazgecButonu" runat="server" Text="Vazgeç" CssClass="btn btn-secondary" OnClick="VazgecButonu_Click" Visible="false" />
-        <asp:Button ID="SilButonu" runat="server" Text="İzin Sil" CssClass="btn btn-danger" OnClick="SilButonu_Click" Visible="false" />
-    </div>
-    
-    <div class="form-section">
-        <div class="card">
-            <div class="card-body text-center">
-                <asp:Image ID="PersonelResim" runat="server" CssClass="personel-image" Visible="false" />
-                <br />
-                <asp:Label ID="AdiSoyadiLabel" runat="server" CssClass="fw-bold" Visible="false"></asp:Label>
-            </div>
-        </div>
-    </div>
-    
-    <div class="form-section">
-        <rsweb:ReportViewer ID="RaporGörüntüleyici" runat="server" Visible="false" Height="400px" Width="100%"></rsweb:ReportViewer>
-    </div>
-    
-    <div class="grid-container">
-        <asp:GridView ID="IzinGridView" runat="server" CssClass="table table-striped table-hover" AutoGenerateColumns="false" OnSelectedIndexChanged="IzinGridView_SelectedIndexChanged" DataKeyNames="id" Visible="false">
-            <Columns>
-                <asp:BoundField DataField="id" HeaderText="ID" Visible="false" />
-                <asp:BoundField DataField="SicilNo" HeaderText="Sicil No" />
-                <asp:BoundField DataField="Adi_Soyadi" HeaderText="Adı Soyadı" />
-                <asp:BoundField DataField="Statu" HeaderText="Statü" />
-                <asp:BoundField DataField="Devreden_izin" HeaderText="Devreden İzin" DataFormatString="{0:F1}" />
-                <asp:BoundField DataField="Cari_izin" HeaderText="Cari İzin" DataFormatString="{0:F1}" />
-                <asp:BoundField DataField="izin_turu" HeaderText="İzin Türü" />
-                <asp:BoundField DataField="izin_Suresi" HeaderText="İzin Süresi" DataFormatString="{0:F1}" />
-                <asp:BoundField DataField="izne_Baslama_Tarihi" HeaderText="Başlangıç Tarihi" DataFormatString="{0:dd/MM/yyyy}" />
-                <asp:BoundField DataField="izin_Bitis_Tarihi" HeaderText="Bitiş Tarihi" DataFormatString="{0:dd/MM/yyyy}" />
-                <asp:BoundField DataField="Goreve_Baslama_Tarihi" HeaderText="Göreve Dönüş" DataFormatString="{0:dd/MM/yyyy}" />
-                <asp:BoundField DataField="Aciklama" HeaderText="Açıklama" />
-                <asp:BoundField DataField="Kayit_Tarihi" HeaderText="Kayıt Tarihi" DataFormatString="{0:dd/MM/yyyy HH:mm}" />
-                <asp:CommandField ShowSelectButton="true" ButtonType="Button" SelectText="Seç" />
-            </Columns>
-            <EmptyDataTemplate>
-                <p class="text-muted">Henüz izin kaydı bulunmamaktadır.</p>
-            </EmptyDataTemplate>
-        </asp:GridView>
-    </div>
-    
 </asp:Content>

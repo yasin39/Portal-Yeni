@@ -15,264 +15,291 @@ namespace Portal.ModulPersonel
     {
 
         /// <summary>
-        /// MesajPaneli control.
+        /// txtSicilNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel MesajPaneli;
+        protected global::System.Web.UI.WebControls.TextBox txtSicilNo;
 
         /// <summary>
-        /// MesajLabel control.
+        /// rfvSicilNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MesajLabel;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSicilNo;
 
         /// <summary>
-        /// SicilNoMetinKutusu control.
+        /// btnPersonelBul control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox SicilNoMetinKutusu;
+        protected global::System.Web.UI.WebControls.Button btnPersonelBul;
 
         /// <summary>
-        /// SicilNoGerekliValidator control.
+        /// pnlPersonelBilgi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator SicilNoGerekliValidator;
+        protected global::System.Web.UI.WebControls.Panel pnlPersonelBilgi;
 
         /// <summary>
-        /// TcKimlikNoMetinKutusu control.
+        /// imgPersonel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TcKimlikNoMetinKutusu;
+        protected global::System.Web.UI.WebControls.Image imgPersonel;
 
         /// <summary>
-        /// AdiSoyadiMetinKutusu control.
+        /// lblPersonelAd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AdiSoyadiMetinKutusu;
+        protected global::System.Web.UI.WebControls.Label lblPersonelAd;
 
         /// <summary>
-        /// UnvanMetinKutusu control.
+        /// txtTcKimlikNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox UnvanMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtTcKimlikNo;
 
         /// <summary>
-        /// BirimMetinKutusu control.
+        /// txtUnvan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox BirimMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtUnvan;
 
         /// <summary>
-        /// StatuMetinKutusu control.
+        /// txtBirim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox StatuMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtBirim;
 
         /// <summary>
-        /// DevredenIzinMetinKutusu control.
+        /// txtStatu control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DevredenIzinMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtStatu;
 
         /// <summary>
-        /// CariIzinMetinKutusu control.
+        /// lblDevredenIzin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CariIzinMetinKutusu;
+        protected global::System.Web.UI.WebControls.Label lblDevredenIzin;
 
         /// <summary>
-        /// ToplamYillikIzinMetinKutusu control.
+        /// lblCariIzin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ToplamYillikIzinMetinKutusu;
+        protected global::System.Web.UI.WebControls.Label lblCariIzin;
 
         /// <summary>
-        /// IzinTuruAciklamaListesi control.
+        /// lblToplamIzin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList IzinTuruAciklamaListesi;
+        protected global::System.Web.UI.WebControls.Label lblToplamIzin;
 
         /// <summary>
-        /// IzinTuruGerekliValidator control.
+        /// pnlIzinDetay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IzinTuruGerekliValidator;
+        protected global::System.Web.UI.WebControls.Panel pnlIzinDetay;
 
         /// <summary>
-        /// IzneBaslamaTarihiMetinKutusu control.
+        /// ddlIzinTuru control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IzneBaslamaTarihiMetinKutusu;
+        protected global::System.Web.UI.WebControls.DropDownList ddlIzinTuru;
 
         /// <summary>
-        /// IzneBaslamaTarihiGerekliValidator control.
+        /// rfvIzinTuru control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IzneBaslamaTarihiGerekliValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIzinTuru;
 
         /// <summary>
-        /// IzinSuresiMetinKutusu control.
+        /// txtIzneBaslamaTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IzinSuresiMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtIzneBaslamaTarihi;
 
         /// <summary>
-        /// IzinSuresiGerekliValidator control.
+        /// rfvBaslamaTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IzinSuresiGerekliValidator;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvBaslamaTarihi;
 
         /// <summary>
-        /// IzinBitisTarihiMetinKutusu control.
+        /// txtIzinSuresi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox IzinBitisTarihiMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtIzinSuresi;
 
         /// <summary>
-        /// GoreveBaslamaTarihiMetinKutusu control.
+        /// rfvIzinSuresi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox GoreveBaslamaTarihiMetinKutusu;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvIzinSuresi;
 
         /// <summary>
-        /// AciklamaMetinKutusu control.
+        /// txtIzinBitisTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AciklamaMetinKutusu;
+        protected global::System.Web.UI.WebControls.TextBox txtIzinBitisTarihi;
 
         /// <summary>
-        /// EkleButonu control.
+        /// txtGoreveBaslamaTarihi control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EkleButonu;
+        protected global::System.Web.UI.WebControls.TextBox txtGoreveBaslamaTarihi;
 
         /// <summary>
-        /// GuncelleButonu control.
+        /// txtAciklama control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button GuncelleButonu;
+        protected global::System.Web.UI.WebControls.TextBox txtAciklama;
 
         /// <summary>
-        /// VazgecButonu control.
+        /// lblMesaj control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button VazgecButonu;
+        protected global::System.Web.UI.WebControls.Label lblMesaj;
 
         /// <summary>
-        /// SilButonu control.
+        /// btnKaydet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SilButonu;
+        protected global::System.Web.UI.WebControls.Button btnKaydet;
 
         /// <summary>
-        /// PersonelResim control.
+        /// btnGuncelle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image PersonelResim;
+        protected global::System.Web.UI.WebControls.Button btnGuncelle;
 
         /// <summary>
-        /// AdiSoyadiLabel control.
+        /// btnSil control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdiSoyadiLabel;
+        protected global::System.Web.UI.WebControls.Button btnSil;
 
         /// <summary>
-        /// RaporGörüntüleyici control.
+        /// btnVazgec control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Microsoft.Reporting.WebForms.ReportViewer RaporGörüntüleyici;
+        protected global::System.Web.UI.WebControls.Button btnVazgec;
 
         /// <summary>
-        /// IzinGridView control.
+        /// btnYeniKayit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView IzinGridView;
+        protected global::System.Web.UI.WebControls.Button btnYeniKayit;
+
+        /// <summary>
+        /// pnlIzinGecmis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlIzinGecmis;
+
+        /// <summary>
+        /// btnExcelExport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExcelExport;
+
+        /// <summary>
+        /// gvIzinler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvIzinler;
     }
 }

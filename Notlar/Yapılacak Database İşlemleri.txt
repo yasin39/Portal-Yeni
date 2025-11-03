@@ -131,9 +131,3 @@ CREATE INDEX IX_bilgisayar_domain ON bilgisayar_adlari(domain_no);
 GO
 
 ==========================================
-
-
-
-
-
-

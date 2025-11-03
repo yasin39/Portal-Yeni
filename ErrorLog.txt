@@ -1,153 +1,34 @@
-﻿[2025-11-02 10:59:14] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 10:59:22] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-02 10:59:46] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.UzakRapor.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\UzakRapor.aspx.cs:line 202
-=============
-
-[2025-11-02 12:18:21] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 12:18:27] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-02 12:20:38] [INFO] Belge Takip - Tüm Firmalar sayfası yüklendi.
-[2025-11-02 12:22:12] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-02 12:23:39] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-02 12:24:58] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-02 12:31:00] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 12:31:15] [WARNING] Yetkisiz erişim denemesi: admin - 500
-[2025-11-02 12:35:30] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 12:35:36] [INFO] Yetki kontrolü başarılı: admin - 603
-[2025-11-02 14:12:51] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 14:14:01] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 14:14:01] [INFO] Kullanıcılar yüklendi.
-[2025-11-02 14:14:01] [INFO] Yetki listesi yüklendi.
-[2025-11-02 14:14:18] [INFO] Yetkiler yüklendi: admin - 14 kayıt
-[2025-11-02 14:14:48] [INFO] Yetki eklendi: Yönetici - Personel İzin Silme (199)
-[2025-11-02 14:14:48] [INFO] Yetkiler yüklendi: admin - 15 kayıt
-[2025-11-02 14:15:19] [INFO] Yetkiler yüklendi: UB9141 - 22 kayıt
-[2025-11-02 14:15:59] [INFO] Yetki eklendi: Yasin ÇINAR - Tanımlama (900)
-[2025-11-02 14:15:59] [INFO] Yetkiler yüklendi: UB9141 - 23 kayıt
-[2025-11-02 14:16:10] [INFO] Yetkiler yüklendi: UB600020278148 - 2 kayıt
-[2025-11-02 14:16:22] [INFO] Toplu silme tamamlandı: 2 yetki silindi
-[2025-11-02 14:16:22] [INFO] Yetkiler yüklendi: UB600020278148 - 0 kayıt
-[2025-11-02 16:33:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 16:34:33] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 16:36:08] [INFO] Kullanıcı güncellendi: UB8255
-[2025-11-02 16:36:31] [INFO] Şifre sıfırlandı: UB10562
-[2025-11-02 16:37:04] [INFO] Şifre sıfırlandı: TEST
-[2025-11-02 16:45:41] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:22:55] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 17:23:05] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:24:25] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:25:21] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:25:23] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:25:23] [INFO] Kullanıcılar yüklendi.
-[2025-11-02 17:25:23] [INFO] Yetki listesi yüklendi.
-[2025-11-02 17:25:26] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:50:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 17:50:34] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:54:43] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 17:54:47] [ERROR] btnExcelAktar_Click hatası
-Control 'MainContent_BilgisayarlarGrid' of type 'GridView' must be placed inside a form tag with runat=server.
-StackTrace (Last): at ModulYonetici.BilgisayarAdlari.btnExcelAktar_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-02 17:56:01] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 18:51:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 18:51:35] [WARNING] Yetkisiz erişim denemesi: admin - 1001
-[2025-11-02 18:51:40] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 18:51:40] [INFO] Kullanıcılar yüklendi.
-[2025-11-02 18:51:40] [INFO] Yetki listesi yüklendi.
-[2025-11-02 18:51:50] [INFO] Yetkiler yüklendi: admin - 15 kayıt
-[2025-11-02 18:51:59] [INFO] Yetki eklendi: Yönetici - Şubeler İzin Tanımlama (1001)
-[2025-11-02 18:51:59] [INFO] Yetkiler yüklendi: admin - 16 kayıt
-[2025-11-02 18:52:02] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-02 19:29:00] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 19:29:05] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-02 20:10:44] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 20:10:56] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-02 20:11:02] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-02 20:11:11] [ERROR] IzinleriGetir Hatası
-Input string was not in a correct format.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 87
-=============
-
-[2025-11-02 20:11:11] [ERROR] IzinleriGetir Hatası
-Input string was not in a correct format.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 87
-=============
-
-[2025-11-02 20:11:11] [ERROR] IzinleriGetir Hatası
-Input string was not in a correct format.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 87
-=============
-
-[2025-11-02 20:11:54] [ERROR] eklebuton_Click Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.eklebuton_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 183
-=============
-
-[2025-11-02 20:17:49] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 20:17:53] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-02 20:17:59] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-02 20:18:03] [ERROR] IzinleriGetir Hatası
+﻿[2025-11-03 21:58:16] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-03 21:58:16] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-03 22:04:08] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-03 22:04:17] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-03 22:10:20] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-03 22:22:41] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-03 22:23:48] [WARNING] Yetkisiz erişim denemesi: admin - 899
+[2025-11-03 22:23:56] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-03 22:23:56] [INFO] Kullanıcılar yüklendi.
+[2025-11-03 22:23:56] [INFO] Yetki listesi yüklendi.
+[2025-11-03 22:24:00] [INFO] Yetkiler yüklendi: admin - 17 kayıt
+[2025-11-03 22:24:06] [INFO] Yetki eklendi: Yönetici - Tehlikeli Madde Tanımlar (899)
+[2025-11-03 22:24:06] [INFO] Yetkiler yüklendi: admin - 18 kayıt
+[2025-11-03 22:24:10] [INFO] Yetki kontrolü başarılı: admin - 899
+[2025-11-03 22:24:58] [INFO] Yeni faaliyet eklendi: Test
+[2025-11-03 22:25:42] [INFO] Yetki kontrolü başarılı: admin - 1001
+[2025-11-03 22:25:53] [ERROR] IzinleriGetir Hatası
 Input string was not in a correct format.
 StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 91
 =============
 
-[2025-11-02 20:18:37] [ERROR] eklebuton_Click Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.eklebuton_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 189
+[2025-11-03 22:25:53] [ERROR] IzinleriGetir Hatası
+Input string was not in a correct format.
+StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 91
 =============
 
-[2025-11-02 21:00:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:07:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:08:36] [ERROR] PDF Birleştirme Hatası
-Unable to cast object of type 'System.String' to type 'System.Web.HttpPostedFile'.
-StackTrace (Last): at Portal.ModulAraclar.PdfBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PdfBirlestir.aspx.cs:line 45
+[2025-11-03 22:25:53] [ERROR] IzinleriGetir Hatası
+Input string was not in a correct format.
+StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 91
 =============
 
-[2025-11-02 21:10:42] [ERROR] PDF Birleştirme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.PdfBirlestir.btnBirlestir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-02 21:18:11] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:18:26] [ERROR] PDF Birleştirme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.PdfBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PdfBirlestir.aspx.cs:line 110
-=============
-
-[2025-11-02 21:22:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:23:03] [ERROR] PDF Birleştirme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.PdfBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PdfBirlestir.aspx.cs:line 94
-=============
-
-[2025-11-02 21:25:17] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:25:48] [ERROR] PDF Birleştirme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.PdfBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PdfBirlestir.aspx.cs:line 93
-=============
-
-[2025-11-02 21:32:56] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:33:26] [ERROR] Resim Küçültme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.ResimKucult.btnKucult_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\ResimKucult.aspx.cs:line 84
-=============
-
-[2025-11-02 21:34:10] [ERROR] Resim Küçültme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.ResimKucult.btnKucult_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\ResimKucult.aspx.cs:line 84
-=============
-
-[2025-11-02 21:37:42] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 21:38:13] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 21:38:20] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 21:38:20] [INFO] Kullanıcılar yüklendi.
-[2025-11-02 21:38:20] [INFO] Yetki listesi yüklendi.
-[2025-11-02 21:38:24] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-02 21:39:23] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-02 21:39:46] [ERROR] Resim Küçültme Hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulAraclar.ResimKucult.btnKucult_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\ResimKucult.aspx.cs:line 84
-=============
-
+[2025-11-03 22:26:10] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-03 22:26:24] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-03 22:26:49] [INFO] Yetki kontrolü başarılı: admin - 900

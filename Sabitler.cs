@@ -213,6 +213,11 @@ namespace Portal
         /// </summary>
         public const int TEHLIKELI_MADDE_KAYIT = 800;
 
+        /// <summary>
+        /// Tehlikeli Madde Modülü - Faaliyet Alanları Tanımlama
+        /// </summary>
+        public const int TEHLIKELI_MADDE_TANIMLAR = 899;
+
         #endregion
 
         #region Yönetici Modülü Yetki Kodları
