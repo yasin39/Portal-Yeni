@@ -71,7 +71,7 @@ BEGIN
 END
 GO
 
--- 4. TÜM KULLANICILARIN PAROLASINI HASHLE
+-- 4. TÜM KULLANICILARIN PAROLASINI HASHLE   ÖNEMLİ NOT: BU KISMI ATLA- HASHLEME ÖZELLİĞİ ÇALIŞMIYOR
 -- SHA256("Ankara2025!") = 188f222d9a55e0a7afe9010244809cf0776b16c8477a6b82bd570a12dfaeb567
 UPDATE kullanici 
 SET Parola = '188f222d9a55e0a7afe9010244809cf0776b16c8477a6b82bd570a12dfaeb567',
@@ -131,3 +131,79 @@ CREATE INDEX IX_bilgisayar_domain ON bilgisayar_adlari(domain_no);
 GO
 
 ==========================================
+
+Merhaba, evet bu SQL Server'da (MSSQL) UPDATE ve REPLACE fonksiyonları kullanarak toplu olarak yapılabilir.
+
+İstediğiniz işlemi gerçekleştirmek için aşağıdaki SQL sorgu yapısını kullanabilirsiniz.
+
+⚠️ Çok Önemli Uyarılar
+Veritabanında toplu güncelleme (UPDATE) yapmak riskli bir işlemdir. Lütfen başlamadan önce:
+
+VERİTABANINIZIN YEDEĞİNİ ALIN.
+
+Sorguyu önce bir test ortamında veya SELECT ile deneyerek sonuçları görün.
+
+1. Adım: Değişiklikleri Test Etme (SELECT)
+Güncelleme yapmadan önce, hangi kayıtların nasıl değişeceğini görmek için bir SELECT sorgusu çalıştırın. Bu sorgu hiçbir veriyi değiştirmez, sadece size bir önizleme sunar.
+
+TabloAdiniz ve DosyaYoluKolonunuz kısımlarını kendi tablonuzdaki isimlerle değiştirin.
+
+SQL
+
+SELECT
+    DosyaYoluKolonunuz AS OrjinalYol,
+    REPLACE(DosyaYoluKolonunuz, '~/arsiv/', '~/Uploads/Arsiv/') AS YeniYol
+FROM
+    TabloAdiniz
+WHERE
+    DosyaYoluKolonunuz LIKE '~/arsiv/%';
+REPLACE(Kolon, 'bul', 'değiştir'): Bu fonksiyon, kolondaki '~/arsiv/' metnini bulur ve onu '~/Uploads/Arsiv/' ile değiştirir.
+
+WHERE ... LIKE '~/arsiv/%': Bu kısım, sadece ilgili dosya yollarına sahip kayıtları işleme almanızı sağlar. Bu, sorgunun daha hızlı çalışmasını ve yanlış kayıtları hedef almamasını garanti eder.
+
+2. Adım: Verileri Güncelleme (UPDATE)
+SELECT sorgusunun çıktısı tam olarak istediğiniz gibiyse, UPDATE sorgusunu çalıştırabilirsiniz.
+
+Güvenlik için bu işlemi bir Transaction (İşlem) bloğu içinde yapmanızı tavsiye ederim. Bu sayede, eğer bir hata olursa veya beklediğinizden farklı sayıda satır güncellenirse, işlemi geri alabilirsiniz (ROLLBACK).
+
+SQL
+
+-- Değişikliklerinizin güvende olması için bir işlem başlatın
+BEGIN TRAN;
+
+UPDATE TabloAdiniz
+SET
+    DosyaYoluKolonunuz = REPLACE(DosyaYoluKolonunuz, '~/arsiv/', '~/Uploads/Arsiv/')
+WHERE
+    DosyaYoluKolonunuz LIKE '~/arsiv/%';
+
+-- Kaç satırın güncellendiğini kontrol edin
+PRINT CAST(@@ROWCOUNT AS VARCHAR) + ' satır güncellendi.';
+
+-- EĞER HER ŞEY YOLUNDAYSA VE SONUÇTAN EMİNSENİZ:
+-- İşlemi kalıcı hale getirmek için aşağıdaki satırın başındaki -- işaretini kaldırın
+-- COMMIT TRAN;
+
+
+-- EĞER BİR SORUN VARSA VEYA GERİ ALMAK İSTİYORSANIZ:
+-- İşlemi geri almak için aşağıdaki satırın başındaki -- işaretini kaldırın
+-- ROLLBACK TRAN;
+Nasıl Kullanılır:
+
+Yukarıdaki sorguyu kopyalayıp SQL Server Management Studio (SSMS) veya kullandığınız veritabanı aracına yapıştırın.
+
+TabloAdiniz ve DosyaYoluKolonunuz adlarını düzeltin.
+
+Sorguyu BEGIN TRAN; satırından PRINT... satırına kadar çalıştırın.
+
+Aşağıdaki "Messages" (Mesajlar) sekmesinde "X satır güncellendi" mesajını göreceksiniz.
+
+Emin olmak için 1. Adım'daki SELECT sorgusunu tekrar çalıştırın (veya SELECT * FROM TabloAdiniz WHERE ... yapın). 
+Verilerin yeni halini göreceksiniz.
+
+Her şey doğruysa, COMMIT TRAN; komutunu tek başına seçip çalıştırın. Değişiklikler kalıcı olacaktır.
+
+Bir hata yaptıysanız, ROLLBACK TRAN; komutunu tek başına seçip çalıştırın. Her şey eski haline dönecektir.
+
+===========================================================================
+

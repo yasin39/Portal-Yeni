@@ -1,34 +1,28 @@
-﻿[2025-11-03 21:58:16] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-03 21:58:16] [INFO] Yetki kontrolü başarılı: admin - 800
-[2025-11-03 22:04:08] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-03 22:04:17] [INFO] Yetki kontrolü başarılı: admin - 800
-[2025-11-03 22:10:20] [INFO] Yetki kontrolü başarılı: admin - 800
-[2025-11-03 22:22:41] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-03 22:23:48] [WARNING] Yetkisiz erişim denemesi: admin - 899
-[2025-11-03 22:23:56] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-03 22:23:56] [INFO] Kullanıcılar yüklendi.
-[2025-11-03 22:23:56] [INFO] Yetki listesi yüklendi.
-[2025-11-03 22:24:00] [INFO] Yetkiler yüklendi: admin - 17 kayıt
-[2025-11-03 22:24:06] [INFO] Yetki eklendi: Yönetici - Tehlikeli Madde Tanımlar (899)
-[2025-11-03 22:24:06] [INFO] Yetkiler yüklendi: admin - 18 kayıt
-[2025-11-03 22:24:10] [INFO] Yetki kontrolü başarılı: admin - 899
-[2025-11-03 22:24:58] [INFO] Yeni faaliyet eklendi: Test
-[2025-11-03 22:25:42] [INFO] Yetki kontrolü başarılı: admin - 1001
-[2025-11-03 22:25:53] [ERROR] IzinleriGetir Hatası
-Input string was not in a correct format.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 91
+﻿[2025-11-04 14:03:52] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-04 14:03:58] [INFO] Yetki kontrolü başarılı: admin - 300
+[2025-11-04 14:04:02] [INFO] İlk dosya yolu (örnek): ~/Uploads/Arsiv/14898/14898_L2_Geçerli_88.pdf
+[2025-11-04 14:04:02] [INFO] Mapped path: C:\Users\cyasi\source\repos\Portal\Uploads\Arsiv\14898\14898_L2_Geçerli_88.pdf
+[2025-11-04 14:04:02] [INFO] Dosya var mı: True
+[2025-11-04 14:04:04] [INFO] KANIT: writer.CloseStream = false olarak ayarlandı.
+[2025-11-04 14:04:05] [ERROR] btnBirlestir_Click hatası
+Cannot access a closed file.
+StackTrace (Last): at Portal.ModulAraclar.DosyaBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\DosyaBirlestir.aspx.cs:line 151
 =============
 
-[2025-11-03 22:25:53] [ERROR] IzinleriGetir Hatası
-Input string was not in a correct format.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 91
+[2025-11-04 14:07:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-04 14:07:41] [INFO] Yetki kontrolü başarılı: admin - 300
+[2025-11-04 14:07:45] [INFO] İlk dosya yolu (örnek): ~/Uploads/Arsiv/14898/14898_L2_Geçerli_88.pdf
+[2025-11-04 14:07:45] [INFO] Mapped path: C:\Users\cyasi\source\repos\Portal\Uploads\Arsiv\14898\14898_L2_Geçerli_88.pdf
+[2025-11-04 14:07:45] [INFO] Dosya var mı: True
+[2025-11-04 14:07:46] [INFO] KANIT: writer.CloseStream = false olarak ayarlandı.
+[2025-11-04 14:07:47] [ERROR] btnBirlestir_Click hatası
+Cannot access a closed file.
+StackTrace (Last): at Portal.ModulAraclar.DosyaBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\DosyaBirlestir.aspx.cs:line 151
 =============
 
-[2025-11-03 22:25:53] [ERROR] IzinleriGetir Hatası
-Input string was not in a correct format.
-StackTrace (Last): at Portal.ModulAraclar.PersonelIzinFormu.IzinleriGetir(String sicilNo) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\PersonelIzinFormu.aspx.cs:line 91
-=============
-
-[2025-11-03 22:26:10] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-03 22:26:24] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-03 22:26:49] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-04 14:10:49] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-04 14:10:53] [INFO] Yetki kontrolü başarılı: admin - 300
+[2025-11-04 14:10:56] [INFO] İlk dosya yolu (örnek): ~/Uploads/Arsiv/14898/14898_L2_Geçerli_88.pdf
+[2025-11-04 14:10:56] [INFO] Mapped path: C:\Users\cyasi\source\repos\Portal\Uploads\Arsiv\14898\14898_L2_Geçerli_88.pdf
+[2025-11-04 14:10:56] [INFO] Dosya var mı: True
+[2025-11-04 14:11:00] [INFO] PDF birleştirme başarılı: 87 dosya birleştirildi. Kullanıcı: Yasin Ç.

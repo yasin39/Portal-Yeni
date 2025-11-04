@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace Portal
 {
@@ -231,6 +228,16 @@ namespace Portal
         public const int MODUL_YONETICI_KULLANICI_ISLEM = 900;
 
         #endregion
+
+        #region Arşiv Modülü Yetki Kodları
+
+        /// <summary>
+        /// Arşiv Modülü - Dosya Birleştirme
+        /// </summary>
+        public const int ARSIV = 300;
+
+        #endregion
+
         #region Bilgisayar Tipleri
         public static readonly List<string> BilgisayarTipleri = new List<string>
 {

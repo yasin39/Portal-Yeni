@@ -355,7 +355,7 @@
                             <a href="/ModulYonetici/BilgisayarAdlari.aspx" class="submenu-item">
                                 <i class="fas fa-desktop"></i>Bilgisayar Adları
                             </a>
-                           
+
                         </div>
                     </li>
 
@@ -371,7 +371,9 @@
                             <a href="/ModulAraclar/PersonelIzinFormu.aspx" class="submenu-item">
                                 <i class="fas fa-file-pdf"></i>Personel İzin Formu
                             </a>
-
+                            <a href="/ModulAraclar/DosyaBirlestir.aspx" class="submenu-item">
+                                <i class="fas fa-file-pdf"></i>Dosya Birleştir
+                            </a>
                             <a href="/ModulAraclar/PdfBirlestir.aspx" class="submenu-item">
                                 <i class="fas fa-file-pdf"></i>Pdf Birleştirici
                             </a>

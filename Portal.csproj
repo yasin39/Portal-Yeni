@@ -81,6 +81,7 @@
     <Content Include="ErrorLog.txt" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="ModulAraclar\DosyaBirlestir.aspx" />
     <Content Include="ModulAraclar\PdfBirlestir.aspx" />
     <Content Include="ModulAraclar\PersonelIzinFormu.aspx" />
     <Content Include="ModulAraclar\ResimKucult.aspx" />
@@ -128,6 +129,7 @@
     <Content Include="ModulPersonel\Raporlama.aspx" />
     <Content Include="ModulPersonel\Tanimlamalar.aspx" />
     <Content Include="ModulTehlikeliMadde\FirmaKayit.aspx" />
+    <Content Include="ModulTehlikeliMadde\FirmaRapor.aspx" />
     <Content Include="ModulTehlikeliMadde\Istatistik.aspx" />
     <Content Include="ModulTehlikeliMadde\Tanimlamalar.aspx" />
     <Content Include="ModulYonetici\BilgisayarAdlari.aspx" />
@@ -135,6 +137,7 @@
     <Content Include="ModulYonetici\KullaniciIslem.aspx" />
     <Content Include="ModulYonetici\YetkiIslem.aspx" />
     <Content Include="Notlar\CodeSnippets.txt" />
+    <Content Include="Notlar\Instructions for Claude.txt" />
     <Content Include="Notlar\Portal Yazılım Notları.md" />
     <Content Include="Notlar\PersonelTest.md" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
@@ -2287,6 +2290,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModulAraclar\DosyaBirlestir.aspx.cs">
+      <DependentUpon>DosyaBirlestir.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulAraclar\DosyaBirlestir.aspx.designer.cs">
+      <DependentUpon>DosyaBirlestir.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModulAraclar\PdfBirlestir.aspx.cs">
       <DependentUpon>PdfBirlestir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2616,6 +2626,13 @@
     <Compile Include="ModulTehlikeliMadde\FirmaKayit.aspx.designer.cs">
       <DependentUpon>FirmaKayit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ModulTehlikeliMadde\FirmaRapor.aspx.cs">
+      <DependentUpon>FirmaRapor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulTehlikeliMadde\FirmaRapor.aspx.designer.cs">
+      <DependentUpon>FirmaRapor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ModulTehlikeliMadde\Istatistik.aspx.cs">
       <DependentUpon>Istatistik.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2774,7 +2791,9 @@
     <Content Include="wwwroot\lib\fontawesome-free-6.4.0-web\webfonts\fa-v4compatibility.ttf" />
     <Content Include="wwwroot\lib\fontawesome-free-6.4.0-web\webfonts\fa-v4compatibility.woff2" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
