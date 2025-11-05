@@ -421,7 +421,7 @@
         </footer>
 
         <!-- Bootstrap Bundle JS (local) -->
-        <script src="wwwroot/js/bootstrap.bundle.min.js"></script>
+        <script src="../wwwroot/js/bootstrap.bundle.min.js"></script>
         <script src="../wwwroot/js/flatpickr.js"></script>
         <script src="../wwwroot/js/tr.js"></script>
 

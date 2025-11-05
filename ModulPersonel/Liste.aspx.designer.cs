@@ -186,24 +186,6 @@ namespace Portal.ModulPersonel
         protected global::System.Web.UI.WebControls.GridView PersonellerGrid;
 
         /// <summary>
-        /// imgPersonelFoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPersonelFoto;
-
-        /// <summary>
-        /// divNoFoto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divNoFoto;
-
-        /// <summary>
         /// lblDetayTcNo control.
         /// </summary>
         /// <remarks>

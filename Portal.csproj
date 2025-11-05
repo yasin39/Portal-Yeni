@@ -140,6 +140,9 @@
     <Content Include="Notlar\Instructions for Claude.txt" />
     <Content Include="Notlar\Portal Yazılım Notları.md" />
     <Content Include="Notlar\PersonelTest.md" />
+    <Content Include="Notlar\TestAraçlar.md" />
+    <Content Include="Notlar\TestBelgeTakip.md" />
+    <Content Include="Notlar\TestCimer.md" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Notlar\Yapılacak Database İşlemleri.txt" />
     <Content Include="Scripts\jquery-3.7.1.js" />

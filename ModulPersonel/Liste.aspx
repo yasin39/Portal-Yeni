@@ -70,26 +70,7 @@
         .info-value {
             color: #2d3436;
         }
-
-        .personel-foto {
-            width: 120px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 3px solid #4B7BEC;
-        }
-
-        .no-foto {
-            width: 120px;
-            height: 150px;
-            background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: #6b7280;
-        }
+        
     </style>
 </asp:Content>
 
@@ -296,14 +277,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="row">
-                        <!-- Sol Kolon - Foto ve Temel Bilgiler -->
-                        <div class="col-md-4">
-                            <div class="text-center mb-3">
-                                <asp:Image ID="imgPersonelFoto" runat="server" CssClass="personel-foto" Visible="false" />
-                                <div id="divNoFoto" runat="server" class="no-foto mx-auto" visible="false">
-                                    <i class="fas fa-user"></i>
-                                </div>
-                            </div>
+                        <!-- Sol Kolon - Kimlik Bilgileri -->
+                        <div class="col-md-4">                            
                             <div class="info-group">
                                 <h6><i class="fas fa-id-card me-2"></i>Kimlik Bilgileri</h6>
                                 <div class="info-row">

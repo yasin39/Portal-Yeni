@@ -348,7 +348,7 @@ namespace Portal.ModulPersonel
                         CONVERT(VARCHAR, KurumaBaslamaTarihi, 103) as KurumaBaslama,
                         GorevYaptigiBirim, CalismaDurumu, CepTelefonu, 
                         MailAdresi, EvTelefonu, Adres, AcilDurumdaAranacakKisi, 
-                        AcilCep, KanGrubu, MedeniHali, Sendika, Resim, 
+                        AcilCep, KanGrubu, MedeniHali, Sendika, 
                         Devredenizin, cariyilizni, toplamizin, Durum, 
                         Dahili, Ogrenim_Durumu
                     FROM personel 
@@ -393,19 +393,7 @@ namespace Portal.ModulPersonel
                     lblDetayCariYilIzin.Text = row["cariyilizni"].ToString() + " gün";
                     lblDetayToplamIzin.Text = row["toplamizin"].ToString() + " gün";
 
-                    lblDetayOgrenim.Text = row["Ogrenim_Durumu"].ToString();
-
-                    if (!string.IsNullOrEmpty(row["Resim"].ToString()))
-                    {
-                        imgPersonelFoto.ImageUrl = row["Resim"].ToString();
-                        imgPersonelFoto.Visible = true;
-                        divNoFoto.Visible = false;
-                    }
-                    else
-                    {
-                        imgPersonelFoto.Visible = false;
-                        divNoFoto.Visible = true;
-                    }
+                    lblDetayOgrenim.Text = row["Ogrenim_Durumu"].ToString();                    
 
                     ScriptManager.RegisterStartupScript(this, GetType(), "showModal",
                         "var modal = new bootstrap.Modal(document.getElementById('modalPersonelDetay')); modal.show();", true);

@@ -36,7 +36,7 @@ namespace Portal.Base
             {
                 // Geliştirme için mock session değerleri ata (test kullanıcı bilgileri)
                 Session["Sicil"] = "admin";
-                Session["Ad"] = "Yasin Ç."; 
+                Session["Ad"] = "Yasin Çınar"; 
                 Session["Kturu"] = "Admin"; 
                 Session["Ptipi"] = "1"; // Örnek personel tipi ( NORMAL_PERSONEL gibi sabitlerden alın)
 

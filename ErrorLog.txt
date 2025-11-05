@@ -1,28 +1,167 @@
-﻿[2025-11-04 14:03:52] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-04 14:03:58] [INFO] Yetki kontrolü başarılı: admin - 300
-[2025-11-04 14:04:02] [INFO] İlk dosya yolu (örnek): ~/Uploads/Arsiv/14898/14898_L2_Geçerli_88.pdf
-[2025-11-04 14:04:02] [INFO] Mapped path: C:\Users\cyasi\source\repos\Portal\Uploads\Arsiv\14898\14898_L2_Geçerli_88.pdf
-[2025-11-04 14:04:02] [INFO] Dosya var mı: True
-[2025-11-04 14:04:04] [INFO] KANIT: writer.CloseStream = false olarak ayarlandı.
-[2025-11-04 14:04:05] [ERROR] btnBirlestir_Click hatası
-Cannot access a closed file.
-StackTrace (Last): at Portal.ModulAraclar.DosyaBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\DosyaBirlestir.aspx.cs:line 151
+﻿[2025-11-05 11:08:25] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-05 11:11:16] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:11:29] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:26:52] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:27:02] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:37:35] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:37:35] [INFO] Yeni personel eklendi: Rasim Küçükusta (TC: 12345678901) by Yasin Ç.
+[2025-11-05 11:37:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:37:48] [ERROR] ExecuteNonQueryWithTransaction hatası: Violation of PRIMARY KEY constraint 'PK_personel'. Cannot insert duplicate key in object 'dbo.personel'. The duplicate key value is (12345678901).
+The statement has been terminated.
+Query: 
+                                INSERT INTO personel (
+                                    TcKimlikNo, Adi, Soyad, DogumYeri, DogumTarihi, Cinsiyet, Durum, SicilNo, 
+                                    Unvan, Statu, ilkisegiristarihi, KurumaBaslamaTarihi, GorevYaptigiBirim, CalismaDurumu,
+                                    GeciciGelenPersonelKurumu, GeciciGidenPersonelKurumu, istenAyrilisTarihi, istenAyrilmaSebebi,
+                                    GGorevBaslangicTarihi, GGorevBitisTarihi, CepTelefonu, MailAdresi, EvTelefonu, Adres,
+                                    AcilDurumdaAranacakKisi, AcilCep, KanGrubu, MedeniHali, AskerlikDurumu, EngelDurumu,
+                                    EngelAciklama, Sendika, MeslekiUnvan, KadroDerece, Ogrenim_Durumu,
+                                    EmeklilikTarihi, YaslilikAylikTarihi, EmeklilikAciklama, Dahili,
+                                    Devredenizin, cariyilizni, KayitTarihi, KayitKullanici
+                                ) VALUES (
+                                    @TcKimlikNo, @Adi, @Soyad, @DogumYeri, @DogumTarihi, @Cinsiyet, @Durum, @SicilNo,
+                                    @Unvan, @Statu, @IlkIseGirisTarihi, @KurumaBaslamaTarihi, @GorevYaptigiBirim, @CalismaDurumu,
+                                    @GeciciGelenKurum, @GeciciGidenKurum, @IstenAyrilisTarihi, @IstenAyrilmaSebebi,
+                                    @GGorevBaslangic, @GGorevBitis, @CepTelefonu, @MailAdresi, @EvTelefonu, @Adres,
+                                    @AcilDurumKisi, @AcilCep, @KanGrubu, @MedeniHali, @AskerlikDurumu, @EngelDurumu,
+                                    @EngelAciklama, @Sendika, @MeslekiUnvan, @KadroDerece, @OgrenimDurumu,
+                                    @EmeklilikTarihi, @YaslilikAyligiTarihi, @EmeklilikAciklama, @Dahili,
+                                    @DevredenIzin, @CariIzin, @KayitTarihi, @KayitKullanici
+                                )
+[2025-11-05 11:37:48] [ERROR] Personel ekleme hatası
+Violation of PRIMARY KEY constraint 'PK_personel'. Cannot insert duplicate key in object 'dbo.personel'. The duplicate key value is (12345678901).
+The statement has been terminated.
+StackTrace (Last): at Portal.ModulPersonel.Kayit.btnEkle_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulPersonel\Kayit.aspx.cs:line 236
 =============
 
-[2025-11-04 14:07:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-04 14:07:41] [INFO] Yetki kontrolü başarılı: admin - 300
-[2025-11-04 14:07:45] [INFO] İlk dosya yolu (örnek): ~/Uploads/Arsiv/14898/14898_L2_Geçerli_88.pdf
-[2025-11-04 14:07:45] [INFO] Mapped path: C:\Users\cyasi\source\repos\Portal\Uploads\Arsiv\14898\14898_L2_Geçerli_88.pdf
-[2025-11-04 14:07:45] [INFO] Dosya var mı: True
-[2025-11-04 14:07:46] [INFO] KANIT: writer.CloseStream = false olarak ayarlandı.
-[2025-11-04 14:07:47] [ERROR] btnBirlestir_Click hatası
-Cannot access a closed file.
-StackTrace (Last): at Portal.ModulAraclar.DosyaBirlestir.btnBirlestir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulAraclar\DosyaBirlestir.aspx.cs:line 151
+[2025-11-05 11:38:03] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:38:08] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:38:09] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:38:09] [INFO] Personel bilgileri getirildi: Rasim Küçükusta (TC: 12345678901)
+[2025-11-05 11:45:25] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:45:29] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:45:29] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:45:36] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:45:54] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:45:54] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:46:03] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:46:04] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:46:04] [INFO] Personel bilgileri getirildi: Rasim Küçükusta (TC: 12345678901)
+[2025-11-05 11:47:38] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:47:38] [INFO] Page.IsValid: True, currentTcKimlikNo: '12345678901'
+[2025-11-05 11:47:38] [INFO] UPDATE result: 1
+[2025-11-05 11:47:38] [INFO] Personel güncellendi: Rasim Küçükusta (TC: 12345678901) by Yasin Ç.
+[2025-11-05 11:47:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:48:01] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:48:02] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 11:48:02] [INFO] Personel bilgileri getirildi: Rasim Küçükusta (TC: 12345678901)
+[2025-11-05 12:01:05] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 12:01:05] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 12:01:10] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 12:01:44] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 12:01:46] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:35:39] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-05 14:36:06] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:36:17] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:36:58] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:37:19] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:37:22] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:37:35] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:37:46] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:37:54] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:37:54] [INFO] Yeni personel eklendi: Zuhal Karakaya (TC: 32145678901) by Yasin Çınar
+[2025-11-05 14:38:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:38:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:38:51] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:38:52] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 14:38:52] [INFO] Personel bilgileri getirildi: Zuhal Karakaya (TC: 32145678901)
+[2025-11-05 15:00:44] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-05 15:00:44] [WARNING] Yetkisiz erişim denemesi: admin - 500
+[2025-11-05 15:00:53] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-05 15:00:53] [INFO] Kullanıcılar yüklendi.
+[2025-11-05 15:00:53] [INFO] Yetki listesi yüklendi.
+[2025-11-05 15:00:57] [INFO] Yetkiler yüklendi: admin - 18 kayıt
+[2025-11-05 15:01:05] [INFO] Yetki eklendi: Yönetici - Görev Takip (500)
+[2025-11-05 15:01:05] [INFO] Yetkiler yüklendi: admin - 19 kayıt
+[2025-11-05 15:01:11] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-05 15:01:27] [INFO] Yetki kontrolü başarılı: admin - 601
+[2025-11-05 15:03:39] [INFO] Yetki kontrolü başarılı: admin - 601
+[2025-11-05 15:03:44] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:03:52] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:03:53] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:03:53] [INFO] Personel bilgileri getirildi: Rasim Küçükusta (TC: 12345678901)
+[2025-11-05 15:04:04] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:04:04] [INFO] Page.IsValid: True, currentTcKimlikNo: '12345678901'
+[2025-11-05 15:04:04] [INFO] UPDATE result: 1
+[2025-11-05 15:04:04] [INFO] Personel güncellendi: Rasim Küçükusta (TC: 12345678901) by Yasin Çınar
+[2025-11-05 15:04:06] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:04:17] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-05 15:04:21] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-05 15:04:22] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-05 15:04:23] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-05 15:04:28] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-05 15:04:28] [ERROR] Excel export hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.ModulTehlikeliMadde.FirmaKayit.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulTehlikeliMadde\FirmaKayit.aspx.cs:line 314
 =============
 
-[2025-11-04 14:10:49] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-04 14:10:53] [INFO] Yetki kontrolü başarılı: admin - 300
-[2025-11-04 14:10:56] [INFO] İlk dosya yolu (örnek): ~/Uploads/Arsiv/14898/14898_L2_Geçerli_88.pdf
-[2025-11-04 14:10:56] [INFO] Mapped path: C:\Users\cyasi\source\repos\Portal\Uploads\Arsiv\14898\14898_L2_Geçerli_88.pdf
-[2025-11-04 14:10:56] [INFO] Dosya var mı: True
-[2025-11-04 14:11:00] [INFO] PDF birleştirme başarılı: 87 dosya birleştirildi. Kullanıcı: Yasin Ç.
+[2025-11-05 15:05:19] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:05:20] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:05:29] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:05:29] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:05:29] [INFO] Personel bilgileri getirildi: Rasim Küçükusta (TC: 12345678901)
+[2025-11-05 15:06:14] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:06:14] [INFO] Page.IsValid: True, currentTcKimlikNo: '12345678901'
+[2025-11-05 15:06:14] [INFO] UPDATE result: 1
+[2025-11-05 15:06:14] [INFO] Personel güncellendi: Rasim Küçükusta (TC: 12345678901) by Yasin Çınar
+[2025-11-05 15:06:15] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:06:26] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:06:51] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:06:58] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:06:58] [INFO] Yeni personel eklendi: Haydar Uzun (TC: 98765432101) by Yasin Çınar
+[2025-11-05 15:07:18] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:07:18] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:07:24] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:07:42] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:07:47] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:07:49] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:07:49] [INFO] Personel bilgileri getirildi: Haydar Uzun (TC: 98765432101)
+[2025-11-05 15:08:32] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:08:32] [INFO] Page.IsValid: True, currentTcKimlikNo: '98765432101'
+[2025-11-05 15:08:32] [INFO] UPDATE result: 1
+[2025-11-05 15:08:32] [INFO] Personel güncellendi: Haydar Uzun (TC: 98765432101) by Yasin Çınar
+[2025-11-05 15:08:34] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:08:42] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:08:42] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:08:42] [INFO] Personel bilgileri getirildi: Haydar Uzun (TC: 98765432101)
+[2025-11-05 15:09:31] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:11:05] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:11:11] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:12:25] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:12:37] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:12:51] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:13:26] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:13:37] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:13:52] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:14:02] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:14:24] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:16:30] [ERROR] Excel export hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.ModulPersonel.Liste.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulPersonel\Liste.aspx.cs:line 288
+=============
+
+[2025-11-05 15:17:05] [INFO] Personel listesi filtrelendi.
+[2025-11-05 15:17:26] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-05 15:18:06] [INFO] Personel arama tamamlandı: 1 kayıt bulundu.
+[2025-11-05 15:19:51] [INFO] Personel arama tamamlandı: 1 kayıt bulundu.
+[2025-11-05 15:20:16] [INFO] Personel arama tamamlandı: 2 kayıt bulundu.
+[2025-11-05 15:20:57] [INFO] Personel arama tamamlandı: 2 kayıt bulundu.
+[2025-11-05 15:21:46] [INFO] Personel arama tamamlandı: 3 kayıt bulundu.
+[2025-11-05 15:22:24] [INFO] Personel arama tamamlandı: 0 kayıt bulundu.
+[2025-11-05 15:22:24] [INFO] Personel arama tamamlandı: 0 kayıt bulundu.
+[2025-11-05 15:23:02] [INFO] Personel arama tamamlandı: 0 kayıt bulundu.
+[2025-11-05 15:23:21] [INFO] Personel arama tamamlandı: 186 kayıt bulundu.
+[2025-11-05 15:23:29] [INFO] Personel arama tamamlandı: 42 kayıt bulundu.
+[2025-11-05 15:23:39] [INFO] Personel arama tamamlandı: 134 kayıt bulundu.
+[2025-11-05 15:32:59] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-05 15:33:13] [INFO] Yetki kontrolü başarılı: admin - 100

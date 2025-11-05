@@ -1,10 +1,7 @@
-﻿using System;
+﻿using Portal.Base;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Configuration;
-using System.Web.UI.WebControls;
-using Portal.Base;
-using Portal;
 
 namespace Portal.ModulPersonel
 {
@@ -38,15 +35,19 @@ namespace Portal.ModulPersonel
 
             // Sendikalar
             string querySendika = "SELECT Sendika_Adi FROM personel_sendika ORDER BY Sendika_Adi ASC";
+            ddlSendika.Items.Clear();
             PopulateDropDownList(ddlSendika, querySendika, "Sendika_Adi", "Sendika_Adi", true);
 
             // Kurumlar (Gelen/Giden)
             string queryKurum = "SELECT Kurum_Adi FROM personel_kurum ORDER BY Kurum_Adi ASC";
+            ddlGeciciGelenKurum.Items.Clear();
             PopulateDropDownList(ddlGeciciGelenKurum, queryKurum, "Kurum_Adi", "Kurum_Adi", true);
+            ddlGeciciGidenKurum.Items.Clear();
             PopulateDropDownList(ddlGeciciGidenKurum, queryKurum, "Kurum_Adi", "Kurum_Adi", true);
 
             // Birimler (Şubeler)
             string queryBirim = "SELECT Sube_Adi FROM subeler ORDER BY Sube_Adi ASC";
+            ddlGorevYaptigiBirim.Items.Clear();
             PopulateDropDownList(ddlGorevYaptigiBirim, queryBirim, "Sube_Adi", "Sube_Adi", true);
         }
 
@@ -145,11 +146,13 @@ namespace Portal.ModulPersonel
                 currentTcKimlikNo = tc;
                 ViewState["CurrentTcKimlikNo"] = tc;  //  ViewState'e kaydet
 
+                ShowToast("Personel bilgileri başarıyla getirildi.", "success");
                 LogInfo($"Personel bilgileri getirildi: {txtAdi.Text} {txtSoyad.Text} (TC: {tc})");
             }
             else
             {
                 isUpdateMode = false;
+                ShowToast("Personel Bulunamadı", "warning");
                 ShowToast("TC Kimlik No ile personel bulunamadı.","warning");
             }
         }
