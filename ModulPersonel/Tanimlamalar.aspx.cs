@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Portal.Base;
 
@@ -19,6 +20,38 @@ namespace Portal.ModulPersonel
                     return;
                 }
                 TablolariDoldur();
+            }
+        }
+
+        /// <summary>
+        /// Page_PreRender olayı, tüm buton tıklama olaylarından (örn: btnSendikaEkle_Click)
+        /// SONRA çalışır. Bu, postback sonrası hangi tabın aktif olacağına
+        /// karar vermek için doğru yerdir.
+        /// </summary>
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            // Sadece PostBack durumlarında çalışır
+            if (IsPostBack)
+            {
+                // Gizli alandan aktif tabın ID'sini (örn: '#sendika') oku
+                string aktifTabId = hdnAktifTab.Value;
+
+                if (!string.IsNullOrEmpty(aktifTabId))
+                {
+                    // Bootstrap 5 JS API'sini çağıran bir script oluştur
+                    // Bu script, 'data-bs-target' özelliği gizli alandaki değere eşit olan
+                    // butonu bulur ve programatik olarak o tabı 'gösterir'.
+                    string script = $@"
+                        var tabButton = document.querySelector('button[data-bs-target=""{aktifTabId}""]');
+                        if (tabButton) {{
+                            var tab = new bootstrap.Tab(tabButton);
+                            tab.show();
+                        }}";
+
+                    // Oluşturulan script'i sayfa yüklendikten sonra çalışması için kaydet
+                    // (MasterPage'inizde bir <asp:ScriptManager> olduğunu varsayıyoruz)
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "AktifTabScript", script, true);
+                }
             }
         }
 

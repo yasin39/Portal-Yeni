@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Personel Kayıt" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="Kayit.aspx.cs" Inherits="Portal.ModulPersonel.Kayit" EnableEventValidation="false" %>
 
-<asp:Content ID="ContentHead" ContentPlaceHolderID="head" runat="server">    
+<asp:Content ID="ContentHead" ContentPlaceHolderID="head" runat="server">
     <style>
-         /*   TC Kimlik No Validation Styling (Sayfa özel) */
+        /*   TC Kimlik No Validation Styling (Sayfa özel) */
         .text-danger {
             color: #dc2626;
             font-size: 0.85rem;
@@ -71,13 +71,14 @@
                         <div class="info-badge">
                             <i class="fas fa-info-circle"></i>
                             Personel ekleme ve düzenleme işlemlerini bu ekran üzerinden gerçekleştirebilirsiniz. Zorunlu alanlar (<span class="text-danger">*</span>) ile işaretlenmiştir.
+                       
                         </div>
 
                         <asp:Panel ID="pnlYazdir" runat="server" CssClass="print-panel">
                             <%--   Enhanced ValidationSummary --%>
-                            <asp:ValidationSummary ID="ValidationSummaryPersonel" runat="server" 
-                                CssClass="alert alert-danger alert-dismissible fade show" 
-                                HeaderText="⚠️ Lütfen aşağıdaki alanları düzeltin:" 
+                            <asp:ValidationSummary ID="ValidationSummaryPersonel" runat="server"
+                                CssClass="alert alert-danger alert-dismissible fade show"
+                                HeaderText="⚠️ Lütfen aşağıdaki alanları düzeltin:"
                                 ValidationGroup="PersonelKayit" />
 
                             <%--   SECTION 1: Kimlik Bilgileri --%>
@@ -95,16 +96,16 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-id-badge"></i>
                                             </span>
-                                            <asp:TextBox ID="txtTcKimlikNo" runat="server" CssClass="form-control" 
-                                                MaxLength="11" AutoPostBack="true" 
-                                                OnTextChanged="txtTcKimlikNo_TextChanged" 
+                                            <asp:TextBox ID="txtTcKimlikNo" runat="server" CssClass="form-control"
+                                                MaxLength="11" AutoPostBack="true"
+                                                OnTextChanged="txtTcKimlikNo_TextChanged"
                                                 placeholder="11 haneli TC No"></asp:TextBox>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvTcKimlikNo" runat="server" 
-                                            ControlToValidate="txtTcKimlikNo" 
-                                            ErrorMessage="TC Kimlik No zorunludur." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
+                                        <asp:RequiredFieldValidator ID="rfvTcKimlikNo" runat="server"
+                                            ControlToValidate="txtTcKimlikNo"
+                                            ErrorMessage="TC Kimlik No zorunludur."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
                                             Display="Dynamic">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -115,14 +116,14 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-user"></i>
                                             </span>
-                                            <asp:TextBox ID="txtAdi" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtAdi" runat="server" CssClass="form-control"
                                                 MaxLength="50" placeholder="Adı"></asp:TextBox>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvAdi" runat="server" 
-                                            ControlToValidate="txtAdi" 
-                                            ErrorMessage="Adı zorunludur." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
+                                        <asp:RequiredFieldValidator ID="rfvAdi" runat="server"
+                                            ControlToValidate="txtAdi"
+                                            ErrorMessage="Adı zorunludur."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
                                             Display="Dynamic">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -133,14 +134,14 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-user"></i>
                                             </span>
-                                            <asp:TextBox ID="txtSoyad" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtSoyad" runat="server" CssClass="form-control"
                                                 MaxLength="50" placeholder="Soyadı"></asp:TextBox>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvSoyad" runat="server" 
-                                            ControlToValidate="txtSoyad" 
-                                            ErrorMessage="Soyadı zorunludur." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
+                                        <asp:RequiredFieldValidator ID="rfvSoyad" runat="server"
+                                            ControlToValidate="txtSoyad"
+                                            ErrorMessage="Soyadı zorunludur."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
                                             Display="Dynamic">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -151,7 +152,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtDogumYeri" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtDogumYeri" runat="server" CssClass="form-control"
                                                 MaxLength="100" placeholder="İl"></asp:TextBox>
                                         </div>
                                     </div>
@@ -163,8 +164,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtDogumTarihi" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtDogumTarihi" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -183,12 +184,12 @@
                                                 <asp:ListItem Value="Bayan">Bayan</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvCinsiyet" runat="server" 
-                                            ControlToValidate="ddlCinsiyet" 
-                                            ErrorMessage="Cinsiyet seçiniz." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
-                                            Display="Dynamic" 
+                                        <asp:RequiredFieldValidator ID="rfvCinsiyet" runat="server"
+                                            ControlToValidate="ddlCinsiyet"
+                                            ErrorMessage="Cinsiyet seçiniz."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
+                                            Display="Dynamic"
                                             InitialValue="">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -204,21 +205,21 @@
                                                 <asp:ListItem Value="Pasif">Pasif</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvCalismaDurumu" runat="server" 
-                                            ControlToValidate="ddlCalismaDurumu" 
-                                            ErrorMessage="Çalışma durumu seçiniz." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
+                                        <asp:RequiredFieldValidator ID="rfvCalismaDurumu" runat="server"
+                                            ControlToValidate="ddlCalismaDurumu"
+                                            ErrorMessage="Çalışma durumu seçiniz."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
                                             Display="Dynamic">*</asp:RequiredFieldValidator>
                                     </div>
 
                                     <%--   Bilgileri Getir Button --%>
                                     <div class="col-md-6">
                                         <label class="form-label d-block">&nbsp;</label>
-                                        <asp:Button ID="btnBilgileriGetir" runat="server" 
-                                            Text="🔍 Bilgileri Getir" 
-                                            CssClass="btn btn-outline-primary" 
-                                            OnClick="btnBilgileriGetir_Click" 
+                                        <asp:Button ID="btnBilgileriGetir" runat="server"
+                                            Text="🔍 Bilgileri Getir"
+                                            CssClass="btn btn-outline-primary"
+                                            OnClick="btnBilgileriGetir_Click"
                                             CausesValidation="false" />
                                         <asp:Label ID="lblTcValidation" runat="server" CssClass="text-danger small ms-2"></asp:Label>
                                     </div>
@@ -240,14 +241,14 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-hashtag"></i>
                                             </span>
-                                            <asp:TextBox ID="txtSicilNo" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtSicilNo" runat="server" CssClass="form-control"
                                                 TextMode="Number" AutoPostBack="true" placeholder="Sicil No"></asp:TextBox>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvSicilNo" runat="server" 
-                                            ControlToValidate="txtSicilNo" 
-                                            ErrorMessage="Sicil No zorunludur." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
+                                        <asp:RequiredFieldValidator ID="rfvSicilNo" runat="server"
+                                            ControlToValidate="txtSicilNo"
+                                            ErrorMessage="Sicil No zorunludur."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
                                             Display="Dynamic">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -266,11 +267,11 @@
                                                 <asp:ListItem Value="İşkur İşçi (TYP)">İşkur İşçi (TYP)</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvDurum" runat="server" 
-                                            ControlToValidate="ddlDurum" 
-                                            ErrorMessage="Personel durumu seçiniz." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
+                                        <asp:RequiredFieldValidator ID="rfvDurum" runat="server"
+                                            ControlToValidate="ddlDurum"
+                                            ErrorMessage="Personel durumu seçiniz."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
                                             Display="Dynamic">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -285,12 +286,12 @@
                                                 <asp:ListItem Value="">-- Seçiniz --</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvUnvan" runat="server" 
-                                            ControlToValidate="ddlUnvan" 
-                                            ErrorMessage="Ünvan seçiniz." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
-                                            Display="Dynamic" 
+                                        <asp:RequiredFieldValidator ID="rfvUnvan" runat="server"
+                                            ControlToValidate="ddlUnvan"
+                                            ErrorMessage="Ünvan seçiniz."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
+                                            Display="Dynamic"
                                             InitialValue="">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -301,7 +302,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-tag"></i>
                                             </span>
-                                            <asp:TextBox ID="txtStatu" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtStatu" runat="server" CssClass="form-control"
                                                 MaxLength="50" placeholder="Statü"></asp:TextBox>
                                         </div>
                                     </div>
@@ -313,8 +314,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-check"></i>
                                             </span>
-                                            <asp:TextBox ID="txtIlkIseGirisTarihi" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtIlkIseGirisTarihi" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -327,8 +328,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtKurumaBaslamaTarihi" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtKurumaBaslamaTarihi" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -343,12 +344,12 @@
                                                 <asp:ListItem Value="">-- Seçiniz --</asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
-                                        <asp:RequiredFieldValidator ID="rfvGorevYaptigiBirim" runat="server" 
-                                            ControlToValidate="ddlGorevYaptigiBirim" 
-                                            ErrorMessage="Görev birimi seçiniz." 
-                                            CssClass="text-danger small" 
-                                            ValidationGroup="PersonelKayit" 
-                                            Display="Dynamic" 
+                                        <asp:RequiredFieldValidator ID="rfvGorevYaptigiBirim" runat="server"
+                                            ControlToValidate="ddlGorevYaptigiBirim"
+                                            ErrorMessage="Görev birimi seçiniz."
+                                            CssClass="text-danger small"
+                                            ValidationGroup="PersonelKayit"
+                                            Display="Dynamic"
                                             InitialValue="">*</asp:RequiredFieldValidator>
                                     </div>
 
@@ -359,7 +360,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-layer-group"></i>
                                             </span>
-                                            <asp:TextBox ID="txtKadroDerece" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtKadroDerece" runat="server" CssClass="form-control"
                                                 MaxLength="20" placeholder="Derece"></asp:TextBox>
                                         </div>
                                     </div>
@@ -389,7 +390,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-certificate"></i>
                                             </span>
-                                            <asp:TextBox ID="txtMeslekiUnvan" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtMeslekiUnvan" runat="server" CssClass="form-control"
                                                 MaxLength="100" placeholder="Mesleki unvan"></asp:TextBox>
                                         </div>
                                     </div>
@@ -403,8 +404,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-sign-out-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtIstenAyrilisTarihi" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtIstenAyrilisTarihi" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -415,8 +416,8 @@
                                             <span class="input-group-text align-items-start pt-2">
                                                 <i class="fas fa-comment-dots"></i>
                                             </span>
-                                            <asp:TextBox ID="txtIstenAyrilmaSebebi" runat="server" CssClass="form-control" 
-                                                MaxLength="255" TextMode="MultiLine" Rows="2" 
+                                            <asp:TextBox ID="txtIstenAyrilmaSebebi" runat="server" CssClass="form-control"
+                                                MaxLength="255" TextMode="MultiLine" Rows="2"
                                                 placeholder="Ayrılma sebebi"></asp:TextBox>
                                         </div>
                                     </div>
@@ -428,8 +429,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-plus"></i>
                                             </span>
-                                            <asp:TextBox ID="txtGGorevBaslangic" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtGGorevBaslangic" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -440,8 +441,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-minus"></i>
                                             </span>
-                                            <asp:TextBox ID="txtGGorevBitis" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtGGorevBitis" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -480,7 +481,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-week"></i>
                                             </span>
-                                            <asp:TextBox ID="txtDevredenIzin" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtDevredenIzin" runat="server" CssClass="form-control"
                                                 TextMode="Number" placeholder="0"></asp:TextBox>
                                         </div>
                                     </div>
@@ -492,7 +493,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar"></i>
                                             </span>
-                                            <asp:TextBox ID="txtCariIzin" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtCariIzin" runat="server" CssClass="form-control"
                                                 TextMode="Number" placeholder="0"></asp:TextBox>
                                         </div>
                                     </div>
@@ -514,7 +515,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-mobile-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtCepTelefonu" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtCepTelefonu" runat="server" CssClass="form-control"
                                                 MaxLength="15" placeholder="5xxxxxxxxx"></asp:TextBox>
                                         </div>
                                     </div>
@@ -526,7 +527,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-envelope"></i>
                                             </span>
-                                            <asp:TextBox ID="txtMailAdresi" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtMailAdresi" runat="server" CssClass="form-control"
                                                 TextMode="Email" MaxLength="100" placeholder="ornek@mail.com"></asp:TextBox>
                                         </div>
                                     </div>
@@ -538,7 +539,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-phone"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEvTelefonu" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtEvTelefonu" runat="server" CssClass="form-control"
                                                 MaxLength="15" placeholder="0xxxxxxxxxx"></asp:TextBox>
                                         </div>
                                     </div>
@@ -550,7 +551,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-phone-square"></i>
                                             </span>
-                                            <asp:TextBox ID="txtDahiliTelefon" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtDahiliTelefon" runat="server" CssClass="form-control"
                                                 MaxLength="10" placeholder="Dahili"></asp:TextBox>
                                         </div>
                                     </div>
@@ -564,8 +565,8 @@
                                             <span class="input-group-text align-items-start pt-2">
                                                 <i class="fas fa-map-marker-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtAdres" runat="server" CssClass="form-control" 
-                                                MaxLength="500" TextMode="MultiLine" Rows="3" 
+                                            <asp:TextBox ID="txtAdres" runat="server" CssClass="form-control"
+                                                MaxLength="500" TextMode="MultiLine" Rows="3"
                                                 placeholder="Adres bilgisi"></asp:TextBox>
                                         </div>
                                     </div>
@@ -577,7 +578,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-user-shield"></i>
                                             </span>
-                                            <asp:TextBox ID="txtAcilDurumKisi" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtAcilDurumKisi" runat="server" CssClass="form-control"
                                                 MaxLength="100" placeholder="Ad Soyad"></asp:TextBox>
                                         </div>
                                     </div>
@@ -589,7 +590,7 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-phone-volume"></i>
                                             </span>
-                                            <asp:TextBox ID="txtAcilCep" runat="server" CssClass="form-control" 
+                                            <asp:TextBox ID="txtAcilCep" runat="server" CssClass="form-control"
                                                 MaxLength="15" placeholder="5xxxxxxxxx"></asp:TextBox>
                                         </div>
                                     </div>
@@ -691,8 +692,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-check"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEmeklilikTarihi" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtEmeklilikTarihi" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -705,8 +706,8 @@
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtYaslilikAyligiTarihi" runat="server" CssClass="form-control" 
-                                                TextMode="Date"></asp:TextBox>
+                                            <asp:TextBox ID="txtYaslilikAyligiTarihi" runat="server"
+                                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                                         </div>
                                     </div>
 
@@ -717,8 +718,8 @@
                                             <span class="input-group-text align-items-start pt-2">
                                                 <i class="fas fa-comment"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEngelAciklama" runat="server" CssClass="form-control" 
-                                                MaxLength="255" TextMode="MultiLine" Rows="2" 
+                                            <asp:TextBox ID="txtEngelAciklama" runat="server" CssClass="form-control"
+                                                MaxLength="255" TextMode="MultiLine" Rows="2"
                                                 placeholder="Engel durumu açıklaması"></asp:TextBox>
                                         </div>
                                     </div>
@@ -730,8 +731,8 @@
                                             <span class="input-group-text align-items-start pt-2">
                                                 <i class="fas fa-comment-alt"></i>
                                             </span>
-                                            <asp:TextBox ID="txtEmeklilikAciklama" runat="server" CssClass="form-control" 
-                                                MaxLength="500" TextMode="MultiLine" Rows="3" 
+                                            <asp:TextBox ID="txtEmeklilikAciklama" runat="server" CssClass="form-control"
+                                                MaxLength="500" TextMode="MultiLine" Rows="3"
                                                 placeholder="Emeklilik durumu açıklaması"></asp:TextBox>
                                         </div>
                                     </div>
@@ -744,27 +745,28 @@
                                     <div class="info-badge mb-0">
                                         <i class="fas fa-info-circle"></i>
                                         Zorunlu alanlar (<span class="text-danger">*</span>) ile işaretlenmiştir
+                                   
                                     </div>
                                     <div class="d-flex flex-wrap gap-2">
-                                        <asp:Button ID="btnEkle" runat="server" 
-                                            Text="💾 Kaydet" 
-                                            CssClass="btn btn-primary" 
-                                            OnClick="btnEkle_Click" 
+                                        <asp:Button ID="btnEkle" runat="server"
+                                            Text="💾 Kaydet"
+                                            CssClass="btn btn-primary"
+                                            OnClick="btnEkle_Click"
                                             ValidationGroup="PersonelKayit" />
-                                        <asp:Button ID="btnGuncelle" runat="server" 
-                                            Text="✏️ Güncelle" 
-                                            CssClass="btn btn-success" 
-                                            OnClick="btnGuncelle_Click" 
+                                        <asp:Button ID="btnGuncelle" runat="server"
+                                            Text="✏️ Güncelle"
+                                            CssClass="btn btn-success"
+                                            OnClick="btnGuncelle_Click"
                                             ValidationGroup="PersonelKayit" />
-                                        <asp:Button ID="btnVazgec" runat="server" 
-                                            Text="↩️ Vazgeç" 
-                                            CssClass="btn btn-secondary" 
-                                            OnClick="btnVazgec_Click" 
+                                        <asp:Button ID="btnVazgec" runat="server"
+                                            Text="↩️ Vazgeç"
+                                            CssClass="btn btn-secondary"
+                                            OnClick="btnVazgec_Click"
                                             CausesValidation="false" />
-                                        <asp:Button ID="btnYazdir" runat="server" 
-                                            Text="🖨️ Yazdır" 
-                                            CssClass="btn btn-info" 
-                                            OnClientClick="return YazdirmaPaneli();" 
+                                        <asp:Button ID="btnYazdir" runat="server"
+                                            Text="🖨️ Yazdır"
+                                            CssClass="btn btn-info"
+                                            OnClientClick="return YazdirmaPaneli();"
                                             CausesValidation="false" />
                                     </div>
                                 </div>

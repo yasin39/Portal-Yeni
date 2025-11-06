@@ -3,7 +3,7 @@
     Inherits="Portal.ModulPersonel.GenelIzin" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="~/wwwroot/css/PERSONELMODUL.css" rel="stylesheet" />
+    <%--<link href="~/wwwroot/css/PERSONELMODUL.css" rel="stylesheet" />--%>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

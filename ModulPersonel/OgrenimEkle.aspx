@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-3">
                     <label class="form-label">Mezuniyet Tarihi</label>
-                    <asp:TextBox ID="txtMezuniyetTarihi" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                    <asp:TextBox ID="txtMezuniyetTarihi" runat="server" CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                 </div>
             </div>
 

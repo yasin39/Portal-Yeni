@@ -2,7 +2,8 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
-using Portal.Base; // For BasePage, logging, DB utils
+using Portal.Base;
+using System.Web;
 
 namespace Portal.ModulPersonel
 {
@@ -116,10 +117,11 @@ namespace Portal.ModulPersonel
                 int selectedId = Convert.ToInt32(GridViewOgrenim.SelectedDataKey.Value);
                 GridViewRow selectedRow = GridViewOgrenim.SelectedRow;
 
-                ddlOgrenimDurumu.SelectedValue = selectedRow.Cells[1].Text; // Ogr_Durumu
-                txtOkul.Text = selectedRow.Cells[2].Text; // Okul
-                txtBolum.Text = selectedRow.Cells[3].Text; // Bolum
-                txtMezuniyetTarihi.Text = selectedRow.Cells[4].Text; // Tarih (format handled in BoundField)
+                // GridView'dan gelen HTML kodlu metni çözerek TextBox'lara atayın.
+                ddlOgrenimDurumu.SelectedValue = HttpUtility.HtmlDecode(selectedRow.Cells[1].Text); // Ogr_Durumu
+                txtOkul.Text = HttpUtility.HtmlDecode(selectedRow.Cells[2].Text); // Okul
+                txtBolum.Text = HttpUtility.HtmlDecode(selectedRow.Cells[3].Text); // Bolum
+                txtMezuniyetTarihi.Text = HttpUtility.HtmlDecode(selectedRow.Cells[4].Text); // Tarih (iyi bir pratiktir)
 
                 btnOgrenimSil.Visible = true;
                 btnOgrenimSil.CommandArgument = selectedId.ToString(); // For delete
@@ -157,7 +159,7 @@ namespace Portal.ModulPersonel
                 ClearInputs();
 
                 LogInfo($"Öğrenim eklendi: {ddlOgrenimDurumu.SelectedItem.Text} - {txtTc.Text}");
-                ShowToast("Öğrenim kaydı başarıyla eklendi.", "success");                                
+                ShowToast("Öğrenim kaydı başarıyla eklendi.", "success");
             }
             catch (Exception ex)
             {
@@ -189,7 +191,7 @@ namespace Portal.ModulPersonel
                 btnOgrenimSil.Visible = false;
 
                 LogInfo($"Öğrenim silindi: ID {id}");
-                ShowToast("Öğrenim kaydı başarıyla silindi.", "success");                                
+                ShowToast("Öğrenim kaydı başarıyla silindi.", "success");
             }
             catch (Exception ex)
             {
@@ -221,12 +223,7 @@ namespace Portal.ModulPersonel
             txtOkul.Text = string.Empty;
             txtBolum.Text = string.Empty;
             txtMezuniyetTarihi.Text = string.Empty;
-        }        
-        
-
-        private void ShowSuccess(string message)
-        {
-            ClientScript.RegisterStartupScript(this.GetType(), "success", $"alert('{message}');", true);
         }
+
     }
 }

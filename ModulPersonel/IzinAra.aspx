@@ -2,7 +2,7 @@
     CodeBehind="IzinAra.aspx.cs" Inherits="Portal.ModulPersonel.IzinAra" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/Content/BELGETAKIPMODUL.css" rel="stylesheet" />
+    <%--<link href="/Content/BELGETAKIPMODUL.css" rel="stylesheet" />--%>
     <style>
         /* Sadece bu sayfaya özel stiller - Ortak stiller Common-Components.css'e taşındı */
 
@@ -89,6 +89,7 @@
             <div class="card-header">
                 <h5 class="card-title mb-0">
                     <i class="fas fa-calendar-day me-2"></i>Bugün İzinde Olanlar
+                   
                     <span class="badge bg-primary ms-2">
                         <asp:Label ID="lblBugunSayisi" runat="server" Text="0"></asp:Label>
                     </span>
@@ -132,7 +133,8 @@
                             <asp:Label ID="lblAdSoyad" runat="server" Text=""></asp:Label>
                         </h5>
                         <p class="mb-1">
-                            <small>Sicil No: <asp:Label ID="lblSicilNo" runat="server" Text=""></asp:Label></small>
+                            <small>Sicil No:
+                                <asp:Label ID="lblSicilNo" runat="server" Text=""></asp:Label></small>
                         </p>
                         <p class="mb-0">
                             <small>
@@ -187,7 +189,7 @@
                         <div class="mb-3">
                             <label class="form-label">Sicil No</label>
                             <div class="input-group">
-                                <asp:TextBox ID="txtSicilNo" runat="server" CssClass="form-control" 
+                                <asp:TextBox ID="txtSicilNo" runat="server" CssClass="form-control"
                                     placeholder="Sicil numarası giriniz" AutoPostBack="true"
                                     OnTextChanged="txtSicilNo_TextChanged"></asp:TextBox>
                                 <asp:Button ID="btnSicilAra" runat="server" CssClass="btn btn-primary"
@@ -214,14 +216,14 @@
 
                         <div class="mb-3">
                             <label class="form-label">Başlangıç Tarihi</label>
-                            <asp:TextBox ID="txtBaslangicTarihi" runat="server" CssClass="form-control"
-                                TextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="txtBaslangicTarihi" runat="server"
+                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Bitiş Tarihi</label>
-                            <asp:TextBox ID="txtBitisTarihi" runat="server" CssClass="form-control"
-                                TextMode="Date"></asp:TextBox>
+                            <asp:TextBox ID="txtBitisTarihi" runat="server"
+                                CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                         </div>
 
                         <div class="d-grid gap-2">
@@ -240,6 +242,7 @@
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="card-title mb-0">
                             <i class="fas fa-list me-2"></i>Arama Sonuçları
+                           
                             <span class="badge bg-primary ms-2">
                                 <asp:Label ID="lblAramaSayisi" runat="server" Text="0"></asp:Label>
                             </span>

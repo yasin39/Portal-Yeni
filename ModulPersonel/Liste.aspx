@@ -2,8 +2,6 @@
     CodeBehind="Liste.aspx.cs" Inherits="Portal.ModulPersonel.Liste" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="/Content/BELGETAKIPMODUL.css" rel="stylesheet" />
-    <link href="/Content/PERSONELMODUL.css" rel="stylesheet" />
     <style>
         /* Sadece bu sayfaya özel stiller - Geri kalan tüm stiller Common-Components.css'e taşındı */
 

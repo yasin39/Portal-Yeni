@@ -1,42 +1,67 @@
-﻿[2025-11-06 18:56:30] [INFO] Yetki kontrolü başarılı: admin - 199
-[2025-11-06 18:56:47] [ERROR] GeneratePdfReport hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulPersonel.IzinEkle.GeneratePdfReport()
+﻿[2025-11-06 21:06:44] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-06 21:06:55] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:06:58] [INFO] Personel arama başarılı: Yasin ÇINAR (9141)
+[2025-11-06 21:07:01] [INFO] Öğrenim seçildi: ID 170
+[2025-11-06 21:07:11] [INFO] Öğrenim silindi: ID 170
+[2025-11-06 21:08:08] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:08:22] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:08:25] [INFO] Personel arama tamamlandı: 0 kayıt bulundu.
+[2025-11-06 21:08:36] [INFO] Personel arama tamamlandı: 1 kayıt bulundu.
+[2025-11-06 21:08:47] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:08:50] [INFO] Personel arama başarılı: Yasin ÇINAR (9141)
+[2025-11-06 21:08:55] [INFO] Personel arama başarılı: Kemal YILMAZ (7430)
+[2025-11-06 21:08:58] [INFO] Öğrenim seçildi: ID 171
+[2025-11-06 21:09:00] [INFO] Öğrenim silindi: ID 171
+[2025-11-06 21:09:05] [INFO] Personel arama başarılı: Yasin ÇINAR (9141)
+[2025-11-06 21:09:15] [INFO] Öğrenim seçildi: ID 169
+[2025-11-06 21:09:20] [INFO] Öğrenim seçildi: ID 168
+[2025-11-06 21:09:37] [INFO] Öğrenim seçildi: ID 169
+[2025-11-06 21:09:39] [INFO] Öğrenim silindi: ID 169
+[2025-11-06 21:10:52] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:14:40] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:17:26] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:20:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-06 21:20:41] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:20:50] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:21:16] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:21:26] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:21:26] [INFO] Yeni personel eklendi: Kemalettin Tuğcu (TC: 96385274121) by Yasin Çınar
+[2025-11-06 21:21:47] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:22:31] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:22:43] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:23:08] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:23:12] [INFO] Personel arama tamamlandı: 1 kayıt bulundu.
+[2025-11-06 21:23:38] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:23:50] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:25:13] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:25:28] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:26:21] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:27:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:33:00] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-06 21:33:07] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:34:57] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:14] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:24] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:28] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:34] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:49] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:53] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:35:53] [INFO] Bugün izinde olan 3 personel listelendi.
+[2025-11-06 21:36:58] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:36:58] [INFO] Bugün izinde olan 3 personel listelendi.
+[2025-11-06 21:37:03] [ERROR] ExecuteDataTable hatası: Conversion failed when converting date and/or time from character string.
+Query: SELECT * FROM personel_izin WHERE 1=1  AND izne_Baslama_Tarihi >= @BaslangicTarihi AND izin_Bitis_Tarihi <= @BitisTarihi ORDER BY id DESC
+[2025-11-06 21:37:03] [ERROR] İzin arama hatası
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulPersonel.IzinAra.btnAra_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulPersonel\IzinAra.aspx.cs:line 271
 =============
 
-[2025-11-06 18:56:47] [ERROR] btnGuncelle_Click hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulPersonel.IzinEkle.btnGuncelle_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-06 18:57:01] [INFO] Yetki kontrolü başarılı: admin - 199
-[2025-11-06 19:03:15] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-06 19:03:23] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-06 19:03:27] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-06 19:03:27] [INFO] Bugün izinde olan 2 personel listelendi.
-[2025-11-06 19:03:38] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-06 19:03:48] [INFO] Yetki kontrolü başarılı: admin - 199
-[2025-11-06 19:08:25] [INFO] Yetki kontrolü başarılı: admin - 199
-[2025-11-06 19:09:26] [INFO] Yetki kontrolü başarılı: admin - 199
-[2025-11-06 19:09:49] [INFO] Yetki kontrolü başarılı: admin - 199
-[2025-11-06 19:10:30] [ERROR] btnExcelExport_Click hatası
-Control 'MainContent_gvIzinler' of type 'GridView' must be placed inside a form tag with runat=server.
-StackTrace (Last): at Portal.ModulPersonel.IzinEkle.btnExcelExport_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulPersonel\IzinEkle.aspx.cs:line 721
-=============
-
-[2025-11-06 19:11:18] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-06 19:11:18] [INFO] Bugün izinde olan 2 personel listelendi.
-[2025-11-06 19:12:18] [INFO] Personel bilgisi getirildi: Kemal YILMAZ (7430)
-[2025-11-06 19:38:44] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-06 19:39:38] [INFO] İzin araması yapıldı. Sonuç: 5 kayıt
-[2025-11-06 19:40:18] [INFO] İzin araması yapıldı. Sonuç: 0 kayıt
-[2025-11-06 19:41:04] [INFO] İzin araması yapıldı. Sonuç: 7 kayıt
-[2025-11-06 19:41:09] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulPersonel.IzinAra.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulPersonel\IzinAra.aspx.cs:line 345
-=============
-
-[2025-11-06 19:41:29] [INFO] İzin araması yapıldı. Sonuç: 0 kayıt
-[2025-11-06 19:47:02] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-06 19:59:47] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-06 19:59:55] [INFO] Personel arama tamamlandı: 89 kayıt bulundu.
+[2025-11-06 21:37:17] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:37:25] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:38:12] [INFO] Yeni birim eklendi: Bİlgi İşlem
+[2025-11-06 21:38:27] [INFO] Birim güncellendi: Bilgi İşlem (ID: 11)
+[2025-11-06 21:39:21] [INFO] Yeni ünvan eklendi: Başmeraklı
+[2025-11-06 21:47:33] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-06 21:47:41] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-06 21:47:54] [INFO] Yeni ünvan eklendi: Başyazılımcı
+[2025-11-06 21:48:10] [INFO] Yeni birim eklendi: Yazılım Şube Müdürlüğü

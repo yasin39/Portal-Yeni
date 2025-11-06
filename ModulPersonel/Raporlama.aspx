@@ -3,7 +3,7 @@
     Inherits="ModulPersonel.PersonelRaporla" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link href="../PERSONELMODUL.css" rel="stylesheet" />
+  <%--  <link href="../PERSONELMODUL.css" rel="stylesheet" />--%>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </asp:Content>
 
