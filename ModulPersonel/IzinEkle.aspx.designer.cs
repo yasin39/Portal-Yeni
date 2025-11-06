@@ -51,15 +51,6 @@ namespace Portal.ModulPersonel
         protected global::System.Web.UI.WebControls.Panel pnlPersonelBilgi;
 
         /// <summary>
-        /// imgPersonel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPersonel;
-
-        /// <summary>
         /// lblPersonelAd control.
         /// </summary>
         /// <remarks>
@@ -274,6 +265,15 @@ namespace Portal.ModulPersonel
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnYeniKayit;
+
+        /// <summary>
+        /// btnTemizle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTemizle;
 
         /// <summary>
         /// pnlIzinGecmis control.

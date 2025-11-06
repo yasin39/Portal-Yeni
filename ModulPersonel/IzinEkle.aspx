@@ -29,10 +29,8 @@
             margin-right: 10px;
         }
 
-        .personel-resim {
-            border: 3px solid #4B7BEC;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        .flatpickr-input {
+            cursor: pointer;
         }
     </style>
 </asp:Content>
@@ -83,11 +81,7 @@
                 <div class="personel-info-card">
                     <div class="row">
                         <div class="col-md-2 text-center">
-                            <asp:Image ID="imgPersonel" runat="server"
-                                CssClass="personel-resim"
-                                Height="130px" Width="100px"
-                                ImageUrl="~/wwwroot/Images/default-avatar.png" />
-                            <br />
+
                             <asp:Label ID="lblPersonelAd" runat="server"
                                 CssClass="fw-bold text-primary mt-2 d-block"
                                 Text="-"></asp:Label>
@@ -179,7 +173,7 @@
                             <i class="fas fa-calendar-day icon-primary"></i>İzne Başlama Tarihi
                         </label>
                         <asp:TextBox ID="txtIzneBaslamaTarihi" runat="server"
-                            CssClass="form-control" placeholder="GG/AA/YYYY"></asp:TextBox>
+                            CssClass="form-control flatpickr-date fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvBaslamaTarihi" runat="server"
                             ControlToValidate="txtIzneBaslamaTarihi"
                             ErrorMessage="Başlama tarihi seçiniz"
@@ -206,7 +200,7 @@
                             <i class="fas fa-calendar-check icon-primary"></i>İzin Bitiş Tarihi
                         </label>
                         <asp:TextBox ID="txtIzinBitisTarihi" runat="server"
-                            CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            CssClass="form-control flatpickr-date" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="col-md-6">
@@ -214,7 +208,7 @@
                             <i class="fas fa-calendar-alt icon-primary"></i>Göreve Başlama Tarihi
                         </label>
                         <asp:TextBox ID="txtGoreveBaslamaTarihi" runat="server"
-                            CssClass="form-control" ReadOnly="true"></asp:TextBox>
+                            CssClass="form-control flatpickr-date" ReadOnly="true"></asp:TextBox>
                     </div>
 
                     <div class="col-md-6">
@@ -271,6 +265,12 @@
                         OnClick="btnYeniKayit_Click"
                         CausesValidation="false"
                         Visible="false" />
+
+                    <asp:Button ID="btnTemizle" runat="server"
+                        CssClass="btn btn-warning btn-lg"
+                        Text="🧹 Temizle"
+                        OnClick="btnTemizle_Click"
+                        CausesValidation="false" />
                 </div>
             </asp:Panel>
         </div>

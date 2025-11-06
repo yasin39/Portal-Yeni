@@ -17,3 +17,15 @@
  OnClick="btnTemizle_Click" CausesValidation="false" Text="🗑️ Temizle" />
 
  ___________________________________________________________________________________
+
+ *** Flatpickr date'i textbox'a eklemek için tek yazılması  gereken CssClass'a fp-date eklemek**** Aşağıda örnekleri var
+ 
+ <asp:TextBox ID="txtIzneBaslamaTarihi" runat="server" 
+             CssClass="form-control fp-date"></asp:TextBox>
+             
+<asp:TextBox ID="txtIzinBitisTarihi" runat="server" 
+             CssClass="form-control fp-date-readonly"></asp:TextBox>
+
+<asp:TextBox ID="txtToplantiZamani" runat="server" 
+             CssClass="form-control fp-datetime"></asp:TextBox>
+

@@ -424,7 +424,7 @@
         <script src="../wwwroot/js/bootstrap.bundle.min.js"></script>
         <script src="../wwwroot/js/flatpickr.js"></script>
         <script src="../wwwroot/js/tr.js"></script>
-
+        <script src="../Scripts/FlatPickr_MerkeziBaslatici.js"></script>
         <!--  Custom Scripts for Horizontal Menu -->
         <script>
             // Hover menu açma/kapama

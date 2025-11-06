@@ -109,7 +109,7 @@
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="<%=txtTarih.ClientID%>">Tarih (Kurumda Çalıştığı Tarih)</label>
-                                <asp:TextBox ID="txtTarih" runat="server" CssClass="form-control" TextMode="Date" placeholder="GG/AA/YYYY"></asp:TextBox>
+                                <asp:TextBox ID="txtTarih" runat="server" CssClass="form-control fp-date" placeholder="GG/AA/YYYY"></asp:TextBox>
                             </div>
                         </div>
                         <div class="row">
@@ -140,9 +140,19 @@
                     <h5 class="mb-0"><i class="fas fa-list me-2"></i>Arama Sonuçları <span class="badge bg-light text-dark ms-2">Bulunan: <asp:Label ID="lblBulunanSayi" runat="server"></asp:Label></span></h5>
                 </div>
                 <div class="card-body p-0">
-                    <div class="table-responsive">
-                        <asp:GridView ID="gvPersonelAra" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-hover mb-0" ShowHeaderWhenEmpty="True" EmptyDataText="Arama kriterlerine uygun kayıt bulunamadı.">
+                    <div class="table-responsive">                        
+                        <asp:GridView ID="gvPersonelAra" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-hover mb-0" 
+                            ShowHeaderWhenEmpty="True" EmptyDataText="Arama kriterlerine uygun kayıt bulunamadı." 
+                            OnRowCommand="gvPersonelAra_RowCommand" DataKeyNames="Personelid">
                             <Columns>                                
+                                <asp:TemplateField HeaderText="İşlem">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="btnGuncelle" runat="server" CssClass="btn btn-sm btn-primary" 
+                                            CommandName="Guncelle" CommandArgument='<%# Eval("Personelid") %>' ToolTip="Güncelle">
+                                            <i class="fas fa-edit"></i>
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:BoundField DataField="TcKimlikNo" HeaderText="TC No" />
                                 <asp:BoundField DataField="Adi" HeaderText="Adı" />
                                 <asp:BoundField DataField="Soyad" HeaderText="Soyadı" />
@@ -184,4 +194,94 @@
             </div>
         </div>
     </div>
+
+    <!-- ==> Modal Popup - Personel Güncelleme -->
+    <div class="modal fade" id="modalGuncelle" tabindex="-1" aria-labelledby="modalGuncelleLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="modalGuncelleLabel"><i class="fas fa-user-edit me-2"></i>Personel Bilgilerini Güncelle</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Kapat"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:HiddenField ID="hfPersonelId" runat="server" />
+                    
+                    <div class="row g-3">
+                        <!-- Kişisel Bilgiler -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2 mb-3"><i class="fas fa-user me-2"></i>Kişisel Bilgiler</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">TC Kimlik No <span class="text-danger">*</span></label>
+                            <asp:TextBox ID="txtModalTcNo" runat="server" CssClass="form-control" MaxLength="11"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Adı <span class="text-danger">*</span></label>
+                            <asp:TextBox ID="txtModalAdi" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Soyadı <span class="text-danger">*</span></label>
+                            <asp:TextBox ID="txtModalSoyadi" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        
+                        <!-- Görev Bilgileri -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2 mb-3 mt-3"><i class="fas fa-briefcase me-2"></i>Görev Bilgileri</h6>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Sicil No</label>
+                            <asp:TextBox ID="txtModalSicilNo" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Unvan</label>
+                            <asp:DropDownList ID="ddlModalUnvan" runat="server" CssClass="form-select"></asp:DropDownList>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Mesleki Unvan</label>
+                            <asp:TextBox ID="txtModalMeslekiUnvan" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="form-label">Kadro Derece</label>
+                            <asp:TextBox ID="txtModalKadroDerece" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        
+                        <!-- İletişim Bilgileri -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2 mb-3 mt-3"><i class="fas fa-phone me-2"></i>İletişim Bilgileri</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Cep Telefonu</label>
+                            <asp:TextBox ID="txtModalCepTel" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">E-Posta</label>
+                            <asp:TextBox ID="txtModalMail" runat="server" CssClass="form-control" TextMode="Email"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Ev Telefonu</label>
+                            <asp:TextBox ID="txtModalEvTel" runat="server" CssClass="form-control"></asp:TextBox>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Adres</label>
+                            <asp:TextBox ID="txtModalAdres" runat="server" CssClass="form-control" TextMode="MultiLine" Rows="2"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        <i class="fas fa-times me-1"></i>Kapat
+                    </button>
+                    <asp:Button ID="btnModalKaydet" runat="server" Text="Kaydet" CssClass="btn btn-primary" OnClick="btnModalKaydet_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==> Modal açma için JavaScript -->
+    <script type="text/javascript">
+        function openModal() {
+            var modal = new bootstrap.Modal(document.getElementById('modalGuncelle'));
+            modal.show();
+        }
+    </script>
 </asp:Content>

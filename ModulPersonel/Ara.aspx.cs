@@ -39,9 +39,16 @@ namespace Portal.ModulPersonel
             lblToplamSayi.Text = toplamSayi.ToString();
 
             // Dropdown'ları doldur
+            DoldurDropDownlar();
+        }
+
+        //** Tüm dropdown'ları doldurma işlemi tek metoda alındı ve tekrar kontrolü eklendi
+        private void DoldurDropDownlar()
+        {
             // Unvan
-            query = "SELECT Unvan FROM personel_unvan ORDER BY Unvan ASC";
-            PopulateDropDownList(ddlUnvan, query, "Unvan", "Unvan", false); // Hepsi zaten ekli
+            string query = "SELECT Unvan FROM personel_unvan ORDER BY Unvan ASC";
+            PopulateDropDownList(ddlUnvan, query, "Unvan", "Unvan", false);
+            PopulateDropDownList(ddlModalUnvan, query, "Unvan", "Unvan", true); //** Modal için de doldur
 
             // Mesleki Unvan (DISTINCT ile)
             query = "SELECT DISTINCT ISNULL(MeslekiUnvan, '') AS MeslekiUnvan FROM personel WHERE MeslekiUnvan IS NOT NULL ORDER BY MeslekiUnvan ASC";
@@ -55,45 +62,180 @@ namespace Portal.ModulPersonel
             query = "SELECT Sube_Adi FROM subeler ORDER BY Sube_Adi ASC";
             PopulateDropDownList(ddlBirim, query, "Sube_Adi", "Sube_Adi", false);
 
-            // Statik dropdown'ları doldur
-            ddlStatu.Items.Add(new ListItem("Memur"));
-            ddlStatu.Items.Add(new ListItem("İşçi"));
-            ddlStatu.Items.Add(new ListItem(Sabitler.FirmaPersoneli));
-            ddlStatu.Items.Add(new ListItem(Sabitler.IskurIsciTYP));
-            ddlStatu.Items.Add(new ListItem("Sözleşmeli Personel (4-B)"));
-            ddlStatu.Items.Add(new ListItem("İşçi (375 KHK)"));
+            //** Statik dropdown'ları doldur - TEKRAR KONTROLÜ EKLENDI
+            // Statü
+            if (ddlStatu.Items.Count <= 1) //** "Hepsi" zaten var, diğerleri yoksa ekle
+            {
+                ddlStatu.Items.Add(new ListItem("Memur"));
+                ddlStatu.Items.Add(new ListItem("İşçi"));
+                ddlStatu.Items.Add(new ListItem(Sabitler.FirmaPersoneli));
+                ddlStatu.Items.Add(new ListItem(Sabitler.IskurIsciTYP));
+                ddlStatu.Items.Add(new ListItem("Sözleşmeli Personel (4-B)"));
+                ddlStatu.Items.Add(new ListItem("İşçi (375 KHK)"));
+            }
 
-            ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.KadroluAktifCalisan));
-            ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.GeciciGorevliAktifCalisan));
-            ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.GeciciGorevdePasifCalisan));
-            ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.FirmaPersoneli));
-            ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.IskurIsciTYP));
+            // Çalışma Durumu
+            if (ddlCalismaDurumu.Items.Count <= 1) //** Tekrar kontrolü
+            {
+                ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.KadroluAktifCalisan));
+                ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.GeciciGorevliAktifCalisan));
+                ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.GeciciGorevdePasifCalisan));
+                ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.FirmaPersoneli));
+                ddlCalismaDurumu.Items.Add(new ListItem(Sabitler.IskurIsciTYP));
+            }
 
-            ddlOgrenim.Items.Add(new ListItem("Lise"));
-            ddlOgrenim.Items.Add(new ListItem("Ön Lisans"));
-            ddlOgrenim.Items.Add(new ListItem("Lisans"));
-            ddlOgrenim.Items.Add(new ListItem("Yüksek Lisans"));
-            ddlOgrenim.Items.Add(new ListItem("Doktora"));
+            // Öğrenim
+            if (ddlOgrenim.Items.Count <= 1) //** Tekrar kontrolü
+            {
+                ddlOgrenim.Items.Add(new ListItem("Lise"));
+                ddlOgrenim.Items.Add(new ListItem("Ön Lisans"));
+                ddlOgrenim.Items.Add(new ListItem("Lisans"));
+                ddlOgrenim.Items.Add(new ListItem("Yüksek Lisans"));
+                ddlOgrenim.Items.Add(new ListItem("Doktora"));
+            }
 
-            ddlKanGrubu.Items.Add(new ListItem("0 Rh+"));
-            ddlKanGrubu.Items.Add(new ListItem("0 Rh-"));
-            ddlKanGrubu.Items.Add(new ListItem("A Rh+"));
-            ddlKanGrubu.Items.Add(new ListItem("A Rh-"));
-            ddlKanGrubu.Items.Add(new ListItem("B Rh+"));
-            ddlKanGrubu.Items.Add(new ListItem("B Rh-"));
-            ddlKanGrubu.Items.Add(new ListItem("AB Rh+"));
-            ddlKanGrubu.Items.Add(new ListItem("AB Rh-"));
+            // Kan Grubu
+            if (ddlKanGrubu.Items.Count <= 1) //** Tekrar kontrolü
+            {
+                ddlKanGrubu.Items.Add(new ListItem("0 Rh+"));
+                ddlKanGrubu.Items.Add(new ListItem("0 Rh-"));
+                ddlKanGrubu.Items.Add(new ListItem("A Rh+"));
+                ddlKanGrubu.Items.Add(new ListItem("A Rh-"));
+                ddlKanGrubu.Items.Add(new ListItem("B Rh+"));
+                ddlKanGrubu.Items.Add(new ListItem("B Rh-"));
+                ddlKanGrubu.Items.Add(new ListItem("AB Rh+"));
+                ddlKanGrubu.Items.Add(new ListItem("AB Rh-"));
+            }
 
-            ddlMedeniHal.Items.Add(new ListItem("Bekar"));
-            ddlMedeniHal.Items.Add(new ListItem("Evli"));
-            ddlMedeniHal.Items.Add(new ListItem("Boşanmış"));
-            ddlMedeniHal.Items.Add(new ListItem("Dul"));
+            // Medeni Hal
+            if (ddlMedeniHal.Items.Count <= 1) //** Tekrar kontrolü
+            {
+                ddlMedeniHal.Items.Add(new ListItem("Bekar"));
+                ddlMedeniHal.Items.Add(new ListItem("Evli"));
+                ddlMedeniHal.Items.Add(new ListItem("Boşanmış"));
+                ddlMedeniHal.Items.Add(new ListItem("Dul"));
+            }
 
-            ddlCinsiyet.Items.Add(new ListItem("Erkek"));
-            ddlCinsiyet.Items.Add(new ListItem("Kadın"));
+            // Cinsiyet
+            if (ddlCinsiyet.Items.Count <= 1) //** Tekrar kontrolü
+            {
+                ddlCinsiyet.Items.Add(new ListItem("Erkek"));
+                ddlCinsiyet.Items.Add(new ListItem("Kadın"));
+            }
 
-            ddlDurum.Items.Add(new ListItem(Sabitler.Aktif));
-            ddlDurum.Items.Add(new ListItem("Pasif"));
+            // Durum
+            if (ddlDurum.Items.Count <= 1) //** Tekrar kontrolü
+            {
+                ddlDurum.Items.Add(new ListItem(Sabitler.Aktif));
+                ddlDurum.Items.Add(new ListItem("Pasif"));
+            }
+        }
+
+        //** GridView RowCommand eventi - Güncelle butonuna tıklandığında modal açılır
+        protected void gvPersonelAra_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Guncelle")
+            {
+                int personelId = Convert.ToInt32(e.CommandArgument);
+                PersonelBilgileriniYukle(personelId);
+                ScriptManager.RegisterStartupScript(this, GetType(), "openModal", "openModal();", true);
+            }
+        }
+
+        //** Seçilen personelin bilgilerini modal'a yükler
+        private void PersonelBilgileriniYukle(int personelId)
+        {
+            try
+            {
+                string query = "SELECT * FROM personel WHERE Personelid = @Id";
+                var parameters = new List<SqlParameter> { CreateParameter("@Id", personelId) };
+                DataTable dt = ExecuteDataTable(query, parameters);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    hfPersonelId.Value = personelId.ToString();
+                    txtModalTcNo.Text = row["TcKimlikNo"].ToString();
+                    txtModalAdi.Text = row["Adi"].ToString();
+                    txtModalSoyadi.Text = row["Soyad"].ToString();
+                    txtModalSicilNo.Text = row["SicilNo"].ToString();
+
+                    //** Dropdown seçimini ayarla
+                    if (ddlModalUnvan.Items.FindByText(row["Unvan"].ToString()) != null)
+                    {
+                        ddlModalUnvan.SelectedValue = row["Unvan"].ToString();
+                    }
+
+                    txtModalMeslekiUnvan.Text = row["MeslekiUnvan"].ToString();
+                    txtModalKadroDerece.Text = row["KadroDerece"].ToString();
+                    txtModalCepTel.Text = row["CepTelefonu"].ToString();
+                    txtModalMail.Text = row["MailAdresi"].ToString();
+                    txtModalEvTel.Text = row["EvTelefonu"].ToString();
+                    txtModalAdres.Text = row["Adres"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("Personel bilgileri yükleme hatası", ex);
+                ShowError("Personel bilgileri yüklenirken bir hata oluştu.");
+            }
+        }
+
+        //** Modal'daki Kaydet butonuna tıklandığında güncelleme yapar
+        protected void btnModalKaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int personelId = Convert.ToInt32(hfPersonelId.Value);
+
+                string query = @"UPDATE personel SET 
+                    TcKimlikNo = @TcKimlikNo,
+                    Adi = @Adi,
+                    Soyad = @Soyad,
+                    SicilNo = @SicilNo,
+                    Unvan = @Unvan,
+                    MeslekiUnvan = @MeslekiUnvan,
+                    KadroDerece = @KadroDerece,
+                    CepTelefonu = @CepTelefonu,
+                    MailAdresi = @MailAdresi,
+                    EvTelefonu = @EvTelefonu,
+                    Adres = @Adres
+                    WHERE Personelid = @Id";
+
+                var parameters = new List<SqlParameter>
+                {
+                    CreateParameter("@TcKimlikNo", txtModalTcNo.Text.Trim()),
+                    CreateParameter("@Adi", txtModalAdi.Text.Trim()),
+                    CreateParameter("@Soyad", txtModalSoyadi.Text.Trim()),
+                    CreateParameter("@SicilNo", txtModalSicilNo.Text.Trim()),
+                    CreateParameter("@Unvan", ddlModalUnvan.SelectedValue),
+                    CreateParameter("@MeslekiUnvan", txtModalMeslekiUnvan.Text.Trim()),
+                    CreateParameter("@KadroDerece", txtModalKadroDerece.Text.Trim()),
+                    CreateParameter("@CepTelefonu", txtModalCepTel.Text.Trim()),
+                    CreateParameter("@MailAdresi", txtModalMail.Text.Trim()),
+                    CreateParameter("@EvTelefonu", txtModalEvTel.Text.Trim()),
+                    CreateParameter("@Adres", txtModalAdres.Text.Trim()),
+                    CreateParameter("@Id", personelId)
+                };
+
+                int result = ExecuteNonQuery(query, parameters);
+
+                if (result > 0)
+                {
+                    LogInfo($"Personel güncellendi: ID={personelId}, Ad={txtModalAdi.Text} {txtModalSoyadi.Text}");
+                    ShowToast("Personel bilgileri başarıyla güncellendi.","success");
+                    AramaYap(); //** GridView'i yeniden yükle
+                }
+                else
+                {
+                    ShowToast("Güncelleme işlemi başarısız oldu.","danger");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("Personel güncelleme hatası", ex);
+                ShowError("Güncelleme sırasında bir hata oluştu.");
+            }
         }
 
         protected void btnAra_Click(object sender, EventArgs e)
@@ -243,7 +385,7 @@ namespace Portal.ModulPersonel
         {
             if (gvPersonelAra.Rows.Count == 0)
             {
-                ShowToast("Export edilecek veri bulunamadı.","danger");
+                ShowToast("Export edilecek veri bulunamadı.", "danger");
                 return;
             }
             ExportGridViewToExcel(gvPersonelAra, "personel_ara_" + DateTime.Now.ToString("yyyyMMdd") + ".xls");

@@ -7,6 +7,7 @@ using Portal.Base;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
+using System.Web;
 
 namespace Portal.ModulPersonel
 {
@@ -47,14 +48,19 @@ namespace Portal.ModulPersonel
             }
         }
 
+        //** Veritabanı kolon isimleri düzeltildi - tümü küçük harf olmalı
         private void LoadPersonelInfo()
         {
             try
             {
+                //** SELECT sorgusundaki kolon isimleri veritabanı yapısına göre düzeltildi
+                //** Devredenizin -> Devredenizin (doğru)
+                //** cariyilizni -> cariyilizni (doğru) 
+                //** toplamizin -> toplamizin (doğru)
                 string query = @"SELECT TcKimlikNo, Adi, Soyad, Unvan, GorevYaptigiBirim, 
-                                Statu, Devredenizin, cariyilizni, toplamizin, Resim 
+                                Statu, Devredenizin, cariyilizni, toplamizin 
                                 FROM personel 
-                                WHERE SicilNo = @SicilNo";
+                                WHERE SicilNo = @SicilNo AND Durum = 'Aktif'";
 
                 var parameters = CreateParameters(("@SicilNo", txtSicilNo.Text.Trim()));
                 DataTable dt = ExecuteDataTable(query, parameters);
@@ -70,18 +76,25 @@ namespace Portal.ModulPersonel
                     txtBirim.Text = row["GorevYaptigiBirim"].ToString();
                     txtStatu.Text = row["Statu"].ToString();
 
-                    lblDevredenIzin.Text = row["Devredenizin"]?.ToString() ?? "0";
-                    lblCariIzin.Text = row["cariyilizni"]?.ToString() ?? "0";
+                    //** İzin değerlerini güvenli bir şekilde parse et
+                    int devredenIzin = 0;
+                    int cariIzin = 0;
 
-                    int devredenIzin = Convert.ToInt32(lblDevredenIzin.Text);
-                    int cariIzin = Convert.ToInt32(lblCariIzin.Text);
-                    lblToplamIzin.Text = (devredenIzin + cariIzin).ToString();
-
-                    string resimYolu = row["Resim"]?.ToString();
-                    if (!string.IsNullOrEmpty(resimYolu))
+                    //** DBNull kontrolü ekleyerek güvenli parse
+                    if (row["Devredenizin"] != DBNull.Value && row["Devredenizin"] != null)
                     {
-                        imgPersonel.ImageUrl = resimYolu;
+                        int.TryParse(row["Devredenizin"].ToString(), out devredenIzin);
                     }
+
+                    if (row["cariyilizni"] != DBNull.Value && row["cariyilizni"] != null)
+                    {
+                        int.TryParse(row["cariyilizni"].ToString(), out cariIzin);
+                    }
+
+                    //** Label'lara değerleri ata
+                    lblDevredenIzin.Text = devredenIzin.ToString();
+                    lblCariIzin.Text = cariIzin.ToString();
+                    lblToplamIzin.Text = (devredenIzin + cariIzin).ToString();
 
                     pnlPersonelBilgi.Visible = true;
                     pnlIzinDetay.Visible = true;
@@ -93,14 +106,14 @@ namespace Portal.ModulPersonel
                 }
                 else
                 {
-                    ShowToast("Personel bulunamadı", "error");
+                    ShowToast("Personel bulunamadı veya pasif durumda", "danger");
                     ClearForm();
                 }
             }
             catch (Exception ex)
             {
                 LogError("LoadPersonelInfo hatası", ex);
-                ShowToast("Personel bilgileri yüklenirken hata oluştu", "error");
+                ShowToast("Personel bilgileri yüklenirken hata oluştu: " + ex.Message, "danger");
             }
         }
 
@@ -121,7 +134,7 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("LoadIzinGecmisi hatası", ex);
-                ShowToast("İzin geçmişi yüklenirken hata oluştu", "error");
+                ShowToast("İzin geçmişi yüklenirken hata oluştu", "danger");
             }
         }
 
@@ -134,6 +147,7 @@ namespace Portal.ModulPersonel
             }
         }
 
+        //** Saatlik izin hesaplama hatası düzeltildi - 0.5 gün için aynı gün içinde kalacak
         private void CalculateDates()
         {
             try
@@ -145,8 +159,23 @@ namespace Portal.ModulPersonel
 
                 if (statu == "Memur")
                 {
-                    DateTime bitisTarihi = baslamaTarihi.AddDays(izinSuresi).AddDays(-1);
-                    DateTime goreveBaslama = baslamaTarihi.AddDays(izinSuresi);
+                    //** 0.5 gün için bitiş tarihi hesaplaması düzeltildi
+                    //** Önce toplam gün sayısını hesapla (1 gün veya daha az için -1 yapma)
+                    DateTime bitisTarihi;
+                    DateTime goreveBaslama;
+
+                    if (izinSuresi < 1)
+                    {
+                        // Saatlik izin (0.5 gün gibi) - aynı gün
+                        bitisTarihi = baslamaTarihi;
+                        goreveBaslama = baslamaTarihi;
+                    }
+                    else
+                    {
+                        // Normal izin hesabı
+                        bitisTarihi = baslamaTarihi.AddDays(izinSuresi).AddDays(-1);
+                        goreveBaslama = baslamaTarihi.AddDays(izinSuresi);
+                    }
 
                     txtIzinBitisTarihi.Text = FormatDateTurkish(bitisTarihi);
                     txtGoreveBaslamaTarihi.Text = FormatDateTurkish(goreveBaslama);
@@ -155,8 +184,22 @@ namespace Portal.ModulPersonel
                 {
                     int pazarSayisi = CalculateSundayCount(baslamaTarihi, izinSuresi);
 
-                    DateTime bitisTarihi = baslamaTarihi.AddDays(izinSuresi + pazarSayisi).AddDays(-1);
-                    DateTime goreveBaslama = baslamaTarihi.AddDays(izinSuresi + pazarSayisi);
+                    //** İşçi için de saatlik izin düzeltmesi
+                    DateTime bitisTarihi;
+                    DateTime goreveBaslama;
+
+                    if (izinSuresi < 1)
+                    {
+                        // Saatlik izin - aynı gün
+                        bitisTarihi = baslamaTarihi;
+                        goreveBaslama = baslamaTarihi;
+                    }
+                    else
+                    {
+                        // Normal izin hesabı
+                        bitisTarihi = baslamaTarihi.AddDays(izinSuresi + pazarSayisi).AddDays(-1);
+                        goreveBaslama = baslamaTarihi.AddDays(izinSuresi + pazarSayisi);
+                    }
 
                     txtIzinBitisTarihi.Text = FormatDateTurkish(bitisTarihi);
                     txtGoreveBaslamaTarihi.Text = FormatDateTurkish(goreveBaslama);
@@ -165,6 +208,35 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("CalculateDates hatası", ex);
+            }
+        }
+
+        //** Yeni Temizle butonu event handler'ı eklendi
+        protected void btnTemizle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Form alanlarını temizle
+                ClearFormControls(txtIzinSuresi, txtIzneBaslamaTarihi, txtIzinBitisTarihi,
+                    txtGoreveBaslamaTarihi, txtAciklama);
+                ResetDropDownLists(ddlIzinTuru);
+
+                // Mesaj alanını gizle
+                lblMesaj.Visible = false;
+
+                // Seçili satırı kaldır
+                if (gvIzinler.SelectedIndex >= 0)
+                {
+                    gvIzinler.SelectedIndex = -1;
+                }
+
+                // Bilgi mesajı göster
+                ShowToast("Form alanları temizlendi", "info");
+            }
+            catch (Exception ex)
+            {
+                LogError("btnTemizle_Click hatası", ex);
+                ShowToast("Form temizlenirken hata oluştu", "danger");
             }
         }
 
@@ -205,8 +277,25 @@ namespace Portal.ModulPersonel
     System.Globalization.CultureInfo.InvariantCulture);
                 double izinSuresi = Convert.ToDouble(txtIzinSuresi.Text.Replace(',', '.'));
 
-                DateTime bitisTarihi = Convert.ToDateTime(txtIzinBitisTarihi.Text);
-                DateTime goreveBaslama = Convert.ToDateTime(txtGoreveBaslamaTarihi.Text);
+                if (izinTuru == "Yıllık İzin")
+                {
+                    int devredenIzin = Convert.ToInt32(lblDevredenIzin.Text);
+                    int cariIzin = Convert.ToInt32(lblCariIzin.Text);
+                    int toplamIzin = devredenIzin + cariIzin;
+                    int kullanilanIzin = (int)izinSuresi;
+
+                    if (kullanilanIzin > toplamIzin)
+                    {
+                        // Bakiye yetersizse, hata ver ve HİÇBİR işlem yapmadan metottan çık.
+                        ShowToast("Toplam izinden fazla izin kullanılamaz. Kayıt yapılmadı.", "danger");
+                        return; // <-- Bu return, INSERT işlemini engeller
+                    }
+                }
+
+                DateTime bitisTarihi = DateTime.ParseExact(txtIzinBitisTarihi.Text.Replace(".", "/"), "dd/MM/yyyy",
+                    System.Globalization.CultureInfo.InvariantCulture);
+                DateTime goreveBaslama = DateTime.ParseExact(txtGoreveBaslamaTarihi.Text.Replace(".", "/"), "dd/MM/yyyy",
+                    System.Globalization.CultureInfo.InvariantCulture);
 
                 string query = @"INSERT INTO personel_izin 
                                 (Sicil_No, Tc_No, Adi_Soyadi, Statu, Devreden_izin, Cari_izin, 
@@ -256,7 +345,7 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("btnKaydet_Click hatası", ex);
-                ShowToast("İzin kaydı eklenirken hata oluştu", "error");
+                ShowToast("İzin kaydı eklenirken hata oluştu", "danger");
             }
         }
 
@@ -304,13 +393,7 @@ namespace Portal.ModulPersonel
                 int devredenIzin = Convert.ToInt32(lblDevredenIzin.Text);
                 int cariIzin = Convert.ToInt32(lblCariIzin.Text);
                 int toplamIzin = devredenIzin + cariIzin;
-                int kullanilanIzin = (int)izinSuresi;
-
-                if (kullanilanIzin > toplamIzin)
-                {
-                    ShowToast("Toplam izinden fazla izin kullanılamaz", "error");
-                    return;
-                }
+                int kullanilanIzin = (int)izinSuresi;                
 
                 int yeniDevredenIzin = devredenIzin;
                 int yeniCariIzin = cariIzin;
@@ -362,7 +445,7 @@ namespace Portal.ModulPersonel
                 int id = (int)gvIzinler.DataKeys[gvIzinler.SelectedRow.RowIndex].Value;
                 if (id == 0)
                 {
-                    ShowToast("Geçersiz kayıt seçimi", "error");
+                    ShowToast("Geçersiz kayıt seçimi", "danger");
                     return;
                 }
 
@@ -376,7 +459,7 @@ namespace Portal.ModulPersonel
 
                 if (dt.Rows.Count == 0)
                 {
-                    ShowToast("Seçilen izin detayı bulunamadı", "error");
+                    ShowToast("Seçilen izin detayı bulunamadı", "danger");
                     ResetForm();
                     return;
                 }
@@ -437,7 +520,7 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("gvIzinler_SelectedIndexChanged hatası", ex);
-                ShowToast("İzin seçilirken kritik bir hata oluştu", "error");
+                ShowToast("İzin seçilirken kritik bir hata oluştu", "danger");
             }
         }
 
@@ -508,7 +591,7 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("btnGuncelle_Click hatası", ex);
-                ShowToast("İzin kaydı güncellenirken hata oluştu", "error");
+                ShowToast("İzin kaydı güncellenirken hata oluştu", "danger");
             }
         }
 
@@ -528,7 +611,7 @@ namespace Portal.ModulPersonel
 
                 if (dt.Rows.Count == 0)
                 {
-                    ShowToast("Silinecek izin bulunamadı", "error");
+                    ShowToast("Silinecek izin bulunamadı", "danger");
                     return;
                 }
 
@@ -552,7 +635,7 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("btnSil_Click hatası", ex);
-                ShowToast("İzin kaydı silinirken hata oluştu", "error");
+                ShowToast("İzin kaydı silinirken hata oluştu", "danger");
             }
         }
 
@@ -627,7 +710,6 @@ namespace Portal.ModulPersonel
             lblDevredenIzin.Text = "0";
             lblCariIzin.Text = "0";
             lblToplamIzin.Text = "0";
-            imgPersonel.ImageUrl = "~/wwwroot/Images/default-avatar.png";
             ResetForm();
         }
 
@@ -641,7 +723,7 @@ namespace Portal.ModulPersonel
             catch (Exception ex)
             {
                 LogError("btnExcelExport_Click hatası", ex);
-                ShowToast("Excel dışa aktarılırken hata oluştu", "error");
+                ShowToast("Excel dışa aktarılırken hata oluştu", "danger");
             }
         }
 
@@ -753,12 +835,12 @@ namespace Portal.ModulPersonel
                 Response.ContentType = "application/pdf";
                 Response.AddHeader("Content-Disposition", $"attachment; filename={fileName}");
                 Response.BinaryWrite(pdfBytes);
-                Response.End();
+                HttpContext.Current.ApplicationInstance.CompleteRequest();
             }
             catch (Exception ex)
             {
                 LogError("GeneratePdfReport hatası", ex);
-                ShowToast("PDF oluşturulurken hata oluştu", "error");
+                ShowToast("PDF oluşturulurken hata oluştu", "danger");
             }
         }
 
