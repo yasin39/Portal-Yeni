@@ -429,5 +429,41 @@ namespace Portal
         }
 
         #endregion
+
+        /// <summary>
+        /// Veritabanından sistem parametresi okur
+        /// </summary>
+        /// <param name="parametreAdi">Parametre adı</param>
+        /// <param name="defaultDeger">Parametre bulunamazsa döndürülecek varsayılan değer</param>
+        /// <returns>Parametre değeri</returns>
+        public static string GetSistemParametresi(string parametreAdi, string defaultDeger = "")
+        {
+            try
+            {
+                string query = @"
+            SELECT Parametre_Degeri 
+            FROM sistem_parametreleri 
+            WHERE Parametre_Adi = @ParametreAdi";
+
+                var parameters = BasePage.CreateParameters(
+                    ("@ParametreAdi", parametreAdi)
+                );
+
+                DataTable dt = BasePage.ExecuteDataTable(query, parameters);
+
+                if (dt.Rows.Count > 0 && dt.Rows[0]["Parametre_Degeri"] != DBNull.Value)
+                {
+                    return dt.Rows[0]["Parametre_Degeri"].ToString();
+                }
+
+                BasePage.LogWarning($"Sistem parametresi bulunamadı: {parametreAdi}, varsayılan döndürülüyor.");
+                return defaultDeger;
+            }
+            catch (Exception ex)
+            {
+                BasePage.LogError($"GetSistemParametresi hatası: {parametreAdi}", ex);
+                return defaultDeger;
+            }
+        }
     }
 }

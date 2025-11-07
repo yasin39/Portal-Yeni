@@ -1,279 +1,71 @@
-﻿[2025-11-07 08:30:55] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 08:31:08] [INFO] Yetki kontrolü başarılı: admin - 601
-[2025-11-07 08:31:35] [INFO] Başvuru arama başarılı: 2025001 - Kullanıcı: Yasin Çınar
-[2025-11-07 08:45:20] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 08:45:25] [INFO] Yetki kontrolü başarılı: admin - 601
-[2025-11-07 08:45:38] [INFO] Başvuru arama başarılı: 2025001 - Kullanıcı: Yasin Çınar
-[2025-11-07 08:46:48] [INFO] Dosya yüklendi: 2025001_OTV-YTS-main.zip
-[2025-11-07 08:46:48] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2025001, İşlem: Başvuru güncellendi.
-[2025-11-07 08:46:48] [INFO] CİMER güncelleme: 2025001 - Yasin Çınar
-[2025-11-07 08:47:46] [INFO] Başvuru arama başarılı: 2025001 - Kullanıcı: Yasin Çınar
-[2025-11-07 08:48:42] [INFO] Başvuru arama başarılı: 2025001 - Kullanıcı: Yasin Çınar
-[2025-11-07 08:49:48] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2025001, İşlem: Başvuru güncellendi.
-[2025-11-07 08:49:48] [INFO] CİMER güncelleme: 2025001 - Yasin Çınar
-[2025-11-07 08:50:19] [INFO] Başvuru arama başarılı: 2025001 - Kullanıcı: Yasin Çınar
-[2025-11-07 08:55:04] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 08:55:11] [INFO] Yetki kontrolü başarılı: UB8062 - 601
-[2025-11-07 08:57:04] [INFO] Yetki kontrolü başarılı: UB8062 - 600
-[2025-11-07 08:57:04] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 0
-[2025-11-07 09:01:04] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 09:01:04] [WARNING] Başarısız giriş denemesi: ub9141
-[2025-11-07 09:49:21] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 09:49:21] [WARNING] Başarısız giriş denemesi: ub9141
-[2025-11-07 09:57:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 09:57:45] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 09:57:45] [INFO] Başarılı giriş: ub9141
-[2025-11-07 09:57:45] [ERROR] Login hatası
+﻿[2025-11-07 22:52:37] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 22:52:37] [INFO] Başarılı giriş: UB10947
+[2025-11-07 22:52:37] [ERROR] Login hatası
 Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 75
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 09:58:28] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 09:58:28] [WARNING] Başarısız giriş denemesi: ub9141
-[2025-11-07 09:58:32] [INFO] Başarılı giriş: ub9141
-[2025-11-07 09:58:32] [ERROR] Login hatası
+[2025-11-07 22:52:52] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 22:52:54] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 22:53:21] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 22:53:21] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503146809, İşlem: Tekrar Cevap Verildi
+[2025-11-07 22:53:21] [INFO] Başvuru güncellendi ve harekete eklendi: 2503146809 - Tekrar Cevap Verildi
+[2025-11-07 22:53:23] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 22:56:46] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 22:57:09] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 22:57:09] [INFO] Başarılı giriş: UB10947
+[2025-11-07 22:57:09] [ERROR] Login hatası
 Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 75
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 10:03:52] [INFO] Şifre değiştirildi: UB9141
-[2025-11-07 10:03:54] [ERROR] Şifre değiştirme hatası
+[2025-11-07 22:57:20] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 22:57:22] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 22:57:23] [ERROR] Excel export hatası
 Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
+StackTrace (Last): at Portal.ModulCimer.Incelenen.btnExcel_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulCimer\Incelenen.aspx.cs:line 246
 =============
 
-[2025-11-07 10:09:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:09:35] [INFO] Başarılı giriş: UB8062
-[2025-11-07 10:09:35] [ERROR] Login hatası
+[2025-11-07 22:57:59] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:03:10] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 23:03:21] [INFO] Yetki kontrolü başarılı: UB8062 - 600
+[2025-11-07 23:03:28] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 23:03:28] [INFO] Başarılı giriş: UB10947
+[2025-11-07 23:03:29] [ERROR] Login hatası
 Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 10:09:47] [INFO] Şifre değiştirildi: UB8062
-[2025-11-07 10:09:49] [ERROR] Şifre değiştirme hatası
+[2025-11-07 23:03:35] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:03:36] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:04:07] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:04:48] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:04:48] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503146809, İşlem: Tekrar Cevap Verildi
+[2025-11-07 23:04:48] [INFO] Başvuru güncellendi ve harekete eklendi: 2503146809 - Tekrar Cevap Verildi
+[2025-11-07 23:04:50] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:04:56] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:05:59] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:09] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:11] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:13] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:14] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:15] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:20] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:24] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:06:30] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:12:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 23:12:45] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-07 23:12:45] [INFO] Başarılı giriş: UB10947
+[2025-11-07 23:12:45] [ERROR] Login hatası
 Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 10:10:04] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:10:04] [INFO] Başarılı giriş: ub6839
-[2025-11-07 10:10:04] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:10:16] [INFO] Şifre değiştirildi: UB6839
-[2025-11-07 10:10:17] [ERROR] Şifre değiştirme hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:10:39] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:10:39] [INFO] Başarılı giriş: ub8031
-[2025-11-07 10:10:39] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:10:53] [INFO] Şifre değiştirildi: UB8031
-[2025-11-07 10:10:55] [ERROR] Şifre değiştirme hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:11:18] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:11:18] [INFO] Başarılı giriş: UB8194
-[2025-11-07 10:11:18] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:11:32] [INFO] Şifre değiştirildi: UB8194
-[2025-11-07 10:11:34] [ERROR] Şifre değiştirme hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:11:49] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:11:49] [INFO] Başarılı giriş: UB7430
-[2025-11-07 10:11:49] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:11:59] [INFO] Şifre değiştirildi: UB7430
-[2025-11-07 10:12:00] [ERROR] Şifre değiştirme hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:15:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:15:35] [INFO] Başarılı giriş: UB6839
-[2025-11-07 10:15:35] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:16:04] [INFO] Yetki kontrolü başarılı: UB6839 - 600
-[2025-11-07 10:16:04] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 10:16:32] [INFO] Başvuru seçildi: ID=17981, No=2503206981
-[2025-11-07 10:17:23] [INFO] Başvuru seçildi: ID=17981, No=2503206981
-[2025-11-07 10:23:12] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:23:12] [INFO] Başarılı giriş: UB7430
-[2025-11-07 10:23:12] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:23:28] [INFO] Yetki kontrolü başarılı: UB7430 - 600
-[2025-11-07 10:23:28] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 3
-[2025-11-07 10:26:02] [INFO] Başvuru seçildi: ID=18351, No=2504033361
-[2025-11-07 10:27:49] [INFO] Yetki kontrolü başarılı: UB7430 - 600
-[2025-11-07 10:27:49] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 3
-[2025-11-07 10:27:51] [INFO] Başvuru seçildi: ID=18355, No=2504063667
-[2025-11-07 10:53:33] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:53:33] [INFO] Yetki kontrolü başarılı: UB8062 - 600
-[2025-11-07 10:53:33] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 0
-[2025-11-07 10:53:44] [INFO] Yetki kontrolü başarılı: UB8062 - 600
-[2025-11-07 10:53:44] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 0
-[2025-11-07 10:53:53] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:53:53] [INFO] Başarılı giriş: UB7430
-[2025-11-07 10:53:53] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:53:57] [INFO] Yetki kontrolü başarılı: UB7430 - 600
-[2025-11-07 10:53:57] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 3
-[2025-11-07 10:53:59] [INFO] Başvuru seçildi: ID=18355, No=2504063667
-[2025-11-07 10:56:23] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2504063667, İşlem: Onaylandı
-[2025-11-07 10:56:23] [INFO] CİMER başvuru onaylandı: 2504063667 - Kayıt Kullanıcısı
-[2025-11-07 10:56:23] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 2
-[2025-11-07 10:56:55] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:56:55] [INFO] Başarılı giriş: UB6839
-[2025-11-07 10:56:55] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:57:02] [INFO] Yetki kontrolü başarılı: UB6839 - 600
-[2025-11-07 10:57:02] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 10:58:15] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 10:58:15] [INFO] Başarılı giriş: UB8062
-[2025-11-07 10:58:15] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 10:58:24] [INFO] Yetki kontrolü başarılı: UB8062 - 608
-[2025-11-07 11:05:02] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2504063667, İşlem: Cevap Verildi. Kayıt Kapatıldı.
-[2025-11-07 11:05:02] [INFO] CİMER kaydı kapatıldı: 2504063667 - Kullanıcı: Serkan CEBECİ
-[2025-11-07 11:06:07] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2504063667, İşlem: Cevap Verildi. Kayıt Kapatıldı.
-[2025-11-07 11:06:07] [INFO] CİMER kaydı kapatıldı: 2504063667 - Kullanıcı: Serkan CEBECİ
-[2025-11-07 11:06:09] [INFO] Yetki kontrolü başarılı: UB8062 - 608
-[2025-11-07 11:08:13] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:08:13] [INFO] Başarılı giriş: UB7430
-[2025-11-07 11:08:13] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:08:26] [INFO] Yetki kontrolü başarılı: UB7430 - 600
-[2025-11-07 11:08:27] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 2
-[2025-11-07 11:09:06] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:09:06] [INFO] Başarılı giriş: UB8062
-[2025-11-07 11:09:06] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:09:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:09:29] [INFO] Başarılı giriş: UB8194
-[2025-11-07 11:09:29] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:09:58] [INFO] Yetki kontrolü başarılı: UB8194 - 600
-[2025-11-07 11:09:58] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 2
-[2025-11-07 11:11:03] [INFO] Başvuru seçildi: ID=18347, No=2504020551
-[2025-11-07 11:11:51] [INFO] Evrak geçmişi gösterildi: Başvuru 2504020551
-[2025-11-07 11:12:50] [INFO] Başvuru seçildi: ID=18347, No=2504020551
-[2025-11-07 11:15:20] [INFO] Evrak geçmişi gösterildi: Başvuru 2504020551
-[2025-11-07 11:15:52] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2504020551, İşlem: Onaylandı
-[2025-11-07 11:15:52] [INFO] CİMER başvuru onaylandı: 2504020551 - Ufuk YAŞAR
-[2025-11-07 11:15:52] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 11:16:53] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:16:53] [INFO] Başarılı giriş: ub10947
-[2025-11-07 11:16:53] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:17:20] [INFO] Şifre değiştirildi: UB10947
-[2025-11-07 11:17:21] [ERROR] Şifre değiştirme hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.SifreDegistir.btnDegistir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:17:33] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 11:18:25] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 11:18:25] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 11:18:35] [INFO] Başvuru seçildi: ID=18347, No=2504020551
-[2025-11-07 11:18:41] [INFO] Evrak geçmişi gösterildi: Başvuru 2504020551
-[2025-11-07 11:19:14] [INFO] Başvuru seçildi: ID=18347, No=2504020551
-[2025-11-07 11:21:33] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 11:21:33] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 11:21:40] [INFO] Başvuru seçildi: ID=18347, No=2504020551
-[2025-11-07 11:22:04] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2504020551, İşlem: Onaylandı
-[2025-11-07 11:22:04] [INFO] CİMER başvuru onaylandı: 2504020551 - Faruk TAŞDELEN
-[2025-11-07 11:22:04] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 0
-[2025-11-07 11:22:21] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 11:22:49] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 11:22:54] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 11:26:31] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:26:31] [INFO] Başarılı giriş: UB8062
-[2025-11-07 11:26:31] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:26:40] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:26:40] [INFO] Başarılı giriş: UB8194
-[2025-11-07 11:26:40] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:26:46] [INFO] Yetki kontrolü başarılı: UB8194 - 600
-[2025-11-07 11:26:47] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 2
-[2025-11-07 11:27:06] [INFO] Başvuru seçildi: ID=18347, No=2504020551
-[2025-11-07 11:27:15] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2504020551, İşlem: İade Edildi
-[2025-11-07 11:27:15] [INFO] CİMER başvuru iade edildi: 2504020551 - Ufuk YAŞAR
-[2025-11-07 11:27:15] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 11:30:58] [INFO] Başvuru seçildi: ID=18341, No=2503990628
-[2025-11-07 11:31:01] [INFO] Evrak geçmişi gösterildi: Başvuru 2503990628
-[2025-11-07 11:32:34] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:32:34] [INFO] Başarılı giriş: UB8062
-[2025-11-07 11:32:34] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:32:38] [INFO] Yetki kontrolü başarılı: UB8062 - 600
-[2025-11-07 11:32:38] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 0
-[2025-11-07 11:33:18] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 11:33:18] [INFO] Başarılı giriş: UB8194
-[2025-11-07 11:33:18] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-07 11:33:23] [INFO] Yetki kontrolü başarılı: UB8194 - 600
-[2025-11-07 11:33:23] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 1
-[2025-11-07 11:33:32] [INFO] Başvuru seçildi: ID=18341, No=2503990628
-[2025-11-07 11:34:01] [INFO] Yetki kontrolü başarılı: UB8194 - 603
-[2025-11-07 11:35:15] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503990628, İşlem: Onaylandı
-[2025-11-07 11:35:15] [INFO] CİMER başvuru onaylandı: 2503990628 - Kemal YILMAZ
-[2025-11-07 11:35:15] [INFO] CİMER onay listesi yüklendi. Kayıt sayısı: 0
-[2025-11-07 11:35:56] [INFO] Yetki kontrolü başarılı: UB8194 - 603
+[2025-11-07 23:12:49] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:12:51] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:12:53] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:12:56] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:13:00] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:13:04] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:13:49] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-07 23:13:52] [INFO] Yetki kontrolü başarılı: UB10947 - 600

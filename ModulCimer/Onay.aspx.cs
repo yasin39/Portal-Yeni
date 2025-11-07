@@ -157,7 +157,11 @@ namespace Portal.ModulCimer
                         try
                         {
                             // Hareket tablosuna ekle
-                            string teslimAlan = CurrentUserName == "Kemal YILMAZ" ? "Kayıt Kullanıcısı" : ddlKullanici.SelectedValue;
+
+                            string ozelKullanici = Helpers.GetSistemParametresi("OZEL_KULLANICI_ADI", "");
+                            string teslimAlan = (!string.IsNullOrEmpty(ozelKullanici) && CurrentUserName == ozelKullanici) ?
+                                "Kayıt Kullanıcısı" : ddlKullanici.SelectedValue;
+
                             Helpers.InsertCimerMovement(conn, transaction, txtBasvuruNo.Text, CurrentUserName,
                                 teslimAlan, txtAciklama.Text, 1, "Onaylandı");
 

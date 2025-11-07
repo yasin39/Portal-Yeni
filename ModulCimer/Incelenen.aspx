@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="CİMER Takip Edilen Başvurular" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="Incelenen.aspx.cs" Inherits="Portal.ModulCimer.Incelenen" %>
 
 <asp:Content ID="ContentHead" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 
 <asp:Content ID="ContentBreadcrumb" ContentPlaceHolderID="BreadcrumbPlaceHolder" runat="server">
@@ -29,6 +28,7 @@
                         <div class="info-badge">
                             <i class="fas fa-info-circle"></i>
                             Bekleme durumu "Evet" olan ve sizin takibinizde bulunan başvuruları görmektesiniz.
+                       
                         </div>
 
                         <!--  Action bar -->
@@ -43,6 +43,7 @@
                         <div class="grid-container">
                             <asp:GridView ID="GridViewBasvurular" runat="server" CssClass="table table-striped table-hover mb-0"
                                 AutoGenerateColumns="False" DataKeyNames="id"
+                                OnPageIndexChanging="GridViewBasvurular_PageIndexChanging"
                                 OnSelectedIndexChanged="GridViewBasvurular_SelectedIndexChanged"
                                 EmptyDataText="Takip ettiğiniz başvuru bulunmamaktadır."
                                 AllowPaging="True" PageSize="10">
@@ -88,6 +89,7 @@
                             <i class="fas fa-shield-alt"></i>
                             <strong>GİZLİLİK UYARISI:</strong> Şahısların kimlik/iletişim bilgilerinin görüntülenmesi hususunda 
                             GİZLİLİK ilkesi ve Kişisel Verilerin Korunması Kanununa dikkat edilmesi gerekmektedir.
+                       
                         </div>
                     </div>
                 </div>
@@ -281,6 +283,7 @@
                         <div class="info-badge mb-3">
                             <i class="fas fa-info-circle"></i>
                             Bu başvurunun tüm hareket geçmişini görüntülemektesiniz.
+                       
                         </div>
 
                         <div class="table-responsive">

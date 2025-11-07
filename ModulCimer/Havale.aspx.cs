@@ -95,8 +95,14 @@ namespace Portal.ModulCimer
 
         protected void btnHavaleEt_Click(object sender, EventArgs e)
         {
-            if (!Page.IsValid || string.IsNullOrEmpty(ddlKullanici.SelectedValue))
+            if (!Page.IsValid)
                 return;
+
+            if (string.IsNullOrWhiteSpace(ddlKullanici.SelectedValue) || ddlKullanici.SelectedValue == "")
+            {
+                ShowToast("Lütfen havale edilecek personeli seçiniz.", "warning");
+                return;
+            }
 
             try
             {

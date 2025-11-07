@@ -108,9 +108,25 @@ namespace Portal.ModulCimer
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+
             if (!Page.IsValid) return;
 
             if (!HandleFileUpload(txtApplicationNumber.Text)) return;
+
+            long tcNo = 0;
+            object tcNoValue = DBNull.Value;
+            if (!string.IsNullOrEmpty(txtTcNumber.Text))
+            {
+                if (long.TryParse(txtTcNumber.Text, out tcNo) && txtTcNumber.Text.Length == 11)
+                {
+                    tcNoValue = tcNo;
+                }
+                else
+                {
+                    ShowToast("Geçerli bir TC Kimlik No giriniz (11 haneli).", "danger");
+                    return;
+                }
+            }
 
             string query = @"
                 INSERT INTO cimer_basvurular (
@@ -126,13 +142,14 @@ namespace Portal.ModulCimer
             var parameters = CreateParameters(
                 ("@BasvuruNo", Convert.ToInt64(txtApplicationNumber.Text)),
                 ("@BasvuruTarihi", DateTime.Parse(txtApplicationDate.Text)),
-                ("@TcNo", string.IsNullOrEmpty(txtTcNumber.Text) ? (object)DBNull.Value : Convert.ToInt64(txtTcNumber.Text)),
+                ("@TcNo", tcNoValue),
                 ("@AdiSoyadi", txtFullName.Text),
                 ("@TelNo", txtPhone.Text),
                 ("@Mail", txtEmail.Text),
                 ("@Adres", txtAddress.Text),
                 ("@BasvuruMetni", txtApplicationText.Text),
-                ("@BasvuruEk", hfAttachmentPath.Value),
+                ("@BasvuruEk", string.IsNullOrWhiteSpace(hfAttachmentPath.Value) ?
+                (object)DBNull.Value : hfAttachmentPath.Value),
                 ("@SikayetKonusu", ddlComplaintType.SelectedValue),
                 ("@SikayetFirma", ddlCompany.SelectedValue),
                 ("@SonKullanici", ddlAssignedUser.SelectedValue),
@@ -180,6 +197,21 @@ namespace Portal.ModulCimer
 
             if (!HandleFileUpload(txtApplicationNumber.Text)) return;
 
+            long tcNo = 0;
+            object tcNoValue = DBNull.Value;
+            if (!string.IsNullOrEmpty(txtTcNumber.Text))
+            {
+                if (long.TryParse(txtTcNumber.Text, out tcNo) && txtTcNumber.Text.Length == 11)
+                {
+                    tcNoValue = tcNo;
+                }
+                else
+                {
+                    ShowToast("Geçerli bir TC Kimlik No giriniz (11 haneli).", "danger");
+                    return;
+                }
+            }
+
             string query = @"
                 UPDATE cimer_basvurular SET 
                     Basvuru_Tarihi = @BasvuruTarihi, TC_No = @TcNo, Adi_Soyadi = @AdiSoyadi, Tel_No = @TelNo, 
@@ -192,13 +224,14 @@ namespace Portal.ModulCimer
             var parameters = CreateParameters(
                 ("@Id", Convert.ToInt32(hfId.Value)),
                 ("@BasvuruTarihi", DateTime.Parse(txtApplicationDate.Text)),
-                ("@TcNo", string.IsNullOrEmpty(txtTcNumber.Text) ? (object)DBNull.Value : Convert.ToInt64(txtTcNumber.Text)),
+                ("@TcNo", tcNoValue),
                 ("@AdiSoyadi", txtFullName.Text),
                 ("@TelNo", txtPhone.Text),
                 ("@Mail", txtEmail.Text),
                 ("@Adres", txtAddress.Text),
                 ("@BasvuruMetni", txtApplicationText.Text),
-                ("@BasvuruEk", hfAttachmentPath.Value),
+                ("@BasvuruEk", string.IsNullOrWhiteSpace(hfAttachmentPath.Value) ?
+                (object)DBNull.Value : hfAttachmentPath.Value),
                 ("@SikayetKonusu", ddlComplaintType.SelectedValue),
                 ("@SikayetFirma", ddlCompany.SelectedValue),
                 ("@SonKullanici", ddlAssignedUser.SelectedValue),

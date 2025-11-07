@@ -207,3 +207,29 @@ Bir hata yaptıysanız, ROLLBACK TRAN; komutunu tek başına seçip çalıştır
 
 ===========================================================================
 
+-- Yeni tablo oluştur: sistem_parametreleri
+CREATE TABLE [dbo].[sistem_parametreleri](
+    [id] [int] IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    [Parametre_Adi] [nvarchar](100) NOT NULL,
+    [Parametre_Degeri] [nvarchar](500) NULL,
+    [Aciklama] [nvarchar](max) NULL,
+    [Kayit_Tarihi] [datetime] DEFAULT GETDATE(),
+    [Guncelleyen] [nvarchar](100) NULL,
+    [Guncelleme_Tarihi] [datetime] NULL
+);
+
+-- İlk parametre kaydını ekle
+INSERT INTO sistem_parametreleri 
+    (Parametre_Adi, Parametre_Degeri, Aciklama)
+VALUES 
+    ('OZEL_KULLANICI_ADI', 'Kemal YILMAZ', 'Özel yetkilere sahip kullanıcı adı');
+
+    =======================================================================
+
+    INSERT INTO sistem_parametreleri (Parametre_Adi, Parametre_Degeri, Aciklama)
+VALUES 
+    ('DOSYA_MAX_BOYUT_MB', '10', 'Maksimum dosya yükleme boyutu (MB)'),
+    ('SESSION_TIMEOUT_DAKIKA', '30', 'Oturum zaman aşımı süresi');
+
+    ========================================================================
+

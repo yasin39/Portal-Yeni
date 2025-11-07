@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Portal.ModulCimer
 {
@@ -20,6 +21,7 @@ namespace Portal.ModulCimer
             if (!IsPostBack)
             {
                 Yukle();
+                
             }
         }
 
@@ -64,12 +66,22 @@ namespace Portal.ModulCimer
                 ddlOnayKullanici.DataTextField = "Adi_Soyadi";
                 ddlOnayKullanici.DataValueField = "Adi_Soyadi";
                 ddlOnayKullanici.DataBind();
+
+                // DataBind sonrası "-- Seçiniz --" opsiyonunu en başa ekle
+                ddlOnayKullanici.Items.Insert(0, new ListItem("-- Seçiniz --", ""));
+                ddlOnayKullanici.SelectedIndex = 0; // Default olarak ilk item seçili
             }
             catch (Exception ex)
             {
                 LogError("Başvuru yükleme hatası", ex);
                 ShowErrorAndRedirect("Veriler yüklenirken hata oluştu. Lütfen tekrar deneyin.", "~/Anasayfa.aspx");
             }
+        }
+
+        protected void GridViewBasvurular_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridViewBasvurular.PageIndex = e.NewPageIndex;
+            Yukle(); // Mevcut veriyi yeniden yükle
         }
 
         protected void GridViewBasvurular_SelectedIndexChanged(object sender, EventArgs e)
@@ -96,8 +108,11 @@ namespace Portal.ModulCimer
                     txtSonYapilanIslem.Text = row["Son_Yapilan_islem"].ToString();
                     ddlFirmalar.SelectedValue = row["Sikayet_Edilen_Firma"].ToString();
 
-                    pnlDetay.Attributes["class"] = "detail-panel show";
-                    pnlTarihce.Attributes["class"] = "history-panel";
+                    pnlDetay.CssClass = "detail-panel show";
+                    pnlTarihce.CssClass = "history-panel";
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "scrollToDetail",
+         "scrollToDetailPanel();", true);
                 }
             }
             catch (Exception ex)
@@ -204,8 +219,8 @@ namespace Portal.ModulCimer
 
         protected void btnKapat_Click(object sender, EventArgs e)
         {
-            pnlDetay.Attributes["class"] = "detail-panel";
-            pnlTarihce.Attributes["class"] = "history-panel";
+            pnlDetay.Visible = false;
+            pnlTarihce.Visible = false;
             Yukle();
         }
 
@@ -213,7 +228,7 @@ namespace Portal.ModulCimer
         {
             pnlTarihce.Attributes["class"] = "history-panel";
             pnlDetay.Attributes["class"] = "detail-panel show";
-        }       
+        }
 
         protected void btnExcel_Click(object sender, EventArgs e)
         {
@@ -229,6 +244,10 @@ namespace Portal.ModulCimer
                 GridViewBasvurular.Columns[6].Visible = true;
                 GridViewBasvurular.Columns[7].Visible = true;
 
+                // ==> ADIM 3: Panelleri gizle (sayfa içeriğini export etmeyi önler)
+                pnlDetay.Visible = false;
+                pnlTarihce.Visible = false;
+
                 ExportGridViewToExcel(GridViewBasvurular, "CimerTakipEdilen.xls");
             }
             catch (Exception ex)
@@ -236,6 +255,18 @@ namespace Portal.ModulCimer
                 LogError("Excel export hatası", ex);
                 ShowError("Excel export sırasında hata oluştu.");
             }
+            finally
+            {
+                // ==> ADIM 4: Sayfalamayı tekrar aç ve yeniden yükle
+                GridViewBasvurular.AllowPaging = true;
+                Yukle();
+            }
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            // GridView'i form dışında render etmek için gerekli
+            // Bu metod Excel export sırasında "must be placed inside a form tag" hatasını önler
         }
     }
 }

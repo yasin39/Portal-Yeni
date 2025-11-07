@@ -159,7 +159,7 @@
                                     </div>
                                 </div>                                
                                 <div class="col-md-6">
-                                    <label class="form-label">Adı Soyadı <span class="text-danger">*</span></label>
+                                    <label class="form-label">Adı Soyadı</label>
                                     <div class="input-group">
                                         <span class="input-group-text">
                                             <i class="fas fa-user-circle"></i>
@@ -168,12 +168,6 @@
                                             CssClass="form-control" 
                                             placeholder="Ad ve Soyad"></asp:TextBox>
                                     </div>
-                                    <asp:RequiredFieldValidator ID="rfvFullName" runat="server" 
-                                        ControlToValidate="txtFullName" 
-                                        ErrorMessage="Adı Soyadı zorunludur." 
-                                        CssClass="text-danger small" 
-                                        Display="Dynamic" 
-                                        ValidationGroup="kayit">*</asp:RequiredFieldValidator>
                                 </div>
 
                                 <%--==> E-posta --%>

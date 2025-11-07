@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card panel-card">
-                    <div class="panel-header warning">
+                    <div class="panel-header">
                         <div>
                             <i class="fas fa-clock"></i>
                             <span>CİMER Beklemede Olan Başvurular</span>
