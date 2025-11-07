@@ -22,17 +22,19 @@ namespace Portal
         }
 
         // Login.aspx.cs içinde - Parola kontrolü
+        // Login.aspx.cs - Parola kontrolü düz metin olarak güncellendi
+
         protected void btnGiris_Click(object sender, EventArgs e)
         {
             string sicilNo = txtSicilNo.Text.Trim();
-            string parola = txtParola.Text;
+            string parola = txtParola.Text; // Kullanıcının girdiği parola
 
             try
             {
                 string query = @"SELECT Sicil_No, Adi_Soyadi, Kullanici_Turu, Personel_Tipi, 
-                               Parola, SifreDegistirmeZorla 
-                        FROM kullanici 
-                        WHERE Sicil_No = @SicilNo AND Durum = 'Aktif'";
+                       Parola, SifreDegistirmeZorla 
+                FROM kullanici 
+                WHERE Sicil_No = @SicilNo AND Durum = 'Aktif'";
 
                 var parameters = BasePage.CreateParameters(("@SicilNo", sicilNo));
                 DataTable dt = BasePage.ExecuteDataTable(query, parameters);
@@ -44,10 +46,14 @@ namespace Portal
                 }
 
                 DataRow row = dt.Rows[0];
-                string dbParolaHash = row["Parola"].ToString();
+                // DEĞİŞİKLİK BAŞLANGICI
+                // Veritabanından gelen parola artık hash değil, düz metin
+                string dbParola = row["Parola"].ToString();
 
-                // Parola kontrolü (Hash karşılaştırması)
-                if (!Helpers.VerifyPassword(parola, dbParolaHash))
+                // Parola kontrolü (Düz metin karşılaştırması)
+                // Helpers.VerifyPassword satırı kaldırıldı ve basit eşitlik kontrolü eklendi.
+                if (parola != dbParola)
+                // DEĞİŞİKLİK SONU
                 {
                     ShowToast("Hatalı parola!", "danger");
                     BasePage.LogWarning($"Başarısız giriş denemesi: {sicilNo}");

@@ -35,10 +35,10 @@ namespace Portal.Base
             if (isDevMode && (Session["Sicil"] == null || string.IsNullOrEmpty(Session["Sicil"].ToString())))
             {
                 // Geliştirme için mock session değerleri ata (test kullanıcı bilgileri)
-                Session["Sicil"] = "admin";
-                Session["Ad"] = "Yasin Çınar"; 
-                Session["Kturu"] = "Admin"; 
-                Session["Ptipi"] = "1"; // Örnek personel tipi ( NORMAL_PERSONEL gibi sabitlerden alın)
+                //Session["Sicil"] = "admin";
+                //Session["Ad"] = "II.Bölge Müdürlüğü"; 
+                //Session["Kturu"] = "Admin"; 
+                //Session["Ptipi"] = "1"; // Örnek personel tipi ( NORMAL_PERSONEL gibi sabitlerden alın)
 
                 LogInfo("Geliştirme modu: Mock session değerleri atandı.");
 
@@ -56,10 +56,10 @@ namespace Portal.Base
                 //Session["Ptipi"] = "1";
 
                 //Ptipi=2 olan Cimer kullanıcısı örneği
-                //Session["Sicil"] = "UB8062"; 
-                //Session["Ad"] = "Serkan CEBECİ"; 
-                //Session["Kturu"] = "Personel"; 
-                //Session["Ptipi"] = "2"; 
+                Session["Sicil"] = "UB8062";
+                Session["Ad"] = "Serkan CEBECİ";
+                Session["Kturu"] = "Personel";
+                Session["Ptipi"] = "2";
 
             }
         }

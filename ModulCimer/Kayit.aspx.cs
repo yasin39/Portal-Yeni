@@ -10,7 +10,7 @@ namespace Portal.ModulCimer
     public partial class Kayit : BasePage
     {
         private const int MaxFileSizeBytes = 10 * 1024 * 1024; // 10MB
-        private const string AllowedExtensions = ".pdf,.doc,.docx,.jpg,.jpeg,.png";
+        private const string AllowedExtensions = ".pdf,.doc,.docx,.jpg,.jpeg,.png,.zip";
 
         protected void Page_Load(object sender, EventArgs e)
         {

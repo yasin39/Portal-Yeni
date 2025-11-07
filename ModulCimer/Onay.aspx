@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="CİMER Onay" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="Onay.aspx.cs" Inherits="Portal.ModulCimer.Onay" EnableEventValidation="false" %>
 
-<%@ MasterType VirtualPath="~/Ana.Master" %>
+<%@ MasterType VirtualPath="~/AnaV2.Master" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">    
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style>
         .tooltip-inner {
             max-width: 500px;
@@ -36,6 +36,7 @@
                         <div class="info-badge">
                             <i class="fas fa-info-circle"></i>
                             Onayınızı bekleyen başvuruları görmektesiniz. Detaylı inceleme için "Seç" butonunu kullanınız.
+                       
                         </div>
 
                         <!--  Action bar -->
@@ -105,6 +106,7 @@
                             <i class="fas fa-shield-alt"></i>
                             <strong>GİZLİLİK UYARISI:</strong> Şahısların kimlik/iletişim bilgilerinin görüntülenmesi hususunda 
                             GİZLİLİK ilkesi ve Kişisel Verilerin Korunması Kanununa dikkat edilmesi gerekmektedir.
+                       
                         </div>
                     </div>
                 </div>
@@ -119,6 +121,7 @@
                         <div>
                             <i class="fas fa-check-circle"></i>
                             <span>Başvuru Onay İşlemleri - No: 
+                               
                                 <asp:Label ID="lblBasvuruNo" runat="server" Font-Bold="true"></asp:Label>
                             </span>
                         </div>
@@ -158,6 +161,7 @@
                                     <label class="form-label">
                                         <i class="fas fa-file-alt me-2"></i>Başvuru Metni (Tam Hali)
            
+                                   
                                     </label>
                                     <div class="input-group">
                                         <span class="input-group-text align-items-start pt-2">
@@ -193,10 +197,6 @@
                                         </span>
                                         <asp:TextBox ID="txtSonYapilanIslem" runat="server" CssClass="form-control"
                                             TextMode="MultiLine" Rows="6" ReadOnly="true"></asp:TextBox>
-                                    </div>
-                                    <div class="warning-badge">
-                                        <i class="fas fa-exclamation-triangle"></i>
-                                        Değiştirilmesi gerekiyorsa açıklama bölümünü doldurarak ilgili kullanıcıya iade ediniz
                                     </div>
                                 </div>
                             </div>
@@ -239,6 +239,11 @@
                                             TextMode="MultiLine" Rows="4"
                                             placeholder="İade işlemi için açıklama girebilirsiniz..."></asp:TextBox>
                                     </div>
+                                    <div class="info-badge">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                        Değiştirilmesi gerekiyorsa açıklama bölümünü doldurarak ilgili kullanıcıya iade ediniz
+                                   
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -279,6 +284,7 @@
                         <div class="info-badge mb-3">
                             <i class="fas fa-info-circle"></i>
                             Bu başvurunun tüm hareket geçmişini görüntülemektesiniz.
+                       
                         </div>
 
                         <div class="table-responsive">

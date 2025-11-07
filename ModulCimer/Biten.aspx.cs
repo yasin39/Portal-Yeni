@@ -146,7 +146,7 @@ namespace Portal.ModulCimer
                             transaction.Commit();
 
                             LogInfo($"CİMER kaydı kapatıldı: {basvuruNo} - Kullanıcı: {CurrentUserName}");
-                            ShowSuccessAndRedirect("Kayıt başarıyla kapatıldı. CİMER portalını kontrol ediniz.", "~/Modul/Biten.aspx");
+                            ShowSuccessAndRedirect("Kayıt başarıyla kapatıldı. CİMER portalını kontrol ediniz.", "~/ModulCimer/Biten.aspx");
                         }
                         catch
                         {

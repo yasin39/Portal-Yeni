@@ -1,8 +1,6 @@
 ﻿<%@ Page Title="CİMER Başvuru Kaydı" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="Kayit.aspx.cs" Inherits="Portal.ModulCimer.Kayit" EnableEventValidation="false" %>
 
-<%--==> EKLEME: Ortak CSS dosyası dahil edildi --%>
 <asp:Content ID="ContentHead" ContentPlaceHolderID="head" runat="server">
-<%--    <link href="~/ModulCimer/CIMERMODUL.css" rel="stylesheet" type="text/css" />--%>
     <style>
         /*==> Sayfa özel stiller - minimal tutuldu */
         .search-section {
@@ -57,9 +55,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <%--==> EKLEME: panel-card sınıfı kullanıldı (CIMERMODUL.css) --%>
                 <div class="card panel-card">
-                    <%--==> EKLEME: panel-header sınıfı kullanıldı --%>
                     <div class="panel-header">
                         <div>
                             <i class="fas fa-edit"></i>
@@ -68,17 +64,14 @@
                     </div>
 
                     <div class="card-body">
-                        <%--==> EKLEME: info-badge ile kullanıcı bilgilendirmesi --%>
                         <div class="info-badge">
                             <i class="fas fa-info-circle"></i>
                             Bu ekrandan yeni CİMER başvurusu ekleyebilir veya mevcut başvuruları güncelleyebilirsiniz. Zorunlu alanlar (<span class="text-danger">*</span>) ile işaretlenmiştir.
                         </div>
 
-                        <%--==> DEĞİŞİKLİK: Panel mesajı için düzenleme --%>
                         <asp:Panel ID="pnlMessage" runat="server" Visible="false" CssClass="alert alert-info mt-3">
                         </asp:Panel>
 
-                        <%--==> ValidationSummary eklendi --%>
                         <asp:ValidationSummary ID="vsSummary" runat="server" 
                             CssClass="alert alert-danger alert-dismissible fade show mt-3" 
                             HeaderText="⚠️ Lütfen aşağıdaki alanları düzeltin:" 
@@ -99,7 +92,6 @@
                                             CssClass="form-control" 
                                             placeholder="Başvuru numarasını girin" 
                                             TextMode="Number"></asp:TextBox>
-                                        <%--==> DEĞİŞİKLİK: Button emoji Text property'sine eklendi --%>
                                         <asp:Button ID="btnSearch" runat="server" 
                                             Text="🔍 Bul" 
                                             CssClass="btn btn-info" 
@@ -131,7 +123,7 @@
                                             <i class="fas fa-calendar-alt"></i>
                                         </span>
                                         <asp:TextBox ID="txtApplicationDate" runat="server" 
-                                            CssClass="form-control" 
+                                            CssClass="form-control fp-date" 
                                             placeholder="Başvuru Tarihi" 
                                             TextMode="Date"></asp:TextBox>
                                     </div>
@@ -152,8 +144,7 @@
                                 <span>Başvurucu Bilgileri</span>
                             </div>
 
-                            <div class="row g-3">
-                                <%--==> TC No --%>
+                            <div class="row g-3">                               
                                 <div class="col-md-6">
                                     <label class="form-label">TC Kimlik No</label>
                                     <div class="input-group">
@@ -166,9 +157,7 @@
                                             TextMode="Number" 
                                             MaxLength="11"></asp:TextBox>
                                     </div>
-                                </div>
-
-                                <%--==> Adı Soyadı --%>
+                                </div>                                
                                 <div class="col-md-6">
                                     <label class="form-label">Adı Soyadı <span class="text-danger">*</span></label>
                                     <div class="input-group">
@@ -340,7 +329,7 @@
                                 <asp:FileUpload ID="fuAttachment" runat="server" CssClass="form-control" />
                                 <small class="text-muted d-block mt-3">
                                     <i class="fas fa-info-circle me-1"></i>
-                                    Desteklenen formatlar: <strong>PDF, DOC, DOCX, JPG, JPEG, PNG</strong>
+                                    Desteklenen formatlar: <strong>PDF, DOC, DOCX, JPG, JPEG, PNG, ZIP</strong>
                                     <br />
                                     Maksimum dosya boyutu: <strong>10 MB</strong>
                                 </small>

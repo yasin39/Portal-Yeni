@@ -74,7 +74,7 @@ namespace Portal.ModulCimer
                 }
                 else
                 {
-                    ShowToast("Başvuru bulunamadı.", "error");
+                    ShowToast("Başvuru bulunamadı.", "danger");
                     pnlRapor.Visible = false;
 
                     // Hata durumunda property'leri sıfırla
@@ -87,7 +87,7 @@ namespace Portal.ModulCimer
             catch (Exception ex)
             {
                 LogError("CİMER Rapor Hatası", ex);
-                ShowToast("Veritabanı hatası oluştu.", "error");
+                ShowToast("Veritabanı hatası oluştu.", "danger");
 
                 // Hata durumunda sıfırla
                 BasvuruNo = "";

@@ -15,6 +15,8 @@ namespace Portal
             }
         }
 
+        // SifreDegistir.aspx.cs - Hash özelliği kaldırıldı
+
         protected void btnDegistir_Click(object sender, EventArgs e)
         {
             if (!Page.IsValid) return;
@@ -41,24 +43,28 @@ namespace Portal
                     return;
                 }
 
-                string dbParolaHash = dt.Rows[0]["Parola"].ToString();
+                // DEĞİŞİKLİK 1: Veritabanından gelen parola artık düz metin
+                string dbParola = dt.Rows[0]["Parola"].ToString(); // dbParolaHash -> dbParola
 
-                if (!Helpers.VerifyPassword(mevcutSifre, dbParolaHash))
+                // DEĞİŞİKLİK 2: Hash kontrolü yerine düz metin kontrolü
+                if (mevcutSifre != dbParola) // Helpers.VerifyPassword kaldırıldı
                 {
                     ShowToast("Mevcut şifre hatalı!", "danger");
                     return;
                 }
 
-                string yeniParolaHash = Helpers.HashPassword(yeniSifre);
+                // DEĞİŞİKLİK 3: Yeni şifreyi hash'leme satırı kaldırıldı
+                // string yeniParolaHash = Helpers.HashPassword(yeniSifre); // BU SATIR SİLİNDİ
 
                 string updateQuery = @"UPDATE kullanici SET 
-                                      Parola = @Parola,
-                                      SifreDegistirmeZorla = 0,
-                                      SonSifreDegistirmeTarihi = @Tarih
-                                      WHERE Sicil_No = @SicilNo";
+                              Parola = @Parola,
+                              SifreDegistirmeZorla = 0,
+                              SonSifreDegistirmeTarihi = @Tarih
+                              WHERE Sicil_No = @SicilNo";
 
                 var updateParams = CreateParameters(
-                    ("@Parola", yeniParolaHash),
+                    // DEĞİŞİKLİK 4: Veritabanına hash yerine düz metin 'yeniSifre' gönderiliyor
+                    ("@Parola", yeniSifre), // yeniParolaHash -> yeniSifre
                     ("@Tarih", DateTime.Now),
                     ("@SicilNo", sicilNo)
                 );
