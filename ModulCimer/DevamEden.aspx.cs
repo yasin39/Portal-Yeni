@@ -1,5 +1,5 @@
 ﻿
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -61,49 +61,70 @@ namespace Portal.ModulCimer
         /// </summary>
         private void BasvuruGecmisiniGetir()
         {
-            if (GridViewDevamEden.SelectedIndex < 0)
-                return;
+            try
+            {                
+                if (GridViewDevamEden.SelectedIndex < 0)
+                {
+                    ShowToast("Lütfen bir başvuru seçiniz.", "warning");
+                    return;
+                }
 
-            string basvuruId = GridViewDevamEden.SelectedDataKey.Value.ToString();
+                // ==> FIX: id yerine Basvuru_No kullan (Hareket tablosu Basvuru_id kolonu Basvuru_No ile eşleşiyor)
+                int selectedIndex = GridViewDevamEden.SelectedIndex;
+                string basvuruNo = GridViewDevamEden.Rows[selectedIndex].Cells[2].Text; // Basvuru_No kolonu (index 2)                
 
-            string query = @"
-                SELECT Sevk_Eden, Teslim_Alan, Tarih, Aciklama, islem_Aciklama 
-                FROM cimer_basvuru_hareketleri 
-                WHERE Basvuru_id = @BasvuruId 
-                ORDER BY id DESC";
+                string query = @"
+                    SELECT Sevk_Eden, Teslim_Alan, Tarih, Aciklama, islem_Aciklama 
+                    FROM cimer_basvuru_hareketleri 
+                    WHERE Basvuru_id = @BasvuruId 
+                    ORDER BY id DESC";
 
-            var parameters = CreateParameters(
-                ("@BasvuruId", basvuruId)
-            );
+                var parameters = CreateParameters(
+                    ("@BasvuruId", basvuruNo)
+                );
 
-            DataTable dtGecmis = ExecuteDataTable(query, parameters);
+                DataTable dtGecmis = ExecuteDataTable(query, parameters);
 
-            // HTML tablo oluştur
-            string htmlTablo = "<table class='table table-bordered table-striped table-condensed history-table'>";
-            htmlTablo += "<thead><tr>";
-            htmlTablo += "<th>Sevk Eden</th><th>Teslim Alan</th><th>Tarih</th><th>Açıklama</th><th>İşlem Açıklaması</th>";
-            htmlTablo += "</tr></thead><tbody>";
+                // HTML tablo oluştur
+                string htmlTablo = "<table class='table table-bordered table-striped table-condensed history-table'>";
+                htmlTablo += "<thead><tr>";
+                htmlTablo += "<th>Sevk Eden</th><th>Teslim Alan</th><th>Tarih</th><th>Açıklama</th><th>İşlem Açıklaması</th>";
+                htmlTablo += "</tr></thead><tbody>";
 
-            foreach (DataRow row in dtGecmis.Rows)
-            {
-                htmlTablo += "<tr>";
-                htmlTablo += $"<td>{row["Sevk_Eden"]}</td>";
-                htmlTablo += $"<td>{row["Teslim_Alan"]}</td>";
-                htmlTablo += $"<td>{FormatDateTimeTurkish(Convert.ToDateTime(row["Tarih"]))}</td>";
-                htmlTablo += $"<td>{row["Aciklama"]}</td>";
-                htmlTablo += $"<td>{row["islem_Aciklama"]}</td>";
-                htmlTablo += "</tr>";
+                foreach (DataRow row in dtGecmis.Rows)
+                {
+                    htmlTablo += "<tr>";
+                    htmlTablo += $"<td>{row["Sevk_Eden"]}</td>";
+                    htmlTablo += $"<td>{row["Teslim_Alan"]}</td>";
+                    htmlTablo += $"<td>{FormatDateTimeTurkish(Convert.ToDateTime(row["Tarih"]))}</td>";
+                    htmlTablo += $"<td>{row["Aciklama"]}</td>";
+                    htmlTablo += $"<td>{row["islem_Aciklama"]}</td>";
+                    htmlTablo += "</tr>";
+                }
+
+                htmlTablo += "</tbody></table>";
+
+                if (dtGecmis.Rows.Count == 0)
+                {
+                    htmlTablo = "<p class='text-muted text-center'>Bu başvuru için henüz hareket kaydı bulunmamaktadır.</p>";
+                }
+
+                lblGecmisTablo.Text = htmlTablo;
+                PanelGecmis.Visible = true;
+
+                ShowToast($"Hareket geçmişi yüklendi. ({dtGecmis.Rows.Count} kayıt)", "info");
             }
-
-            htmlTablo += "</tbody></table>";
-
-            if (dtGecmis.Rows.Count == 0)
+            catch (Exception ex)
             {
-                htmlTablo = "<p class='text-muted text-center'>Bu başvuru için henüz hareket kaydı bulunmamaktadır.</p>";
+                LogError("BasvuruGecmisiniGetir", ex);
+                ShowToast($"Geçmiş yüklenirken hata: {ex.Message}", "danger");
             }
+        }
 
-            lblGecmisTablo.Text = htmlTablo;
-            PanelGecmis.Visible = true;
+
+        protected void btnGecmisKapat_Click(object sender, EventArgs e)
+        {
+            PanelGecmis.Visible = false;
         }
 
         /// <summary>

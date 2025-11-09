@@ -1,4 +1,4 @@
-﻿<%@ Page Title="CİMER Cevapladıklarım" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="Cevapladiklarim.aspx.cs" Inherits="Portal.ModulCimer.Cevapladiklarim" %>
+﻿<%@ Page Title="CİMER Cevapladıklarım" Language="C#" MasterPageFile="~/AnaV2.Master" AutoEventWireup="true" CodeBehind="Cevapladiklarim.aspx.cs" Inherits="Portal.ModulCimer.Cevapladiklarim" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     

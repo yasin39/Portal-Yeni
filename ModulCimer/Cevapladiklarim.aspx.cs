@@ -87,6 +87,7 @@ namespace Portal.ModulCimer
 
         protected void ExcelAktar_Click(object sender, EventArgs e)
         {
+            
             ExportGridViewToExcel(GridView1, "CimerCevapladiklarim.xls");
             LogInfo($"Excel export tamamlandı. Kullanıcı: {CurrentUserName}");
         }

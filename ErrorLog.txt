@@ -1,71 +1,40 @@
-﻿[2025-11-07 22:52:37] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 22:52:37] [INFO] Başarılı giriş: UB10947
-[2025-11-07 22:52:37] [ERROR] Login hatası
+﻿[2025-11-09 10:15:39] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 10:15:57] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 10:15:57] [INFO] Başarılı giriş: UB10947
+[2025-11-09 10:15:57] [ERROR] Login hatası
 Thread was being aborted.
 StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 22:52:52] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 22:52:54] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 22:53:21] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 22:53:21] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503146809, İşlem: Tekrar Cevap Verildi
-[2025-11-07 22:53:21] [INFO] Başvuru güncellendi ve harekete eklendi: 2503146809 - Tekrar Cevap Verildi
-[2025-11-07 22:53:23] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 22:56:46] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 22:57:09] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 22:57:09] [INFO] Başarılı giriş: UB10947
-[2025-11-07 22:57:09] [ERROR] Login hatası
+[2025-11-09 10:16:03] [WARNING] Yetkisiz erişim denemesi: UB10947 - 608
+[2025-11-09 10:16:16] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 10:16:16] [INFO] Başarılı giriş: UB8194
+[2025-11-09 10:16:16] [ERROR] Login hatası
 Thread was being aborted.
 StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 22:57:20] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 22:57:22] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 22:57:23] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulCimer.Incelenen.btnExcel_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulCimer\Incelenen.aspx.cs:line 246
-=============
-
-[2025-11-07 22:57:59] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:03:10] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 23:03:21] [INFO] Yetki kontrolü başarılı: UB8062 - 600
-[2025-11-07 23:03:28] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 23:03:28] [INFO] Başarılı giriş: UB10947
-[2025-11-07 23:03:29] [ERROR] Login hatası
+[2025-11-09 10:16:20] [INFO] Yetki kontrolü başarılı: UB8194 - 608
+[2025-11-09 10:18:31] [INFO] Evrak geçmişi gösterildi: Başvuru 2503898435
+[2025-11-09 10:19:03] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503898435, İşlem: Cevap Verildi. Kayıt Kapatıldı.
+[2025-11-09 10:19:03] [INFO] CİMER kaydı kapatıldı: 2503898435 - Kullanıcı: Faruk TAŞDELEN
+[2025-11-09 10:19:06] [INFO] Yetki kontrolü başarılı: UB8194 - 608
+[2025-11-09 10:20:12] [INFO] Evrak geçmişi gösterildi: Başvuru 2503967511
+[2025-11-09 10:20:31] [INFO] Yetki kontrolü başarılı: UB8194 - 608
+[2025-11-09 10:22:58] [INFO] Yetki kontrolü başarılı: UB8194 - 600
+[2025-11-09 10:23:49] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 10:23:49] [INFO] Başarılı giriş: UB10947
+[2025-11-09 10:23:49] [ERROR] Login hatası
 Thread was being aborted.
 StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
 =============
 
-[2025-11-07 23:03:35] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:03:36] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:04:07] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:04:48] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:04:48] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503146809, İşlem: Tekrar Cevap Verildi
-[2025-11-07 23:04:48] [INFO] Başvuru güncellendi ve harekete eklendi: 2503146809 - Tekrar Cevap Verildi
-[2025-11-07 23:04:50] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:04:56] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:05:59] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:09] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:11] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:13] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:14] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:15] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:20] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:24] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:06:30] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:12:35] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 23:12:45] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-07 23:12:45] [INFO] Başarılı giriş: UB10947
-[2025-11-07 23:12:45] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
-=============
-
-[2025-11-07 23:12:49] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:12:51] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:12:53] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:12:56] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:13:00] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:13:04] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:13:49] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-07 23:13:52] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:23:52] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:24:06] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:24:12] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:24:13] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:24:36] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:24:46] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:24:51] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:25:13] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+[2025-11-09 10:25:18] [INFO] Yetki kontrolü başarılı: UB10947 - 600

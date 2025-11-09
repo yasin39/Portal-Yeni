@@ -28,7 +28,7 @@
                         <!--  Info badge -->
                         <div class="info-badge">
                             <i class="fas fa-info-circle"></i>
-                            Süreci devam eden başvuruları görmektesiniz. 15 günü aşan başvurular kırmızı ile vurgulanmıştır.
+                            Süreci devam eden başvuruları görmektesiniz. 
                         </div>
 
                         <!--  Action bar -->
@@ -94,16 +94,7 @@
                                 <SelectedRowStyle CssClass="table-active fw-semibold" />
                                 <PagerStyle CssClass="pagination justify-content-center mt-3" />
                             </asp:GridView>
-                        </div>
-
-                        <!--  Duration Legend -->
-                        <div class="warning-badge-duration">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            <strong>Süre Gösterimi:</strong>
-                            <span class="duration-normal ms-2">● 0-10 gün (Normal)</span>
-                            <span class="duration-warning ms-2">● 11-15 gün (Dikkat)</span>
-                            <span class="duration-danger ms-2">● 15+ gün (Acil)</span>
-                        </div>
+                        </div>                      
 
                         <!--  Privacy notice -->
                         <div class="privacy-notice">
@@ -125,10 +116,11 @@
                             <i class="fas fa-history"></i>
                             <span>Başvuru Evrak Geçmişi</span>
                         </div>
-                        <button type="button" class="btn btn-sm btn-outline-light"
-                            onclick="document.getElementById('<%= PanelGecmis.ClientID %>').style.display='none';">
-                            ✕ Kapat
-                        </button>
+                       <asp:Button ID="btnGecmisKapat" runat="server" 
+                            Text="✕ Kapat" 
+                            CssClass="btn btn-sm btn-outline-light" 
+                            OnClick="btnGecmisKapat_Click" 
+                            CausesValidation="false" />
                     </div>
                     <div class="card-body">
                         <div class="info-badge mb-3">
@@ -157,10 +149,12 @@
                 }, 5000);
             });
 
-            // Smooth scroll to history panel when visible
-            const historyPanel = document.querySelector('.history-panel');
-            if (historyPanel && historyPanel.style.display !== 'none') {
-                historyPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Smooth scroll to history panel when visible (ASP.NET Visible property kontrolü)
+            const historyPanel = document.querySelector('.history-panel[style*="display: block"], .history-panel:not([style*="display: none"])');
+            if (historyPanel) {
+                setTimeout(() => {
+                    historyPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
             }
         });
     </script>
