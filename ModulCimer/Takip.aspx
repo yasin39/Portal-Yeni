@@ -111,6 +111,11 @@
                                     Text="📊 Excel'e Aktar" 
                                     CssClass="btn btn-success" 
                                     OnClick="btnExcelAktar_Click" />
+                                <asp:Button ID="btnTemizle" runat="server" 
+                                    CssClass="btn btn-outline-secondary" 
+                                    OnClick="btnTemizle_Click" 
+                                    CausesValidation="false" 
+                                    Text="🗑️ Temizle" />
                             </div>
                         </div>
 

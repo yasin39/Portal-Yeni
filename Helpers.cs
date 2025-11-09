@@ -137,6 +137,33 @@ namespace Portal
             }
         }
 
+        /// <summary>
+        /// Firmaları DropDownList'e yükler (Value olarak da Firma_Unvan kullanır)
+        /// ==> Text bazlı filtreleme için kullanılır
+        /// </summary>
+        /// <param name="ddl">Doldurulacak DropDownList</param>
+        /// <param name="tableName">Firma tablosu adı (varsayılan: cimer_firmalar)</param>
+        public static void LoadCompaniesWithUnvan(DropDownList ddl, string tableName = "cimer_firmalar")
+        {
+            try
+            {
+                string query = $"SELECT Firma_Unvan FROM {tableName} ORDER BY Firma_Unvan ASC";
+                DataTable dt = BasePage.ExecuteDataTable(query);
+
+                ddl.DataSource = dt;
+                ddl.DataTextField = "Firma_Unvan";
+                ddl.DataValueField = "Firma_Unvan"; // ==> ID yerine ünvan
+                ddl.DataBind();
+                ddl.Items.Insert(0, new ListItem("Firma Seçiniz", ""));
+            }
+            catch (Exception ex)
+            {
+                BasePage.LogError("LoadCompaniesWithUnvan hatası", ex);
+                throw;
+            }
+        }
+
+
         #endregion
 
         #region CIMER Specific

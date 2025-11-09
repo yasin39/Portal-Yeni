@@ -1,40 +1,50 @@
-﻿[2025-11-09 10:15:39] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 10:15:57] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 10:15:57] [INFO] Başarılı giriş: UB10947
-[2025-11-09 10:15:57] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
-=============
-
-[2025-11-09 10:16:03] [WARNING] Yetkisiz erişim denemesi: UB10947 - 608
-[2025-11-09 10:16:16] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 10:16:16] [INFO] Başarılı giriş: UB8194
-[2025-11-09 10:16:16] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
-=============
-
-[2025-11-09 10:16:20] [INFO] Yetki kontrolü başarılı: UB8194 - 608
-[2025-11-09 10:18:31] [INFO] Evrak geçmişi gösterildi: Başvuru 2503898435
-[2025-11-09 10:19:03] [INFO] CİMER hareket eklendi (Transaction): Başvuru 2503898435, İşlem: Cevap Verildi. Kayıt Kapatıldı.
-[2025-11-09 10:19:03] [INFO] CİMER kaydı kapatıldı: 2503898435 - Kullanıcı: Faruk TAŞDELEN
-[2025-11-09 10:19:06] [INFO] Yetki kontrolü başarılı: UB8194 - 608
-[2025-11-09 10:20:12] [INFO] Evrak geçmişi gösterildi: Başvuru 2503967511
-[2025-11-09 10:20:31] [INFO] Yetki kontrolü başarılı: UB8194 - 608
-[2025-11-09 10:22:58] [INFO] Yetki kontrolü başarılı: UB8194 - 600
-[2025-11-09 10:23:49] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 10:23:49] [INFO] Başarılı giriş: UB10947
-[2025-11-09 10:23:49] [ERROR] Login hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
-=============
-
-[2025-11-09 10:23:52] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:24:06] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:24:12] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:24:13] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:24:36] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:24:46] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:24:51] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:25:13] [INFO] Yetki kontrolü başarılı: UB10947 - 600
-[2025-11-09 10:25:18] [INFO] Yetki kontrolü başarılı: UB10947 - 600
+﻿[2025-11-09 16:01:25] [INFO] Evrak geçmişi gösterildi: Başvuru 2201981685
+[2025-11-09 16:02:06] [INFO] Evrak geçmişi gösterildi: Başvuru 2201981685
+[2025-11-09 16:12:54] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 16:13:03] [INFO] Yetki kontrolü başarılı: UB8062 - 603
+[2025-11-09 16:13:03] [INFO] Firmalar dropdown'a yüklendi
+[2025-11-09 16:13:03] [INFO] CİMER Takip sayfası yüklendi.
+[2025-11-09 16:15:07] [INFO] CİMER filtreleme: 2 kayıt listelendi.
+[2025-11-09 16:15:12] [INFO] CİMER Takip formu temizlendi.
+[2025-11-09 16:15:30] [INFO] CİMER filtreleme: 9177 kayıt listelendi.
+[2025-11-09 16:16:03] [INFO] CİMER filtreleme: 11 kayıt listelendi.
+[2025-11-09 16:16:04] [INFO] CİMER Takip formu temizlendi.
+[2025-11-09 16:16:10] [INFO] CİMER filtreleme: 110 kayıt listelendi.
+[2025-11-09 16:17:42] [INFO] Yetki kontrolü başarılı: UB8062 - 603
+[2025-11-09 16:17:42] [INFO] Firmalar dropdown'a yüklendi
+[2025-11-09 16:17:42] [INFO] CİMER Takip sayfası yüklendi.
+[2025-11-09 16:17:50] [INFO] CİMER filtreleme: 2 kayıt listelendi.
+[2025-11-09 16:18:07] [INFO] CİMER Takip formu temizlendi.
+[2025-11-09 16:18:14] [INFO] CİMER filtreleme: 0 kayıt listelendi.
+[2025-11-09 16:18:14] [INFO] CİMER filtreleme: 0 kayıt listelendi.
+[2025-11-09 16:18:22] [INFO] CİMER filtreleme: 0 kayıt listelendi.
+[2025-11-09 16:18:25] [INFO] CİMER Takip formu temizlendi.
+[2025-11-09 16:18:32] [INFO] CİMER filtreleme: 1 kayıt listelendi.
+[2025-11-09 16:18:48] [INFO] Evrak geçmişi gösterildi: Başvuru 1802417959
+[2025-11-09 16:19:41] [INFO] CİMER filtreleme: 1 kayıt listelendi.
+[2025-11-09 16:20:00] [INFO] Evrak geçmişi gösterildi: Başvuru 1802417959
+[2025-11-09 16:20:38] [INFO] CİMER Takip formu temizlendi.
+[2025-11-09 16:20:46] [INFO] CİMER filtreleme: 5 kayıt listelendi.
+[2025-11-09 16:21:02] [INFO] Evrak geçmişi gösterildi: Başvuru 1900291887
+[2025-11-09 16:21:33] [INFO] CİMER Takip formu temizlendi.
+[2025-11-09 16:21:36] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:21:46] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:21:54] [INFO] Evrak geçmişi gösterildi: Başvuru 2103873143
+[2025-11-09 16:32:19] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 16:32:31] [INFO] Yetki kontrolü başarılı: UB8062 - 603
+[2025-11-09 16:32:31] [INFO] Firmalar dropdown'a yüklendi
+[2025-11-09 16:32:31] [INFO] CİMER Takip sayfası yüklendi.
+[2025-11-09 16:32:36] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:32:39] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:32:45] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:32:46] [ERROR] Takip.aspx - Excel Aktarma Hatası: Control 'MainContent_gvCimerBasvurular' of type 'GridView' must be placed inside a form tag with runat=server.
+[2025-11-09 16:34:55] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-09 16:35:11] [INFO] Yetki kontrolü başarılı: UB8062 - 603
+[2025-11-09 16:35:11] [INFO] Firmalar dropdown'a yüklendi
+[2025-11-09 16:35:11] [INFO] CİMER Takip sayfası yüklendi.
+[2025-11-09 16:35:16] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:35:22] [INFO] CİMER filtreleme: 531 kayıt listelendi.
+[2025-11-09 16:35:22] [ERROR] Takip.aspx - Excel Aktarma Hatası: Thread was being aborted.
+[2025-11-09 16:36:29] [INFO] CİMER filtreleme: 0 kayıt listelendi.
+[2025-11-09 16:36:32] [INFO] CİMER filtreleme: 0 kayıt listelendi.
+[2025-11-09 16:36:32] [ERROR] Takip.aspx - Excel Aktarma Hatası: Thread was being aborted.

@@ -139,7 +139,7 @@
                                             OnClick="btnCevapYaz_Click" CausesValidation="false" Text="✏️ Cevap Yaz">                                    
                                 </asp:Button>
                                 <asp:Button ID="btnIade" runat="server" CssClass="btn btn-danger" 
-                                            OnClick="btnIade_Click" Visible="false" CausesValidation="false" Text="↩️ CİMER Sevk/İade">                                
+                                            OnClick="btnIade_Click" CausesValidation="false" Text="↩️ CİMER Sevk/İade">                                
                                 </asp:Button>
                                 <asp:Button ID="btnGecmis" runat="server" CssClass="btn btn-secondary" 
                                             OnClick="btnGecmis_Click" CausesValidation="false" Text="📜 Evrak Geçmişi">
@@ -315,4 +315,26 @@
             GİZLİLİK ilkesi ve Kişisel Verilerin Korunması Kanununa dikkat edilmesi gerekmektedir.
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Havale paneline scroll
+        var havalePanel = document.getElementById('<%= pnlHavale.ClientID %>');
+        if (havalePanel && havalePanel.style.display !== 'none') {
+            scrollToElement('#<%= pnlHavale.ClientID %>', true);
+        }
+
+        // Cevapla paneline scroll
+        var cevapPanel = document.getElementById('<%= pnlCevapla.ClientID %>');
+        if (cevapPanel && cevapPanel.style.display !== 'none') {
+            scrollToElement('#<%= pnlCevapla.ClientID %>', true);
+        }
+
+        // Geçmiş paneline scroll
+        var gecmisPanel = document.getElementById('<%= pnlGecmis.ClientID %>');
+        if (gecmisPanel && gecmisPanel.style.display !== 'none') {
+            scrollToElement('#<%= pnlGecmis.ClientID %>', true);
+        }
+    });
+</script>
+
 </asp:Content>

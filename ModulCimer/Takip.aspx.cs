@@ -1,12 +1,10 @@
-﻿using System;
+﻿using Portal.Base;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.IO;
-using System.Text;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Portal.Base;
 
 namespace Portal.ModulCimer
 {
@@ -30,7 +28,7 @@ namespace Portal.ModulCimer
         {
             try
             {
-                Helpers.LoadCompanies(ddlFirmalar);
+                Helpers.LoadCompaniesWithUnvan(ddlFirmalar);
                 LogInfo("Firmalar dropdown'a yüklendi");
             }
             catch (Exception ex)
@@ -67,8 +65,8 @@ namespace Portal.ModulCimer
 
                 if (ddlFirmalar.SelectedValue != "")
                 {
-                    sqlSorgu += " AND Sikayet_Edilen_Firma = (SELECT Firma_Unvan FROM cimer_firmalar WHERE id = @FirmaId)";
-                    parameters.Add(CreateParameter("@FirmaId", ddlFirmalar.SelectedValue));
+                    sqlSorgu += " AND Sikayet_Edilen_Firma = @FirmaUnvan";
+                    parameters.Add(CreateParameter("@FirmaUnvan", ddlFirmalar.SelectedValue));
                 }
 
                 if (ddlDurum.SelectedValue != "")
@@ -94,6 +92,38 @@ namespace Portal.ModulCimer
             {
                 LogError("Filtreleme hatası", ex);
                 ShowError("Arama sırasında bir hata oluştu.");
+            }
+        }
+
+        protected void btnTemizle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Tüm form alanlarını temizle
+                txtBasvuruNo.Text = string.Empty;
+                txtAdiSoyadi.Text = string.Empty;
+                ddlFirmalar.SelectedIndex = 0;
+                ddlDurum.SelectedIndex = 0;
+
+                // GridView'i temizle
+                gvCimerBasvurular.DataSource = null;
+                gvCimerBasvurular.DataBind();
+                gvCimerBasvurular.SelectedIndex = -1;
+
+                // Evrak geçmişi panelini kapat
+                pnlGecmis.Visible = false;
+
+                // Butonları gizle
+                btnHareket.Visible = false;
+                lblToplamKayit.Visible = false;
+
+                ShowToast("Form temizlendi. Yeni arama yapabilirsiniz.", "Info");
+                LogInfo("CİMER Takip formu temizlendi.");
+            }
+            catch (Exception ex)
+            {
+                LogError("Form temizleme hatası", ex);
+                ShowError("Form temizlenirken bir hata oluştu.");
             }
         }
 
@@ -136,14 +166,41 @@ namespace Portal.ModulCimer
 
         protected void btnExcelAktar_Click(object sender, EventArgs e)
         {
-            ExportGridViewToExcel(gvCimerBasvurular, "CimerBasvurular.xls");
-            LogInfo("CİMER verileri Excel'e aktarıldı.");
+            try
+            {
+                // Sayfalamayı geçici olarak kapat
+                int originalPageSize = gvCimerBasvurular.PageSize;
+                bool originalPaging = gvCimerBasvurular.AllowPaging;
+
+                gvCimerBasvurular.AllowPaging = false;
+
+                // Tüm verileri yeniden bind et
+                FiltreleVeListele();
+
+                // Excel'e aktar
+                ExportGridViewToExcel(gvCimerBasvurular, "CimerBasvurular_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xls");
+
+                // Sayfalamayı geri aç
+                gvCimerBasvurular.AllowPaging = originalPaging;
+                gvCimerBasvurular.PageSize = originalPageSize;
+                FiltreleVeListele();
+            }
+            catch (Exception ex)
+            {
+                LogError("Takip.aspx - Excel Aktarma Hatası: " + ex.Message);
+                ShowToast("Excel dosyası oluşturulurken hata oluştu: " + ex.Message, "danger");
+            }
         }
 
         protected void gvCimerBasvurular_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             gvCimerBasvurular.PageIndex = e.NewPageIndex;
             FiltreleVeListele();
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            // GridView'i form dışında render etmek için gerekli
         }
     }
 }

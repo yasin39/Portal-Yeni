@@ -17,6 +17,13 @@ namespace Portal.ModulCimer
 
             if (!IsPostBack)
             {
+                // ==> Session'dan toast mesajı varsa göster
+                if (Session["ToastMessage"] != null && Session["ToastType"] != null)
+                {
+                    ShowToast(Session["ToastMessage"].ToString(), Session["ToastType"].ToString());
+                    Session.Remove("ToastMessage");
+                    Session.Remove("ToastType");
+                }
                 Listele();
             }
         }
@@ -143,7 +150,9 @@ namespace Portal.ModulCimer
                         }
                     }
                 }
-
+                // ==> Session'a toast mesajı kaydet ve redirect yap
+                Session["ToastMessage"] = "Başvuru başarıyla havale edildi.";
+                Session["ToastType"] = "success";
                 Response.Redirect("Havale.aspx");
             }
             catch (Exception ex)
@@ -210,6 +219,8 @@ namespace Portal.ModulCimer
                     }
                 }
 
+                Session["ToastMessage"] = "Başvuruya başarıyla cevap verildi.";
+                Session["ToastType"] = "success";
                 Response.Redirect("Havale.aspx");
             }
             catch (Exception ex)
@@ -255,6 +266,8 @@ namespace Portal.ModulCimer
                     }
                 }
 
+                Session["ToastMessage"] = "Başvuru başarıyla iade edildi.";
+                Session["ToastType"] = "success";
                 Response.Redirect("Havale.aspx");
             }
             catch (Exception ex)
