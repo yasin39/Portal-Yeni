@@ -1,35 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient; // SqlParameter sınıfı için gerekli
-using System.Text; // StringBuilder sınıfı için gerekli
+using System.Data.SqlClient;
+using System.Text; 
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-// Eski Microsoft.Reporting.WebForms ve System.IO bağımlılıkları kaldırıldı.
-// BasePage.cs içindeki fonksiyonlar kullanılacak.
 
 namespace Portal.ModulDenetim
 {
-    /// <summary>
-    /// Eski 'denetimraporlama' sayfasının BasePage altyapısıyla yeniden yapılandırılmış hali.
-    /// Portal.Base.BasePage sınıfından miras alır.
-    /// </summary>
+   
     public partial class IsletmeRapor : Portal.Base.BasePage
-    {
-        // Eski 'baglan' değişkeni kaldırıldı. Bağlantı BasePage tarafından yönetiliyor.
-
+    {        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                // 1. Yetki Kontrolü: Eski yetkisorgula() yerine BasePage.CheckPermission kullanılır.
+                
                 CheckPermission(200); // 200: Denetim Modülü Yetkisi
-
-                // 2. Dropdown listelerini doldur
+                
                 DoldurDropdownlar();
 
-                // 3. Sayfayı ilk açılışta son 50 kayıtla doldur (eski listele() davranışı)
+                // 3. Sayfayı ilk açılışta son 50 kayıtla doldur
                 BindGrid(true);
             }
         }
@@ -111,11 +103,9 @@ namespace Portal.ModulDenetim
                     sqlSorgu.Append("SELECT TOP 50 * FROM denetimisletme WHERE 1=1 ");
                 }
                 else
-                {
-                    // Filtreli arama (eski 'bulbuton_Click' mantığı)
+                {                    
                     sqlSorgu.Append("SELECT * FROM denetimisletme WHERE 1=1 ");
-
-                    // SQL Injection'ı önlemek için parametreler kullanılıyor
+                    
                     if (!string.IsNullOrEmpty(vergino.Text))
                     {
                         sqlSorgu.Append("AND VergiNo=@VergiNo ");
@@ -147,8 +137,7 @@ namespace Portal.ModulDenetim
                         parameters.Add(CreateParameter("@ilce", ilce.SelectedValue));
                     }
                     if (personel.SelectedValue != "Hepsi")
-                    {
-                        // Orijinal koddaki OR'lu yapı
+                    {                        
                         sqlSorgu.Append("AND (Personel1=@Personel OR Personel2=@Personel) ");
                         parameters.Add(CreateParameter("@Personel", personel.SelectedValue));
                     }
@@ -201,26 +190,21 @@ namespace Portal.ModulDenetim
         {
             if (GridView1.Rows.Count > 0 && GridView1.FooterRow != null)
             {
-                // Orijinal koddaki sayi.ToString() yerine daha açıklayıcı bir footer
+                DataTable dt = Session["IsletmeRaporData"] as DataTable;
+                int toplamKayit = dt != null ? dt.Rows.Count : 0;
+
                 GridView1.FooterRow.Cells[0].Text = "Toplam Kayıt:";
                 GridView1.FooterRow.Cells[0].HorizontalAlign = HorizontalAlign.Right;
-                GridView1.FooterRow.Cells[1].Text = lblKayitSayisi.Text; // Zaten hesaplanmıştı
+                GridView1.FooterRow.Cells[1].Text = toplamKayit.ToString();
             }
         }
 
-        /// <summary>
-        /// "Filtrele" butonuna tıklandığında çalışır.
-        /// </summary>
         protected void bulbuton_Click(object sender, EventArgs e)
         {
             // Filtreli modda (ilkYukleme=false) Grid'i doldurur
             BindGrid(false);
         }
 
-        /// <summary>
-        /// "Excel'e Aktar" butonuna tıklandığında çalışır.
-        /// BasePage.ExportGridViewToExcel fonksiyonunu kullanır.
-        /// </summary>
         protected void exceleaktar_Click(object sender, EventArgs e)
         {
             // Verinin güncel olduğundan emin olmak için Session'ı kontrol et
@@ -238,20 +222,13 @@ namespace Portal.ModulDenetim
                     return;
                 }
             }
-
-            // BasePage fonksiyonunun GridView'i görmesi için tekrar bağla
+            
             GridView1.DataSource = dt;
             GridView1.DataBind();
-
-            // BasePage'deki hazır Excel fonksiyonunu çağır
+            
             ExportGridViewToExcel(GridView1, "IsletmeDenetimRaporu.xls");
         }
 
-        /// <summary>
-        /// "PDF Rapor Al" butonuna tıklandığında çalışır.
-        /// Eski 'raporla_Click' metodunun yerini alır.
-        /// BasePage.ExportGridViewToPdf fonksiyonunu kullanır.
-        /// </summary>
         protected void btnPdfAktar_Click(object sender, EventArgs e)
         {
             DataTable dt = Session["IsletmeRaporData"] as DataTable;

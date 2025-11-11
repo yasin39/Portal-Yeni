@@ -1,50 +1,194 @@
-﻿[2025-11-09 16:01:25] [INFO] Evrak geçmişi gösterildi: Başvuru 2201981685
-[2025-11-09 16:02:06] [INFO] Evrak geçmişi gösterildi: Başvuru 2201981685
-[2025-11-09 16:12:54] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 16:13:03] [INFO] Yetki kontrolü başarılı: UB8062 - 603
-[2025-11-09 16:13:03] [INFO] Firmalar dropdown'a yüklendi
-[2025-11-09 16:13:03] [INFO] CİMER Takip sayfası yüklendi.
-[2025-11-09 16:15:07] [INFO] CİMER filtreleme: 2 kayıt listelendi.
-[2025-11-09 16:15:12] [INFO] CİMER Takip formu temizlendi.
-[2025-11-09 16:15:30] [INFO] CİMER filtreleme: 9177 kayıt listelendi.
-[2025-11-09 16:16:03] [INFO] CİMER filtreleme: 11 kayıt listelendi.
-[2025-11-09 16:16:04] [INFO] CİMER Takip formu temizlendi.
-[2025-11-09 16:16:10] [INFO] CİMER filtreleme: 110 kayıt listelendi.
-[2025-11-09 16:17:42] [INFO] Yetki kontrolü başarılı: UB8062 - 603
-[2025-11-09 16:17:42] [INFO] Firmalar dropdown'a yüklendi
-[2025-11-09 16:17:42] [INFO] CİMER Takip sayfası yüklendi.
-[2025-11-09 16:17:50] [INFO] CİMER filtreleme: 2 kayıt listelendi.
-[2025-11-09 16:18:07] [INFO] CİMER Takip formu temizlendi.
-[2025-11-09 16:18:14] [INFO] CİMER filtreleme: 0 kayıt listelendi.
-[2025-11-09 16:18:14] [INFO] CİMER filtreleme: 0 kayıt listelendi.
-[2025-11-09 16:18:22] [INFO] CİMER filtreleme: 0 kayıt listelendi.
-[2025-11-09 16:18:25] [INFO] CİMER Takip formu temizlendi.
-[2025-11-09 16:18:32] [INFO] CİMER filtreleme: 1 kayıt listelendi.
-[2025-11-09 16:18:48] [INFO] Evrak geçmişi gösterildi: Başvuru 1802417959
-[2025-11-09 16:19:41] [INFO] CİMER filtreleme: 1 kayıt listelendi.
-[2025-11-09 16:20:00] [INFO] Evrak geçmişi gösterildi: Başvuru 1802417959
-[2025-11-09 16:20:38] [INFO] CİMER Takip formu temizlendi.
-[2025-11-09 16:20:46] [INFO] CİMER filtreleme: 5 kayıt listelendi.
-[2025-11-09 16:21:02] [INFO] Evrak geçmişi gösterildi: Başvuru 1900291887
-[2025-11-09 16:21:33] [INFO] CİMER Takip formu temizlendi.
-[2025-11-09 16:21:36] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:21:46] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:21:54] [INFO] Evrak geçmişi gösterildi: Başvuru 2103873143
-[2025-11-09 16:32:19] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 16:32:31] [INFO] Yetki kontrolü başarılı: UB8062 - 603
-[2025-11-09 16:32:31] [INFO] Firmalar dropdown'a yüklendi
-[2025-11-09 16:32:31] [INFO] CİMER Takip sayfası yüklendi.
-[2025-11-09 16:32:36] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:32:39] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:32:45] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:32:46] [ERROR] Takip.aspx - Excel Aktarma Hatası: Control 'MainContent_gvCimerBasvurular' of type 'GridView' must be placed inside a form tag with runat=server.
-[2025-11-09 16:34:55] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-09 16:35:11] [INFO] Yetki kontrolü başarılı: UB8062 - 603
-[2025-11-09 16:35:11] [INFO] Firmalar dropdown'a yüklendi
-[2025-11-09 16:35:11] [INFO] CİMER Takip sayfası yüklendi.
-[2025-11-09 16:35:16] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:35:22] [INFO] CİMER filtreleme: 531 kayıt listelendi.
-[2025-11-09 16:35:22] [ERROR] Takip.aspx - Excel Aktarma Hatası: Thread was being aborted.
-[2025-11-09 16:36:29] [INFO] CİMER filtreleme: 0 kayıt listelendi.
-[2025-11-09 16:36:32] [INFO] CİMER filtreleme: 0 kayıt listelendi.
-[2025-11-09 16:36:32] [ERROR] Takip.aspx - Excel Aktarma Hatası: Thread was being aborted.
+﻿[2025-11-11 09:20:45] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 09:20:52] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 09:22:00] [INFO] Taşıt denetim kaydı eklendi: 06uab1982
+[2025-11-11 10:29:25] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 10:30:15] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 10:32:38] [INFO] Taşıt denetim kaydı güncellendi: 06UAB1982
+[2025-11-11 10:34:31] [INFO] Taşıt denetim kaydı eklendi: 06abc1956
+[2025-11-11 10:36:32] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 10:37:32] [INFO] Taşıt denetim kaydı silindi: ID=38541
+[2025-11-11 10:40:17] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 10:41:00] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 10:42:36] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 10:42:45] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 10:43:59] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 11/11/2025
+[2025-11-11 11:14:26] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 11:14:26] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 11:14:59] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 11:15:05] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 11:15:12] [WARNING] DropDownList 'ddlPersonel' için değer bulunamadı: Ziya DURMAZ
+[2025-11-11 11:15:41] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:30:56] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 13:31:09] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:35:01] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:35:37] [ERROR] ExecuteNonQuery hatası: Conversion failed when converting date and/or time from character string.
+Query: 
+                    UPDATE denetimuzak 
+                    SET Tarih = @Tarih, 
+                        AracSayisi = @AracSayisi, 
+                        AtananPersonel = @AtananPersonel, 
+                        Durum = @Durum, 
+                        Aciklama = @Aciklama, 
+                        GuncellemeTarihi = @GuncellemeTarihi, 
+                        GuncelleyenKullanici = @GuncelleyenKullanici 
+                    WHERE id = @KayitId
+[2025-11-11 13:35:37] [ERROR] Kayıt güncellenirken hata
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulDenetim.UzakEkle.btnGuncelle_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\UzakEkle.aspx.cs:line 185
+=============
+
+[2025-11-11 13:40:03] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:40:20] [ERROR] Kayıt güncellenirken hata
+String was not recognized as a valid DateTime.
+StackTrace (Last): at Portal.ModulDenetim.UzakEkle.btnGuncelle_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 13:44:14] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:44:23] [ERROR] Kayıt güncellenirken hata
+String was not recognized as a valid DateTime.
+StackTrace (Last): at Portal.ModulDenetim.UzakEkle.btnGuncelle_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 13:44:58] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 13:45:11] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:45:24] [ERROR] Kayıt güncellenirken hata
+String was not recognized as a valid DateTime.
+StackTrace (Last): at Portal.ModulDenetim.UzakEkle.btnGuncelle_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\UzakEkle.aspx.cs:line 174
+=============
+
+[2025-11-11 13:48:38] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:48:52] [INFO] Uzaktan denetim kaydı güncellendi: ID=1864
+[2025-11-11 13:48:53] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:50:24] [INFO] Uzaktan denetim kaydı güncellendi: ID=1864
+[2025-11-11 13:50:29] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:53:55] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 13:54:13] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 13:54:50] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 14:13:17] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 14:13:35] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 14:14:29] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 14:14:38] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 14:14:56] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 14:14:56] [INFO] Başarılı giriş: UB10947
+[2025-11-11 14:14:57] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 14:15:01] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 14:15:18] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 14:15:18] [INFO] Başarılı giriş: ub9141
+[2025-11-11 14:15:18] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 14:15:21] [INFO] Yetki kontrolü başarılı: UB9141 - 201
+[2025-11-11 14:15:38] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 11/11/2025
+[2025-11-11 14:15:45] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 14:15:45] [INFO] Başarılı giriş: UB10947
+[2025-11-11 14:15:45] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 14:15:47] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 14:17:49] [INFO] Uzak görev güncellendi. ID: 1865
+[2025-11-11 14:18:47] [INFO] Uzak görev güncellendi. ID: 1864
+[2025-11-11 16:59:33] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 16:59:54] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 16:59:54] [INFO] Başarılı giriş: UB10947
+[2025-11-11 16:59:54] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 16:59:59] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 17:00:25] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 17:00:25] [INFO] Başarılı giriş: ub9141
+[2025-11-11 17:00:25] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 17:00:30] [INFO] Yetki kontrolü başarılı: UB9141 - 201
+[2025-11-11 17:00:50] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 11/11/2025
+[2025-11-11 17:01:50] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 17:01:50] [INFO] Başarılı giriş: UB10947
+[2025-11-11 17:01:50] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 17:01:58] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 17:02:25] [INFO] Uzak görev güncellendi. ID: 1866
+[2025-11-11 17:03:44] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 17:03:44] [INFO] Başarılı giriş: ub9141
+[2025-11-11 17:03:44] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 17:03:49] [INFO] Yetki kontrolü başarılı: UB9141 - 201
+[2025-11-11 17:04:01] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 12/11/2025
+[2025-11-11 17:04:28] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 14/11/2025
+[2025-11-11 19:33:47] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 19:33:59] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 19:33:59] [INFO] Başarılı giriş: UB10947
+[2025-11-11 19:33:59] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 19:34:04] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 19:34:13] [INFO] Uzak görev güncellendi. ID: 1867
+[2025-11-11 19:43:06] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 19:43:11] [INFO] Uzak görev güncellendi. ID: 1868
+[2025-11-11 19:45:31] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 19:45:40] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 19:45:55] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 11/11/2025
+[2025-11-11 19:46:09] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 19:46:09] [INFO] Başarılı giriş: UB10947
+[2025-11-11 19:46:09] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
+=============
+
+[2025-11-11 19:46:25] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 19:46:29] [INFO] Uzak görev güncellendi. ID: 1869
+[2025-11-11 19:48:16] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 19:48:32] [INFO] Yetki kontrolü başarılı: admin - 201
+[2025-11-11 19:48:43] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 11/11/2025
+[2025-11-11 19:48:55] [INFO] Uzaktan denetim kaydı eklendi: Ufuk YAŞAR - 27/11/2025
+[2025-11-11 19:49:06] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 19:49:06] [INFO] Başarılı giriş: UB10947
+[2025-11-11 19:49:06] [ERROR] Login hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Login.btnGiris_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\Login.aspx.cs:line 79
+=============
+
+[2025-11-11 19:49:13] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 19:49:15] [ERROR] Excel export hatası
+RegisterForEventValidation can only be called during Render();
+StackTrace (Last): at Portal.ModulDenetim.UzakGorev.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\UzakGorev.aspx.cs:line 254
+=============
+
+[2025-11-11 19:57:08] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 19:57:11] [ERROR] Excel export hatası
+RegisterForEventValidation can only be called during Render();
+StackTrace (Last): at Portal.ModulDenetim.UzakGorev.btnExcelAktar_Click(Object sender, EventArgs e)
+=============
+
+[2025-11-11 20:02:31] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 20:03:01] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 20:04:46] [INFO] Yetki kontrolü başarılı: UB10947 - 200
+[2025-11-11 20:16:47] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 20:17:24] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 20:20:53] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 22:06:03] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-11 22:06:03] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-11 22:06:47] [ERROR] PDF export hatası
+Thread was being aborted.
+StackTrace (Last): at Portal.Base.BasePage.ExportGridViewToPdf(GridView gv, String dosyaAdi, String raporBaslik) in C:\Users\cyasi\source\repos\Portal\BasePage.cs:line 693
+=============
+

@@ -132,7 +132,7 @@
                                         ControlToValidate="txtUygunsuzArac" 
                                         ErrorMessage="Zorunlu alan" 
                                         CssClass="text-danger" 
-                                        Display="Dynamic" />
+                                        Display="Dynamic" ValidationGroup="kayit"/>
                                 </div>
 
                                 <div class="col-md-4">
@@ -143,7 +143,7 @@
                                         ControlToValidate="txtYBOlmayanArac" 
                                         ErrorMessage="Zorunlu alan" 
                                         CssClass="text-danger" 
-                                        Display="Dynamic" />
+                                        Display="Dynamic" ValidationGroup="kayit"/>
                                 </div>
 
                                 <div class="col-md-4">
@@ -154,7 +154,7 @@
                                         ControlToValidate="txtYBKayitliOlmayan" 
                                         ErrorMessage="Zorunlu alan" 
                                         CssClass="text-danger" 
-                                        Display="Dynamic" />
+                                        Display="Dynamic" ValidationGroup="kayit"/>
                                 </div>
 
                                 <div class="col-md-12">
@@ -166,7 +166,7 @@
                                 <div class="col-md-12">
                                     <div class="d-flex gap-2 justify-content-end mt-3">
                                         <asp:Button ID="btnKaydet" runat="server" CssClass="btn btn-success" 
-                                            Text="💾 Kaydet ve Kapat" OnClick="btnKaydet_Click" />
+                                            Text="💾 Kaydet ve Kapat" OnClick="btnKaydet_Click" ValidationGroup="kayit"/>
                                         
                                         <asp:Button ID="btnVazgec" runat="server" CssClass="btn btn-outline-secondary" 
                                             Text="❌ Vazgeç" OnClick="btnVazgec_Click" CausesValidation="false" />

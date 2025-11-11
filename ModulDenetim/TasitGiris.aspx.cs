@@ -156,7 +156,7 @@ namespace ModulDenetim
                 ("@DenetimYeri", ddlDenetimYeri.SelectedValue),
                 ("@YetkiBelgesi", ddlYetkiBelgesi.SelectedValue),
                 ("@DenetimTuru", ddlDenetimTuru.SelectedValue),
-                ("@DenetimTarihi", DateTime.Parse(txtDenetimTarihi.Text)),
+                ("@DenetimTarihi", Convert.ToDateTime(txtDenetimTarihi.Text)),
                 ("@Il", ddlIl.SelectedValue),
                 ("@Ilce", ddlIlce.SelectedValue),
                 ("@Personel", ddlPersonel.SelectedValue),
@@ -194,7 +194,7 @@ namespace ModulDenetim
 
             var kontrolParams = CreateParameters(
                 ("@Plaka", txtPlaka.Text.ToUpper().Trim()),
-                ("@DenetimTarihi", DateTime.Parse(txtDenetimTarihi.Text)),
+                ("@DenetimTarihi", Convert.ToDateTime(txtDenetimTarihi.Text)),
                 ("@Id", txtKayitNo.Text)
             );
 
@@ -225,7 +225,7 @@ namespace ModulDenetim
                 ("@DenetimYeri", ddlDenetimYeri.SelectedValue),
                 ("@YetkiBelgesi", ddlYetkiBelgesi.SelectedValue),
                 ("@DenetimTuru", ddlDenetimTuru.SelectedValue),
-                ("@DenetimTarihi", DateTime.Parse(txtDenetimTarihi.Text)),
+                ("@DenetimTarihi", Convert.ToDateTime(txtDenetimTarihi.Text)),
                 ("@Il", ddlIl.SelectedValue),
                 ("@Ilce", ddlIlce.SelectedValue),
                 ("@Personel", ddlPersonel.SelectedValue),

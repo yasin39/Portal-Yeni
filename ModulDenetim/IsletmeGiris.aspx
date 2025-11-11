@@ -124,8 +124,7 @@
 
                             <div class="col-md-6 mb-3">
                                 <label class="form-label fw-bold">Denetim Tarihi <span class="text-danger">*</span></label>
-                                <asp:TextBox ID="txtDenetimTarihi" runat="server" CssClass="form-control" 
-                                    TextMode="DateTimeLocal"></asp:TextBox>
+                                <asp:TextBox ID="txtDenetimTarihi" runat="server" CssClass="form-control fp-datetime"></asp:TextBox>
                                 <asp:RequiredFieldValidator ID="rfvDenetimTarihi" runat="server" 
                                     ControlToValidate="txtDenetimTarihi" ErrorMessage="Denetim tarihi zorunludur." 
                                     CssClass="text-danger small" Display="Dynamic" ValidationGroup="kayit">*</asp:RequiredFieldValidator>

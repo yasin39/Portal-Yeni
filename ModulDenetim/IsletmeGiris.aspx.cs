@@ -76,6 +76,8 @@ namespace Portal.ModulDenetim
             try
             {
                 Helpers.LoadProvinces(ddlIl);
+                // ==> İlçe başlangıçta disabled
+                ddlIlce.Enabled = false;
                 ddlIlce.Items.Clear();
                 ddlIlce.Items.Insert(0, new ListItem("İlçe Seçiniz", ""));
             }
@@ -374,11 +376,13 @@ namespace Portal.ModulDenetim
             if (!string.IsNullOrEmpty(ddlIl.SelectedValue))
             {
                 IlceleriYukle(ddlIl.SelectedValue);
+                ddlIlce.Enabled = true;
             }
             else
             {
                 ddlIlce.Items.Clear();
                 ddlIlce.Items.Insert(0, new ListItem("İlçe Seçiniz", ""));
+                ddlIlce.Enabled = false;
             }
         }
 

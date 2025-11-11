@@ -21,9 +21,6 @@ namespace Portal.ModulDenetim
             }
         }
 
-        /// <summary>
-        /// Açık görevleri yükle
-        /// </summary>
         private void AcikGörevleriYukle()
         {
             try
@@ -73,9 +70,7 @@ namespace Portal.ModulDenetim
             }
         }
 
-        /// <summary>
-        /// Tüm görevleri yükle
-        /// </summary>
+
         private void TumGörevleriYukle()
         {
             try
@@ -123,9 +118,7 @@ namespace Portal.ModulDenetim
             }
         }
 
-        /// <summary>
-        /// Grid'de satır seçildiğinde çalışır
-        /// </summary>
+
         protected void UzakGorevGrid_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -173,6 +166,11 @@ namespace Portal.ModulDenetim
         /// </summary>
         protected void btnKaydet_Click(object sender, EventArgs e)
         {
+            if (!Page.IsValid)
+            {
+                ShowToast("Lütfen zorunlu alanları doldurunuz.", "warning");
+                return;
+            }
             try
             {
                 if (UzakGorevGrid.SelectedIndex == -1)
@@ -252,9 +250,11 @@ namespace Portal.ModulDenetim
             }
 
             try
-            {
+            {              
+
                 ExportGridViewToExcel(UzakGorevGrid, "UzakGorevler_" + DateTime.Now.ToString("yyyyMMdd") + ".xls");
                 LogInfo("Uzak görevler Excel'e aktarıldı.");
+             
             }
             catch (Exception ex)
             {

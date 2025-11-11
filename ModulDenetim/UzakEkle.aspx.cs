@@ -60,7 +60,7 @@ namespace Portal.ModulDenetim
                     (@Tarih, @AracSayisi, @AtananPersonel, @Durum, @Aciklama, @KayitTarihi, @KayitKullanici)";
 
                 var parameters = CreateParameters(
-                    ("@Tarih", txtTarih.Text),
+                    ("@Tarih", Convert.ToDateTime(txtTarih.Text, new System.Globalization.CultureInfo("tr-TR"))),
                     ("@AracSayisi", txtAracSayisi.Text),
                     ("@AtananPersonel", ddlPersonel.SelectedValue),
                     ("@Durum", ddlIslemDurum.SelectedValue),
@@ -91,9 +91,8 @@ namespace Portal.ModulDenetim
 
         protected void btnBul_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtKayitBul.Text))
+            if (!Page.IsValid)
             {
-                ShowToast("Lütfen kayıt ID giriniz.", "warning");
                 return;
             }
 
@@ -173,7 +172,7 @@ namespace Portal.ModulDenetim
                     WHERE id = @KayitId";
 
                 var parameters = CreateParameters(
-                    ("@Tarih", txtTarih.Text),
+                    ("@Tarih", Convert.ToDateTime(txtTarih.Text, new System.Globalization.CultureInfo("tr-TR"))),
                     ("@AracSayisi", txtAracSayisi.Text),
                     ("@AtananPersonel", ddlPersonel.SelectedValue),
                     ("@Durum", ddlIslemDurum.SelectedValue),
@@ -188,9 +187,8 @@ namespace Portal.ModulDenetim
                 if (sonuc > 0)
                 {
                     LogInfo($"Uzaktan denetim kaydı güncellendi: ID={txtKayitBul.Text}");
-                    ShowToast("Kayıt başarıyla güncellendi.", "success");
-                    System.Threading.Thread.Sleep(1000);
-                    Response.Redirect("UzakEkle.aspx", false);
+                    ShowToast("Kayıt başarıyla güncellendi.", "success");                    
+                    //Response.Redirect("UzakEkle.aspx", false);
                 }
                 else
                 {

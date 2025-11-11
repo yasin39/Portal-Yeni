@@ -29,8 +29,8 @@ namespace Portal.ModulCimer
 
         private void YillariDoldur()
         {
-            int baslangicYili = 2017;
-            int bitisYili = DateTime.Now.Year + 5; // Gelecek 5 yıl dahil
+            int baslangicYili = 2018;
+            int bitisYili = DateTime.Now.Year;
 
             for (int yil = baslangicYili; yil <= bitisYili; yil++)
             {
