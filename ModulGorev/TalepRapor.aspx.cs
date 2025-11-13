@@ -9,7 +9,7 @@ using Portal.Base;
 namespace Portal.ModulGorev
 {
     public partial class TalepRapor : BasePage
-    {        
+    {
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,6 +25,16 @@ namespace Portal.ModulGorev
                 GrafikVerileriniYukle();
             }
         }
+
+        #region ViewState Yönetimi
+
+        private string AktifFiltre
+        {
+            get { return ViewState["AktifFiltre"] as string ?? ""; }
+            set { ViewState["AktifFiltre"] = value; }
+        }
+
+        #endregion
 
         #region Veri Yükleme Metodları
 
@@ -50,25 +60,32 @@ namespace Portal.ModulGorev
             }
         }
 
-        private void GorevVerileriniYukle(string filtre = "")
+        private void GorevVerileriniYukle()
         {
             try
             {
-                string query = "SELECT * FROM gorevkayit WHERE 1=1 ";
+                string baseQuery = "SELECT Talep_id, Vergi_Numarasi, Unvan, Adres, Gidilecen_Son_Tarih, Durum, Gorev_il FROM gorevkayit WHERE 1=1 ";
+                string query = baseQuery + AktifFiltre + " ORDER BY Talep_id DESC";
 
-                if (!string.IsNullOrEmpty(filtre))
+                DataTable dt;
+
+                if (string.IsNullOrEmpty(AktifFiltre))
                 {
-                    query += filtre;
+                    dt = ExecuteDataTable(query);
                 }
-
-                query += " ORDER BY Talep_id DESC";
-
-                DataTable dt = ExecuteDataTable(query);
+                else
+                {
+                    var parametreler = CreateParameters(
+                        ("@Il", ddlIl.SelectedValue),
+                        ("@Durum", ddlDurum.SelectedValue)
+                    );
+                    dt = ExecuteDataTable(query, parametreler);
+                }
 
                 GorevlerGrid.DataSource = dt;
                 GorevlerGrid.DataBind();
 
-                IstatistikleriGuncelle(dt);
+                IstatistikleriGuncelle();
             }
             catch (Exception ex)
             {
@@ -77,17 +94,22 @@ namespace Portal.ModulGorev
             }
         }
 
-        private void IstatistikleriGuncelle(DataTable dt)
+        private void IstatistikleriGuncelle()
         {
             try
             {
-                int toplamGorev = dt.Rows.Count;
-                int aktifGorev = dt.Select("Durum = 'Aktif'").Length;
-                int pasifGorev = dt.Select("Durum = 'Pasif'").Length;
+                string queryToplam = "SELECT COUNT(*) FROM gorevkayit";
+                string queryAktif = "SELECT COUNT(*) FROM gorevkayit WHERE Durum = 'Aktif'";
+                string queryPasif = "SELECT COUNT(*) FROM gorevkayit WHERE Durum = 'Pasif'";
+                string queryGecenAy = @"SELECT COUNT(*) FROM gorevkayit 
+                                       WHERE Durum = 'Pasif' 
+                                       AND MONTH(Gidilecen_Son_Tarih) = MONTH(DATEADD(MONTH, -1, GETDATE())) 
+                                       AND YEAR(Gidilecen_Son_Tarih) = YEAR(DATEADD(MONTH, -1, GETDATE()))";
 
-                lblToplamGorev.Text = toplamGorev.ToString();
-                lblAktifGorev.Text = aktifGorev.ToString();
-                lblPasifGorev.Text = pasifGorev.ToString();
+                lblToplamGorev.Text = ExecuteScalar(queryToplam).ToString();
+                lblAktifGorev.Text = ExecuteScalar(queryAktif).ToString();
+                lblPasifGorev.Text = ExecuteScalar(queryPasif).ToString();
+                lblGecenAyTamamlanan.Text = ExecuteScalar(queryGecenAy).ToString();
             }
             catch (Exception ex)
             {
@@ -100,10 +122,13 @@ namespace Portal.ModulGorev
             try
             {
                 string query = @"SELECT Gorev_il, COUNT(*) As Gorev_Sayisi 
-                        FROM gorevkayit 
-                        WHERE Gorev_il IS NOT NULL 
-                        GROUP BY Gorev_il 
-                        ORDER BY Gorev_il ASC";
+                                FROM gorevkayit 
+                                WHERE Gorev_il IS NOT NULL 
+                                AND Durum = 'Pasif'
+                                AND MONTH(Gidilecen_Son_Tarih) = MONTH(DATEADD(MONTH, -1, GETDATE())) 
+                                AND YEAR(Gidilecen_Son_Tarih) = YEAR(DATEADD(MONTH, -1, GETDATE()))
+                                GROUP BY Gorev_il 
+                                ORDER BY Gorev_il ASC";
 
                 DataTable dt = ExecuteDataTable(query);
 
@@ -145,15 +170,18 @@ namespace Portal.ModulGorev
 
                 if (ddlIl.SelectedValue != "Hepsi")
                 {
-                    filtre += " AND Gorev_il = '" + ddlIl.SelectedValue + "'";
+                    filtre += " AND Gorev_il = @Il";
                 }
 
                 if (ddlDurum.SelectedValue != "Hepsi")
                 {
-                    filtre += " AND Durum = '" + ddlDurum.SelectedValue + "'";
+                    filtre += " AND Durum = @Durum";
                 }
 
-                GorevVerileriniYukle(filtre);
+                AktifFiltre = filtre;
+                GorevlerGrid.PageIndex = 0;
+                GorevVerileriniYukle();
+
                 ShowToast("Filtreleme tamamlandı.", "info");
                 LogInfo($"Görev arama yapıldı. Filtre: {filtre}");
             }
@@ -170,6 +198,8 @@ namespace Portal.ModulGorev
             {
                 ddlIl.SelectedValue = "Hepsi";
                 ddlDurum.SelectedValue = "Hepsi";
+                AktifFiltre = "";
+                GorevlerGrid.PageIndex = 0;
                 GorevVerileriniYukle();
                 GrafikVerileriniYukle();
                 ShowToast("Tüm görevler listelendi.", "info");
@@ -191,8 +221,12 @@ namespace Portal.ModulGorev
 
             try
             {
+                GorevlerGrid.AllowPaging = false;
+                GorevVerileriniYukle();
                 ExportGridViewToExcel(GorevlerGrid, "GorevTalepRapor_" + DateTime.Now.ToString("yyyyMMdd") + ".xls");
                 LogInfo("Görev talep raporu Excel'e aktarıldı.");
+                GorevlerGrid.AllowPaging = true;
+                GorevVerileriniYukle();
             }
             catch (Exception ex)
             {
@@ -211,15 +245,20 @@ namespace Portal.ModulGorev
             {
                 pnlGorevGuncelle.Visible = true;
 
-                lblTalepId.Text = GorevlerGrid.SelectedRow.Cells[1].Text;
-                lblAciklama.Text = System.Web.HttpUtility.HtmlDecode(GorevlerGrid.SelectedRow.Cells[9].Text);
+                lblTalepId.Text = GorevlerGrid.SelectedDataKey.Value.ToString();
+                lblMevcutDurum.Text = GorevlerGrid.SelectedRow.Cells[5].Text;
 
-                txtGoreveCikisTarihi.Text = "";
-                txtGidenPersonel.Text = "";
-                ddlGidisTuru.SelectedIndex = 0;
-                txtGorevSuresi.Text = "";
+                ddlYeniDurum.ClearSelection();
+                if (lblMevcutDurum.Text == "Aktif")
+                {
+                    ddlYeniDurum.SelectedValue = "Pasif";
+                }
+                else
+                {
+                    ddlYeniDurum.SelectedValue = "Aktif";
+                }
 
-                ShowToast("Görev seçildi. Bilgileri doldurup güncelleyebilirsiniz.", "info");
+                ShowToast("Görev seçildi. Yeni durumu seçip güncelleyebilirsiniz.", "info");
             }
             catch (Exception ex)
             {
@@ -228,62 +267,63 @@ namespace Portal.ModulGorev
             }
         }
 
+        protected void GorevlerGrid_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GorevlerGrid.PageIndex = e.NewPageIndex;
+                GorevVerileriniYukle();
+            }
+            catch (Exception ex)
+            {
+                LogError("Sayfa değiştirme hatası", ex);
+                ShowToast("Sayfa değiştirme sırasında hata oluştu.", "danger");
+            }
+        }
+
         #endregion
 
         #region Güncelleme Metodları
 
-        protected void btnGuncelle_Click(object sender, EventArgs e)
+        protected void btnDurumDegistir_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(txtGoreveCikisTarihi.Text))
-                {
-                    ShowToast("Göreve çıkış tarihi giriniz.", "warning");
-                    return;
-                }
-
-                if (string.IsNullOrEmpty(txtGidenPersonel.Text))
-                {
-                    ShowToast("Giden personel bilgisi giriniz.", "warning");
-                    return;
-                }
-
-                string updateQuery = @"UPDATE gorevkayit 
-                                     SET Durum = 'Pasif', 
-                                         Goreve_Cikis_Tarihi = @GoreveCikisTarihi,
-                                         Goreve_Giden_Personel = @GidenPersonel,
-                                         Goreve_Gidis_Turu = @GidisTuru,
-                                         Gorev_Suresi = @GorevSuresi
-                                     WHERE Talep_id = @TalepId";
+                string updateQuery = "UPDATE gorevkayit SET Durum = @YeniDurum WHERE Talep_id = @TalepId";
 
                 var parametreler = CreateParameters(
-                    ("@GoreveCikisTarihi", txtGoreveCikisTarihi.Text),
-                    ("@GidenPersonel", txtGidenPersonel.Text),
-                    ("@GidisTuru", ddlGidisTuru.SelectedValue),
-                    ("@GorevSuresi", txtGorevSuresi.Text),
+                    ("@YeniDurum", ddlYeniDurum.SelectedValue),
                     ("@TalepId", lblTalepId.Text)
                 );
 
-                ExecuteNonQuery(updateQuery, parametreler);
+                int etkilenenSatir = ExecuteNonQuery(updateQuery, parametreler);
 
-                pnlGorevGuncelle.Visible = false;
-                GorevVerileriniYukle();
-                GrafikVerileriniYukle();
+                if (etkilenenSatir > 0)
+                {
+                    pnlGorevGuncelle.Visible = false;
+                    GorevVerileriniYukle();
+                    GrafikVerileriniYukle();
 
-                ShowToast("Görev başarıyla güncellendi ve pasife alındı.", "success");
-                LogInfo($"Görev güncellendi. Talep ID: {lblTalepId.Text}");
+                    ShowToast($"Görev durumu '{ddlYeniDurum.SelectedValue}' olarak güncellendi.", "success");
+                    LogInfo($"Görev durumu değiştirildi. Talep ID: {lblTalepId.Text}, Yeni Durum: {ddlYeniDurum.SelectedValue}");
+                }
+                else
+                {
+                    ShowToast("Güncelleme yapılamadı. Talep ID bulunamadı.", "warning");
+                    LogWarning($"Durum güncellenemedi. Talep ID: {lblTalepId.Text}");
+                }
             }
             catch (Exception ex)
             {
-                LogError("Görev güncelleme hatası", ex);
-                ShowToast("Güncelleme sırasında hata oluştu.", "danger");
+                LogError("Durum değiştirme hatası", ex);
+                ShowToast("Durum değiştirme sırasında hata oluştu.", "danger");
             }
         }
 
         protected void btnVazgec_Click(object sender, EventArgs e)
         {
             pnlGorevGuncelle.Visible = false;
-            ShowToast("Güncelleme iptal edildi.", "info");
+            ShowToast("İşlem iptal edildi.", "info");
         }
 
         #endregion

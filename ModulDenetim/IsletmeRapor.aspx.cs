@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text; 
+using System.Text;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
 namespace Portal.ModulDenetim
 {
-   
+
     public partial class IsletmeRapor : Portal.Base.BasePage
-    {        
+    {
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                
+
                 CheckPermission(200); // 200: Denetim Modülü Yetkisi
-                
+
                 DoldurDropdownlar();
 
                 // 3. Sayfayı ilk açılışta son 50 kayıtla doldur
@@ -103,9 +104,9 @@ namespace Portal.ModulDenetim
                     sqlSorgu.Append("SELECT TOP 50 * FROM denetimisletme WHERE 1=1 ");
                 }
                 else
-                {                    
+                {
                     sqlSorgu.Append("SELECT * FROM denetimisletme WHERE 1=1 ");
-                    
+
                     if (!string.IsNullOrEmpty(vergino.Text))
                     {
                         sqlSorgu.Append("AND VergiNo=@VergiNo ");
@@ -137,7 +138,7 @@ namespace Portal.ModulDenetim
                         parameters.Add(CreateParameter("@ilce", ilce.SelectedValue));
                     }
                     if (personel.SelectedValue != "Hepsi")
-                    {                        
+                    {
                         sqlSorgu.Append("AND (Personel1=@Personel OR Personel2=@Personel) ");
                         parameters.Add(CreateParameter("@Personel", personel.SelectedValue));
                     }
@@ -222,10 +223,10 @@ namespace Portal.ModulDenetim
                     return;
                 }
             }
-            
+
             GridView1.DataSource = dt;
             GridView1.DataBind();
-            
+
             ExportGridViewToExcel(GridView1, "IsletmeDenetimRaporu.xls");
         }
 
@@ -247,8 +248,25 @@ namespace Portal.ModulDenetim
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-            // BasePage'deki hazır PDF fonksiyonunu çağır
-            // Rapor başlığını PNG [İşletme Denetim Raporu.PNG] görüntüsüne benzer yapalım
+            if (GridView1.HeaderRow != null)
+            {
+                foreach (TableCell headerCell in GridView1.HeaderRow.Cells)
+                {
+                    headerCell.Text = HttpUtility.HtmlDecode(headerCell.Text);
+                }
+            }
+
+
+            // ==> Değişiklik: PDF'e göndermeden önce GridView'daki Türkçe karakterleri düzelt
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                foreach (TableCell cell in row.Cells)
+                {
+                    cell.Text = HttpUtility.HtmlDecode(cell.Text);
+                }
+            }
+
+            // BasePage'deki hazır PDF fonksiyonunu çağır            
             string raporBaslik = "II. Bölge Müdürlüğü İşletme Denetim Raporu";
             ExportGridViewToPdf(GridView1, "IsletmeDenetimRaporu.pdf", raporBaslik);
         }

@@ -78,9 +78,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Anasayfa.aspx" />
+    <Content Include="Dashboard.aspx" />
     <Content Include="ErrorLog.txt" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="LogViewer.aspx" />
     <Content Include="ModulAraclar\DosyaBirlestir.aspx" />
     <Content Include="ModulAraclar\PdfBirlestir.aspx" />
     <Content Include="ModulAraclar\PersonelIzinFormu.aspx" />
@@ -2284,6 +2286,13 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2294,6 +2303,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LogViewer.aspx.cs">
+      <DependentUpon>LogViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogViewer.aspx.designer.cs">
+      <DependentUpon>LogViewer.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModulAraclar\DosyaBirlestir.aspx.cs">
       <DependentUpon>DosyaBirlestir.aspx</DependentUpon>

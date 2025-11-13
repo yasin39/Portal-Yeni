@@ -233,3 +233,9 @@ VALUES
 
     ========================================================================
 
+    -- gorevkayit tablosuna Vergi_Numarasi kolonu ekleme
+ALTER TABLE gorevkayit 
+ADD Vergi_Numarasi NVARCHAR(50) NULL;
+
+================================================================================
+

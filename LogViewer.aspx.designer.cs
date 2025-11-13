@@ -7,299 +7,254 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Portal.ModulDenetim
+namespace Portal
 {
 
 
-    public partial class TasitRapor
+    public partial class LogViewer
     {
 
         /// <summary>
-        /// KayitNo control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox KayitNo;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// BulBtn control.
+        /// ScriptManager1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BulBtn;
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// AramaUyariLabel control.
+        /// hdnFilterLevel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AramaUyariLabel;
+        protected global::System.Web.UI.WebControls.HiddenField hdnFilterLevel;
 
         /// <summary>
-        /// Plaka control.
+        /// btnRefresh control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Plaka;
+        protected global::System.Web.UI.WebControls.Button btnRefresh;
 
         /// <summary>
-        /// PlakValidator control.
+        /// lnkFilterAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PlakValidator;
+        protected global::System.Web.UI.WebControls.LinkButton lnkFilterAll;
 
         /// <summary>
-        /// Plaka2 control.
+        /// lblTotalCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Plaka2;
+        protected global::System.Web.UI.WebControls.Label lblTotalCount;
 
         /// <summary>
-        /// Unvan control.
+        /// lnkFilterError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Unvan;
+        protected global::System.Web.UI.WebControls.LinkButton lnkFilterError;
 
         /// <summary>
-        /// UnvanValidator control.
+        /// lblErrorCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UnvanValidator;
+        protected global::System.Web.UI.WebControls.Label lblErrorCount;
 
         /// <summary>
-        /// DenetimYeri control.
+        /// lnkFilterWarning control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DenetimYeri;
+        protected global::System.Web.UI.WebControls.LinkButton lnkFilterWarning;
 
         /// <summary>
-        /// DenetimYeriValidator control.
+        /// lblWarningCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator DenetimYeriValidator;
+        protected global::System.Web.UI.WebControls.Label lblWarningCount;
 
         /// <summary>
-        /// YetkiBelgesi control.
+        /// lnkFilterInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList YetkiBelgesi;
+        protected global::System.Web.UI.WebControls.LinkButton lnkFilterInfo;
 
         /// <summary>
-        /// DenetimTuru control.
+        /// lblInfoCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DenetimTuru;
+        protected global::System.Web.UI.WebControls.Label lblInfoCount;
 
         /// <summary>
-        /// DenetimTuruValidator control.
+        /// btnQuickAll control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator DenetimTuruValidator;
+        protected global::System.Web.UI.WebControls.Button btnQuickAll;
 
         /// <summary>
-        /// DenetimTarihi control.
+        /// btnQuickError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DenetimTarihi;
+        protected global::System.Web.UI.WebControls.Button btnQuickError;
 
         /// <summary>
-        /// DenetimTarihiValidator control.
+        /// btnQuickWarning control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator DenetimTarihiValidator;
+        protected global::System.Web.UI.WebControls.Button btnQuickWarning;
 
         /// <summary>
-        /// Il control.
+        /// btnQuickInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Il;
+        protected global::System.Web.UI.WebControls.Button btnQuickInfo;
 
         /// <summary>
-        /// IlValidator control.
+        /// ddlLevel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IlValidator;
+        protected global::System.Web.UI.WebControls.DropDownList ddlLevel;
 
         /// <summary>
-        /// Ilce control.
+        /// txtDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Ilce;
+        protected global::System.Web.UI.WebControls.TextBox txtDate;
 
         /// <summary>
-        /// IlceValidator control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IlceValidator;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
-        /// Personel control.
+        /// btnFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Personel;
+        protected global::System.Web.UI.WebControls.Button btnFilter;
 
         /// <summary>
-        /// PersonelValidator control.
+        /// btnClearFilter control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PersonelValidator;
+        protected global::System.Web.UI.WebControls.Button btnClearFilter;
 
         /// <summary>
-        /// CezaDurumu control.
+        /// btnExportExcel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList CezaDurumu;
+        protected global::System.Web.UI.WebControls.Button btnExportExcel;
 
         /// <summary>
-        /// CezaDurumuValidator control.
+        /// btnExportPdf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator CezaDurumuValidator;
+        protected global::System.Web.UI.WebControls.Button btnExportPdf;
 
         /// <summary>
-        /// Aciklama control.
+        /// btnClearLog control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Aciklama;
+        protected global::System.Web.UI.WebControls.Button btnClearLog;
 
         /// <summary>
-        /// ValidationSummary1 control.
+        /// lblFilterInfo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Label lblFilterInfo;
 
         /// <summary>
-        /// KaydetBtn control.
+        /// pnlEmptyState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button KaydetBtn;
+        protected global::System.Web.UI.WebControls.Panel pnlEmptyState;
 
         /// <summary>
-        /// GuncelleBtn control.
+        /// gvLogs control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button GuncelleBtn;
-
-        /// <summary>
-        /// SilBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SilBtn;
-
-        /// <summary>
-        /// VazgecBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button VazgecBtn;
-
-        /// <summary>
-        /// PdfIndir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PdfIndir;
-
-        /// <summary>
-        /// ExcelBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ExcelBtn;
-
-        /// <summary>
-        /// DenetimGrid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView DenetimGrid;
+        protected global::System.Web.UI.WebControls.GridView gvLogs;
     }
 }

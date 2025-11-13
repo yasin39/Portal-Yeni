@@ -14,6 +14,11 @@
             padding: 1.5rem;
             margin-top: 1rem;
         }
+
+        .chart-container-custom {
+            position: relative;
+            height: 400px;
+        }
     </style>
 </asp:Content>
 
@@ -30,45 +35,77 @@
             </div>
         </div>
 
-        <!-- İstatistik Kartları -->
+        <!-- İstatistik Kartları + Grafik -->
         <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="stat-card total">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-tasks fa-3x text-primary-custom me-3"></i>
-                        <div>
-                            <p class="stat-number text-primary-custom">
-                                <asp:Label ID="lblToplamGorev" runat="server" Text="0"></asp:Label>
-                            </p>
-                            <p class="stat-label mb-0">Toplam Görev</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card active">
-                    <div class="d-flex align-items-center">
-                        <i class="fas fa-check-circle fa-3x text-success me-3"></i>
-                        <div>
-                            <p class="stat-number text-success">
-                                <asp:Label ID="lblAktifGorev" runat="server" Text="0"></asp:Label>
-                            </p>
-                            <p class="stat-label mb-0">Aktif Görev</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card passive">
-                    <div class="stat-card passive">
-                        <div class="d-flex align-items-center">
-                            <i class="fas fa-archive fa-3x text-secondary me-3"></i>
-                            <div>
-                                <p class="stat-number text-secondary">
-                                    <asp:Label ID="lblPasifGorev" runat="server" Text="0"></asp:Label>
-                                </p>
-                                <p class="stat-label mb-0">Tamamlanan Görev</p>
+            <!-- Sol Taraf: İstatistikler -->
+            <div class="col-md-6">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="stat-card total">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-tasks fa-3x text-primary-custom me-3"></i>
+                                <div>
+                                    <p class="stat-number text-primary-custom">
+                                        <asp:Label ID="lblToplamGorev" runat="server" Text="0"></asp:Label>
+                                    </p>
+                                    <p class="stat-label mb-0">Toplam Görev</p>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="stat-card active">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-check-circle fa-3x text-success me-3"></i>
+                                <div>
+                                    <p class="stat-number text-success">
+                                        <asp:Label ID="lblAktifGorev" runat="server" Text="0"></asp:Label>
+                                    </p>
+                                    <p class="stat-label mb-0">Aktif Görev</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="stat-card passive">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-archive fa-3x text-secondary me-3"></i>
+                                <div>
+                                    <p class="stat-number text-secondary">
+                                        <asp:Label ID="lblPasifGorev" runat="server" Text="0"></asp:Label>
+                                    </p>
+                                    <p class="stat-label mb-0">Tamamlanan Görev</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="stat-card" style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-calendar-check fa-3x text-success me-3"></i>
+                                <div>
+                                    <p class="stat-number text-success">
+                                        <asp:Label ID="lblGecenAyTamamlanan" runat="server" Text="0"></asp:Label>
+                                    </p>
+                                    <p class="stat-label mb-0">Geçen Ay Tamamlanan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sağ Taraf: Grafik -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-chart-pie me-2"></i>Geçen Ay İllere Göre Tamamlanan Görevler
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-container-custom">
+                            <canvas id="gorevGrafik"></canvas>
                         </div>
                     </div>
                 </div>
@@ -107,7 +144,7 @@
                 </div>
             </div>
         </div>
-
+        
         <!-- Görev Listesi -->
         <div class="card mb-4">
             <div class="card-header d-flex justify-content-between align-items-center">
@@ -120,24 +157,20 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <asp:GridView ID="GorevlerGrid" runat="server" CssClass="table table-striped table-hover"
-                        AutoGenerateColumns="False" OnSelectedIndexChanged="GorevlerGrid_SelectedIndexChanged">
+                        AutoGenerateColumns="False" AllowPaging="True" PageSize="10"
+                        DataKeyNames="Talep_id"
+                        OnSelectedIndexChanged="GorevlerGrid_SelectedIndexChanged"
+                        OnPageIndexChanging="GorevlerGrid_PageIndexChanging">
                         <Columns>
                             <asp:CommandField ShowSelectButton="True" SelectText="Seç" ButtonType="Button"
                                 ControlStyle-CssClass="btn btn-sm btn-primary">
                                 <ControlStyle CssClass="btn btn-sm btn-primary"></ControlStyle>
                             </asp:CommandField>
-                            <asp:BoundField DataField="Talep_id" HeaderText="Talep ID" />
-                            <asp:BoundField DataField="Gorev_Turu" HeaderText="Görev Türü" />
-                            <asp:BoundField DataField="Gorev_il" HeaderText="İl" />
-                            <asp:BoundField DataField="Gorev_ilce" HeaderText="İlçe" />
-                            <asp:BoundField DataField="Personel_Sayisi" HeaderText="Personel Sayısı" />
-                            <asp:BoundField DataField="sure" HeaderText="Süre" />
-                            <asp:BoundField DataField="ivedilik" HeaderText="İvedilik" />
-                            <asp:BoundField DataField="Gidilecen_Son_Tarih" HeaderText="Son Tarih" DataFormatString="{0:dd.MM.yyyy}" />
-                            <asp:BoundField DataField="Aciklama" HeaderText="Açıklama" />
+                            <asp:BoundField DataField="Vergi_Numarasi" HeaderText="Vergi Numarası" />
+                            <asp:BoundField DataField="Unvan" HeaderText="Ünvan" />
+                            <asp:BoundField DataField="Adres" HeaderText="Adres" />
+                            <asp:BoundField DataField="Gidilecen_Son_Tarih" HeaderText="Tarih" DataFormatString="{0:dd.MM.yyyy}" />
                             <asp:BoundField DataField="Durum" HeaderText="Durum" />
-                            <asp:BoundField DataField="Kayit_Tarihi" HeaderText="Kayıt Tarihi" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
-                            <asp:BoundField DataField="Kullanici" HeaderText="Kullanıcı" />
                         </Columns>
                         <HeaderStyle CssClass="table-header" />
                         <PagerStyle CssClass="pagination-ys" />
@@ -150,73 +183,38 @@
         <asp:Panel ID="pnlGorevGuncelle" runat="server" Visible="false">
             <div class="update-panel">
                 <h5 class="mb-3">
-                    <i class="fas fa-edit me-2"></i>Görev Güncelleme
+                    <i class="fas fa-edit me-2"></i>Görev Durumu Değiştir
                 </h5>
                 <div class="row g-3">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <label class="form-label"><strong>Talep ID:</strong></label>
                         <asp:Label ID="lblTalepId" runat="server" CssClass="form-control-plaintext fw-bold"></asp:Label>
                     </div>
+                    <div class="col-md-6">
+                        <label class="form-label"><strong>Mevcut Durum:</strong></label>
+                        <asp:Label ID="lblMevcutDurum" runat="server" CssClass="form-control-plaintext fw-bold"></asp:Label>
+                    </div>
                     <div class="col-md-12">
-                        <label class="form-label"><strong>Açıklama:</strong></label>
-                        <asp:Label ID="lblAciklama" runat="server" CssClass="form-control-plaintext"></asp:Label>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">Göreve Çıkış Tarihi</label>
-                        <asp:TextBox ID="txtGoreveCikisTarihi" runat="server" CssClass="form-control"
-                            TextMode="Date"></asp:TextBox>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">Giden Personel</label>
-                        <asp:TextBox ID="txtGidenPersonel" runat="server" CssClass="form-control"
-                            placeholder="Personel adı"></asp:TextBox>
-                    </div>
-                    <div class="col-md-3">
-                        <label class="form-label">Gidiş Türü</label>
-                        <asp:DropDownList ID="ddlGidisTuru" runat="server" CssClass="form-select">
-                            <asp:ListItem Value="">Seçiniz</asp:ListItem>
-                            <asp:ListItem Value="Uçak">Uçak</asp:ListItem>
-                            <asp:ListItem Value="Otobüs">Otobüs</asp:ListItem>
-                            <asp:ListItem Value="Tren">Tren</asp:ListItem>
-                            <asp:ListItem Value="Araç">Araç</asp:ListItem>
+                        <label class="form-label">Yeni Durum Seçiniz</label>
+                        <asp:DropDownList ID="ddlYeniDurum" runat="server" CssClass="form-select">
+                            <asp:ListItem Value="Aktif">Aktif</asp:ListItem>
+                            <asp:ListItem Value="Pasif">Pasif</asp:ListItem>
                         </asp:DropDownList>
                     </div>
-                    <div class="col-md-3">
-                        <label class="form-label">Görev Süresi (Gün)</label>
-                        <asp:TextBox ID="txtGorevSuresi" runat="server" CssClass="form-control"
-                            placeholder="Gün sayısı" TextMode="Number"></asp:TextBox>
-                    </div>
                     <div class="col-md-12">
-                        <asp:Button ID="btnGuncelle" runat="server" Text="✔️ Güncelle"
-                            CssClass="btn btn-success me-2" OnClick="btnGuncelle_Click" />
+                        <asp:Button ID="btnDurumDegistir" runat="server" Text="✔️ Durumu Değiştir"
+                            CssClass="btn btn-success me-2" OnClick="btnDurumDegistir_Click" />
                         <asp:Button ID="btnVazgec" runat="server" Text="❌ Vazgeç"
                             CssClass="btn btn-secondary" OnClick="btnVazgec_Click" />
                     </div>
                 </div>
             </div>
         </asp:Panel>
+
         <!-- Hidden field for chart data -->
         <asp:HiddenField ID="hfGrafikVerisi" runat="server" />
-        <!-- Grafik Bölümü -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="card-title mb-0">
-                            <i class="fas fa-chart-pie me-2"></i>İllere Göre Görev Dağılımı
-                        </h5>
-                    </div>
-                    <div class="card-body">
-                        <div class="chart-container">
-                            <canvas id="gorevGrafik"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
-
 
     <!-- Chart.js Initialization -->
     <script type="text/javascript">

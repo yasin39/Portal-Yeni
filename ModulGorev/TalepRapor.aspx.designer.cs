@@ -42,6 +42,15 @@ namespace Portal.ModulGorev
         protected global::System.Web.UI.WebControls.Label lblPasifGorev;
 
         /// <summary>
+        /// lblGecenAyTamamlanan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblGecenAyTamamlanan;
+
+        /// <summary>
         /// ddlIl control.
         /// </summary>
         /// <remarks>
@@ -114,58 +123,31 @@ namespace Portal.ModulGorev
         protected global::System.Web.UI.WebControls.Label lblTalepId;
 
         /// <summary>
-        /// lblAciklama control.
+        /// lblMevcutDurum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblAciklama;
+        protected global::System.Web.UI.WebControls.Label lblMevcutDurum;
 
         /// <summary>
-        /// txtGoreveCikisTarihi control.
+        /// ddlYeniDurum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGoreveCikisTarihi;
+        protected global::System.Web.UI.WebControls.DropDownList ddlYeniDurum;
 
         /// <summary>
-        /// txtGidenPersonel control.
+        /// btnDurumDegistir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGidenPersonel;
-
-        /// <summary>
-        /// ddlGidisTuru control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGidisTuru;
-
-        /// <summary>
-        /// txtGorevSuresi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtGorevSuresi;
-
-        /// <summary>
-        /// btnGuncelle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuncelle;
+        protected global::System.Web.UI.WebControls.Button btnDurumDegistir;
 
         /// <summary>
         /// btnVazgec control.

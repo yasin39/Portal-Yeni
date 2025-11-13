@@ -10,6 +10,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
+using System.Linq;
 using ListItem = System.Web.UI.WebControls.ListItem;
 
 namespace Portal.Base
@@ -121,7 +122,7 @@ namespace Portal.Base
         /// Basit dosya tabanlı loglama 
         /// </summary>
         private static readonly object _lock = new object();
-               
+
         /// <summary>
         /// Bilgi mesajı logla
         /// </summary>
@@ -1089,5 +1090,197 @@ namespace Portal.Base
         }
 
         #endregion
+
+        #region Log Management
+
+        /// <summary>
+        /// Log entry model sınıfı
+        /// </summary>
+        public class LogEntry
+        {
+            public DateTime Timestamp { get; set; }
+            public string Level { get; set; }
+            public string Message { get; set; }
+            public string LevelClass { get; set; }
+            public string LevelIcon { get; set; }
+
+            public LogEntry()
+            {
+                SetLevelProperties();
+            }
+
+            public void SetLevelProperties()
+            {
+                switch (Level)
+                {
+                    case "ERROR":
+                        LevelClass = "danger";
+                        LevelIcon = "fa-exclamation-circle";
+                        break;
+                    case "WARNING":
+                        LevelClass = "warning";
+                        LevelIcon = "fa-exclamation-triangle";
+                        break;
+                    case "INFO":
+                        LevelClass = "info";
+                        LevelIcon = "fa-info-circle";
+                        break;
+                    default:
+                        LevelClass = "secondary";
+                        LevelIcon = "fa-question-circle";
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Log istatistikleri model sınıfı
+        /// </summary>
+        public class LogStatistics
+        {
+            public int TotalCount { get; set; }
+            public int ErrorCount { get; set; }
+            public int WarningCount { get; set; }
+            public int InfoCount { get; set; }
+        }
+
+        /// <summary>
+        /// ErrorLog.txt dosyasını okur ve log kayıtlarını liste olarak döner
+        /// </summary>
+        public static List<LogEntry> GetLogEntries(string filterLevel = "", DateTime? filterDate = null, string searchText = "")
+        {
+            List<LogEntry> logEntries = new List<LogEntry>();
+
+            try
+            {
+                string projectRoot = AppDomain.CurrentDomain.BaseDirectory;
+                string filePath = Path.Combine(projectRoot, "ErrorLog.txt");
+
+                if (!File.Exists(filePath))
+                {
+                    LogWarning("ErrorLog.txt dosyası bulunamadı.");
+                    return logEntries;
+                }
+
+                string[] lines = File.ReadAllLines(filePath, Encoding.UTF8);
+
+                foreach (string line in lines)
+                {
+                    if (string.IsNullOrWhiteSpace(line)) continue;
+
+                    LogEntry entry = ParseLogLine(line);
+
+                    if (entry == null) continue;
+
+                    if (!string.IsNullOrEmpty(filterLevel) && entry.Level != filterLevel)
+                        continue;
+
+                    if (filterDate.HasValue && entry.Timestamp.Date != filterDate.Value.Date)
+                        continue;
+
+                    if (!string.IsNullOrEmpty(searchText) &&
+                    entry.Message.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) == -1)
+                        continue;
+
+                    logEntries.Add(entry);
+                }
+
+                logEntries = logEntries.OrderByDescending(x => x.Timestamp).ToList();
+            }
+            catch (Exception ex)
+            {
+                LogError("GetLogEntries hatası", ex);
+            }
+
+            return logEntries;
+        }
+
+        /// <summary>
+        /// Log satırını parse eder ve LogEntry objesi döner
+        /// </summary>
+        private static LogEntry ParseLogLine(string line)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(line)) return null;
+
+                int firstBracketEnd = line.IndexOf(']');
+                if (firstBracketEnd == -1) return null;
+
+                string dateStr = line.Substring(1, firstBracketEnd - 1).Trim();
+
+                int secondBracketStart = line.IndexOf('[', firstBracketEnd);
+                int secondBracketEnd = line.IndexOf(']', secondBracketStart);
+
+                if (secondBracketStart == -1 || secondBracketEnd == -1) return null;
+
+                string level = line.Substring(secondBracketStart + 1, secondBracketEnd - secondBracketStart - 1).Trim();
+                string message = line.Substring(secondBracketEnd + 1).Trim();
+
+                LogEntry entry = new LogEntry
+                {
+                    Timestamp = DateTime.Parse(dateStr),
+                    Level = level,
+                    Message = message
+                };
+
+                entry.SetLevelProperties();
+
+                return entry;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Log istatistiklerini hesaplar
+        /// </summary>
+        public static LogStatistics GetLogStatistics()
+        {
+            LogStatistics stats = new LogStatistics();
+
+            try
+            {
+                List<LogEntry> allLogs = GetLogEntries();
+
+                stats.TotalCount = allLogs.Count;
+                stats.ErrorCount = allLogs.Count(x => x.Level == "ERROR");
+                stats.WarningCount = allLogs.Count(x => x.Level == "WARNING");
+                stats.InfoCount = allLogs.Count(x => x.Level == "INFO");
+            }
+            catch (Exception ex)
+            {
+                LogError("GetLogStatistics hatası", ex);
+            }
+
+            return stats;
+        }
+
+        /// <summary>
+        /// Log dosyasını tamamen temizler
+        /// </summary>
+        public static void ClearLogFile()
+        {
+            try
+            {
+                string projectRoot = AppDomain.CurrentDomain.BaseDirectory;
+                string filePath = Path.Combine(projectRoot, "ErrorLog.txt");
+
+                if (File.Exists(filePath))
+                {
+                    File.WriteAllText(filePath, string.Empty);
+                    LogInfo("Log dosyası temizlendi.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("ClearLogFile hatası", ex);
+            }
+        }
+
+        #endregion
+
     }
 }
