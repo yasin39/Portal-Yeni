@@ -29,6 +29,9 @@ namespace Portal.Base
         {
             base.OnPreInit(e);
 
+            // Performans izlemeyi başlat
+            PerformanceHelper.StartMonitoring(Request.Url.AbsolutePath);
+
             // Geliştirme modu kontrolü,canlıya alırken web.config'de false yapacağız
             bool isDevMode = ConfigurationManager.AppSettings["DevMode"] == "true";
 
@@ -62,6 +65,16 @@ namespace Portal.Base
                 //Session["Ptipi"] = "2";
 
             }
+        }
+
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            base.OnLoadComplete(e);
+
+            // Performans izlemeyi bitir
+            string sicil = Session["Sicil"]?.ToString();
+            string ad = Session["Ad"]?.ToString();
+            PerformanceHelper.EndMonitoring(sicil, ad);
         }
 
         #region Yetki Kontrolü
@@ -322,6 +335,8 @@ namespace Portal.Base
         /// </summary>
         public static DataTable ExecuteDataTable(string query, List<SqlParameter> parameters = null)
         {
+            // Sayaç artır
+            PerformanceHelper.IncrementQueryCount();
             DataTable dt = new DataTable();
 
             try
@@ -399,6 +414,9 @@ namespace Portal.Base
         /// </summary>
         public static int ExecuteNonQuery(string query, List<SqlParameter> parameters = null)
         {
+            // Sayaç artır
+            PerformanceHelper.IncrementQueryCount();
+
             int affectedRows = 0;
 
             try
@@ -435,6 +453,9 @@ namespace Portal.Base
         public static int ExecuteNonQueryWithTransaction(SqlConnection conn, SqlTransaction transaction,
             string query, List<SqlParameter> parameters = null)
         {
+            // Sayaç artır
+            PerformanceHelper.IncrementQueryCount();
+
             int affectedRows = 0;
 
             try
@@ -466,6 +487,9 @@ namespace Portal.Base
         /// </summary>
         public static object ExecuteScalar(string query, List<SqlParameter> parameters = null)
         {
+            // Sayaç artır
+            PerformanceHelper.IncrementQueryCount();
+
             object result = null;
 
             try

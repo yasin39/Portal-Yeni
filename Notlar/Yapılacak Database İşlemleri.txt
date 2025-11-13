@@ -239,3 +239,19 @@ ADD Vergi_Numarasi NVARCHAR(50) NULL;
 
 ================================================================================
 
+CREATE TABLE PerformanceLogs (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    PageName NVARCHAR(200) NOT NULL,
+    LoadTimeMs INT NOT NULL,
+    SqlQueryCount INT DEFAULT 0,
+    MemoryUsageMB DECIMAL(10,2) DEFAULT 0,
+    UserSicil NVARCHAR(50),
+    UserName NVARCHAR(200),
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    
+    INDEX IX_PageName (PageName),
+    INDEX IX_CreatedDate (CreatedDate)
+);
+
+=================================================================================
+

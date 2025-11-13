@@ -6,6 +6,7 @@ using System.Text;
 using System.Web.UI.WebControls;
 using Portal.Base;
 
+
 namespace Portal
 {
     public class Helpers
@@ -492,5 +493,7 @@ namespace Portal
                 return defaultDeger;
             }
         }
+
+        
     }
 }
