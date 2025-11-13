@@ -137,6 +137,7 @@
     <Content Include="ModulYonetici\BilgisayarAdlari.aspx" />
     <Content Include="ModulYonetici\Duyurular.aspx" />
     <Content Include="ModulYonetici\KullaniciIslem.aspx" />
+    <Content Include="ModulYonetici\KullaniciYonetim.aspx" />
     <Content Include="ModulYonetici\YetkiIslem.aspx" />
     <Content Include="Notlar\CodeSnippets.txt" />
     <Content Include="Notlar\Instructions for Claude.txt" />
@@ -2688,6 +2689,13 @@
     </Compile>
     <Compile Include="ModulYonetici\KullaniciIslem.aspx.designer.cs">
       <DependentUpon>KullaniciIslem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ModulYonetici\KullaniciYonetim.aspx.cs">
+      <DependentUpon>KullaniciYonetim.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ModulYonetici\KullaniciYonetim.aspx.designer.cs">
+      <DependentUpon>KullaniciYonetim.aspx</DependentUpon>
     </Compile>
     <Compile Include="ModulYonetici\YetkiIslem.aspx.cs">
       <DependentUpon>YetkiIslem.aspx</DependentUpon>

@@ -356,6 +356,14 @@
                                 <i class="fas fa-desktop"></i>Bilgisayar Adları
                             </a>
 
+                            <a href="/Dashboard.aspx" class="submenu-item">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard
+                            </a>
+
+                            <a href="/LogViewer.aspx" class="submenu-item">
+                                <i class="fas fa-file-code"></i>Log Görüntüleyici
+                            </a>
+
                         </div>
                     </li>
 

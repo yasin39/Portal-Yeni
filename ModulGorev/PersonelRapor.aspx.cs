@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Portal.Base;
+using System.Globalization;
 
 namespace Portal.ModulGorev
 {
@@ -67,6 +68,46 @@ namespace Portal.ModulGorev
         {
             try
             {
+                object baslangicTarihiParam = DBNull.Value;
+                object bitisTarihiParam = DBNull.Value;
+                string tarihFormati = "dd.MM.yyyy"; 
+
+                if (filtreliMi)
+                {
+                    // Başlangıç Tarihini güvenli bir şekilde DateTime nesnesine çevir
+                    if (!string.IsNullOrEmpty(txtBaslangicTarihi.Text))
+                    {
+                        if (DateTime.TryParseExact(txtBaslangicTarihi.Text, tarihFormati,
+                            CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime basTarih))
+                        {
+                            baslangicTarihiParam = basTarih.Date;
+                        }
+                        else
+                        {
+                            // Kullanıcıya geçersiz format uyarısı ver ve işlemi durdur
+                            ShowToast("Başlangıç tarihi formatı geçersiz (gg.aa.yyyy olmalı).", "warning");
+                            return;
+                        }
+                    }
+
+                    // Bitiş Tarihini güvenli bir şekilde DateTime nesnesine çevir
+                    if (!string.IsNullOrEmpty(txtBitisTarihi.Text))
+                    {
+                        if (DateTime.TryParseExact(txtBitisTarihi.Text, tarihFormati,
+                            CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime bitTarih))
+                        {
+                            bitisTarihiParam = bitTarih.Date;
+                        }
+                        else
+                        {
+                            // Kullanıcıya geçersiz format uyarısı ver ve işlemi durdur
+                            ShowToast("Bitiş tarihi formatı geçersiz (gg.aa.yyyy olmalı).", "warning");
+                            return;
+                        }
+                    }
+                }
+                // --- DEĞİŞİKLİK SONU ---
+
                 string query = "SELECT TOP 50 * FROM yolluk WHERE 1=1 ";
 
                 if (filtreliMi)
@@ -77,11 +118,18 @@ namespace Portal.ModulGorev
                     if (ddlPersonel.SelectedValue != "Hepsi")
                         query += " AND AdiSoyadi = @Personel";
 
-                    if (!string.IsNullOrEmpty(txtBaslangicTarihi.Text))
-                        query += " AND CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi";
+                    // --- DEĞİŞİKLİK BAŞLANGICI: Güvenli SQL Sorgusu ---
 
-                    if (!string.IsNullOrEmpty(txtBitisTarihi.Text))
-                        query += " AND CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi";
+                    // Sadece tarih geçerliyse (DBNull değilse) sorguya ekle
+                    if (baslangicTarihiParam != DBNull.Value)
+                        // CONVERT yerine TRY_CONVERT kullanarak veritabanındaki bozuk veriden etkilenme
+                        // Style 23 = 'yyyy-mm-dd' (Eğer DB'deki format bu değilse 104 'dd.mm.yyyy' deneyin)
+                        query += " AND TRY_CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi";
+
+                    if (bitisTarihiParam != DBNull.Value)
+                        query += " AND TRY_CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi";
+
+                    // --- DEĞİŞİKLİK SONU ---
                 }
 
                 query += " ORDER BY id DESC";
@@ -89,8 +137,9 @@ namespace Portal.ModulGorev
                 var parameters = CreateParameters(
                     ("@Il", ddlIl.SelectedValue),
                     ("@Personel", ddlPersonel.SelectedValue),
-                    ("@BaslangicTarihi", txtBaslangicTarihi.Text),
-                    ("@BitisTarihi", txtBitisTarihi.Text)
+                    // Parametreye string yerine ayrıştırılmış DateTime veya DBNull nesnesini gönder
+                    ("@BaslangicTarihi", baslangicTarihiParam),
+                    ("@BitisTarihi", bitisTarihiParam)
                 );
 
                 DataTable dt = ExecuteDataTable(query, parameters);

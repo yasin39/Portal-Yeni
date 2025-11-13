@@ -110,13 +110,11 @@
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Başlangıç Tarihi</label>
-                        <asp:TextBox ID="txtBaslangicTarihi" runat="server" CssClass="form-control"
-                            TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="txtBaslangicTarihi" runat="server" CssClass="form-control fp-date"></asp:TextBox>
                     </div>
                     <div class="col-md-2">
                         <label class="form-label">Bitiş Tarihi</label>
-                        <asp:TextBox ID="txtBitisTarihi" runat="server" CssClass="form-control"
-                            TextMode="Date"></asp:TextBox>
+                        <asp:TextBox ID="txtBitisTarihi" runat="server" CssClass="form-control fp-date"></asp:TextBox>
                     </div>
                     <div class="col-md-2 d-flex align-items-end">
                         <div class="btn-group-custom d-flex w-100">

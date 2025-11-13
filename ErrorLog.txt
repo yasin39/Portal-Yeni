@@ -1,174 +1,129 @@
-﻿[2025-11-12 00:16:22] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 00:18:54] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 00:18:55] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-12 00:19:12] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-12 00:19:18] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-12 00:34:21] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 00:35:12] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-12 00:46:42] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 00:46:50] [INFO] Yetki kontrolü başarılı: admin - 900
-[2025-11-12 09:07:58] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 09:08:16] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:09:02] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.Istatistik.btnExcelIsletme_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\Istatistik.aspx.cs:line 393
+﻿[2025-11-13 08:42:17] [INFO] Log dosyası temizlendi.
+[2025-11-13 14:01:14] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-13 14:08:38] [ERROR] Görev verileri yüklenirken hata
+String was not recognized as a valid DateTime.
+StackTrace (Last): at Portal.ModulGorev.GorevRapor.GorevVerileriniYukle(Boolean filtreliArama) in C:\Users\cyasi\source\repos\Portal\ModulGorev\GorevRapor.aspx.cs:line 202
 =============
 
-[2025-11-12 09:09:27] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.Istatistik.btnExcelTasit_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\Istatistik.aspx.cs:line 414
+[2025-11-13 14:08:38] [ERROR] İstatistikler güncellenirken hata
+String was not recognized as a valid DateTime.
+StackTrace (Last): at Portal.ModulGorev.GorevRapor.IstatistikleriGuncelle(Boolean filtreliHesaplama) in C:\Users\cyasi\source\repos\Portal\ModulGorev\GorevRapor.aspx.cs:line 245
 =============
 
-[2025-11-12 09:09:39] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.Istatistik.btnExcelIsletme_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\Istatistik.aspx.cs:line 393
+[2025-11-13 14:08:38] [INFO] Görev arama yapıldı. Plaka: 06CIM06, Şube: Yolcu Taşımacılığı Şube Müdürlüğü
+[2025-11-13 14:09:17] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 14:10:16] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 14:10:32] [ERROR] ExecuteDataTable hatası: Conversion failed when converting date and/or time from character string.
+Query: SELECT TOP 50 * FROM yolluk WHERE 1=1  AND il = @Il AND AdiSoyadi = @Personel AND CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi AND CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi ORDER BY id DESC
+[2025-11-13 14:10:32] [ERROR] Veri yükleme hatası
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.GorevVerileriniYukle(Boolean filtreliMi) in C:\Users\cyasi\source\repos\Portal\ModulGorev\PersonelRapor.aspx.cs:line 96
 =============
 
-[2025-11-12 09:12:22] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:12:25] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:12:27] [INFO] Yetki kontrolü başarılı: admin - 201
-[2025-11-12 09:12:34] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:12:37] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:12:41] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:56:22] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 09:57:05] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 09:58:32] [ERROR] ExcelBtn_Click hatası
-Control 'MainContent_DenetimGrid' of type 'GridView' must be placed inside a form tag with runat=server.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.ExcelBtn_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 416
+[2025-11-13 14:10:32] [INFO] Personel görev araması yapıldı. Filtre: Yalçın UZUNKAYA, Eskişehir
+[2025-11-13 14:10:50] [ERROR] ExecuteDataTable hatası: Conversion failed when converting date and/or time from character string.
+Query: SELECT TOP 50 * FROM yolluk WHERE 1=1  AND il = @Il AND AdiSoyadi = @Personel AND CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi AND CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi ORDER BY id DESC
+[2025-11-13 14:10:50] [ERROR] Veri yükleme hatası
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.GorevVerileriniYukle(Boolean filtreliMi) in C:\Users\cyasi\source\repos\Portal\ModulGorev\PersonelRapor.aspx.cs:line 96
 =============
 
-[2025-11-12 09:59:37] [ERROR] PdfOlustur hatası
-C:\Users\cyasi\source\repos\Portal\Fonts\arial.ttf not found as file or resource.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfOlustur(DataTable dt) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 467
+[2025-11-13 14:10:50] [INFO] Personel görev araması yapıldı. Filtre: Ramazan KELEŞ, Eskişehir
+[2025-11-13 14:13:55] [ERROR] ExecuteDataTable hatası: Conversion failed when converting date and/or time from character string.
+Query: SELECT TOP 50 * FROM yolluk WHERE 1=1  AND il = @Il AND AdiSoyadi = @Personel AND CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi AND CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi ORDER BY id DESC
+[2025-11-13 14:13:55] [ERROR] Veri yükleme hatası
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.GorevVerileriniYukle(Boolean filtreliMi) in C:\Users\cyasi\source\repos\Portal\ModulGorev\PersonelRapor.aspx.cs:line 96
 =============
 
-[2025-11-12 09:59:37] [ERROR] PdfIndir_Click hatası
-The document has no pages.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfIndir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 446
+[2025-11-13 14:13:55] [INFO] Personel görev araması yapıldı. Filtre: Ramazan KELEŞ, Eskişehir
+[2025-11-13 14:37:01] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-13 14:37:01] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 14:37:08] [ERROR] Tümünü listele sırasında hata
+'ddlPersonel' has a SelectedValue which is invalid because it does not exist in the list of items.
+Parameter name: value
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.btnTumunuListele_Click(Object sender, EventArgs e)
 =============
 
-[2025-11-12 10:01:41] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 10:02:00] [ERROR] PdfOlustur hatası
-C:\Users\cyasi\source\repos\Portal\Fonts\arial.ttf not found as file or resource.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfOlustur(DataTable dt)
+[2025-11-13 14:37:52] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 14:39:57] [INFO] Personel görev araması yapıldı. Filtre: Doğan TEKGÖZOĞLU, 
+[2025-11-13 14:40:06] [ERROR] ExecuteDataTable hatası: Conversion failed when converting date and/or time from character string.
+Query: SELECT TOP 50 * FROM yolluk WHERE 1=1  AND il = @Il AND AdiSoyadi = @Personel AND CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi AND CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi ORDER BY id DESC
+[2025-11-13 14:40:07] [ERROR] Veri yükleme hatası
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.GorevVerileriniYukle(Boolean filtreliMi)
 =============
 
-[2025-11-12 10:02:00] [ERROR] PdfIndir_Click hatası
-The document has no pages.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfIndir_Click(Object sender, EventArgs e)
+[2025-11-13 14:40:07] [INFO] Personel görev araması yapıldı. Filtre: Doğan TEKGÖZOĞLU, 
+[2025-11-13 14:40:24] [ERROR] ExecuteDataTable hatası: Conversion failed when converting date and/or time from character string.
+Query: SELECT TOP 50 * FROM yolluk WHERE 1=1  AND il = @Il AND AdiSoyadi = @Personel AND CONVERT(DATE, BaslamaTarihi, 23) >= @BaslangicTarihi AND CONVERT(DATE, BitisTarihi, 23) <= @BitisTarihi ORDER BY id DESC
+[2025-11-13 14:40:24] [ERROR] Veri yükleme hatası
+Conversion failed when converting date and/or time from character string.
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.GorevVerileriniYukle(Boolean filtreliMi)
 =============
 
-[2025-11-12 10:05:16] [ERROR] Excel export hatası
-RegisterForEventValidation can only be called during Render();
-StackTrace (Last): at Portal.LogViewer.btnExportExcel_Click(Object sender, EventArgs e)
+[2025-11-13 14:40:24] [INFO] Personel görev araması yapıldı. Filtre: Ramazan KELEŞ, 
+[2025-11-13 14:52:43] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 14:52:52] [INFO] Personel görev araması yapıldı. Filtre: Doğan TEKGÖZOĞLU, 
+[2025-11-13 14:53:02] [INFO] Personel görev araması yapıldı. Filtre: Doğan TEKGÖZOĞLU, 
+[2025-11-13 14:55:15] [ERROR] Tümünü listele sırasında hata
+'ddlPersonel' has a SelectedValue which is invalid because it does not exist in the list of items.
+Parameter name: value
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.btnTumunuListele_Click(Object sender, EventArgs e)
 =============
 
-[2025-11-12 10:06:00] [ERROR] PDF export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.Base.BasePage.ExportGridViewToPdf(GridView gv, String dosyaAdi, String raporBaslik)
+[2025-11-13 14:55:30] [INFO] Personel görev araması yapıldı. Filtre: , 
+[2025-11-13 14:55:34] [ERROR] Tümünü listele sırasında hata
+'ddlPersonel' has a SelectedValue which is invalid because it does not exist in the list of items.
+Parameter name: value
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.btnTumunuListele_Click(Object sender, EventArgs e)
 =============
 
-[2025-11-12 10:06:00] [ERROR] PDF export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.LogViewer.btnExportPdf_Click(Object sender, EventArgs e)
+[2025-11-13 14:55:54] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:06:36] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 15:10:47] [ERROR] Tümünü listele sırasında hata
+'ddlPersonel' has a SelectedValue which is invalid because it does not exist in the list of items.
+Parameter name: value
+StackTrace (Last): at Portal.ModulGorev.PersonelRapor.btnTumunuListele_Click(Object sender, EventArgs e)
 =============
 
-[2025-11-12 10:08:00] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 10:08:43] [ERROR] PdfOlustur hatası
-C:\Users\cyasi\source\repos\Portal\Fonts\arial.ttf not found as file or resource.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfOlustur(DataTable dt)
-=============
-
-[2025-11-12 10:08:43] [ERROR] PdfIndir_Click hatası
-The document has no pages.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfIndir_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-12 11:37:02] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 11:37:57] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 11:39:06] [ERROR] PdfOlustur hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfOlustur(DataTable dt) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 541
-=============
-
-[2025-11-12 11:39:06] [ERROR] PdfIndir_Click hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfIndir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 446
-=============
-
-[2025-11-12 11:39:19] [ERROR] PdfOlustur hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfOlustur(DataTable dt) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 541
-=============
-
-[2025-11-12 11:39:19] [ERROR] PdfIndir_Click hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.PdfIndir_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 446
-=============
-
-[2025-11-12 11:40:54] [ERROR] ExcelBtn_Click hatası
-Control 'MainContent_DenetimGrid' of type 'GridView' must be placed inside a form tag with runat=server.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.ExcelBtn_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 416
-=============
-
-[2025-11-12 13:16:57] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 13:17:09] [INFO] Yetki kontrolü başarılı: admin - 200
-[2025-11-12 13:17:16] [ERROR] ExcelBtn_Click hatası
-Control 'MainContent_DenetimGrid' of type 'GridView' must be placed inside a form tag with runat=server.
-StackTrace (Last): at Portal.ModulDenetim.TasitRapor.ExcelBtn_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulDenetim\TasitRapor.aspx.cs:line 417
-=============
-
-[2025-11-12 13:48:34] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 13:48:53] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 13:49:29] [INFO] Görev arama yapıldı. Filtre:  AND Gorev_il = 'Ankara'
-[2025-11-12 14:01:55] [INFO] Görev arama yapıldı. Filtre:  AND Gorev_il = 'Kırıkkale' AND Durum = 'Pasif'
-[2025-11-12 15:57:43] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 15:57:43] [INFO] Görev arama yapıldı. Filtre:  AND Gorev_il = 'Kırıkkale' AND Durum = 'Aktif'
-[2025-11-12 15:57:47] [INFO] Görev arama yapıldı. Filtre:  AND Gorev_il = 'Ankara' AND Durum = 'Aktif'
-[2025-11-12 16:05:45] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 16:05:52] [INFO] Görev arama yapıldı. Filtre:  AND Durum = 'Pasif'
-[2025-11-12 16:13:57] [INFO] Görev arama yapıldı. Filtre: 
-[2025-11-12 20:47:26] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 20:47:34] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 20:48:08] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 20:48:27] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 20:48:43] [INFO] Görev durumu değiştirildi. Talep ID: , Yeni Durum: Aktif
-[2025-11-12 20:48:51] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 20:49:28] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 20:49:45] [INFO] Görev durumu değiştirildi. Talep ID: , Yeni Durum: Aktif
-[2025-11-12 20:49:50] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 20:50:02] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 20:59:34] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:06:51] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 21:06:57] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 21:07:13] [INFO] Görev durumu değiştirildi. Talep ID: 9234, Yeni Durum: Aktif
-[2025-11-12 21:07:23] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:07:31] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulGorev.TalepRapor.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulGorev\TalepRapor.aspx.cs:line 212
-=============
-
-[2025-11-12 21:11:11] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 21:11:19] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:15:14] [INFO] Geliştirme modu: Mock session değerleri atandı.
-[2025-11-12 21:15:21] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 21:15:29] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:15:34] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:15:56] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:16:34] [INFO] Görev durumu değiştirildi. Talep ID: 9223, Yeni Durum: Aktif
-[2025-11-12 21:16:40] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:18:50] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulGorev.TalepRapor.btnExcelAktar_Click(Object sender, EventArgs e) in C:\Users\cyasi\source\repos\Portal\ModulGorev\TalepRapor.aspx.cs:line 224
-=============
-
-[2025-11-12 21:20:26] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 21:20:31] [INFO] Görev arama yapıldı. Filtre:  AND Durum = @Durum
-[2025-11-12 21:20:36] [ERROR] Excel export hatası
-Thread was being aborted.
-StackTrace (Last): at Portal.ModulGorev.TalepRapor.btnExcelAktar_Click(Object sender, EventArgs e)
-=============
-
-[2025-11-12 21:26:31] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 21:28:53] [INFO] Yetki kontrolü başarılı: admin - 500
-[2025-11-12 21:29:07] [INFO] Yetki kontrolü başarılı: admin - 500
+[2025-11-13 15:38:22] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-13 15:38:22] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:38:22] [INFO] Kullanıcı listesi yüklendi: 108 kayıt
+[2025-11-13 15:38:22] [INFO] Yetki dropdown yüklendi.
+[2025-11-13 15:38:22] [INFO] Yetki matrisi yüklendi.
+[2025-11-13 15:38:59] [INFO] Kullanıcı yetkileri yüklendi: UB9141 - 23 yetki
+[2025-11-13 15:39:27] [INFO] Yetkiye göre kullanıcılar yüklendi: 1001 - 22 kullanıcı
+[2025-11-13 15:39:39] [INFO] Kullanıcı yetkileri yüklendi: UB9141 - 23 yetki
+[2025-11-13 15:41:40] [INFO] Yetki matrisi kaydedildi: 2 eklendi, 0 silindi
+[2025-11-13 15:41:40] [INFO] Yetki matrisi yüklendi.
+[2025-11-13 15:42:10] [INFO] Yetkiye göre kullanıcılar yüklendi: 190 - 11 kullanıcı
+[2025-11-13 15:42:35] [INFO] Yetkiye göre kullanıcılar yüklendi: 900 - 7 kullanıcı
+[2025-11-13 15:44:58] [INFO] Kullanıcı yetkileri yüklendi: UB8727 - 5 yetki
+[2025-11-13 15:47:50] [INFO] Yetkiye göre kullanıcılar yüklendi: 299 - 14 kullanıcı
+[2025-11-13 15:52:01] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:52:01] [INFO] Kullanıcılar yüklendi.
+[2025-11-13 15:52:01] [INFO] Yetki listesi yüklendi.
+[2025-11-13 15:52:06] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:52:21] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:52:21] [INFO] Kullanıcı listesi yüklendi: 108 kayıt
+[2025-11-13 15:52:21] [INFO] Yetki dropdown yüklendi.
+[2025-11-13 15:52:22] [INFO] Yetki matrisi yüklendi.
+[2025-11-13 15:52:31] [INFO] Kullanıcı yetkileri yüklendi: GP0127 - 0 yetki
+[2025-11-13 15:52:47] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:52:47] [INFO] Kullanıcılar yüklendi.
+[2025-11-13 15:52:47] [INFO] Yetki listesi yüklendi.
+[2025-11-13 15:52:54] [INFO] Yetkiler yüklendi: UB8073 - 3 kayıt
+[2025-11-13 15:52:59] [INFO] Yetki silindi: ID 2264 - Yakıttakip
+[2025-11-13 15:52:59] [INFO] Yetkiler yüklendi: UB8073 - 2 kayıt
+[2025-11-13 15:57:21] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:57:21] [INFO] Kullanıcılar yüklendi.
+[2025-11-13 15:57:21] [INFO] Yetki listesi yüklendi.
+[2025-11-13 15:58:56] [INFO] Yetki kontrolü başarılı: admin - 900
+[2025-11-13 15:58:56] [INFO] Kullanıcı listesi yüklendi: 108 kayıt
+[2025-11-13 15:58:56] [INFO] Yetki dropdown yüklendi.
+[2025-11-13 15:58:56] [INFO] Yetki matrisi yüklendi.
+[2025-11-13 15:59:49] [INFO] Yetki matrisi kaydedildi: 2 eklendi, 0 silindi
+[2025-11-13 15:59:49] [INFO] Yetki matrisi yüklendi.
+[2025-11-13 16:02:53] [INFO] Yetkiye göre kullanıcılar yüklendi: 190 - 11 kullanıcı
+[2025-11-13 16:03:04] [INFO] Yetkiye göre kullanıcılar yüklendi: 200 - 58 kullanıcı
