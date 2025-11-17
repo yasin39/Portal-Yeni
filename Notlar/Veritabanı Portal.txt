@@ -1,0 +1,383 @@
+USE [ankarabolge]
+GO
+/****** Object:  Table [dbo].[cimer_basvuru_hareketleri]    Script Date: 10/22/2025 2:30:12 PM ******/
+
+CREATE TABLE [dbo].[cimer_basvuru_hareketleri](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Basvuru_id] [bigint] NULL,
+	[Sevk_Eden] [nvarchar](50) NULL,
+	[Teslim_Alan] [nvarchar](50) NULL,
+	[Tarih] [datetime] NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[islem_turu] [int] NULL,
+	[islem_Aciklama] [nvarchar](50) NULL
+
+/****** Object:  Table [dbo].[cimer_basvurular]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[cimer_basvurular](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Basvuru_No] [bigint] NOT NULL,
+	[Basvuru_Tarihi] [date] NULL,
+	[TC_No] [bigint] NULL,
+	[Adi_Soyadi] [nvarchar](50) NULL,
+	[Tel_No] [nvarchar](11) NULL,
+	[Mail] [nvarchar](50) NULL,
+	[Adres] [nvarchar](max) NULL,
+	[Basvuru_Metni] [nvarchar](max) NULL,
+	[Basvuru_Ek] [nvarchar](max) NULL,
+	[Yapilan_Ýslem] [nvarchar](max) NULL,
+	[Son_Yapilan_islem] [nvarchar](max) NULL,
+	[Onay_Durumu] [nvarchar](50) NULL,
+	[Sonuc] [nvarchar](50) NULL,
+	[Sikayet_Konusu] [nvarchar](50) NULL,
+	[Sikayet_Edilen_Firma] [nvarchar](max) NULL,
+	[Son_Kullanici] [nvarchar](50) NULL,
+	[Kayit_Kullanici] [nvarchar](50) NULL,
+	[Kayit_Tarihi] [datetime] NULL,
+	[Guncelleyen_Kullanici] [nvarchar](50) NULL,
+	[Guncelleme_Tarihi] [datetime] NULL,
+	[Bekleme_Durumu] [nvarchar](50) NULL,
+
+/****** Object:  Table [dbo].[cimer_firmalar]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[cimer_firmalar](
+	[id] [int] NULL,
+	[Firma_Unvan] [nvarchar](50) NULL
+
+/****** Object:  Table [dbo].[coklu_bildirim]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[coklu_bildirim](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[MesajTuru] [nchar](10) NULL,
+	[Adresler] [nvarchar](max) NULL,
+	[Mesaj] [nvarchar](max) NULL,
+	[Sonuc] [nvarchar](max) NULL,
+	[Adet] [int] NULL,
+	[GonderimZamani] [datetime] NULL,
+	[GonderenKullanici] [nvarchar](50) NULL,
+	[Kisiler] [nvarchar](max) NULL
+
+/****** Object:  Table [dbo].[denetimgorev]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[denetimgorev](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[AdiSoyadi] [nvarchar](90) NULL,
+	[BaslamaTarihi] [date] NULL,
+	[GorevlendirmeSuresi] [int] NULL,
+	[BitisTarihi] [date] NULL,
+	[il] [nvarchar](50) NULL,
+	[Digeriller] [nvarchar](max) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[KayitTarihi] [datetime] NULL,
+	[KayitKullanici] [nvarchar](90) NULL,
+	[GuncellemeTarihi] [datetime] NULL,
+	[GuncelleyenKullanici] [nvarchar](90) NULL,
+
+/****** Object:  Table [dbo].[denetimisletme]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[denetimisletme](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[VergiNo] [bigint] NULL,
+	[Unvan] [nvarchar](max) NULL,
+	[Adres] [nvarchar](max) NULL,
+	[YetkiBelgesi] [nvarchar](50) NULL,
+	[DenetimTuru] [nvarchar](50) NULL,
+	[DenetimTarihi] [datetime] NULL,
+	[il] [nvarchar](50) NULL,
+	[ilce] [nvarchar](70) NULL,
+	[Personel1] [nvarchar](100) NULL,
+	[Personel2] [nvarchar](100) NULL,
+	[CezaDurumu] [nvarchar](50) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[KayitTarihi] [datetime] NULL,
+	[KayitKullanici] [nvarchar](100) NULL,
+	[GuncellemeTarihi] [datetime] NULL,
+	[GuncellemeKullanici] [nvarchar](100) NULL,
+
+/****** Object:  Table [dbo].[denetimtasit]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[denetimtasit](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Plaka] [nvarchar](10) NULL,
+	[Unvan] [nvarchar](max) NULL,
+	[DenetimYeri] [nvarchar](max) NULL,
+	[YetkiBelgesi] [nvarchar](50) NULL,
+	[DenetimTuru] [nvarchar](50) NULL,
+	[DenetimTarihi] [datetime] NULL,
+	[il] [nvarchar](50) NULL,
+	[ilce] [nvarchar](70) NULL,
+	[Personel1] [nvarchar](100) NULL,
+	[Personel2] [nvarchar](100) NULL,
+	[CezaDurumu] [nvarchar](50) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[KayitTarihi] [datetime] NULL,
+	[KayitKullanici] [nvarchar](100) NULL,
+	[GuncellemeTarihi] [datetime] NULL,
+	[GuncellemeKullanici] [nvarchar](100) NULL,
+	[Plaka2] [nvarchar](10) NULL,
+
+/****** Object:  Table [dbo].[denetimuzak]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[denetimuzak](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Tarih] [date] NULL,
+	[AracSayisi] [bigint] NULL,
+	[UygunsuzAracSayisi] [int] NULL,
+	[YBOlmayanAracSayisi] [int] NULL,
+	[YBKayitliOlmayanAracSayisi] [int] NULL,
+	[DenetimKayitTarihi] [datetime] NULL,
+	[AtananPersonel] [nvarchar](100) NULL,
+	[Durum] [nvarchar](50) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[KayitKullanici] [nvarchar](100) NULL,
+	[KayitTarihi] [datetime] NULL,
+	[GuncelleyenKullanici] [nvarchar](100) NULL,
+	[GuncellemeTarihi] [datetime] NULL
+
+/****** Object:  Table [dbo].[denetimyerleri]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[denetimyerleri](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[DenetimYeri] [nvarchar](max) NULL,
+	[il] [nvarchar](50) NULL,
+	[ilce] [nvarchar](100) NULL,
+
+/****** Object:  Table [dbo].[duyuru]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[duyuru](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Baslama_Tarihi] [date] NULL,
+	[Bitis_Tarihi] [date] NULL,
+	[Dosya] [nvarchar](max) NULL,
+	[Durum] [nvarchar](50) NULL,
+	[Duyuru] [nvarchar](max) NULL,
+	[Kullanici] [nvarchar](90) NULL,
+	[Kayit_Tarihi] [datetime] NULL,
+	[Birim] [nvarchar](50) NULL
+
+/****** Object:  Table [dbo].[gelendosyalar]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[gelendosyalar](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[gelistarihi] [date] NULL,
+	[ilgili_sube] [varchar](max) NULL,
+	[dosya_sayisi] [int] NULL,
+	[aciklama] [varchar](max) NULL,
+	[kullanici] [varchar](max) NULL
+
+/****** Object:  Table [dbo].[gorevkayit]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[gorevkayit](
+	[Talep_id] [int] IDENTITY(1,1) NOT NULL,
+	[Gorev_Turu] [nvarchar](50) NULL,
+	[Gorev_il] [nvarchar](50) NULL,
+	[Gidilecen_Son_Tarih] [date] NULL,
+	[sube_mudurlugu] [nvarchar](150) NULL,
+	[Personel_Sayisi] [int] NULL,
+	[sure] [nvarchar](max) NULL,
+	[ivedilik] [nvarchar](20) NULL,
+	[Unvan] [nvarchar](max) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[Kayit_Tarihi] [datetime] NULL,
+	[Kullanici] [nvarchar](150) NULL,
+	[Durum] [nvarchar](20) NULL,
+	[Goreve_Cikis_Tarihi] [date] NULL,
+	[Goreve_Giden_Personel] [nvarchar](max) NULL,
+	[Goreve_Gidis_Turu] [nvarchar](50) NULL,
+	[Gorev_Suresi] [nvarchar](20) NULL,
+	[Adres] [nvarchar](max) NULL,
+	[Unet] [nvarchar](10) NULL,
+	[Gorev_ilce] [nvarchar](50) NULL
+
+/****** Object:  Table [dbo].[ililce]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[ililce](
+	[ilkodu] [int] NULL,
+	[iladi] [nvarchar](255) NULL,
+	[ilcekodu] [int] NULL,
+	[ilceadi] [nvarchar](255) NULL,
+	[durum] [nvarchar](255) NULL
+
+/****** Object:  Table [dbo].[kullanici]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[kullanici](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Sicil_No] [varchar](15) NOT NULL,
+	[Adi_Soyadi] [varchar](50) NULL,
+	[Kullanici_Turu] [varchar](50) NULL,
+	[Parola] [varchar](50) NULL,
+	[Durum] [varchar](15) NULL,
+	[Birim] [varchar](100) NULL,
+	[Personel_Tipi] [varchar](15) NULL,
+	[Mail_Adresi] [nvarchar](max) NULL,
+
+/****** Object:  Table [dbo].[onayparametreleri]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[onayparametreleri](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[PersonelAdi] [nvarchar](90) NULL,
+	[PersonelUnvan] [nvarchar](90) NULL,
+	[SubeMudurAdi] [nvarchar](90) NULL,
+	[SubeMudurUnvan] [nvarchar](90) NULL,
+	[GerceklestirmeciAdi] [nvarchar](90) NULL,
+	[GerceklestirmeciUnvan] [nvarchar](90) NULL,
+	[HarcamaYetkilisiAdi] [nvarchar](90) NULL,
+	[HarcamaYetkilisiUnvan] [nvarchar](90) NULL,
+	[Kullanici] [nvarchar](90) NOT NULL,
+	[KayitTarihi] [datetime] NULL,
+/****** Object:  Table [dbo].[personel]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[personel](
+	[Personelid] [int] IDENTITY(1,1) NOT NULL,
+	[TcKimlikNo] [bigint] NOT NULL,
+	[Adi] [nvarchar](50) NULL,
+	[Soyad] [nvarchar](100) NULL,
+	[DogumYeri] [nvarchar](50) NULL,
+	[DogumTarihi] [date] NULL,
+	[Cinsiyet] [nchar](5) NULL,
+	[SicilNo] [nvarchar](15) NULL,
+	[Unvan] [nvarchar](50) NULL,
+	[Statu] [nvarchar](50) NULL,
+	[ilkisegiristarihi] [date] NULL,
+	[KurumaBaslamaTarihi] [date] NULL,
+	[GorevYaptigiBirim] [nvarchar](100) NULL,
+	[CalismaDurumu] [nvarchar](100) NULL,
+	[GeciciGelenPersonelKurumu] [nvarchar](100) NULL,
+	[GeciciGidenPersonelKurumu] [nvarchar](100) NULL,
+	[istenAyrilisTarihi] [date] NULL,
+	[istenAyrilmaSebebi] [nvarchar](100) NULL,
+	[GGorevBaslangicTarihi] [date] NULL,
+	[GGorevBitisTarihi] [date] NULL,
+	[CepTelefonu] [nchar](10) NULL,
+	[MailAdresi] [nvarchar](100) NULL,
+	[EvTelefonu] [nchar](10) NULL,
+	[Adres] [nvarchar](max) NULL,
+	[AcilDurumdaAranacakKisi] [nvarchar](50) NULL,
+	[AcilCep] [nchar](10) NULL,
+	[KanGrubu] [nvarchar](10) NULL,
+	[MedeniHali] [nvarchar](10) NULL,
+	[AskerlikDurumu] [nvarchar](20) NULL,
+	[EngelDurumu] [nvarchar](10) NULL,
+	[EngelAciklama] [nvarchar](100) NULL,
+	[Sendika] [nvarchar](200) NULL,
+	[MeslekiUnvan] [nvarchar](100) NULL,
+	[Resim] [nvarchar](max) NULL,
+	[KayitTarihi] [datetime] NULL,
+	[KayitKullanici] [nvarchar](100) NULL,
+	[SonGuncellemeTarihi] [datetime] NULL,
+	[SonGuncellemeKullanici] [nvarchar](100) NULL,
+	[Devredenizin] [int] NULL,
+	[cariyilizni] [int] NULL,
+	[toplamizin] [int] NULL,
+	[Durum] [nvarchar](10) NULL,
+	[Dahili] [int] NULL,
+	[Ogrenim_Durumu] [nvarchar](50) NULL,
+	[EmeklilikTarihi] [date] NULL,
+	[YaslilikAylikTarihi] [date] NULL,
+	[EmeklilikAciklama] [nvarchar](max) NULL,
+	[KadroDerece] [int] NULL,
+
+/****** Object:  Table [dbo].[personel_izin]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[personel_izin](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Sicil_No] [nvarchar](15) NULL,
+	[Tc_No] [bigint] NULL,
+	[Adi_Soyadi] [nvarchar](90) NULL,
+	[Statu] [nvarchar](30) NULL,
+	[Devreden_izin] [money] NULL,
+	[Cari_izin] [money] NULL,
+	[izin_turu] [nvarchar](20) NULL,
+	[izin_Suresi] [money] NULL,
+	[izne_Baslama_Tarihi] [date] NULL,
+	[izin_Bitis_Tarihi] [date] NULL,
+	[Goreve_Baslama_Tarihi] [date] NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[Kayit_Tarihi] [datetime] NULL,
+	[Kayit_Kullanici] [nvarchar](30) NULL,
+	[Son_Guncelleme_Tarihi] [datetime] NULL,
+	[Son_Guncelleyen_Kullanici] [nvarchar](20) NULL,
+	[ibaslamasaat] [time](7) NULL,
+	[ibitissaat] [time](7) NULL
+
+/****** Object:  Table [dbo].[personel_kurum]    Script Date: 10/22/2025 2:30:13 PM ******/
+CREATE TABLE [dbo].[personel_kurum](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Kurum_Adi] [nvarchar](max) NULL
+
+/****** Object:  Table [dbo].[personel_ogrenim]    Script Date: 10/22/2025 2:30:13 PM ******/
+CREATE TABLE [dbo].[personel_ogrenim](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[TC_No] [nvarchar](11) NULL,
+	[Ogr_Durumu] [nvarchar](50) NULL,
+	[Okul] [nvarchar](max) NULL,
+	[Bolum] [nvarchar](max) NULL,
+	[Mezuniyet_Tarihi] [date] NULL
+
+/****** Object:  Table [dbo].[personel_sendika]    Script Date: 10/22/2025 2:30:13 PM ******/
+CREATE TABLE [dbo].[personel_sendika](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Sendika_Adi] [nvarchar](max) NULL
+
+/****** Object:  Table [dbo].[personel_unvan]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[personel_unvan](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Unvan] [nvarchar](50) NULL,
+	[Sinif] [nvarchar](50) NULL
+
+/****** Object:  Table [dbo].[sehirler]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[sehirler](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Plaka] [int] NULL,
+	[sehir] [nvarchar](50) NULL,
+	[Bolge_Dahilimi] [int] NULL,
+
+/****** Object:  Table [dbo].[subeler]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[subeler](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Sube_Adi] [varchar](100) NOT NULL,
+
+/****** Object:  Table [dbo].[tmfaaliyetalanlari]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[tmfaaliyetalanlari](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[FaaliyetAdi] [nvarchar](max) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+
+/****** Object:  Table [dbo].[tmistatistik]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[tmistatistik](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Unet] [bigint] NULL,
+	[Unvan] [nvarchar](max) NULL,
+	[Adres] [nvarchar](max) NULL,
+	[ilce] [nvarchar](50) NULL,
+	[il] [nvarchar](50) NULL,
+	[Statu] [nvarchar](90) NULL,
+	[BelgeTuru] [nvarchar](10) NULL,
+	[BelgeSeriNo] [nvarchar](50) NULL,
+	[FaaliyetTuru] [nvarchar](90) NULL,
+	[Aciklama] [nvarchar](max) NULL,
+	[Durum] [nvarchar](10) NULL,
+	[KayitTarihi] [datetime] NULL,
+	[KayitKullanici] [nvarchar](90) NULL,
+	[GuncellemeTarihi] [datetime] NULL,
+	[GuncelleyenKullanici] [nvarchar](90) NULL
+
+/****** Object:  Table [dbo].[yetki]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[yetki](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Sicil_No] [nvarchar](15) NULL,
+	[Yetki] [nvarchar](50) NULL,
+	[Yetki_No] [int] NULL
+
+/****** Object:  Table [dbo].[yetki_belgeleri]    Script Date: 10/22/2025 2:30:13 PM ******/
+
+CREATE TABLE [dbo].[yetki_belgeleri](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Belge_Adi] [varchar](10) NOT NULL,
+

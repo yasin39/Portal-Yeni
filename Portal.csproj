@@ -79,6 +79,7 @@
   <ItemGroup>
     <Content Include="Anasayfa.aspx" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="DatabaseHealth.aspx" />
     <Content Include="ErrorLog.txt" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
@@ -142,11 +143,8 @@
     <Content Include="Notlar\CodeSnippets.txt" />
     <Content Include="Notlar\Instructions for Claude.txt" />
     <Content Include="Notlar\Portal Yazılım Notları.md" />
-    <Content Include="Notlar\PersonelTest.md" />
-    <Content Include="Notlar\TestAraçlar.md" />
-    <Content Include="Notlar\TestBelgeTakip.md" />
-    <Content Include="Notlar\TestCimer.md" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Notlar\Veritabanı Portal.txt" />
     <Content Include="Notlar\Yapılacak Database İşlemleri.txt" />
     <Content Include="PerformanceMonitor.aspx" />
     <Content Include="Scripts\FlatPickr_MerkeziBaslatici.js" />
@@ -2295,6 +2293,13 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseHealth.aspx.cs">
+      <DependentUpon>DatabaseHealth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DatabaseHealth.aspx.designer.cs">
+      <DependentUpon>DatabaseHealth.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

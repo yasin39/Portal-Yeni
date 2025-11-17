@@ -70,7 +70,7 @@ namespace Portal.ModulGorev
             {
                 object baslangicTarihiParam = DBNull.Value;
                 object bitisTarihiParam = DBNull.Value;
-                string tarihFormati = "dd.MM.yyyy"; 
+                string tarihFormati = "d/M/yyyy"; 
 
                 if (filtreliMi)
                 {
