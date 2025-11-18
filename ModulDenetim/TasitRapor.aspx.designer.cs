@@ -87,13 +87,22 @@ namespace Portal.ModulDenetim
         protected global::System.Web.UI.WebControls.DropDownList CezaDurumu;
 
         /// <summary>
-        /// ValidationSummary1 control.
+        /// BaslangicTarih control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.TextBox BaslangicTarih;
+
+        /// <summary>
+        /// BitisTarih control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox BitisTarih;
 
         /// <summary>
         /// AraBtn control.

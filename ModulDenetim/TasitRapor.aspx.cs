@@ -7,6 +7,8 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using System.IO;
 using ListItem = System.Web.UI.WebControls.ListItem;
+using System.Text; // StringBuilder için
+using System.Collections.Generic; // List<SqlParameter> için
 
 namespace Portal.ModulDenetim
 {
@@ -15,7 +17,7 @@ namespace Portal.ModulDenetim
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {                
+            {
                 if (!CheckPermission(200))
                 {
                     return;
@@ -31,13 +33,13 @@ namespace Portal.ModulDenetim
         private void DropdownlariDoldur()
         {
             try
-            {                
+            {
                 Helpers.LoadActivePersonnel(Personel, "Personel Seçiniz");
-                
+
                 Helpers.LoadProvinces(Il, "İl Seçiniz");
-                
+
                 YetkiBelgesiDoldur();
-                                
+
             }
             catch (Exception ex)
             {
@@ -60,7 +62,7 @@ namespace Portal.ModulDenetim
             }
         }
 
- 
+
 
         #endregion
 
@@ -69,7 +71,7 @@ namespace Portal.ModulDenetim
         protected void Il_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Il.SelectedValue))
-            {                
+            {
                 Helpers.LoadDistricts(Ilce, Il.SelectedValue, "İlçe Seçiniz");
             }
             else
@@ -121,7 +123,7 @@ namespace Portal.ModulDenetim
 
         #endregion
 
-      
+
 
         #region Excel Export
 
@@ -131,7 +133,7 @@ namespace Portal.ModulDenetim
             {
                 DenetimGrid.AllowPaging = false;
                 GridDoldur(); // Grid'i yenile
-                ExportGridViewToExcel(DenetimGrid, "TasitDenetimRaporu.xls", 300);               
+                ExportGridViewToExcel(DenetimGrid, "TasitDenetimRaporu.xls", 300);
                 DenetimGrid.AllowPaging = true;
                 GridDoldur();
             }
@@ -279,6 +281,100 @@ namespace Portal.ModulDenetim
 
         protected void AraBtn_Click(object sender, EventArgs e)
         {
+            try
+            {
+                var sqlSorgu = new StringBuilder("SELECT * FROM denetimtasit where 1=1");
+
+                var parametreler = new List<SqlParameter>();
+
+                if (!string.IsNullOrEmpty(Plaka.Text))
+                {
+                    sqlSorgu.Append(" AND (Plaka = @Plaka)");
+                    parametreler.Add(new SqlParameter("@Plaka", Plaka.Text));
+                }
+
+                if (!string.IsNullOrEmpty(Unvan.Text))
+                {
+                    sqlSorgu.Append(" AND Unvan LIKE @Unvan");
+                    parametreler.Add(new SqlParameter("@Unvan", "%" + Unvan.Text + "%"));
+                }
+
+                if (YetkiBelgesi.SelectedValue != "Hepsi")
+                {
+                    sqlSorgu.Append(" AND YetkiBelgesi=@YetkiBelgesi");
+                    parametreler.Add(new SqlParameter("@YetkiBelgesi", YetkiBelgesi.SelectedValue));
+                }
+
+                if (DenetimTuru.SelectedValue != "Hepsi")
+                {
+                    sqlSorgu.Append(" AND DenetimTuru LIKE @DenetimTuru");
+                    parametreler.Add(new SqlParameter("@DenetimTuru", DenetimTuru.SelectedValue));
+                }
+
+                if (Il.SelectedValue != "Hepsi")
+                {
+                    sqlSorgu.Append(" AND il=@il");
+                    parametreler.Add(new SqlParameter("@il", Il.SelectedValue));
+                }
+
+                if (Ilce.SelectedValue != "Hepsi")
+                {
+                    sqlSorgu.Append(" AND ilce=@ilce");
+                    parametreler.Add(new SqlParameter("@ilce", Ilce.SelectedValue));
+                }
+
+                if (Personel.SelectedValue != "Hepsi")
+                {
+                    sqlSorgu.Append(" AND (Personel1=@Personel OR Personel2=@Personel)");
+                    parametreler.Add(new SqlParameter("@Personel", Personel.SelectedValue));
+                }
+
+                if (CezaDurumu.SelectedValue != "Hepsi")
+                {
+                    sqlSorgu.Append(" AND CezaDurumu = @CezaDurumu");
+                    parametreler.Add(new SqlParameter("@CezaDurumu", CezaDurumu.SelectedValue));
+                }
+
+                DateTime ilkTarihObjesi;
+
+                if (DateTime.TryParse(BaslangicTarih.Text, out ilkTarihObjesi))
+                {
+                    sqlSorgu.Append(" AND CONVERT(DATE, DenetimTarihi, 23) >= @IlkTarih");
+                    parametreler.Add(new SqlParameter("@IlkTarih", ilkTarihObjesi.Date));
+                }
+
+                DateTime sonTarihObjesi;
+                if (DateTime.TryParse(BitisTarih.Text, out sonTarihObjesi))
+                {
+                    sqlSorgu.Append(" AND CONVERT(DATE, DenetimTarihi, 23) <= @SonTarih");
+                    parametreler.Add(new SqlParameter("@SonTarih", sonTarihObjesi.Date));
+                }
+
+                sqlSorgu.Append(" ORDER BY id DESC");
+
+                // ExecuteDataTable, bağlantıyı açar, parametreleri ekler, veriyi çeker ve kapatır.
+                DataTable dt = ExecuteDataTable(sqlSorgu.ToString(), parametreler);
+
+                DenetimGrid.DataSource = dt;
+                DenetimGrid.DataBind();
+
+                if (dt.Rows.Count > 0)
+                {
+                    ShowToast($"{dt.Rows.Count} kayıt listelendi.", "success");
+                }
+                else
+                {
+                    ShowToast("Aradığınız kriterlere uygun kayıt bulunamadı.", "warning");
+                    // Grid boşsa header görünmesi için boş bir satır eklenebilir veya grid gizlenebilir
+                }
+            }
+            catch (Exception ex)
+            {
+                LogError("Denetim Sorgulama Hatası", ex);
+
+                ShowToast("Sorgulama sırasında sistemsel bir hata oluştu.", "danger");
+            }
+
 
         }
     }

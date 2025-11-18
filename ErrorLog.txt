@@ -19,3 +19,7 @@
 [2025-11-18 09:33:46] [INFO] Yetki kontrolü başarılı: admin - 200
 [2025-11-18 09:33:48] [INFO] Yetki kontrolü başarılı: admin - 200
 [2025-11-18 09:34:37] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-18 11:45:57] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-18 11:46:05] [INFO] Yetki kontrolü başarılı: admin - 200
+[2025-11-18 11:49:43] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-18 11:49:52] [INFO] Yetki kontrolü başarılı: admin - 200

@@ -128,7 +128,7 @@
                 <!-- Plaka Bilgileri -->
                 <div class="col-md-6">
                     <label class="form-label">Plaka No </label>
-                    <asp:TextBox ID="Plaka" runat="server" CssClass="form-control text-uppercase" placeholder="Örn: 06UAB1989" MaxLength="20"></asp:TextBox>
+                    <asp:TextBox ID="Plaka" runat="server" CssClass="form-control text-uppercase" placeholder="Örn: 06UAB1234" MaxLength="20"></asp:TextBox>
                 </div>
 
                 <div class="col-md-6">
@@ -187,13 +187,15 @@
                         <asp:ListItem Value="Yok">Yok</asp:ListItem>
                     </asp:DropDownList>
                 </div>
-
-                <!-- Validation Summary -->
-                <div class="col-md-12">
-                    <asp:ValidationSummary ID="ValidationSummary1" runat="server" CssClass="alert alert-danger"
-                        ValidationGroup="kayit" DisplayMode="BulletList" HeaderText="Lütfen aşağıdaki alanları kontrol ediniz:" />
+                <!--Sorgulama Başlangıç ve Bitiş Tarihleri-->
+                <div class="col-md-6">
+                    <label class="form-label">Başlangıç Tarihi</label>
+                    <asp:TextBox ID="BaslangicTarih" runat="server" CssClass="form-control fp-date"></asp:TextBox>
                 </div>
-
+                  <div class="col-md-6">
+                    <label class="form-label">Bitiş Tarihi</label>
+                    <asp:TextBox ID="BitisTarih" runat="server" CssClass="form-control fp-date"></asp:TextBox>
+                </div>
                 <!-- Butonlar -->
                 <div class="col-md-12">
                     <div class="d-flex gap-2 flex-wrap">
@@ -239,17 +241,4 @@
 
     </div>
 
-    <!-- Flatpickr JS -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/tr.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            flatpickr('.flatpickr-datetime', {
-                enableTime: true,
-                dateFormat: "d.m.Y H:i",
-                time_24hr: true,
-                locale: "tr"
-            });
-        });
-    </script>
 </asp:Content>
