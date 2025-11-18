@@ -12,6 +12,7 @@ using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Linq;
 using ListItem = System.Web.UI.WebControls.ListItem;
+using System.Globalization;
 
 namespace Portal.Base
 {
@@ -1071,19 +1072,27 @@ namespace Portal.Base
 
             return date.Value.ToString("yyyy-MM-dd");
         }
-
         /// <summary>
-        /// Tarih ve saati HTML5 input[type=datetime-local] formatında string'e çevirir (yyyy-MM-ddTHH:mm)
+        /// flatpickr formatı: "d/m/Y H:i" 'NI gereken formata çevirir
         /// </summary>
-        /// <param name="dateTime">Tarih saat</param>
-        /// <returns>HTML formatında tarih saat string'i</returns>
-        protected string FormatDateTimeHtmlLocal(DateTime? dateTime)
+        /// <param name="tarihStr"></param>
+        /// <returns></returns>
+        public DateTime ParseTarih(string tarihStr)
         {
-            if (dateTime == null || dateTime == DateTime.MinValue)
-                return string.Empty;
-
-            return dateTime.Value.ToString("yyyy-MM-ddTHH:mm");
+            // flatpickr formatı: "d/m/Y H:i"
+            string format = "d/M/yyyy HH:mm";
+            try
+            {
+                return DateTime.ParseExact(tarihStr, format, CultureInfo.InvariantCulture, DateTimeStyles.None);
+            }
+            catch (Exception ex)
+            {
+                LogError($"Tarih formatı ayrıştırma hatası: '{tarihStr}'. Beklenen format: '{format}'", ex);
+                ShowToast("Tarih formatı geçersiz görünüyor.", "danger");
+                throw; // Hatayı tekrar fırlat ki işlem dursun
+            }
         }
+
 
         #endregion
 

@@ -38,6 +38,13 @@ namespace Portal.ModulGorev
             try
             {
                 Helpers.LoadActivePersonnel(ddlPersonel, "Hepsi");
+                if (ddlPersonel.Items.Count > 0 && ddlPersonel.Items[0].Text == "Hepsi")
+                {
+                    // Helper'ın eklediği (muhtemelen Value="0" olan) öğeyi kaldır
+                    ddlPersonel.Items.RemoveAt(0);
+                    // Value="Hepsi" olan doğru öğeyi ekle
+                    ddlPersonel.Items.Insert(0, new ListItem("Hepsi", "Hepsi"));
+                }
             }
             catch (Exception ex)
             {
@@ -52,6 +59,13 @@ namespace Portal.ModulGorev
             {
                 Helpers.LoadProvinces(ddlIl, "Hepsi");
                 // Duplicate "Hepsi" eklenmesin - Helpers.LoadProvinces zaten ekliyor
+                if (ddlIl.Items.Count > 0 && ddlIl.Items[0].Text == "Hepsi")
+                {
+                    // Helper'ın eklediği (muhtemelen Value="0" olan) öğeyi kaldır
+                    ddlIl.Items.RemoveAt(0);
+                    // Value="Hepsi" olan doğru öğeyi ekle
+                    ddlIl.Items.Insert(0, new ListItem("Hepsi", "Hepsi"));
+                }
             }
             catch (Exception ex)
             {

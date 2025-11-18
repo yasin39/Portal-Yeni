@@ -15,33 +15,6 @@ namespace Portal.ModulDenetim
     {
 
         /// <summary>
-        /// KayitNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox KayitNo;
-
-        /// <summary>
-        /// BulBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BulBtn;
-
-        /// <summary>
-        /// AramaUyariLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AramaUyariLabel;
-
-        /// <summary>
         /// Plaka control.
         /// </summary>
         /// <remarks>
@@ -51,24 +24,6 @@ namespace Portal.ModulDenetim
         protected global::System.Web.UI.WebControls.TextBox Plaka;
 
         /// <summary>
-        /// PlakValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PlakValidator;
-
-        /// <summary>
-        /// Plaka2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Plaka2;
-
-        /// <summary>
         /// Unvan control.
         /// </summary>
         /// <remarks>
@@ -76,33 +31,6 @@ namespace Portal.ModulDenetim
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox Unvan;
-
-        /// <summary>
-        /// UnvanValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator UnvanValidator;
-
-        /// <summary>
-        /// DenetimYeri control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DenetimYeri;
-
-        /// <summary>
-        /// DenetimYeriValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator DenetimYeriValidator;
 
         /// <summary>
         /// YetkiBelgesi control.
@@ -123,33 +51,6 @@ namespace Portal.ModulDenetim
         protected global::System.Web.UI.WebControls.DropDownList DenetimTuru;
 
         /// <summary>
-        /// DenetimTuruValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator DenetimTuruValidator;
-
-        /// <summary>
-        /// DenetimTarihi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DenetimTarihi;
-
-        /// <summary>
-        /// DenetimTarihiValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator DenetimTarihiValidator;
-
-        /// <summary>
         /// Il control.
         /// </summary>
         /// <remarks>
@@ -157,15 +58,6 @@ namespace Portal.ModulDenetim
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Il;
-
-        /// <summary>
-        /// IlValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IlValidator;
 
         /// <summary>
         /// Ilce control.
@@ -177,15 +69,6 @@ namespace Portal.ModulDenetim
         protected global::System.Web.UI.WebControls.DropDownList Ilce;
 
         /// <summary>
-        /// IlceValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator IlceValidator;
-
-        /// <summary>
         /// Personel control.
         /// </summary>
         /// <remarks>
@@ -193,15 +76,6 @@ namespace Portal.ModulDenetim
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList Personel;
-
-        /// <summary>
-        /// PersonelValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator PersonelValidator;
 
         /// <summary>
         /// CezaDurumu control.
@@ -213,24 +87,6 @@ namespace Portal.ModulDenetim
         protected global::System.Web.UI.WebControls.DropDownList CezaDurumu;
 
         /// <summary>
-        /// CezaDurumuValidator control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator CezaDurumuValidator;
-
-        /// <summary>
-        /// Aciklama control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Aciklama;
-
-        /// <summary>
         /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
@@ -240,40 +96,13 @@ namespace Portal.ModulDenetim
         protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
 
         /// <summary>
-        /// KaydetBtn control.
+        /// AraBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button KaydetBtn;
-
-        /// <summary>
-        /// GuncelleBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button GuncelleBtn;
-
-        /// <summary>
-        /// SilBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SilBtn;
-
-        /// <summary>
-        /// VazgecBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button VazgecBtn;
+        protected global::System.Web.UI.WebControls.Button AraBtn;
 
         /// <summary>
         /// PdfIndir control.

@@ -15,8 +15,7 @@ namespace Portal.ModulDenetim
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                // Yetki kontrolü: 200 = Denetim Görüntüleme
+            {                
                 if (!CheckPermission(200))
                 {
                     return;
@@ -38,8 +37,7 @@ namespace Portal.ModulDenetim
                 Helpers.LoadProvinces(Il, "İl Seçiniz");
                 
                 YetkiBelgesiDoldur();
-                
-                DenetimYeriDoldur();
+                                
             }
             catch (Exception ex)
             {
@@ -62,19 +60,7 @@ namespace Portal.ModulDenetim
             }
         }
 
-        private void DenetimYeriDoldur()
-        {
-            string query = @"SELECT DenetimYeri FROM denetimyerleri ORDER BY DenetimYeri ASC";
-            DataTable dt = ExecuteDataTable(query);
-
-            DenetimYeri.Items.Clear();
-            DenetimYeri.Items.Insert(0, new ListItem("Seçiniz", ""));
-
-            foreach (DataRow row in dt.Rows)
-            {
-                DenetimYeri.Items.Add(new ListItem(row["DenetimYeri"].ToString()));
-            }
-        }
+ 
 
         #endregion
 
@@ -135,276 +121,7 @@ namespace Portal.ModulDenetim
 
         #endregion
 
-        #region Kayıt İşlemleri
-
-        protected void BulBtn_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(KayitNo.Text))
-            {
-                ShowToast("Lütfen kayıt numarası giriniz.", "warning");
-                return;
-            }
-
-            try
-            {
-                string query = @"SELECT * FROM denetimtasit WHERE id = @KayitNo";
-                var parameters = CreateParameters(("@KayitNo", KayitNo.Text));
-                DataTable dt = ExecuteDataTable(query, parameters);
-
-                if (dt.Rows.Count > 0)
-                {
-                    DataRow row = dt.Rows[0];
-
-                    // Form alanlarını doldur
-                    Plaka.Text = row["Plaka"].ToString();
-                    Plaka2.Text = row["Plaka2"].ToString();
-                    Unvan.Text = row["Unvan"].ToString();
-                    DenetimYeri.SelectedValue = row["DenetimYeri"].ToString();
-                    YetkiBelgesi.SelectedValue = row["YetkiBelgesi"].ToString();
-                    DenetimTuru.SelectedValue = row["DenetimTuru"].ToString();
-
-                    // Tarih formatı düzeltme
-                    DateTime denetimTarihi = Convert.ToDateTime(row["DenetimTarihi"]);
-                    DenetimTarihi.Text = denetimTarihi.ToString("dd.MM.yyyy HH:mm");
-
-                    Il.SelectedValue = row["il"].ToString();
-
-                    // İlçe dropdown'ını doldur
-                    Helpers.LoadDistricts(Ilce, Il.SelectedValue, "İlçe Seçiniz");
-                    Ilce.SelectedValue = row["ilce"].ToString();
-
-                    Personel.SelectedValue = row["Personel1"].ToString();
-                    CezaDurumu.SelectedValue = row["CezaDurumu"].ToString();
-                    Aciklama.Text = row["Aciklama"].ToString();
-
-                    // Güncelleme moduna geç
-                    KayitNo.ReadOnly = true;
-                    Unvan.ReadOnly = true;
-                    KaydetBtn.Visible = false;
-                    GuncelleBtn.Visible = true;
-                    VazgecBtn.Visible = true;
-                    SilBtn.Visible = true;
-
-                    AramaUyariLabel.Text = "";
-                    ShowToast("Kayıt bulundu.", "success");
-                }
-                else
-                {
-                    AramaUyariLabel.Text = "Aranan kayıt bulunamadı.";
-                    ShowToast("Kayıt bulunamadı.", "warning");
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError("BulBtn_Click hatası", ex);
-                ShowToast("Kayıt aranırken hata oluştu.", "danger");
-            }
-        }
-
-        protected void KaydetBtn_Click(object sender, EventArgs e)
-        {
-            if (!Page.IsValid) return;
-
-            try
-            {
-                // Aynı tarihte aynı plaka kontrolü
-                if (KayitVarMi())
-                {
-                    ShowToast("Aynı tarihte aynı plaka denetimi zaten kayıtlı.", "warning");
-                    return;
-                }
-
-                DateTime denetimTarih = DateTime.ParseExact(DenetimTarihi.Text, "dd.MM.yyyy HH:mm", null);
-
-                string query = @"INSERT INTO denetimtasit 
-                                (Plaka, Plaka2, Unvan, DenetimYeri, YetkiBelgesi, DenetimTuru, 
-                                DenetimTarihi, il, ilce, Personel1, CezaDurumu, Aciklama, 
-                                KayitTarihi, KayitKullanici)
-                                VALUES 
-                                (@Plaka, @Plaka2, @Unvan, @DenetimYeri, @YetkiBelgesi, @DenetimTuru, 
-                                @DenetimTarihi, @Il, @Ilce, @Personel, @CezaDurumu, @Aciklama, 
-                                @KayitTarihi, @KayitKullanici)";
-
-                var parameters = CreateParameters(
-                    ("@Plaka", Plaka.Text.ToUpper()),
-                    ("@Plaka2", Plaka2.Text.ToUpper()),
-                    ("@Unvan", Unvan.Text),
-                    ("@DenetimYeri", DenetimYeri.SelectedValue),
-                    ("@YetkiBelgesi", YetkiBelgesi.SelectedValue),
-                    ("@DenetimTuru", DenetimTuru.SelectedValue),
-                    ("@DenetimTarihi", denetimTarih),
-                    ("@Il", Il.SelectedValue),
-                    ("@Ilce", Ilce.SelectedValue),
-                    ("@Personel", Personel.SelectedValue),
-                    ("@CezaDurumu", CezaDurumu.SelectedValue),
-                    ("@Aciklama", Aciklama.Text),
-                    ("@KayitTarihi", DateTime.Now),
-                    ("@KayitKullanici", Session["Ad"].ToString())
-                );
-
-                int sonuc = ExecuteNonQuery(query, parameters);
-
-                if (sonuc > 0)
-                {
-                    ShowToast("Denetim kaydı başarıyla eklendi.", "success");
-                    FormTemizle();
-                    GridDoldur();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError("KaydetBtn_Click hatası", ex);
-                ShowToast("Kayıt eklenirken hata oluştu.", "danger");
-            }
-        }
-
-        protected void GuncelleBtn_Click(object sender, EventArgs e)
-        {
-            if (!Page.IsValid) return;
-
-            try
-            {
-                // Aynı tarihte aynı plaka kontrolü (kendi kaydı hariç)
-                if (KayitVarMi(KayitNo.Text))
-                {
-                    ShowToast("Aynı tarihte aynı plaka denetimi zaten kayıtlı.", "warning");
-                    return;
-                }
-
-                DateTime denetimTarih = DateTime.ParseExact(DenetimTarihi.Text, "dd.MM.yyyy HH:mm", null);
-
-                string query = @"UPDATE denetimtasit SET 
-                                Plaka = @Plaka, Plaka2 = @Plaka2, Unvan = @Unvan, 
-                                DenetimYeri = @DenetimYeri, YetkiBelgesi = @YetkiBelgesi, 
-                                DenetimTuru = @DenetimTuru, DenetimTarihi = @DenetimTarihi, 
-                                il = @Il, ilce = @Ilce, Personel1 = @Personel, 
-                                CezaDurumu = @CezaDurumu, Aciklama = @Aciklama,
-                                GuncellemeTarihi = @GuncellemeTarihi, GuncellemeKullanici = @GuncellemeKullanici
-                                WHERE id = @KayitNo";
-
-                var parameters = CreateParameters(
-                    ("@Plaka", Plaka.Text.ToUpper()),
-                    ("@Plaka2", Plaka2.Text.ToUpper()),
-                    ("@Unvan", Unvan.Text),
-                    ("@DenetimYeri", DenetimYeri.SelectedValue),
-                    ("@YetkiBelgesi", YetkiBelgesi.SelectedValue),
-                    ("@DenetimTuru", DenetimTuru.SelectedValue),
-                    ("@DenetimTarihi", denetimTarih),
-                    ("@Il", Il.SelectedValue),
-                    ("@Ilce", Ilce.SelectedValue),
-                    ("@Personel", Personel.SelectedValue),
-                    ("@CezaDurumu", CezaDurumu.SelectedValue),
-                    ("@Aciklama", Aciklama.Text),
-                    ("@GuncellemeTarihi", DateTime.Now),
-                    ("@GuncellemeKullanici", Session["Ad"].ToString()),
-                    ("@KayitNo", KayitNo.Text)
-                );
-
-                int sonuc = ExecuteNonQuery(query, parameters);
-
-                if (sonuc > 0)
-                {
-                    ShowToast("Denetim kaydı başarıyla güncellendi.", "success");
-                    FormTemizle();
-                    GridDoldur();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError("GuncelleBtn_Click hatası", ex);
-                ShowToast("Kayıt güncellenirken hata oluştu.", "danger");
-            }
-        }
-
-        protected void SilBtn_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string query = @"DELETE FROM denetimtasit WHERE id = @KayitNo";
-                var parameters = CreateParameters(("@KayitNo", KayitNo.Text));
-
-                int sonuc = ExecuteNonQuery(query, parameters);
-
-                if (sonuc > 0)
-                {
-                    ShowToast("Denetim kaydı başarıyla silindi.", "success");
-                    FormTemizle();
-                    GridDoldur();
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError("SilBtn_Click hatası", ex);
-                ShowToast("Kayıt silinirken hata oluştu.", "danger");
-            }
-        }
-
-        protected void VazgecBtn_Click(object sender, EventArgs e)
-        {
-            FormTemizle();
-            ShowToast("İşlemden vazgeçildi.", "info");
-        }
-
-        #endregion
-
-        #region Yardımcı Metodlar
-
-        private bool KayitVarMi(string haricKayitNo = "")
-        {
-            try
-            {
-                DateTime denetimTarih = DateTime.ParseExact(DenetimTarihi.Text, "dd.MM.yyyy HH:mm", null);
-
-                string query = @"SELECT COUNT(*) FROM denetimtasit 
-                                WHERE Plaka = @Plaka AND DenetimTarihi = @DenetimTarihi";
-
-                var parameters = CreateParameters(
-                    ("@Plaka", Plaka.Text.ToUpper()),
-                    ("@DenetimTarihi", denetimTarih)
-                );
-
-                if (!string.IsNullOrEmpty(haricKayitNo))
-                {
-                    query += " AND id != @HaricKayitNo";
-                    parameters.Add(CreateParameter("@HaricKayitNo", haricKayitNo));
-                }
-
-                object result = ExecuteScalar(query, parameters);
-                return Convert.ToInt32(result) > 0;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private void FormTemizle()
-        {
-            KayitNo.Text = "";
-            Plaka.Text = "";
-            Plaka2.Text = "";
-            Unvan.Text = "";
-            DenetimYeri.SelectedIndex = 0;
-            YetkiBelgesi.SelectedIndex = 0;
-            DenetimTuru.SelectedIndex = 0;
-            DenetimTarihi.Text = "";
-            Il.SelectedIndex = 0;
-            Ilce.Items.Clear();
-            Ilce.Items.Insert(0, new ListItem("İlçe Seçiniz", ""));
-            Personel.SelectedIndex = 0;
-            CezaDurumu.SelectedIndex = 0;
-            Aciklama.Text = "";
-            AramaUyariLabel.Text = "";
-
-            KayitNo.ReadOnly = false;
-            Unvan.ReadOnly = false;
-            KaydetBtn.Visible = true;
-            GuncelleBtn.Visible = false;
-            VazgecBtn.Visible = false;
-            SilBtn.Visible = false;
-        }
-
-        #endregion
+      
 
         #region Excel Export
 
@@ -559,5 +276,10 @@ namespace Portal.ModulDenetim
         }
 
         #endregion
+
+        protected void AraBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

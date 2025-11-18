@@ -148,8 +148,7 @@ namespace Portal.ModulGorev
         private void AracVeSubeleriYukle()
         {
             try
-            {
-                // Değişiklik: GorevSorgu.GetAraclar yerine yerel SqlGetAraclar kullanıldı.
+            {                
                 DataTable dtAraclar = ExecuteDataTable(SqlGetAraclar);
 
                 ddlPlaka.Items.Clear();
@@ -164,8 +163,7 @@ namespace Portal.ModulGorev
                 ddlPlakaGuncelle.DataTextField = "Arac_Plakasi";
                 ddlPlakaGuncelle.DataValueField = "Arac_Plakasi";
                 ddlPlakaGuncelle.DataBind();
-
-                // Değişiklik: GorevSorgu.GetSubeler yerine yerel SqlGetSubeler kullanıldı.
+                
                 DataTable dtSubeler = ExecuteDataTable(SqlGetSubeler);
 
                 ddlSube.Items.Clear();
@@ -265,8 +263,7 @@ namespace Portal.ModulGorev
                         ("@BaslangicTarihi", null),
                         ("@BitisTarihi", null)
                     );
-
-                    // Değişiklik: GorevSorgu.GetIstatistikler yerine yerel SqlGetIstatistikler kullanıldı.
+                    
                     dt = ExecuteDataTable(SqlGetIstatistikler, parametreler);
                 }
 

@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using Portal;
 using Portal.Base;
 
+
 namespace ModulDenetim
 {
     public partial class TasitGiris : BasePage
@@ -156,7 +157,7 @@ namespace ModulDenetim
                 ("@DenetimYeri", ddlDenetimYeri.SelectedValue),
                 ("@YetkiBelgesi", ddlYetkiBelgesi.SelectedValue),
                 ("@DenetimTuru", ddlDenetimTuru.SelectedValue),
-                ("@DenetimTarihi", Convert.ToDateTime(txtDenetimTarihi.Text)),
+                ("@DenetimTarihi", ParseTarih(txtDenetimTarihi.Text)),
                 ("@Il", ddlIl.SelectedValue),
                 ("@Ilce", ddlIlce.SelectedValue),
                 ("@Personel", ddlPersonel.SelectedValue),
@@ -194,7 +195,7 @@ namespace ModulDenetim
 
             var kontrolParams = CreateParameters(
                 ("@Plaka", txtPlaka.Text.ToUpper().Trim()),
-                ("@DenetimTarihi", Convert.ToDateTime(txtDenetimTarihi.Text)),
+               ("@DenetimTarihi", ParseTarih(txtDenetimTarihi.Text)),
                 ("@Id", txtKayitNo.Text)
             );
 
@@ -225,7 +226,7 @@ namespace ModulDenetim
                 ("@DenetimYeri", ddlDenetimYeri.SelectedValue),
                 ("@YetkiBelgesi", ddlYetkiBelgesi.SelectedValue),
                 ("@DenetimTuru", ddlDenetimTuru.SelectedValue),
-                ("@DenetimTarihi", Convert.ToDateTime(txtDenetimTarihi.Text)),
+                ("@DenetimTarihi", ParseTarih(txtDenetimTarihi.Text)),
                 ("@Il", ddlIl.SelectedValue),
                 ("@Ilce", ddlIlce.SelectedValue),
                 ("@Personel", ddlPersonel.SelectedValue),
@@ -289,7 +290,7 @@ namespace ModulDenetim
 
             var parameters = CreateParameters(
                 ("@Plaka", txtPlaka.Text.ToUpper().Trim()),
-                ("@DenetimTarihi", DateTime.Parse(txtDenetimTarihi.Text))
+                ("@DenetimTarihi", ParseTarih(txtDenetimTarihi.Text))
             );
 
             int kayitSayisi = Convert.ToInt32(ExecuteScalar(query, parameters));
