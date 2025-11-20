@@ -1077,20 +1077,33 @@ namespace Portal.Base
         /// </summary>
         /// <param name="tarihStr"></param>
         /// <returns></returns>
-        public DateTime ParseTarih(string tarihStr)
+        public DateTime ParseTarih(string value)
         {
-            // flatpickr formatı: "d/m/Y H:i"
-            string format = "d/M/yyyy HH:mm";
-            try
+            if (string.IsNullOrWhiteSpace(value))
+                throw new ArgumentException("Tarih boş olamaz.");
+
+            // Hem T’li ISO, hem noktalı Türk formatı, hem de slash’lı kabul etsin
+            var formats = new[] {
+        "yyyy-MM-ddTHH:mm",
+        "yyyy-MM-dd HH:mm",
+        "dd.MM.yyyy HH:mm",
+        "d.M.yyyy HH:mm",
+        "dd/MM/yyyy HH:mm",
+        "yyyy-MM-dd"
+    };
+
+            if (DateTime.TryParseExact(value, formats,
+                System.Globalization.CultureInfo.InvariantCulture,
+                System.Globalization.DateTimeStyles.None, out DateTime result))
             {
-                return DateTime.ParseExact(tarihStr, format, CultureInfo.InvariantCulture, DateTimeStyles.None);
+                return result;
             }
-            catch (Exception ex)
-            {
-                LogError($"Tarih formatı ayrıştırma hatası: '{tarihStr}'. Beklenen format: '{format}'", ex);
-                ShowToast("Tarih formatı geçersiz görünüyor.", "danger");
-                throw; // Hatayı tekrar fırlat ki işlem dursun
-            }
+
+            // Son çare olarak normal TryParse
+            if (DateTime.TryParse(value, out result))
+                return result;
+
+            throw new FormatException($"Tarih formatı geçersiz: {value}");
         }
 
 

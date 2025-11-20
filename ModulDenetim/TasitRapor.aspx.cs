@@ -283,76 +283,92 @@ namespace Portal.ModulDenetim
         {
             try
             {
-                var sqlSorgu = new StringBuilder("SELECT * FROM denetimtasit where 1=1");
+                var sqlSorgu = new StringBuilder(@"
+            SELECT 
+                id, 
+                Plaka, 
+                Plaka2, 
+                Unvan, 
+                DenetimYeri, 
+                YetkiBelgesi, 
+                DenetimTuru, 
+                CONVERT(date, DenetimTarihi, 104) AS DenetimTarihi,
+                il, 
+                ilce, 
+                Personel1, 
+                CezaDurumu, 
+                Aciklama
+            FROM denetimtasit 
+            WHERE 1=1");
 
                 var parametreler = new List<SqlParameter>();
 
-                if (!string.IsNullOrEmpty(Plaka.Text))
+                // Plaka – tam eşleşme (kullanıcı isterse LIKE yapabilirsin ama şu an tam eşleşme istenmiş)
+                if (!string.IsNullOrWhiteSpace(Plaka.Text.Trim()))
                 {
-                    sqlSorgu.Append(" AND (Plaka = @Plaka)");
-                    parametreler.Add(new SqlParameter("@Plaka", Plaka.Text));
+                    sqlSorgu.Append(" AND Plaka = @Plaka");
+                    parametreler.Add(new SqlParameter("@Plaka", Plaka.Text.Trim().ToUpper()));
                 }
 
-                if (!string.IsNullOrEmpty(Unvan.Text))
+                // Unvan – LIKE
+                if (!string.IsNullOrWhiteSpace(Unvan.Text.Trim()))
                 {
                     sqlSorgu.Append(" AND Unvan LIKE @Unvan");
-                    parametreler.Add(new SqlParameter("@Unvan", "%" + Unvan.Text + "%"));
+                    parametreler.Add(new SqlParameter("@Unvan", "%" + Unvan.Text.Trim() + "%"));
                 }
 
-                if (YetkiBelgesi.SelectedValue != "Hepsi")
+                // Dropdown filtreleri – sadece değer seçildiyse ekle (boş veya "Seçiniz" ise ekleme)
+                if (!string.IsNullOrWhiteSpace(YetkiBelgesi.SelectedValue))
                 {
-                    sqlSorgu.Append(" AND YetkiBelgesi=@YetkiBelgesi");
+                    sqlSorgu.Append(" AND YetkiBelgesi = @YetkiBelgesi");
                     parametreler.Add(new SqlParameter("@YetkiBelgesi", YetkiBelgesi.SelectedValue));
                 }
 
-                if (DenetimTuru.SelectedValue != "Hepsi")
+                if (!string.IsNullOrWhiteSpace(DenetimTuru.SelectedValue))
                 {
-                    sqlSorgu.Append(" AND DenetimTuru LIKE @DenetimTuru");
+                    sqlSorgu.Append(" AND DenetimTuru = @DenetimTuru");
                     parametreler.Add(new SqlParameter("@DenetimTuru", DenetimTuru.SelectedValue));
                 }
 
-                if (Il.SelectedValue != "Hepsi")
+                if (!string.IsNullOrWhiteSpace(Il.SelectedValue))
                 {
-                    sqlSorgu.Append(" AND il=@il");
+                    sqlSorgu.Append(" AND il = @Il");
                     parametreler.Add(new SqlParameter("@il", Il.SelectedValue));
                 }
 
-                if (Ilce.SelectedValue != "Hepsi")
+                if (!string.IsNullOrWhiteSpace(Ilce.SelectedValue))
                 {
-                    sqlSorgu.Append(" AND ilce=@ilce");
+                    sqlSorgu.Append(" AND ilce = @ilce");
                     parametreler.Add(new SqlParameter("@ilce", Ilce.SelectedValue));
                 }
 
-                if (Personel.SelectedValue != "Hepsi")
+                if (!string.IsNullOrWhiteSpace(Personel.SelectedValue))
                 {
-                    sqlSorgu.Append(" AND (Personel1=@Personel OR Personel2=@Personel)");
+                    sqlSorgu.Append(" AND (Personel1 = @Personel OR Personel2 = @Personel)");
                     parametreler.Add(new SqlParameter("@Personel", Personel.SelectedValue));
                 }
 
-                if (CezaDurumu.SelectedValue != "Hepsi")
+                if (!string.IsNullOrWhiteSpace(CezaDurumu.SelectedValue))
                 {
                     sqlSorgu.Append(" AND CezaDurumu = @CezaDurumu");
                     parametreler.Add(new SqlParameter("@CezaDurumu", CezaDurumu.SelectedValue));
                 }
 
-                DateTime ilkTarihObjesi;
-
-                if (DateTime.TryParse(BaslangicTarih.Text, out ilkTarihObjesi))
+                // Tarih aralığı
+                if (DateTime.TryParse(BaslangicTarih.Text, out DateTime baslangicTarih))
                 {
-                    sqlSorgu.Append(" AND CONVERT(DATE, DenetimTarihi, 23) >= @IlkTarih");
-                    parametreler.Add(new SqlParameter("@IlkTarih", ilkTarihObjesi.Date));
+                    sqlSorgu.Append(" AND CONVERT(date, DenetimTarihi, 104) >= @BaslangicTarih");
+                    parametreler.Add(new SqlParameter("@BaslangicTarih", baslangicTarih.Date));
                 }
 
-                DateTime sonTarihObjesi;
-                if (DateTime.TryParse(BitisTarih.Text, out sonTarihObjesi))
+                if (DateTime.TryParse(BitisTarih.Text, out DateTime bitisTarih))
                 {
-                    sqlSorgu.Append(" AND CONVERT(DATE, DenetimTarihi, 23) <= @SonTarih");
-                    parametreler.Add(new SqlParameter("@SonTarih", sonTarihObjesi.Date));
+                    sqlSorgu.Append(" AND CONVERT(date, DenetimTarihi, 104) <= @BitisTarih");
+                    parametreler.Add(new SqlParameter("@BitisTarih", bitisTarih.Date));
                 }
 
                 sqlSorgu.Append(" ORDER BY id DESC");
 
-                // ExecuteDataTable, bağlantıyı açar, parametreleri ekler, veriyi çeker ve kapatır.
                 DataTable dt = ExecuteDataTable(sqlSorgu.ToString(), parametreler);
 
                 DenetimGrid.DataSource = dt;
@@ -360,22 +376,18 @@ namespace Portal.ModulDenetim
 
                 if (dt.Rows.Count > 0)
                 {
-                    ShowToast($"{dt.Rows.Count} kayıt listelendi.", "success");
+                    ShowToast($"{dt.Rows.Count} kayıt bulundu.", "success");
                 }
                 else
                 {
-                    ShowToast("Aradığınız kriterlere uygun kayıt bulunamadı.", "warning");
-                    // Grid boşsa header görünmesi için boş bir satır eklenebilir veya grid gizlenebilir
+                    ShowToast("Aradığınız kriterlere uygun kayıt bulunamadı.", "info");
                 }
             }
             catch (Exception ex)
             {
-                LogError("Denetim Sorgulama Hatası", ex);
-
-                ShowToast("Sorgulama sırasında sistemsel bir hata oluştu.", "danger");
+                LogError("AraBtn_Click hatası", ex);
+                ShowToast("Arama sırasında bir hata oluştu.", "danger");
             }
-
-
         }
     }
 }

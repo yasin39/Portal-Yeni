@@ -103,7 +103,7 @@ namespace ModulDenetim
             SetSafeDropDownValue(ddlDenetimYeri, row["DenetimYeri"].ToString());
             SetSafeDropDownValue(ddlYetkiBelgesi, row["YetkiBelgesi"].ToString());
             SetSafeDropDownValue(ddlDenetimTuru, row["DenetimTuru"].ToString());
-            txtDenetimTarihi.Text = Convert.ToDateTime(row["DenetimTarihi"]).ToString("yyyy-MM-ddTHH:mm");
+            txtDenetimTarihi.Text = Convert.ToDateTime(row["DenetimTarihi"]).ToString("dd.MM.yyyy HH:mm");
             SetSafeDropDownValue(ddlIl, row["il"].ToString());
 
             ddlIl_SelectedIndexChanged(null, null);

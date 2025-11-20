@@ -167,7 +167,7 @@ namespace Portal.ModulDenetim
                     ("@Adres", txtAdres.Text),
                     ("@YetkiBelgesi", ddlYetkiBelgesi.SelectedValue),
                     ("@DenetimTuru", ddlDenetimTuru.SelectedValue),
-                    ("@DenetimTarihi", DateTime.Parse(txtDenetimTarihi.Text)),
+                    ("@DenetimTarihi", ParseTarih(txtDenetimTarihi.Text)),
                     ("@Il", ddlIl.SelectedValue),
                     ("@Ilce", ddlIlce.SelectedValue),
                     ("@Personel1", ddlPersonel1.SelectedValue),
@@ -230,7 +230,7 @@ namespace Portal.ModulDenetim
                     ("@Adres", txtAdres.Text),
                     ("@YetkiBelgesi", ddlYetkiBelgesi.SelectedValue),
                     ("@DenetimTuru", ddlDenetimTuru.SelectedValue),
-                    ("@DenetimTarihi", DateTime.Parse(txtDenetimTarihi.Text)),
+                    ("@DenetimTarihi", ParseTarih(txtDenetimTarihi.Text)),
                     ("@Il", ddlIl.SelectedValue),
                     ("@Ilce", ddlIlce.SelectedValue),
                     ("@Personel1", ddlPersonel1.SelectedValue),
@@ -296,7 +296,7 @@ namespace Portal.ModulDenetim
                     if (row["DenetimTarihi"] != DBNull.Value)
                     {
                         DateTime denetimTarihi = Convert.ToDateTime(row["DenetimTarihi"]);
-                        txtDenetimTarihi.Text = denetimTarihi.ToString("yyyy-MM-ddTHH:mm");
+                        txtDenetimTarihi.Text = denetimTarihi.ToString("dd.MM.yyyy HH: mm");
                     }
 
                     // İl ve İlçe
