@@ -171,19 +171,24 @@ namespace Portal.ModulTehlikeliMadde
                 whereKosullari.Add($"FaaliyetTuru = '{ddlFaaliyetAlani.SelectedValue}'");
             }
 
-            if (ddlIl.SelectedValue != "Hepsi" && !string.IsNullOrEmpty(ddlIl.SelectedValue))
+            // Eğer seçilen değer "Hepsi" değilse ve boş değilse filtreyi ekle
+            if (ddlIl.SelectedValue != "Hepsi" && !string.IsNullOrWhiteSpace(ddlIl.SelectedValue))
             {
-                whereKosullari.Add($"il = '{ddlIl.SelectedValue}'");
+                // .Trim() kullanarak olası boşluk uyumsuzluklarını önleriz
+                whereKosullari.Add($"il = '{ddlIl.SelectedValue.Trim()}'");
             }
 
-            if (ddlIlce.SelectedValue != "Hepsi")
+
+            if (ddlIlce.SelectedValue != null && ddlIlce.SelectedValue != "Hepsi" && ddlIlce.SelectedValue.Trim() != "")
             {
-                whereKosullari.Add($"ilce = '{ddlIlce.SelectedValue}'");
+                whereKosullari.Add($"ilce = '{ddlIlce.SelectedValue.Trim()}'");
             }
+            // Hiçbir şey eklemezsek → ilçe filtresi olmadan tüm kayıtlar gelir
 
             if (ddlDurum.SelectedValue != "Hepsi")
             {
-                whereKosullari.Add($"Durum = '{ddlDurum.SelectedValue}'");
+                string durumKodu = ddlDurum.SelectedValue == "Aktif" ? "Geçerli" : "İptal";
+                whereKosullari.Add($"Durum = '{durumKodu}'");
             }
 
             string whereClause = string.Join(" AND ", whereKosullari);

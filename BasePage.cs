@@ -25,7 +25,6 @@ namespace Portal.Base
         {
 
         }
-
         protected override void OnPreInit(EventArgs e)
         {
             base.OnPreInit(e);
@@ -67,7 +66,6 @@ namespace Portal.Base
 
             }
         }
-
         protected override void OnLoadComplete(EventArgs e)
         {
             base.OnLoadComplete(e);
@@ -372,45 +370,6 @@ namespace Portal.Base
         }
 
         /// <summary>
-        /// Stored Procedure çalıştırır ve DataTable döner
-        /// </summary>
-        public static DataTable ExecuteStoredProcedure(string procedureName, List<SqlParameter> parameters = null)
-        {
-            DataTable dt = new DataTable();
-
-            try
-            {
-                using (SqlConnection conn = GetConnection())
-                {
-                    using (SqlCommand cmd = new SqlCommand(procedureName, conn))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-
-                        //  Parametreleri ekle
-                        if (parameters != null)
-                        {
-                            cmd.Parameters.AddRange(parameters.ToArray());
-                        }
-
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
-                            conn.Open();
-                            adapter.Fill(dt);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogError($"ExecuteStoredProcedure hatası: {ex.Message}\nProcedure: {procedureName}");
-                throw;
-            }
-
-            return dt;
-        }
-
-
-        /// <summary>
         /// INSERT/UPDATE/DELETE sorgusu çalıştırır, etkilenen satır sayısını döner
         /// </summary>
         public static int ExecuteNonQuery(string query, List<SqlParameter> parameters = null)
@@ -640,6 +599,10 @@ namespace Portal.Base
         /// <param name="gv">Export edilecek GridView</param>
         /// <param name="dosyaAdi">PDF dosya adı</param>
         /// <param name="raporBaslik">Rapor başlığı</param>
+        /// <summary>
+        /// GridView'i PDF'e export eder (iTextSharp ile - Türkçe karakter destekli)
+        /// Fontlar projenin Fonts klasöründen yüklenir
+        /// </summary>
         protected void ExportGridViewToPdf(GridView gv, string dosyaAdi = "rapor.pdf", string raporBaslik = "Rapor")
         {
             if (gv == null || gv.Rows.Count == 0)
@@ -661,44 +624,60 @@ namespace Portal.Base
 
                 document.Open();
 
-                string arialPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arial.ttf");
-                string arialBoldPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Fonts), "arialbd.ttf");
+                // Fontları projenin Fonts klasöründen yükle
+                string projectRoot = AppDomain.CurrentDomain.BaseDirectory;
+                string arialPath = Path.Combine(projectRoot, "Fonts", "arial.ttf");
+                string arialBoldPath = Path.Combine(projectRoot, "Fonts", "arialbd.ttf");
+
+                // Font dosyalarının varlığını kontrol et
+                if (!File.Exists(arialPath) || !File.Exists(arialBoldPath))
+                {
+                    LogError($"Font dosyaları bulunamadı: {arialPath}");
+                    throw new FileNotFoundException("Font dosyaları projenin Fonts klasöründe bulunamadı.");
+                }
 
                 BaseFont bfTitle = BaseFont.CreateFont(arialBoldPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 BaseFont bfHeader = BaseFont.CreateFont(arialBoldPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 BaseFont bfCell = BaseFont.CreateFont(arialPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
 
+                // Başlık
                 var title = new Paragraph(raporBaslik, new Font(bfTitle, 16));
                 title.Alignment = Element.ALIGN_CENTER;
                 title.SpacingAfter = 10f;
                 document.Add(title);
 
+                // Tarih bilgisi
                 var dateInfo = new Paragraph($"Rapor Tarihi: {DateTime.Now:dd.MM.yyyy HH:mm}", new Font(bfCell, 9));
                 dateInfo.Alignment = Element.ALIGN_RIGHT;
                 dateInfo.SpacingAfter = 15f;
                 document.Add(dateInfo);
 
+                // Tablo oluştur
                 int kolonSayisi = gv.HeaderRow.Cells.Count;
                 var table = new PdfPTable(kolonSayisi);
                 table.WidthPercentage = 100;
 
+                // Header satırı
                 foreach (TableCell headerCell in gv.HeaderRow.Cells)
                 {
-                    var cell = new PdfPCell(new Phrase(headerCell.Text, new Font(bfHeader, 10)));
+                    string headerText = HttpUtility.HtmlDecode(headerCell.Text);
+                    var cell = new PdfPCell(new Phrase(headerText, new Font(bfHeader, 10)));
                     cell.BackgroundColor = new BaseColor(75, 123, 236);
                     cell.HorizontalAlignment = Element.ALIGN_CENTER;
                     cell.Padding = 5;
                     table.AddCell(cell);
                 }
 
+                // Data satırları
                 foreach (GridViewRow row in gv.Rows)
                 {
                     foreach (TableCell dataCell in row.Cells)
                     {
-                        string cellText = dataCell.Text
+                        string cellText = HttpUtility.HtmlDecode(dataCell.Text)
                             .Replace("&nbsp;", " ")
                             .Replace("&#304;", "İ")
-                            .Replace("&#305;", "ı");
+                            .Replace("&#305;", "ı")
+                            .Replace("&amp;", "&");
 
                         var cell = new PdfPCell(new Phrase(cellText, new Font(bfCell, 9)));
                         cell.HorizontalAlignment = Element.ALIGN_LEFT;
@@ -709,6 +688,7 @@ namespace Portal.Base
 
                 document.Add(table);
 
+                // Footer
                 var footer = new Paragraph($"Toplam Kayıt: {gv.Rows.Count}", new Font(bfCell, 9));
                 footer.Alignment = Element.ALIGN_RIGHT;
                 footer.SpacingBefore = 10f;

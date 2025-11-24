@@ -93,7 +93,7 @@ namespace Portal.ModulTehlikeliMadde
                     return;
                 }
 
-                string FaaliyetId = GetGridViewCellTextSafe(FaaliyetlerGrid.SelectedRow, 0);
+                string FaaliyetId = FaaliyetlerGrid.SelectedDataKey.Value.ToString();
                 string FaaliyetAdi = txtFaaliyetAdi.Text.Trim();
                 string Aciklama = txtAciklama.Text.Trim();
 

@@ -143,6 +143,15 @@
     <Content Include="Notlar\CodeSnippets.txt" />
     <Content Include="Notlar\Instructions for Claude.txt" />
     <Content Include="Notlar\Portal Yazılım Notları.md" />
+    <Content Include="Fonts\arial.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\arialbd.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\arialbi.ttf" />
+    <Content Include="Fonts\ariali.ttf" />
+    <Content Include="Fonts\ariblk.ttf" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Notlar\Veritabanı Portal.txt" />
     <Content Include="Notlar\Yapılacak Database İşlemleri.txt" />

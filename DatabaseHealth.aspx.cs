@@ -189,8 +189,8 @@ namespace Portal
                 // Aktif bağlantı sayısı
                 string connQuery = @"
                     SELECT COUNT(*) 
-                    FROM sys.dm_exec_connections 
-                    WHERE database_id = DB_ID()";
+                    FROM sys.dm_exec_sessions 
+                    WHERE database_id = DB_ID() AND is_user_process = 1";
                 stats.ActiveConnections = Convert.ToInt32(ExecuteScalar(connQuery));
 
                 // Yavaş query sayısı (son 24 saat)
@@ -223,27 +223,27 @@ namespace Portal
             try
             {
                 string query = $@"
-                    SELECT TOP {topCount}
-                        t.NAME AS TableName,
-                        p.rows AS RowCount,
-                        CAST(ROUND((SUM(a.used_pages) / 128.00), 2) AS DECIMAL(18,2)) AS TotalSizeMB,
-                        CAST(ROUND((SUM(CASE WHEN a.type <> 1 THEN a.used_pages ELSE 0 END) / 128.00), 2) AS DECIMAL(18,2)) AS IndexSizeMB,
-                        CAST(ROUND((SUM(CASE WHEN a.type = 1 THEN a.used_pages ELSE 0 END) / 128.00), 2) AS DECIMAL(18,2)) AS DataSizeMB
-                    FROM 
-                        sys.tables t
-                    INNER JOIN      
-                        sys.indexes i ON t.OBJECT_ID = i.object_id
-                    INNER JOIN 
-                        sys.partitions p ON i.object_id = p.OBJECT_ID AND i.index_id = p.index_id
-                    INNER JOIN 
-                        sys.allocation_units a ON p.partition_id = a.container_id
-                    WHERE 
-                        t.is_ms_shipped = 0
-                        AND i.OBJECT_ID > 255
-                    GROUP BY 
-                        t.NAME, p.Rows
-                    ORDER BY 
-                        TotalSizeMB DESC";
+            SELECT TOP {topCount}
+                t.NAME AS TableName,
+                SUM(p.rows) AS TotalRowCount,
+                CAST(SUM(a.total_pages) * 8 / 1024.00 AS DECIMAL(18, 2)) AS TotalSizeMB,
+                CAST(SUM(CASE WHEN i.index_id < 2 THEN a.data_pages ELSE 0 END) * 8 / 1024.00 AS DECIMAL(18, 2)) AS DataSizeMB,
+                CAST(SUM(a.used_pages - CASE WHEN i.index_id < 2 THEN a.data_pages ELSE 0 END) * 8 / 1024.00 AS DECIMAL(18, 2)) AS IndexSizeMB
+            FROM 
+                sys.tables t
+            INNER JOIN      
+                sys.indexes i ON t.OBJECT_ID = i.object_id
+            INNER JOIN 
+                sys.partitions p ON i.object_id = p.OBJECT_ID AND i.index_id = p.index_id
+            INNER JOIN 
+                sys.allocation_units a ON p.partition_id = a.container_id
+            WHERE 
+                t.is_ms_shipped = 0
+                AND i.OBJECT_ID > 255
+            GROUP BY 
+                t.NAME -- Only group by table name to aggregate all partitions correctly
+            ORDER BY 
+                TotalSizeMB DESC";
 
                 DataTable dt = ExecuteDataTable(query);
 
@@ -252,7 +252,7 @@ namespace Portal
                     tables.Add(new TableSizeInfo
                     {
                         TableName = row["TableName"].ToString(),
-                        RowCount = Convert.ToInt64(row["RowCount"]),
+                        RowCount = Convert.ToInt64(row["TotalRowCount"]),
                         TotalSizeMB = Convert.ToDecimal(row["TotalSizeMB"]),
                         IndexSizeMB = Convert.ToDecimal(row["IndexSizeMB"]),
                         DataSizeMB = Convert.ToDecimal(row["DataSizeMB"])

@@ -104,7 +104,8 @@
                                 PageSize="10" 
                                 OnPageIndexChanging="FaaliyetlerGrid_PageIndexChanging"
                                 EmptyDataText="Henüz faaliyet alanı tanımlanmamış."
-                                GridLines="None">
+                                GridLines="None"
+                                DataKeyNames="id">
                                 
                                 <Columns>
                                     <asp:BoundField DataField="id" HeaderText="ID" Visible="false" />
