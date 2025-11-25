@@ -152,13 +152,7 @@
                                 <asp:Button ID="btnExcelAktar" runat="server" Text="📥 Excel'e Aktar" 
                                     CssClass="btn btn-success" OnClick="btnExcelAktar_Click" 
                                     CausesValidation="false" />
-                                
-                                <asp:Button ID="btnExcelYukle" runat="server" Text="📤 Excel'den Yükle" 
-                                    CssClass="btn btn-info ms-2" OnClick="btnExcelYukle_Click" 
-                                    CausesValidation="false" />
-                                
-                                <asp:FileUpload ID="fuExcel" runat="server" CssClass="d-none" 
-                                    accept=".xlsx,.xls" />
+
                             </div>
                         </div>
 
@@ -195,11 +189,4 @@
             </div>
         </div>
     </div>
-
-    <!-- Excel Yükleme Modal -->
-    <script type="text/javascript">
-        function TriggerFileUpload() {
-            document.getElementById('<%= fuExcel.ClientID %>').click();
-        }
-    </script>
 </asp:Content>

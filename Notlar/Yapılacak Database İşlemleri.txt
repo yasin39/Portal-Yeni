@@ -255,3 +255,38 @@ CREATE TABLE PerformanceLogs (
 
 =================================================================================
 
+USE [ankarabolge]
+GO
+
+/****** Object:  Index [IX_arsiv_Unet]    Script Date: 24.11.2025 ******/
+CREATE NONCLUSTERED INDEX [IX_arsiv_Unet]
+ON [dbo].[arsiv] ([Unet]);
+GO
+=================================================================================
+
+USE [ankarabolge]
+GO
+
+/* 1. TABLO: tmistatistik
+   Etki: %88.67
+   Açıklama: İstatistiklerde İl ve Duruma göre (Örn: Ankara'daki Aktif firmalar) yapılan aramaları hızlandırır. */
+CREATE NONCLUSTERED INDEX [IX_tmistatistik_il_Durum]
+ON [dbo].[tmistatistik] ([il], [Durum]);
+GO
+
+/* 2. TABLO: denetimisletme
+   Etki: %74.68
+   Açıklama: Denetimlerde İl ve İlçe hiyerarşisine göre yapılan filtrelemeleri hızlandırır. */
+CREATE NONCLUSTERED INDEX [IX_denetimisletme_il_ilce]
+ON [dbo].[denetimisletme] ([il], [ilce]);
+GO
+
+/* 3. TABLO: personel_izin
+   Etki: %23.22
+   Açıklama: Personelin (Sicil No) belirli bir izin türündeki kayıtlarını (Örn: Yıllık İzin) bulmayı hızlandırır. */
+CREATE NONCLUSTERED INDEX [IX_personel_izin_SicilNo_izinturu]
+ON [dbo].[personel_izin] ([Sicil_No], [izin_turu]);
+GO
+
+=======================================================================================
+

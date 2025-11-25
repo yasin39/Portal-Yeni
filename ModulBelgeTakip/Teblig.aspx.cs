@@ -7,7 +7,7 @@ using Portal.Base;
 namespace Portal.ModulBelgeTakip
 {
     public partial class Teblig : BasePage
-    {       
+    {
 
         /// <summary>
         /// Vergi numarasına göre firma ve denetim detaylarını getirir
@@ -66,7 +66,8 @@ namespace Portal.ModulBelgeTakip
             ClearFormControls(TxtTebligTarihi);
             HdnSelectedTebligDate.Value = string.Empty;
             LblDenetimID.Text = string.Empty;
-            PnlDenetim.Visible = false;
+            
+
 
             ClientScript.RegisterStartupScript(this.GetType(), "clearFlatpickr",
                 $"if(document.getElementById('{TxtTebligTarihi.ClientID}')._flatpickr){{ document.getElementById('{TxtTebligTarihi.ClientID}')._flatpickr.clear(); }}", true);
@@ -109,45 +110,39 @@ namespace Portal.ModulBelgeTakip
             }
         }
 
-        protected void GvDenetim_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GvDenetim_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (GvDenetim.SelectedIndex != -1)
+            if (e.CommandName == "SelectRow")
             {
-                if (GvDenetim.SelectedDataKey == null)
+                string[] args = e.CommandArgument.ToString().Split(',');
+
+                if (args.Length != 2)
                 {
-                    ShowToast("DataKey null geldi.", "danger");
+                    ShowToast("Veri alınamadı.", "danger");
                     return;
                 }
 
-                var denetimID = GvDenetim.SelectedDataKey.Values["DenetimID"];
-                var tebligDurumu = GvDenetim.SelectedDataKey.Values["TEBLIG_DURUMU"];
+                string denetimID = args[0];
+                string tebligDurumu = args[1];
 
-                if (denetimID == null || string.IsNullOrEmpty(denetimID.ToString()))
+                if (string.IsNullOrEmpty(denetimID))
                 {
                     ShowToast("DenetimID alınamadı.", "danger");
                     return;
                 }
 
-                if (string.IsNullOrEmpty(tebligDurumu?.ToString()))
-                {
-                    ShowToast("Tebliğ durumu alınamadı.", "danger");
-                    return;
-                }
-
-                if (tebligDurumu.ToString() == "Tebliğ Edildi")
+                if (tebligDurumu == "Tebliğ Edildi")
                 {
                     ShowToast("Bu denetim zaten tebliğ edilmiş.", "warning");
                     return;
                 }
 
-                LblDenetimID.Text = denetimID.ToString();
-                PnlDenetim.Visible = true;
-            }
-            else
-            {
-                ShowToast("Hiçbir satır seçilmedi.", "danger");
+                LblDenetimID.Text = denetimID;
+                divDenetim.Style["display"] = "block";
+
             }
         }
+
 
         protected void BtnKaydet_Click(object sender, EventArgs e)
         {
@@ -166,7 +161,7 @@ namespace Portal.ModulBelgeTakip
                     ("@DenetimID", Convert.ToInt32(LblDenetimID.Text))
                 );
 
-                // DEĞİŞİKLİK: Sorgu yerel değişkenden alındı
+              
                 int rowsAffected = ExecuteNonQuery(UpdateTebligTarihiQuery, parametreler);
 
                 if (rowsAffected > 0)
@@ -174,7 +169,7 @@ namespace Portal.ModulBelgeTakip
                     ShowToast("Tebliğ tarihi başarıyla kaydedildi.", "success");
                     LogInfo($"Tebliğ tarihi kaydedildi. DenetimID: {LblDenetimID.Text}, Tarih: {selectedDate:dd.MM.yyyy}");
 
-                    PnlDenetim.Visible = false;
+                    
                     ClearForm();
 
                     if (!string.IsNullOrWhiteSpace(TxtVergiNo.Text))

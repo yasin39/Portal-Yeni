@@ -150,24 +150,6 @@ namespace ModulYonetici
         protected global::System.Web.UI.WebControls.Button btnExcelAktar;
 
         /// <summary>
-        /// btnExcelYukle control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExcelYukle;
-
-        /// <summary>
-        /// fuExcel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fuExcel;
-
-        /// <summary>
         /// BilgisayarlarGrid control.
         /// </summary>
         /// <remarks>

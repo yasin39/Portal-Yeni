@@ -33,22 +33,13 @@ namespace Portal.ModulBelgeTakip
         protected global::System.Web.UI.WebControls.Button BtnFirmaGetir;
 
         /// <summary>
-        /// GvDenetim control.
+        /// divDenetim control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GvDenetim;
-
-        /// <summary>
-        /// PnlDenetim control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PnlDenetim;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDenetim;
 
         /// <summary>
         /// LblDenetimID control.
@@ -78,24 +69,6 @@ namespace Portal.ModulBelgeTakip
         protected global::System.Web.UI.WebControls.HiddenField HdnSelectedTebligDate;
 
         /// <summary>
-        /// rfvTebligTarihi control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvTebligTarihi;
-
-        /// <summary>
-        /// cvTebligTarih control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CustomValidator cvTebligTarih;
-
-        /// <summary>
         /// BtnKaydet control.
         /// </summary>
         /// <remarks>
@@ -103,5 +76,14 @@ namespace Portal.ModulBelgeTakip
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button BtnKaydet;
+
+        /// <summary>
+        /// GvDenetim control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GvDenetim;
     }
 }

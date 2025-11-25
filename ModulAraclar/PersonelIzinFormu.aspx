@@ -124,9 +124,9 @@
                            <asp:BoundField DataField="izin_turu" HeaderText="İzin Türü" />
                            <asp:BoundField DataField="Aciklama" HeaderText="Açıklama" />
                            <asp:BoundField DataField="izne_Baslama_Tarihi" DataFormatString="{0:dd.MM.yyyy}" HeaderText="Baş. Tarihi" />
-                           <asp:BoundField DataField="ibaslamasaat" HeaderText="Baş. Saati" DataFormatString="{0:hh\\:mm}" />
+                           <asp:BoundField DataField="ibaslamasaat" HeaderText="Baş. Saati" />
                            <asp:BoundField DataField="izin_Bitis_Tarihi" DataFormatString="{0:dd.MM.yyyy}" HeaderText="Bitiş Tarihi" />
-                            <asp:BoundField DataField="ibitissaat" HeaderText="Bitiş Saati" DataFormatString="{0:hh\\:mm}" />
+                            <asp:BoundField DataField="ibitissaat" HeaderText="Bitiş Saati" />
                            <asp:BoundField DataField="Kayit_Kullanici" HeaderText="Kayıt Eden" />
                             <asp:BoundField DataField="Kayit_Tarihi" HeaderText="Kayıt Tarihi" DataFormatString="{0:dd.MM.yyyy HH:mm}" />
                         </Columns>

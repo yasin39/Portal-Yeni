@@ -77,11 +77,17 @@ namespace Portal.ModulAraclar
             }
         }
 
-        // IzinleriGetir metodunda değişiklik yok...
+
         private void IzinleriGetir(string sicilNo)
         {
-            string query = "SELECT id, izin_turu, Aciklama, izne_Baslama_Tarihi, ibaslamasaat, izin_Bitis_Tarihi, ibitissaat, Kayit_Kullanici, Kayit_Tarihi " +
+            // DEĞİŞİKLİK: ibaslamasaat ve ibitissaat alanları SQL tarafında formatlanarak string'e çevrildi.
+            string query = "SELECT id, izin_turu, Aciklama, izne_Baslama_Tarihi, " +
+                           "LEFT(CAST(ibaslamasaat AS VARCHAR), 5) as ibaslamasaat, " +
+                           "izin_Bitis_Tarihi, " +
+                           "LEFT(CAST(ibitissaat AS VARCHAR), 5) as ibitissaat, " +
+                           "Kayit_Kullanici, Kayit_Tarihi " +
                            "FROM personel_izin WHERE Sicil_No = @SicilNo ORDER BY id DESC";
+
             var parameters = CreateParameters(("@SicilNo", sicilNo));
 
             try

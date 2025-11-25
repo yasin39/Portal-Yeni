@@ -32,7 +32,7 @@ namespace Portal.ModulAraclar
             catch (Exception ex)
             {
                 LogError("LoadBelgeTurleri hatası", ex);
-                ShowToast("Belge türleri yüklenirken hata oluştu!", "error");
+                ShowToast("Belge türleri yüklenirken hata oluştu!", "danger");
             }
         }
 
@@ -45,7 +45,7 @@ namespace Portal.ModulAraclar
             catch (Exception ex)
             {
                 LogError("btnAra_Click hatası", ex);
-                ShowToast("Arama sırasında hata oluştu!", "error");
+                ShowToast("Arama sırasında hata oluştu!", "danger");
             }
         }
 
@@ -152,7 +152,7 @@ namespace Portal.ModulAraclar
             catch (Exception ex)
             {
                 LogError("btnBirlestir_Click hatası", ex);
-                ShowToast("PDF birleştirme sırasında hata oluştu!", "error");
+                ShowToast("PDF birleştirme sırasında hata oluştu!", "danger");
             }
         }
 

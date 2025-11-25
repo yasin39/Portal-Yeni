@@ -1,5 +1,30 @@
-﻿[2025-11-24 14:34:24] [INFO] Log dosyası temizlendi.
-[2025-11-24 14:34:51] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-24 14:36:08] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-24 14:39:18] [INFO] Yetki kontrolü başarılı: admin - 100
-[2025-11-24 14:39:34] [INFO] Yetki kontrolü başarılı: admin - 100
+﻿[2025-11-25 10:56:59] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:57:55] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:58:09] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:58:16] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:58:25] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:58:56] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:59:32] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:59:34] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 10:59:34] [INFO] Bugün izinde olan 1 personel listelendi.
+[2025-11-25 10:59:39] [INFO] Personel bilgisi getirildi: Ali PİRİ (7254)
+[2025-11-25 10:59:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 11:00:27] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 11:00:41] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 11:00:48] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 11:01:04] [INFO] Personel arama tamamlandı: 2 kayıt bulundu.
+[2025-11-25 11:01:08] [INFO] Personel arama tamamlandı: 2 kayıt bulundu.
+[2025-11-25 11:01:21] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 11:18:52] [INFO] Yetki kontrolü başarılı: admin - 100
+[2025-11-25 14:43:09] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 14:45:28] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 15:15:08] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 15:18:29] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 15:32:56] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 15:38:08] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 16:13:08] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 16:27:32] [INFO] Yetki kontrolü başarılı: admin - 800
+[2025-11-25 16:31:39] [INFO] Tebliğ tarihi kaydedildi. DenetimID: 68, Tarih: 25.11.2025
+[2025-11-25 16:37:16] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 19:36:07] [INFO] Geliştirme modu: Mock session değerleri atandı.
+[2025-11-25 19:39:36] [INFO] Tebliğ tarihi kaydedildi. DenetimID: 69, Tarih: 25.11.2025
